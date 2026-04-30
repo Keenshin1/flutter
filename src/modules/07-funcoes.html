@@ -1,0 +1,135 @@
+<!-- module: num="7" nav="Funções" -->
+<div class="lesson" id="lesson-7">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 07</div>
+    <div class="lesson-title"><code style="font-size:22px;">Funções</code></div>
+    <div class="lesson-subtitle">Funções organizam o código em blocos reutilizáveis. Em Dart, toda função tem um tipo de retorno, um nome e parâmetros opcionais.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Declarando uma função</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">int</span> <span class="fn">somar</span>(<span class="type">int</span> <span class="var">a</span>, <span class="type">int</span> <span class="var">b</span>) {
+  <span class="kw">return</span> <span class="var">a</span> + <span class="var">b</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">resultado</span> = <span class="fn">somar</span>(<span class="num">3</span>, <span class="num">4</span>);
+  <span class="fn">print</span>(<span class="var">resultado</span>); <span class="com">// 7</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    O tipo antes do nome (<code>int</code>) é o tipo de retorno. Use <code>void</code> quando a função não retorna nada.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Função com seta (arrow)</div>
+
+  <div class="explanation">
+    Quando o corpo da função é uma única expressão, você pode usar a sintaxe de seta <code>=&gt;</code> para encurtar.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">int</span>    <span class="fn">dobro</span>(<span class="type">int</span> <span class="var">n</span>)            =&gt; <span class="var">n</span> * <span class="num">2</span>;
+<span class="type">String</span> <span class="fn">saudar</span>(<span class="type">String</span> <span class="var">nome</span>)    =&gt; <span class="str">'Olá, $nome!'</span>;
+<span class="type">bool</span>   <span class="fn">ehPar</span>(<span class="type">int</span> <span class="var">n</span>)            =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">dobro</span>(<span class="num">5</span>));        <span class="com">// 10</span>
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="str">'Ana'</span>));  <span class="com">// Olá, Ana!</span>
+  <span class="fn">print</span>(<span class="fn">ehPar</span>(<span class="num">8</span>));        <span class="com">// true</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Parâmetros nomeados</div>
+
+  <div class="explanation">
+    Parâmetros entre chaves <code>{}</code> são <strong>nomeados</strong> — devem ser passados pelo nome na chamada. Use <code>required</code> para tornar obrigatórios.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">String</span> <span class="fn">apresentar</span>({
+  <span class="kw">required</span> <span class="type">String</span> <span class="var">nome</span>,
+  <span class="type">int</span> <span class="var">idade</span> = <span class="num">0</span>,
+}) {
+  <span class="kw">return</span> <span class="str">'$nome, $idade anos'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">apresentar</span>(<span class="var">nome</span>: <span class="str">'Ana'</span>, <span class="var">idade</span>: <span class="num">25</span>));
+  <span class="fn">print</span>(<span class="fn">apresentar</span>(<span class="var">nome</span>: <span class="str">'João'</span>)); <span class="com">// idade usa o padrão 0</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Calcular área</div><div class="exercise-sub">Função com retorno</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>double areaRetangulo(double largura, double altura)</code> que retorne a área. Chame-a com alguns valores e exiba o resultado.</div>
+      <textarea class="exercise-input" id="ex7-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-1', 'dp7-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp7-1"></div>
+      <div class="solution-wrap" id="sol7-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">double</span> <span class="fn">areaRetangulo</span>(<span class="type">double</span> <span class="var">largura</span>, <span class="type">double</span> <span class="var">altura</span>) =&gt;
+    <span class="var">largura</span> * <span class="var">altura</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">areaRetangulo</span>(<span class="num">5</span>, <span class="num">3</span>));   <span class="com">// 15.0</span>
+  <span class="fn">print</span>(<span class="fn">areaRetangulo</span>(<span class="num">10</span>, <span class="num">2.5</span>)); <span class="com">// 25.0</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Saudação personalizada</div><div class="exercise-sub">Parâmetros nomeados</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>saudar</code> com parâmetros nomeados <code>required String nome</code> e <code>String periodo = 'dia'</code>. Retorne <strong>"Bom [periodo], [nome]!"</strong>.</div>
+      <textarea class="exercise-input" id="ex7-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-2', 'dp7-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp7-2"></div>
+      <div class="solution-wrap" id="sol7-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">String</span> <span class="fn">saudar</span>({
+  <span class="kw">required</span> <span class="type">String</span> <span class="var">nome</span>,
+  <span class="type">String</span> <span class="var">periodo</span> = <span class="str">'dia'</span>,
+}) =&gt; <span class="str">'Bom $periodo, $nome!'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Ana'</span>));
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'João'</span>, <span class="var">periodo</span>: <span class="str">'tarde'</span>));
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(6)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(7)">Próximo módulo →</button>
+  </div>
+</div>
