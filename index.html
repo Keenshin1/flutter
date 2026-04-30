@@ -15,7 +15,7 @@
       <div class="logo-icon">Fl</div>
       <div>
         <div class="logo-text">Aprenda Flutter</div>
-        <div class="logo-sub">7 módulos · do zero</div>
+        <div class="logo-sub">8 módulos · do zero</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-label">
       <span>Progresso</span>
-      <span id="progress-text">0 / 7</span>
+      <span id="progress-text">0 / 8</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
@@ -61,6 +61,12 @@
       <span class="nav-dot"></span>
       <span class="nav-num">03</span>
       <span>Layout</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(3)" id="nav-3">
+      <span class="nav-dot"></span>
+      <span class="nav-num">03</span>
+      <span>Strings</span>
     </button>
 
     <button class="nav-item" onclick="goTo(4)" id="nav-4">
@@ -928,6 +934,146 @@
       <button class="btn btn-primary" onclick="completeAndNext(3)">Próximo módulo →</button>
     </div>
   </div>
+
+<div class="lesson" id="lesson-3">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 03</div>
+    <div class="lesson-title">Trabalhando com <code style="font-size:22px;">Strings</code></div>
+    <div class="lesson-subtitle">Strings são o tipo mais usado em programas reais. Dart oferece interpolação e métodos poderosos para manipulá-las.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Interpolação de strings</div>
+
+  <div class="explanation">
+    Em vez de concatenar strings com <code>+</code>, Dart permite embutir variáveis e expressões diretamente dentro de uma string usando <code>$variavel</code> ou <code>${expressão}</code>.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">nome</span>  = <span class="str">'Ana'</span>;
+  <span class="type">int</span>    <span class="var">idade</span> = <span class="num">25</span>;
+
+  <span class="fn">print</span>(<span class="str">'Olá, $nome!'</span>);                        <span class="com">// Olá, Ana!</span>
+  <span class="fn">print</span>(<span class="str">'Idade: $idade anos'</span>);                 <span class="com">// Idade: 25 anos</span>
+  <span class="fn">print</span>(<span class="str">'Daqui a 5 anos: ${idade + 5} anos'</span>);  <span class="com">// Daqui a 5 anos: 30 anos</span>
+  <span class="fn">print</span>(<span class="str">'Nome em maiúsculas: ${nome.toUpperCase()}'</span>);
+}</pre>
+  </div>
+
+  <div class="info-box">
+    Use <code>$variavel</code> para variáveis simples e <code>${expressão}</code> quando precisar calcular algo ou chamar um método dentro da string.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Métodos essenciais</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">s</span> = <span class="str">'  Dart é incrivel!  '</span>;
+
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="var">length</span>);               <span class="com">// quantidade de caracteres</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">trim</span>());               <span class="com">// remove espaços das bordas</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">toUpperCase</span>());        <span class="com">// DART É INCRIVEL!</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">toLowerCase</span>());        <span class="com">// dart é incrivel!</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">contains</span>(<span class="str">'Dart'</span>));    <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">replaceAll</span>(<span class="str">'!'</span>, <span class="str">'.'</span>)); <span class="com">// troca caracteres</span>
+}</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart — split e substring</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">frase</span> = <span class="str">'maçã,banana,uva'</span>;
+
+  <span class="kw">var</span> <span class="var">frutas</span> = <span class="var">frase</span>.<span class="fn">split</span>(<span class="str">','</span>); <span class="com">// divide em lista</span>
+  <span class="fn">print</span>(<span class="var">frutas</span>);              <span class="com">// [maçã, banana, uva]</span>
+
+  <span class="fn">print</span>(<span class="var">frase</span>.<span class="fn">substring</span>(<span class="num">0</span>, <span class="num">5</span>)); <span class="com">// maçã,</span>
+  <span class="fn">print</span>(<span class="var">frase</span>.<span class="fn">startsWith</span>(<span class="str">'ma'</span>)); <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">frase</span>.<span class="fn">endsWith</span>(<span class="str">'uva'</span>));  <span class="com">// true</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Strings multilinha</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">texto</span> = <span class="str">'''</span>
+<span class="str">Linha 1</span>
+<span class="str">Linha 2</span>
+<span class="str">Linha 3</span>
+<span class="str">'''</span>;
+  <span class="fn">print</span>(<span class="var">texto</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Interpolação</div><div class="exercise-sub">Montando frases com variáveis</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare <code>String nome</code> e <code>int ano</code>. Use interpolação para exibir: <strong>"[nome] nasceu em [ano] e tem [idade calculada] anos."</strong> (use 2025 como ano atual).</div>
+      <textarea class="exercise-input" id="ex3-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex3-1', 'dp3-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol3-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp3-1"></div>
+      <div class="solution-wrap" id="sol3-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">nome</span> = <span class="str">'Ana'</span>;
+  <span class="type">int</span>    <span class="var">ano</span>  = <span class="num">2000</span>;
+  <span class="fn">print</span>(<span class="str">'$nome nasceu em $ano e tem ${2025 - ano} anos.'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Métodos de String</div><div class="exercise-sub">Transformando texto</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a string <code>'  flutter é top!  '</code>, exiba: o texto sem espaços nas bordas, em UPPERCASE e o número de caracteres (após o trim).</div>
+      <textarea class="exercise-input" id="ex3-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex3-2', 'dp3-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol3-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp3-2"></div>
+      <div class="solution-wrap" id="sol3-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">s</span> = <span class="str">'  flutter é top!  '</span>;
+  <span class="kw">var</span> <span class="var">limpa</span> = <span class="var">s</span>.<span class="fn">trim</span>();
+  <span class="fn">print</span>(<span class="var">limpa</span>);
+  <span class="fn">print</span>(<span class="var">limpa</span>.<span class="fn">toUpperCase</span>());
+  <span class="fn">print</span>(<span class="var">limpa</span>.<span class="var">length</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(2)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(3)">Próximo módulo →</button>
+  </div>
+</div>
 
   <div class="lesson" id="lesson-4">
     <div class="lesson-header">
