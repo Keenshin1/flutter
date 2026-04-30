@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula de Flutter</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <div class="logo-icon">Fl</div>
+      <div>
+        <div class="logo-text">Aprenda Flutter</div>
+        <div class="logo-sub">5 módulos · do zero</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div class="progress-label">
+      <span>Progresso</span>
+      <span id="progress-text">0 / 5</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Módulos</div>
+
+    <button class="nav-item active" onclick="goTo(1)" id="nav-1">
+      <span class="nav-dot"></span>
+      <span class="nav-num">01</span>
+      <span>Introdução</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(2)" id="nav-2">
+      <span class="nav-dot"></span>
+      <span class="nav-num">02</span>
+      <span>Widgets</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(3)" id="nav-3">
+      <span class="nav-dot"></span>
+      <span class="nav-num">03</span>
+      <span>Layout</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(4)" id="nav-4">
+      <span class="nav-dot"></span>
+      <span class="nav-num">04</span>
+      <span>Estilo</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(5)" id="nav-5">
+      <span class="nav-dot"></span>
+      <span class="nav-num">05</span>
+      <span>Interatividade</span>
+    </button>
+  </div>
+</aside>
+
+<main class="main">
+
+  <div class="lesson active" id="lesson-1">
+    <div class="lesson-header">
+      <div class="lesson-badge">Módulo 01</div>
+      <div class="lesson-title">Introdução ao <code style="font-size:22px;">Flutter</code></div>
+      <div class="lesson-subtitle">Conheça o framework do Google para criar apps bonitos em múltiplas plataformas com um único código.</div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">O que é Flutter?</div>
+    <div class="explanation"><strong>Flutter</strong> é um SDK de código aberto criado pelo Google que permite criar apps para <strong>Android, iOS, Web e Desktop</strong> usando um único código-base, escrito na linguagem <strong>Dart</strong>.</div>
+    <div class="info-box green"><strong>Vantagem principal</strong>Escreva uma vez, rode em qualquer lugar — o mesmo código funciona em celular, navegador e computador sem reescrever nada.</div>
+    <div class="divider"></div>
+    <div class="section-title">Estrutura mínima de um app</div>
+    <div class="explanation">Todo app Flutter começa com a função <code>main()</code>, que chama <code>runApp()</code> passando o widget raiz.</div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+      <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MyApp</span>());
+}
+
+<span class="kw">class</span> <span class="type">MyApp</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">MyApp</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
+    <span class="kw">return</span> <span class="kw">const</span> <span class="type">MaterialApp</span>(
+      home: <span class="type">Scaffold</span>(
+        body: <span class="type">Center</span>(
+          child: <span class="type">Text</span>(<span class="str">'Olá Flutter!'</span>),
+        ),
+      ),
+    );
+  }
+}</pre>
+    </div>
+    <div class="info-box"><strong>Fluxo de execução</strong><code>main()</code> → <code>runApp()</code> → widget raiz → <code>build()</code> → tela renderizada</div>
+    <div class="divider"></div>
+    <div class="section-title">MaterialApp e Scaffold</div>
+    <div class="explanation"><strong>MaterialApp</strong> configura o app todo (tema, rotas, título). <strong>Scaffold</strong> oferece a estrutura visual básica de uma tela: AppBar, body, FloatingActionButton etc.</div>
+    <div class="concept-grid">
+      <div class="concept-card"><div class="concept-card-title">MaterialApp</div><div class="concept-card-val">Configura o app</div></div>
+      <div class="concept-card"><div class="concept-card-title">Scaffold</div><div class="concept-card-val">Estrutura de uma tela</div></div>
+      <div class="concept-card"><div class="concept-card-title">AppBar</div><div class="concept-card-val">Barra superior</div></div>
+      <div class="concept-card"><div class="concept-card-title">body</div><div class="concept-card-val">Conteúdo principal</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">Exercícios de fixação</div>
+    <div class="exercise-card">
+      <div class="exercise-header"><div class="exercise-icon">01</div><div><div class="exercise-title">Função main</div><div class="exercise-sub">Ponto de entrada do app</div></div></div>
+      <div class="exercise-body">
+        <div class="exercise-desc">Escreva a função <code>main()</code> que chama <code>runApp()</code> passando um widget chamado <strong>MeuApp</strong>. Use a sintaxe de seta <code>=></code>.</div>
+        <textarea class="exercise-input" id="ex1-1" placeholder="Digite seu código Dart aqui..."></textarea>
+        <div class="exercise-actions"><button class="btn btn-ghost" onclick="showSolution('sol1-1')">Ver solução</button></div>
+        <div class="solution-wrap" id="sol1-1">
+          <div class="code-block" style="margin-top:0"><div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() => <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MeuApp</span>());</pre></div>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-card">
+      <div class="exercise-header"><div class="exercise-icon">02</div><div><div class="exercise-title">App mínimo completo</div><div class="exercise-sub">Juntando tudo que aprendeu</div></div></div>
+      <div class="exercise-body">
+        <div class="exercise-desc">Crie um app Flutter completo que exibe <strong>"Meu Primeiro App"</strong> centralizado na tela. Use <code>MaterialApp</code>, <code>Scaffold</code>, <code>Center</code> e <code>Text</code>.</div>
+        <textarea class="exercise-input" id="ex1-2" placeholder="Digite seu código Dart aqui..."></textarea>
+        <div class="exercise-actions"><button class="btn btn-ghost" onclick="showSolution('sol1-2')">Ver solução</button></div>
+        <div class="solution-wrap" id="sol1-2">
+          <div class="code-block" style="margin-top:0"><div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() => <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MeuApp</span>());
+
+<span class="kw">class</span> <span class="type">MeuApp</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">MeuApp</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
+    <span class="kw">return</span> <span class="kw">const</span> <span class="type">MaterialApp</span>(
+      home: <span class="type">Scaffold</span>(
+        body: <span class="type">Center</span>(
+          child: <span class="type">Text</span>(<span class="str">'Meu Primeiro App'</span>),
+        ),
+      ),
+    );
+  }
+}</pre></div>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="btn btn-nav" style="visibility:hidden">← Voltar</button>
+      <button class="btn btn-primary" onclick="completeAndNext(1)">Próximo módulo →</button>
+    </div>
+  </div>
+
+  <div class="lesson" id="lesson-2">
+    <div class="lesson-header">
+      <div class="lesson-badge">Módulo 02</div>
+      <div class="lesson-title">Tudo é <code style="font-size:22px;">Widget</code></div>
+      <div class="lesson-subtitle">Em Flutter, cada elemento visual é um widget — do texto mais simples à tela inteira.</div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">O conceito de Widget</div>
+    <div class="explanation">Em Flutter, <strong>tudo é widget</strong>. Textos, botões, imagens, espaçamentos — cada peça da interface é um widget. Eles se combinam como peças de Lego para formar a tela completa.</div>
+    <div class="concept-grid">
+      <div class="concept-card"><div class="concept-card-title">StatelessWidget</div><div class="concept-card-val">Sem estado — não muda após renderizado</div></div>
+      <div class="concept-card"><div class="concept-card-title">StatefulWidget</div><div class="concept-card-val">Com estado — pode se atualizar dinamicamente</div></div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">StatelessWidget</div>
+    <div class="explanation">Um <strong>StatelessWidget</strong> é um widget estático. Você sobrescreve o método <code>build()</code> para dizer o que ele deve desenhar na tela.</div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+      <pre><span class="kw">class</span> <span class="type">MeuWidget</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">MeuWidget</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
+    <span class="kw">return</span> <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Olá, Flutter!'</span>);
+  }
+}</pre>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">Widgets essenciais</div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart — Text</div></div>
+      <pre><span class="type">Text</span>(<span class="str">'Olá Mundo!'</span>)
+
+<span class="type">Text</span>(
+  <span class="str">'Texto estilizado'</span>,
+  style: <span class="type">TextStyle</span>(
+    fontWeight: <span class="type">FontWeight</span>.bold,
+    fontSize: <span class="num">24</span>,
+    color: <span class="type">Colors</span>.blue,
+  ),
+)</pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart — Icon e Image</div></div>
+      <pre><span class="type">Icon</span>(<span class="type">Icons</span>.star, color: <span class="type">Colors</span>.amber, size: <span class="num">48</span>)
+
+<span class="type">Image</span>.<span class="fn">network</span>(<span class="str">'https://exemplo.com/foto.jpg'</span>)
+
+<span class="type">Image</span>.<span class="fn">asset</span>(<span class="str">'assets/imagem.png'</span>)</pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart — Container</div></div>
+      <pre><span class="type">Container</span>(
+  width: <span class="num">200</span>,
+  height: <span class="num">100</span>,
+  color: <span class="type">Colors</span>.blue,
+  child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Dentro do container'</span>),
+)</pre>
+    </div>
+    <div class="info-box"><strong>child vs children</strong>A propriedade <code>child</code> recebe <strong>um único</strong> widget filho. Para múltiplos filhos, use <code>children</code> (uma lista) com <code>Column</code> ou <code>Row</code>.</div>
+    <div class="divider"></div>
+    <div class="section-title">Exercícios de fixação</div>
+    <div class="exercise-card">
+      <div class="exercise-header"><div class="exercise-icon">01</div><div><div class="exercise-title">Primeiro Widget</div><div class="exercise-sub">Criando um StatelessWidget</div></div></div>
+      <div class="exercise-body">
+        <div class="exercise-desc">Crie um <code>StatelessWidget</code> chamado <strong>Saudacao</strong> que retorna um <code>Text</code> com a mensagem <strong>"Bem-vindo ao Flutter!"</strong>.</div>
+        <textarea class="exercise-input" id="ex2-1" placeholder="Digite seu código Dart aqui..."></textarea>
+        <div class="exercise-actions"><button class="btn btn-ghost" onclick="showSolution('sol2-1')">Ver solução</button></div>
+        <div class="solution-wrap" id="sol2-1">
+          <div class="code-block" style="margin-top:0"><div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Saudacao</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">Saudacao</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
+    <span class="kw">return</span> <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Bem-vindo ao Flutter!'</span>);
+  }
+}</pre></div>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-card">
+      <div class="exercise-header"><div class="exercise-icon">02</div><div><div class="exercise-title">Container colorido</div><div class="exercise-sub">Usando Container com cor e filho</div></div></div>
+      <div class="exercise-body">
+        <div class="exercise-desc">Crie um <code>Container</code> de <strong>150×150</strong> pixels com <code>color: Colors.teal</code> e um filho <code>Center</code> contendo um <code>Text</code> com <strong>"Teal"</strong>.</div>
+        <textarea class="exercise-input" id="ex2-2" placeholder="Digite seu código Dart aqui..."></textarea>
+        <div class="exercise-actions"><button class="btn btn-ghost" onclick="showSolution('sol2-2')">Ver solução</button></div>
+        <div class="solution-wrap" id="sol2-2">
+          <div class="code-block" style="margin-top:0"><div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">Container</span>(
+  width: <span class="num">150</span>,
+  height: <span class="num">150</span>,
+  color: <span class="type">Colors</span>.teal,
+  child: <span class="kw">const</span> <span class="type">Center</span>(
+    child: <span class="type">Text</span>(<span class="str">'Teal'</span>),
+  ),
+)</pre></div>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="btn btn-nav" onclick="goTo(1)">← Voltar</button>
+      <button class="btn btn-primary" onclick="completeAndNext(2)">Próximo módulo →</button>
+    </div>
+  </div>
+
+  <div class="lesson" id="lesson-3">
+    <div class="lesson-header">
+      <div class="lesson-badge">Módulo 03</div>
+      <div class="lesson-title">Layout com <code style="font-size:22px;">Column</code> e <code style="font-size:22px;">Row</code></div>
+      <div class="lesson-subtitle">Organize widgets vertical e horizontalmente para construir qualquer tipo de tela.</div>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">Scaffold e AppBar</div>
+    <div class="explanation">O <strong>Scaffold</strong> é o esqueleto de uma tela. Ele aceita uma <code>AppBar</code> no topo e um <code>body</code> onde vai o conteúdo principal.</div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+      <pre><span class="type">Scaffold</span>(
+  appBar: <span class="type">AppBar</span>(
+    title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Meu App'</span>),
+    backgroundColor: <span class="type">Colors</span>.blue,
+  ),
+  body: <span class="kw">const</span> <span class="type">Center</span>(
+    child: <span class="type">Text</span>(<span class="str">'Conteúdo aqui'</span>),
+  ),
+)</pre>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">Column e Row</div>
+    <div class="explanation"><strong>Column</strong> organiza widgets um abaixo do outro (vertical). <strong>Row</strong> organiza widgets lado a lado (horizontal). Ambos aceitam uma lista em <code>children</code>.</div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart — Column</div></div>
+      <pre><span class="type">Column</span>(
+  mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+  crossAxisAlignment: <span class="type">CrossAxisAlignment</span>.center,
+  children: <span class="kw">const</span> [
+    <span class="type">Text</span>(<span class="str">'Linha 1'</span>),
+    <span class="type">Text</span>(<span class="str">'Linha 2'</span>),
+    <span class="type">Text</span>(<span class="str">'Linha 3'</span>),
+  ],
+)</pre>
+    </div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart — Row</div></div>
+      <pre><span class="type">Row</span>(
+  mainAxisAlignment: <span class="type">MainAxisAlignment</span>.spaceEvenly,
+  children: <span class="kw">const</span> [
+    <span class="type">Icon</span>(<span class="type">Icons</span>.home),
+    <span class="type">Icon</span>(<span class="type">Icons</span>.search),
+    <span class="type">Icon</span>(<span class="type">Icons</span>.person),
+  ],
+)</pre>
+    </div>
+    <div class="info-box yellow"><strong>mainAxisAlignment</strong><code>start</code> · <code>end</code> · <code>center</code> · <code>spaceBetween</code> · <code>spaceAround</code> · <code>spaceEvenly</code></div>
+    <div class="divider"></div>
+    <div class="section-title">Espaçamento e agrupamento</div>
+    <div class="code-block">
+      <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+      <pre><span class="type">SizedBox</span>(height: <span class="num">16</span>)         <span class="com">// espaço fixo vertical</span>
+<span class="type">SizedBox</span>(width: <span class="num">8</span>)           <span class="com">// espaço fixo horizontal</span>
+
+<span class="type">Padding</span>(
+  padding: <span class="type">EdgeInsets</span>.all(<span class="num">16</span>),
+  child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Com padding'</span>),
+)
+
+<span class="type">Center</span>(child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Centralizado'</span>))
+
+<span class="type">Expanded</span>(child: <span class="type">Container</span>(color: <span class="type">Colors</span>.blue)) <span class="com">// ocupa espaço restante</span></pre>
+    </div>
+    <div class="divider"></div>
+    <div class="section-title">Exercícios de fixação</div>
+    <div class="exercise-card">
+      <div class="exercise-header"><div class="exercise-icon">01</div><div><div class="exercise-title">Tela com AppBar</div><div class="exercise-sub">Scaffold completo com Column</div></div></div>
+      <div class="exercise-body">
+        <div class="exercise-desc">Crie um <code>Scaffold</code> com <code>AppBar</code> de título <strong>"Minha Tela"</strong> e um <code>body</code> com <code>Column</code> centralizada contendo três <code>Text</code>: <strong>"Item 1"</strong>, <strong>"Item 2"</strong> e <strong>"Item 3"</strong>.</div>
+        <textarea class="exercise-input" id="ex3-1" placeholder="Digite seu código Dart aqui..."></textarea>
+        <div class="exercise-actions"><button class="btn btn-ghost" onclick="showSolution('sol3-1')">Ver solução</button></div>
+        <div class="solution-wrap" id="sol3-1">
+          <div class="code-block" style="margin-top:0"><div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">Scaffold</span>(
+  appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Minha Tela'</span>)),
+  body: <span class="kw">const</span> <span class="type">Column</span>(
+    mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+    children: [
+      <span class="type">Text</span>(<span class="str">'Item 1'</span>),
+      <span class="type">Text</span>(<span class="str">'Item 2'</span>),
+      <span class="type">Text</span>(<span class="str">'Item 3'</span>),
+    ],
+  ),
+)</pre></div>
+        </div>
+      </div>
+    </div>
+    <div class="exercise-card">
+      <div class="exercise-header"><div class="exercise-icon">02</div><div><div class="exercise-title">Barra de ícones</div><div class="exercise-sub">Row com espaçamento uniforme</div></div></div>
+      <div class="exercise-body">
+        <div class="exercise-desc">Crie uma <code>Row</code> com <code>mainAxisAlignment: MainAxisAlignment.spaceEvenly</code> contendo três ícones: <code>Icons.home</code>, <code>Icons.search</code> e <code>Icons.settings</code>.</div>
+        <textarea class="exercise-input" id="ex3-2" placeholder="Digite seu código Dart aqui..."></textarea>
+        <div class="exercise-actions"><button class="btn btn-ghost" onclick="showSolution('sol3-2')">Ver solução</button></div>
+        <div class="solution-wrap" id="sol3-2">
+          <div class="code-block" style="margin-top:0"><div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">Row</span>(
+  mainAxisAlignment: <span class="type">MainAxisAlignment</span>.spaceEvenly,
+  children: <span class="kw">const</span> [
+    <span class="type">Icon</span>(<span class="type">Icons</span>.home),
+    <span class="type">Icon</span>(<span class="type">Icons</span>.search),
+    <span class="type">Icon</span>(<span class="type">Icons</span>.settings),
+  ],
+)</pre></div>
+        </div>
+      </div>
+    </div>
+    <div class="lesson-nav">
+      <button class="btn btn-nav" onclick="goTo(2)">← Voltar</button>
+      <button class="btn btn-primary" onclick="completeAndNext(3)">Próximo módulo →</button>
+    </div>
+  </div>
+
+  <div class="lesson" id="lesson-4"></div>
+
+  <div class="lesson" id="lesson-5"></div>
+
+</main>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
