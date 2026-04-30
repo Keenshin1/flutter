@@ -1,0 +1,153 @@
+<!-- module: num="2" nav="Tipos" -->
+<div class="lesson" id="lesson-2">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 02</div>
+    <div class="lesson-title">Tipos de <code style="font-size:22px;">Dados</code></div>
+    <div class="lesson-subtitle">Dart é fortemente tipado — cada variável tem um tipo que determina quais operações você pode fazer com ela.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Os tipos básicos</div>
+
+  <div class="concept-grid">
+    <div class="concept-card"><div class="concept-card-title">int</div><div class="concept-card-val">Números inteiros: 0, 42, -7</div></div>
+    <div class="concept-card"><div class="concept-card-title">double</div><div class="concept-card-val">Números decimais: 3.14, -0.5</div></div>
+    <div class="concept-card"><div class="concept-card-title">String</div><div class="concept-card-val">Texto: 'olá', "mundo"</div></div>
+    <div class="concept-card"><div class="concept-card-title">bool</div><div class="concept-card-val">Verdadeiro ou falso</div></div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span>    <span class="var">quantidade</span> = <span class="num">10</span>;
+  <span class="type">double</span> <span class="var">preco</span>      = <span class="num">29.90</span>;
+  <span class="type">String</span> <span class="var">produto</span>    = <span class="str">'Café'</span>;
+  <span class="type">bool</span>   <span class="var">disponivel</span> = <span class="kw">true</span>;
+
+  <span class="fn">print</span>(<span class="var">quantidade</span>);
+  <span class="fn">print</span>(<span class="var">preco</span>);
+  <span class="fn">print</span>(<span class="var">produto</span>);
+  <span class="fn">print</span>(<span class="var">disponivel</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">final e const</div>
+
+  <div class="explanation">
+    Quando um valor não deve mudar após ser definido, use <code>final</code> ou <code>const</code>. Isso deixa o código mais seguro e legible.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">final</span> <span class="var">nome</span> = <span class="str">'Ana'</span>;     <span class="com">// definido em tempo de execução, não muda</span>
+  <span class="kw">const</span> <span class="var">pi</span>   = <span class="num">3.14159</span>; <span class="com">// constante em tempo de compilação</span>
+
+  <span class="fn">print</span>(<span class="var">nome</span>);
+  <span class="fn">print</span>(<span class="var">pi</span>);
+
+  <span class="com">// nome = 'outra'; // ERRO: final não pode ser reatribuído</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>final vs const</strong><br>
+    <code>final</code> é calculado uma vez em tempo de execução. <code>const</code> deve ser um valor completamente conhecido em tempo de compilação (números literais, strings fixas etc.).
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Conversão entre tipos</div>
+
+  <div class="explanation">
+    Dart não converte tipos automaticamente. Use os métodos de conversão quando precisar transformar um tipo em outro.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// String para número</span>
+  <span class="type">int</span>    <span class="var">a</span> = <span class="type">int</span>.<span class="fn">parse</span>(<span class="str">'42'</span>);
+  <span class="type">double</span> <span class="var">b</span> = <span class="type">double</span>.<span class="fn">parse</span>(<span class="str">'3.14'</span>);
+
+  <span class="com">// Número para String</span>
+  <span class="type">String</span> <span class="var">s</span> = <span class="num">100</span>.<span class="fn">toString</span>();
+
+  <span class="com">// int para double e vice-versa</span>
+  <span class="type">double</span> <span class="var">d</span> = <span class="num">5</span>.<span class="fn">toDouble</span>();
+  <span class="type">int</span>    <span class="var">i</span> = <span class="num">3.9</span>.<span class="fn">toInt</span>();   <span class="com">// trunca: vira 3</span>
+
+  <span class="fn">print</span>(<span class="str">'$a $b $s $d $i'</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Tipos explícitos</div><div class="exercise-sub">Declarando com o tipo correto</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare: <code>int pontos = 150</code>, <code>double nota = 8.5</code>, <code>String turma = 'A'</code>, <code>bool aprovado = true</code>. Exiba todas com <code>print()</code>.</div>
+      <textarea class="exercise-input" id="ex2-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex2-1', 'dp2-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol2-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp2-1"></div>
+      <div class="solution-wrap" id="sol2-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span>    <span class="var">pontos</span>   = <span class="num">150</span>;
+  <span class="type">double</span> <span class="var">nota</span>     = <span class="num">8.5</span>;
+  <span class="type">String</span> <span class="var">turma</span>    = <span class="str">'A'</span>;
+  <span class="type">bool</span>   <span class="var">aprovado</span> = <span class="kw">true</span>;
+
+  <span class="fn">print</span>(<span class="var">pontos</span>);
+  <span class="fn">print</span>(<span class="var">nota</span>);
+  <span class="fn">print</span>(<span class="var">turma</span>);
+  <span class="fn">print</span>(<span class="var">aprovado</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Conversão</div><div class="exercise-sub">Transformando tipos</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Converta a String <code>'2024'</code> para <code>int</code>, o double <code>9.7</code> para <code>int</code> (truncando) e o inteiro <code>55</code> para <code>String</code>. Exiba os três resultados.</div>
+      <textarea class="exercise-input" id="ex2-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex2-2', 'dp2-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol2-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp2-2"></div>
+      <div class="solution-wrap" id="sol2-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span>    <span class="var">ano</span> = <span class="type">int</span>.<span class="fn">parse</span>(<span class="str">'2024'</span>);
+  <span class="type">int</span>    <span class="var">t</span>   = <span class="num">9.7</span>.<span class="fn">toInt</span>();
+  <span class="type">String</span> <span class="var">s</span>   = <span class="num">55</span>.<span class="fn">toString</span>();
+
+  <span class="fn">print</span>(<span class="var">ano</span>);
+  <span class="fn">print</span>(<span class="var">t</span>);
+  <span class="fn">print</span>(<span class="var">s</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(1)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(2)">Próximo módulo →</button>
+  </div>
+</div>
