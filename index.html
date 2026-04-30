@@ -15,7 +15,7 @@
       <div class="logo-icon">Fl</div>
       <div>
         <div class="logo-text">Aprenda Flutter</div>
-        <div class="logo-sub">14 módulos · do zero</div>
+        <div class="logo-sub">15 módulos · do zero</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-label">
       <span>Progresso</span>
-      <span id="progress-text">0 / 14</span>
+      <span id="progress-text">0 / 15</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
@@ -115,6 +115,12 @@
       <span class="nav-dot"></span>
       <span class="nav-num">09</span>
       <span>Mapas</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(10)" id="nav-10">
+      <span class="nav-dot"></span>
+      <span class="nav-num">10</span>
+      <span>Classes</span>
     </button>
   </div>
 </aside>
@@ -2332,6 +2338,146 @@
   <div class="lesson-nav">
     <button class="btn btn-nav" onclick="goTo(8)">← Voltar</button>
     <button class="btn btn-primary" onclick="completeAndNext(9)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-10">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 10</div>
+    <div class="lesson-title"><code style="font-size:22px;">Classes</code></div>
+    <div class="lesson-subtitle">Uma classe é um molde para criar objetos. Ela define quais dados (propriedades) e comportamentos (métodos) esses objetos terão.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Declarando uma classe</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Pessoa</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+  <span class="type">int</span>    <span class="var">idade</span>;
+
+  <span class="fn">Pessoa</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">idade</span>);
+
+  <span class="kw">void</span> <span class="fn">apresentar</span>() {
+    <span class="fn">print</span>(<span class="str">'Olá, sou $nome e tenho $idade anos.'</span>);
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">p1</span> = <span class="type">Pessoa</span>(<span class="str">'Ana'</span>, <span class="num">25</span>);
+  <span class="kw">var</span> <span class="var">p2</span> = <span class="type">Pessoa</span>(<span class="str">'Bruno'</span>, <span class="num">30</span>);
+
+  <span class="var">p1</span>.<span class="fn">apresentar</span>(); <span class="com">// Olá, sou Ana e tenho 25 anos.</span>
+  <span class="var">p2</span>.<span class="fn">apresentar</span>(); <span class="com">// Olá, sou Bruno e tenho 30 anos.</span>
+  <span class="fn">print</span>(<span class="var">p1</span>.<span class="var">nome</span>);    <span class="com">// Ana</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <code>this.nome</code> no construtor é um atalho do Dart — significa: "pegue o parâmetro <code>nome</code> e atribua à propriedade <code>this.nome</code>".
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Construtor nomeado</div>
+
+  <div class="explanation">
+    Dart permite criar construtores alternativos com nomes, úteis para diferentes formas de inicializar um objeto.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Ponto</span> {
+  <span class="type">double</span> <span class="var">x</span>;
+  <span class="type">double</span> <span class="var">y</span>;
+
+  <span class="fn">Ponto</span>(<span class="kw">this</span>.<span class="var">x</span>, <span class="kw">this</span>.<span class="var">y</span>);
+
+  <span class="fn">Ponto</span>.<span class="fn">origem</span>() : <span class="var">x</span> = <span class="num">0</span>, <span class="var">y</span> = <span class="num">0</span>;
+
+  <span class="type">double</span> <span class="fn">distanciaOrigem</span>() {
+    <span class="kw">return</span> (<span class="var">x</span> * <span class="var">x</span> + <span class="var">y</span> * <span class="var">y</span>);
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">p</span>  = <span class="type">Ponto</span>(<span class="num">3</span>, <span class="num">4</span>);
+  <span class="kw">var</span> <span class="var">p0</span> = <span class="type">Ponto</span>.<span class="fn">origem</span>();
+
+  <span class="fn">print</span>(<span class="var">p</span>.<span class="fn">distanciaOrigem</span>());  <span class="com">// 25.0</span>
+  <span class="fn">print</span>(<span class="var">p0</span>.<span class="var">x</span>);               <span class="com">// 0.0</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">toString()</div>
+
+  <div class="explanation">
+    Sobrescrever <code>toString()</code> permite que o <code>print()</code> exiba o objeto de forma legible.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Produto</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+  <span class="type">double</span> <span class="var">preco</span>;
+
+  <span class="fn">Produto</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">preco</span>);
+
+  <span class="op">@override</span>
+  <span class="type">String</span> <span class="fn">toString</span>() =&gt; <span class="str">'Produto($nome, R\$ $preco)'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">p</span> = <span class="type">Produto</span>(<span class="str">'Café'</span>, <span class="num">12.50</span>);
+  <span class="fn">print</span>(<span class="var">p</span>); <span class="com">// Produto(Café, R$ 12.5)</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Classe Carro</div><div class="exercise-sub">Propriedades e métodos</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe <code>Carro</code> com as propriedades <code>String marca</code>, <code>String modelo</code> e <code>int ano</code>. Adicione um método <code>descricao()</code> que exiba <strong>"[marca] [modelo] ([ano])"</strong>. Crie dois carros e chame o método.</div>
+      <textarea class="exercise-input" id="ex10-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex10-1', 'dp10-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol10-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp10-1"></div>
+      <div class="solution-wrap" id="sol10-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Carro</span> {
+  <span class="type">String</span> <span class="var">marca</span>;
+  <span class="type">String</span> <span class="var">modelo</span>;
+  <span class="type">int</span>    <span class="var">ano</span>;
+
+  <span class="fn">Carro</span>(<span class="kw">this</span>.<span class="var">marca</span>, <span class="kw">this</span>.<span class="var">modelo</span>, <span class="kw">this</span>.<span class="var">ano</span>);
+
+  <span class="kw">void</span> <span class="fn">descricao</span>() =&gt;
+      <span class="fn">print</span>(<span class="str">'$marca $modelo ($ano)'</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">c1</span> = <span class="type">Carro</span>(<span class="str">'Toyota'</span>, <span class="str">'Corolla'</span>, <span class="num">2022</span>);
+  <span class="kw">var</span> <span class="var">c2</span> = <span class="type">Carro</span>(<span class="str">'Honda'</span>, <span class="str">'Civic'</span>, <span class="num">2023</span>);
+  <span class="var">c1</span>.<span class="fn">descricao</span>();
+  <span class="var">c2</span>.<span class="fn">descricao</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(9)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(10)">Próximo módulo →</button>
   </div>
 </div>
 
