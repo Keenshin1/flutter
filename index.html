@@ -36,12 +36,6 @@
         <button class="nav-item active" onclick="goTo(1)" id="nav-1">
       <span class="nav-dot"></span>
       <span class="nav-num">01</span>
-      <span>Introdução</span>
-    </button>
-
-    <button class="nav-item" onclick="goTo(1)" id="nav-1">
-      <span class="nav-dot"></span>
-      <span class="nav-num">01</span>
       <span>Variáveis</span>
     </button>
 
@@ -122,172 +116,18 @@
       <span class="nav-num">10</span>
       <span>Classes</span>
     </button>
+
+    <button class="nav-item" onclick="goTo(11)" id="nav-11">
+      <span class="nav-dot"></span>
+      <span class="nav-num">11</span>
+      <span>Herança</span>
+    </button>
   </div>
 </aside>
 
 <main class="main">
 
-    <div class="lesson active" id="lesson-1">
-    <div class="lesson-header">
-      <div class="lesson-badge">Módulo 01</div>
-      <div class="lesson-title">Introdução ao <code style="font-size:22px;">Flutter</code></div>
-      <div class="lesson-subtitle">Conheça o framework do Google para criar apps bonitos em múltiplas plataformas com um único código.</div>
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">O que é Flutter?</div>
-
-    <div class="explanation">
-      <strong>Flutter</strong> é um SDK de código aberto criado pelo Google que permite criar apps para <strong>Android, iOS, Web e Desktop</strong> usando um único código-base, escrito na linguagem <strong>Dart</strong>.
-    </div>
-
-    <div class="info-box green">
-      <strong>Vantagem principal</strong>
-      Escreva uma vez, rode em qualquer lugar — o mesmo código funciona em celular, navegador e computador sem reescrever nada.
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Estrutura mínima de um app</div>
-
-    <div class="explanation">
-      Todo app Flutter começa com a função <code>main()</code>, que chama <code>runApp()</code> passando o widget raiz. O Flutter então renderiza esse widget na tela.
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart</div>
-      </div>
-      <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
-
-<span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MyApp</span>());
-}
-
-<span class="kw">class</span> <span class="type">MyApp</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
-  <span class="kw">const</span> <span class="fn">MyApp</span>({<span class="kw">super</span>.key});
-
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="kw">const</span> <span class="type">MaterialApp</span>(
-      home: <span class="type">Scaffold</span>(
-        body: <span class="type">Center</span>(
-          child: <span class="type">Text</span>(<span class="str">'Olá Flutter!'</span>),
-        ),
-      ),
-    );
-  }
-}</pre>
-    </div>
-
-    <div class="info-box">
-      <strong>Fluxo de execução</strong>
-      <code>main()</code> → <code>runApp()</code> → widget raiz → <code>build()</code> → tela renderizada
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">MaterialApp e Scaffold</div>
-
-    <div class="explanation">
-      <strong>MaterialApp</strong> configura o app todo (tema, rotas, título). <strong>Scaffold</strong> oferece a estrutura visual básica de uma tela: AppBar, body, FloatingActionButton etc.
-    </div>
-
-    <div class="concept-grid">
-      <div class="concept-card">
-        <div class="concept-card-title">MaterialApp</div>
-        <div class="concept-card-val">Configura o app</div>
-      </div>
-      <div class="concept-card">
-        <div class="concept-card-title">Scaffold</div>
-        <div class="concept-card-val">Estrutura de uma tela</div>
-      </div>
-      <div class="concept-card">
-        <div class="concept-card-title">AppBar</div>
-        <div class="concept-card-val">Barra superior</div>
-      </div>
-      <div class="concept-card">
-        <div class="concept-card-title">body</div>
-        <div class="concept-card-val">Conteúdo principal</div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Exercícios de fixação</div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">01</div>
-        <div>
-          <div class="exercise-title">Função main</div>
-          <div class="exercise-sub">Ponto de entrada do app</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Escreva a função <code>main()</code> que chama <code>runApp()</code> passando um widget chamado <strong>MeuApp</strong>. Use a sintaxe de seta <code>=></code>.</div>
-        <textarea class="exercise-input" id="ex1-1" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex1-1', 'dp1-1')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol1-1')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp1-1"></div>
-        <div class="solution-wrap" id="sol1-1">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="kw">void</span> <span class="fn">main</span>() => <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MeuApp</span>());</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">02</div>
-        <div>
-          <div class="exercise-title">App mínimo completo</div>
-          <div class="exercise-sub">Juntando tudo que aprendeu</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie um app Flutter completo que exibe <strong>"Meu Primeiro App"</strong> centralizado na tela. Use <code>MaterialApp</code>, <code>Scaffold</code>, <code>Center</code> e <code>Text</code>.</div>
-        <textarea class="exercise-input" id="ex1-2" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex1-2', 'dp1-2')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol1-2')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp1-2"></div>
-        <div class="solution-wrap" id="sol1-2">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
-
-<span class="kw">void</span> <span class="fn">main</span>() => <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MeuApp</span>());
-
-<span class="kw">class</span> <span class="type">MeuApp</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
-  <span class="kw">const</span> <span class="fn">MeuApp</span>({<span class="kw">super</span>.key});
-
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="kw">const</span> <span class="type">MaterialApp</span>(
-      home: <span class="type">Scaffold</span>(
-        body: <span class="type">Center</span>(
-          child: <span class="type">Text</span>(<span class="str">'Meu Primeiro App'</span>),
-        ),
-      ),
-    );
-  }
-}</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lesson-nav">
-      <button class="btn btn-nav" style="visibility:hidden">← Voltar</button>
-      <button class="btn btn-primary" onclick="completeAndNext(1)">Próximo módulo →</button>
-    </div>
-  </div>
-
-<div class="lesson active" id="lesson-1">
+  <div class="lesson active" id="lesson-1">
   <div class="lesson-header">
     <div class="lesson-badge">Módulo 01</div>
     <div class="lesson-title">Variáveis e <code style="font-size:22px;">print()</code></div>
@@ -2478,6 +2318,144 @@
   <div class="lesson-nav">
     <button class="btn btn-nav" onclick="goTo(9)">← Voltar</button>
     <button class="btn btn-primary" onclick="completeAndNext(10)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-11">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 11</div>
+    <div class="lesson-title"><code style="font-size:22px;">Herança</code></div>
+    <div class="lesson-subtitle">Herança permite que uma classe herde propriedades e métodos de outra, evitando repetição e criando hierarquias de tipos — base do Flutter.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">extends e @override</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Animal</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+
+  <span class="fn">Animal</span>(<span class="kw">this</span>.<span class="var">nome</span>);
+
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz algum som.'</span>);
+  }
+}
+
+<span class="kw">class</span> <span class="type">Cachorro</span> <span class="kw">extends</span> <span class="type">Animal</span> {
+  <span class="fn">Cachorro</span>(<span class="type">String</span> <span class="var">nome</span>) : <span class="kw">super</span>(<span class="var">nome</span>);
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz: Au au!'</span>);
+  }
+}
+
+<span class="kw">class</span> <span class="type">Gato</span> <span class="kw">extends</span> <span class="type">Animal</span> {
+  <span class="fn">Gato</span>(<span class="type">String</span> <span class="var">nome</span>) : <span class="kw">super</span>(<span class="var">nome</span>);
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz: Miau!'</span>);
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">animais</span> = [<span class="type">Cachorro</span>(<span class="str">'Rex'</span>), <span class="type">Gato</span>(<span class="str">'Luna'</span>), <span class="type">Cachorro</span>(<span class="str">'Bob'</span>)];
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">a</span> <span class="kw">in</span> <span class="var">animais</span>) {
+    <span class="var">a</span>.<span class="fn">falar</span>(); <span class="com">// polimorfismo: cada um usa seu próprio falar()</span>
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>super</strong> chama o construtor da classe pai. <strong>@override</strong> indica que estamos substituindo um método herdado — sem isso o Dart exibe um aviso.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Classes abstratas</div>
+
+  <div class="explanation">
+    Uma classe <code>abstract</code> não pode ser instanciada diretamente — ela serve apenas como contrato que as subclasses devem implementar.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">abstract class</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="fn">area</span>();      <span class="com">// método abstrato: sem corpo</span>
+  <span class="type">double</span> <span class="fn">perimetro</span>();
+}
+
+<span class="kw">class</span> <span class="type">Retangulo</span> <span class="kw">extends</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="var">l</span>, <span class="var">a</span>;
+  <span class="fn">Retangulo</span>(<span class="kw">this</span>.<span class="var">l</span>, <span class="kw">this</span>.<span class="var">a</span>);
+
+  <span class="op">@override</span> <span class="type">double</span> <span class="fn">area</span>()      =&gt; <span class="var">l</span> * <span class="var">a</span>;
+  <span class="op">@override</span> <span class="type">double</span> <span class="fn">perimetro</span>() =&gt; <span class="num">2</span> * (<span class="var">l</span> + <span class="var">a</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">r</span> = <span class="type">Retangulo</span>(<span class="num">5</span>, <span class="num">3</span>);
+  <span class="fn">print</span>(<span class="var">r</span>.<span class="fn">area</span>());       <span class="com">// 15.0</span>
+  <span class="fn">print</span>(<span class="var">r</span>.<span class="fn">perimetro</span>()); <span class="com">// 16.0</span>
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Conexão com Flutter</strong><br>
+    Todo widget Flutter segue exatamente esse padrão: <code>StatelessWidget</code> é uma classe abstrata que você estende, obrigada a implementar o método <code>build()</code> — que é o próximo passo do curso!
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Hierarquia de veículos</div><div class="exercise-sub">extends e @override</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe base <code>Veiculo</code> com <code>String marca</code> e método <code>mover()</code>. Crie as subclasses <code>Carro</code> e <code>Moto</code>, cada uma sobreescrevendo <code>mover()</code> com uma mensagem diferente.</div>
+      <textarea class="exercise-input" id="ex11-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex11-1', 'dp11-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol11-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp11-1"></div>
+      <div class="solution-wrap" id="sol11-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Veiculo</span> {
+  <span class="type">String</span> <span class="var">marca</span>;
+  <span class="fn">Veiculo</span>(<span class="kw">this</span>.<span class="var">marca</span>);
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca se move.'</span>);
+}
+
+<span class="kw">class</span> <span class="type">Carro</span> <span class="kw">extends</span> <span class="type">Veiculo</span> {
+  <span class="fn">Carro</span>(<span class="type">String</span> <span class="var">marca</span>) : <span class="kw">super</span>(<span class="var">marca</span>);
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca anda sobre 4 rodas.'</span>);
+}
+
+<span class="kw">class</span> <span class="type">Moto</span> <span class="kw">extends</span> <span class="type">Veiculo</span> {
+  <span class="fn">Moto</span>(<span class="type">String</span> <span class="var">marca</span>) : <span class="kw">super</span>(<span class="var">marca</span>);
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca anda sobre 2 rodas.'</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">frota</span> = [<span class="type">Carro</span>(<span class="str">'Toyota'</span>), <span class="type">Moto</span>(<span class="str">'Honda'</span>)];
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">v</span> <span class="kw">in</span> <span class="var">frota</span>) <span class="var">v</span>.<span class="fn">mover</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(10)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(11)">✔ Concluir curso</button>
   </div>
 </div>
 
