@@ -15,7 +15,7 @@
       <div class="logo-icon">Fl</div>
       <div>
         <div class="logo-text">Aprenda Flutter</div>
-        <div class="logo-sub">5 módulos · do zero</div>
+        <div class="logo-sub">11 módulos · do zero</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-label">
       <span>Progresso</span>
-      <span id="progress-text">0 / 5</span>
+      <span id="progress-text">0 / 11</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
@@ -36,914 +36,1686 @@
         <button class="nav-item active" onclick="goTo(1)" id="nav-1">
       <span class="nav-dot"></span>
       <span class="nav-num">01</span>
-      <span>Introdução</span>
+      <span>Variáveis</span>
     </button>
 
     <button class="nav-item" onclick="goTo(2)" id="nav-2">
       <span class="nav-dot"></span>
       <span class="nav-num">02</span>
-      <span>Widgets</span>
+      <span>Tipos</span>
     </button>
 
     <button class="nav-item" onclick="goTo(3)" id="nav-3">
       <span class="nav-dot"></span>
       <span class="nav-num">03</span>
-      <span>Layout</span>
+      <span>Strings</span>
     </button>
 
     <button class="nav-item" onclick="goTo(4)" id="nav-4">
       <span class="nav-dot"></span>
       <span class="nav-num">04</span>
-      <span>Estilo</span>
+      <span>Operadores</span>
     </button>
 
     <button class="nav-item" onclick="goTo(5)" id="nav-5">
       <span class="nav-dot"></span>
       <span class="nav-num">05</span>
-      <span>Interatividade</span>
+      <span>Condicionais</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(6)" id="nav-6">
+      <span class="nav-dot"></span>
+      <span class="nav-num">06</span>
+      <span>Loops</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(7)" id="nav-7">
+      <span class="nav-dot"></span>
+      <span class="nav-num">07</span>
+      <span>Funções</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(8)" id="nav-8">
+      <span class="nav-dot"></span>
+      <span class="nav-num">08</span>
+      <span>Listas</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(9)" id="nav-9">
+      <span class="nav-dot"></span>
+      <span class="nav-num">09</span>
+      <span>Mapas</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(10)" id="nav-10">
+      <span class="nav-dot"></span>
+      <span class="nav-num">10</span>
+      <span>Classes</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(11)" id="nav-11">
+      <span class="nav-dot"></span>
+      <span class="nav-num">11</span>
+      <span>Herança</span>
     </button>
   </div>
 </aside>
 
 <main class="main">
 
-    <div class="lesson active" id="lesson-1">
-    <div class="lesson-header">
-      <div class="lesson-badge">Módulo 01</div>
-      <div class="lesson-title">Introdução ao <code style="font-size:22px;">Flutter</code></div>
-      <div class="lesson-subtitle">Conheça o framework do Google para criar apps bonitos em múltiplas plataformas com um único código.</div>
+  <div class="lesson active" id="lesson-1">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 01</div>
+    <div class="lesson-title">Variáveis e <code style="font-size:22px;">print()</code></div>
+    <div class="lesson-subtitle">O ponto de partida de qualquer programa Dart: exibir dados e guardar informações na memória.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">O ponto de entrada: main()</div>
+
+  <div class="explanation">
+    Todo programa Dart começa pela função <code>main()</code>. É o ponto de entrada — quando você executa o programa, o Dart procura essa função e começa a rodar o código dentro dela.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
     </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// seu código vai aqui</span>
+}</pre>
+  </div>
 
-    <div class="divider"></div>
-    <div class="section-title">O que é Flutter?</div>
+  <div class="info-box">
+    <strong>void</strong> significa que a função não retorna nenhum valor. Todo programa Dart precisa de uma função <code>main()</code> para ser executado.
+  </div>
 
-    <div class="explanation">
-      <strong>Flutter</strong> é um SDK de código aberto criado pelo Google que permite criar apps para <strong>Android, iOS, Web e Desktop</strong> usando um único código-base, escrito na linguagem <strong>Dart</strong>.
+  <div class="divider"></div>
+  <div class="section-title">Exibindo dados com print()</div>
+
+  <div class="explanation">
+    A função <code>print()</code> exibe qualquer valor no console. É a forma mais simples de ver o resultado do seu código.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
     </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="str">'Olá, Dart!'</span>);
+  <span class="fn">print</span>(<span class="num">42</span>);
+  <span class="fn">print</span>(<span class="num">3.14</span>);
+  <span class="fn">print</span>(<span class="kw">true</span>);
+}</pre>
+  </div>
 
-    <div class="info-box green">
-      <strong>Vantagem principal</strong>
-      Escreva uma vez, rode em qualquer lugar — o mesmo código funciona em celular, navegador e computador sem reescrever nada.
+  <div class="info-box green">
+    <strong>Saída no console</strong><br>
+    Olá, Dart!<br>42<br>3.14<br>true
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Variáveis</div>
+
+  <div class="explanation">
+    Uma variável guarda um valor na memória. Em Dart você pode usar <code>var</code> (o tipo é inferido automaticamente) ou declarar o tipo de forma explícita.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart — com var</div>
     </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nome</span>   = <span class="str">'Ana'</span>;  <span class="com">// Dart infere: String</span>
+  <span class="kw">var</span> <span class="var">idade</span>  = <span class="num">25</span>;    <span class="com">// Dart infere: int</span>
+  <span class="kw">var</span> <span class="var">altura</span> = <span class="num">1.68</span>; <span class="com">// Dart infere: double</span>
+  <span class="kw">var</span> <span class="var">ativo</span>  = <span class="kw">true</span>; <span class="com">// Dart infere: bool</span>
 
-    <div class="divider"></div>
-    <div class="section-title">Estrutura mínima de um app</div>
+  <span class="fn">print</span>(<span class="var">nome</span>);
+  <span class="fn">print</span>(<span class="var">idade</span>);
+  <span class="fn">print</span>(<span class="var">altura</span>);
+  <span class="fn">print</span>(<span class="var">ativo</span>);
+}</pre>
+  </div>
 
-    <div class="explanation">
-      Todo app Flutter começa com a função <code>main()</code>, que chama <code>runApp()</code> passando o widget raiz. O Flutter então renderiza esse widget na tela.
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart — tipo explícito</div>
     </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">cidade</span> = <span class="str">'São Paulo'</span>;
+  <span class="type">int</span>    <span class="var">ano</span>    = <span class="num">2025</span>;
+  <span class="type">double</span> <span class="var">pi</span>     = <span class="num">3.14159</span>;
+  <span class="type">bool</span>   <span class="var">aberto</span> = <span class="kw">false</span>;
 
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart</div>
+  <span class="fn">print</span>(<span class="var">cidade</span>);
+  <span class="fn">print</span>(<span class="var">ano</span>);
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    <strong>Regras para nomes de variáveis</strong><br>
+    Começam com letra ou <code>_</code> · sem espaços · sensíveis a maiúsculas (<code>nome</code> ≠ <code>Nome</code>) · use camelCase: <code>nomeCompleto</code>, <code>idadeMaxima</code>.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div>
+        <div class="exercise-title">Olá, Dart!</div>
+        <div class="exercise-sub">Primeiro programa</div>
       </div>
-      <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Escreva um programa com <code>main()</code> que exiba <strong>"Olá, Dart!"</strong> no console.</div>
+      <textarea class="exercise-input" id="ex1-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex1-1', 'dp1-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol1-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp1-1"></div>
+      <div class="solution-wrap" id="sol1-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="str">'Olá, Dart!'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div>
+        <div class="exercise-title">Múltiplos prints</div>
+        <div class="exercise-sub">Diferentes tipos de dados</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Escreva um programa que exiba em linhas separadas: seu <strong>nome</strong>, sua <strong>idade</strong> (inteiro) e se você é <strong>estudante</strong> (true/false).</div>
+      <textarea class="exercise-input" id="ex1-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex1-2', 'dp1-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol1-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp1-2"></div>
+      <div class="solution-wrap" id="sol1-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="str">'Ana'</span>);
+  <span class="fn">print</span>(<span class="num">25</span>);
+  <span class="fn">print</span>(<span class="kw">true</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div>
+        <div class="exercise-title">Cartão de visitas</div>
+        <div class="exercise-sub">Variáveis com tipo explícito</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare com <strong>tipo explícito</strong> as variáveis <code>String nome</code>, <code>int idade</code> e <code>double altura</code>. Depois exiba cada uma com <code>print()</code>.</div>
+      <textarea class="exercise-input" id="ex1-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex1-3', 'dp1-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol1-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp1-3"></div>
+      <div class="solution-wrap" id="sol1-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">nome</span>   = <span class="str">'Ana'</span>;
+  <span class="type">int</span>    <span class="var">idade</span>  = <span class="num">25</span>;
+  <span class="type">double</span> <span class="var">altura</span> = <span class="num">1.68</span>;
+
+  <span class="fn">print</span>(<span class="var">nome</span>);
+  <span class="fn">print</span>(<span class="var">idade</span>);
+  <span class="fn">print</span>(<span class="var">altura</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" style="visibility:hidden">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(1)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-2">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 02</div>
+    <div class="lesson-title">Tipos de <code style="font-size:22px;">Dados</code></div>
+    <div class="lesson-subtitle">Dart é fortemente tipado — cada variável tem um tipo que determina quais operações você pode fazer com ela.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Os tipos básicos</div>
+
+  <div class="concept-grid">
+    <div class="concept-card"><div class="concept-card-title">int</div><div class="concept-card-val">Números inteiros: 0, 42, -7</div></div>
+    <div class="concept-card"><div class="concept-card-title">double</div><div class="concept-card-val">Números decimais: 3.14, -0.5</div></div>
+    <div class="concept-card"><div class="concept-card-title">String</div><div class="concept-card-val">Texto: 'olá', "mundo"</div></div>
+    <div class="concept-card"><div class="concept-card-title">bool</div><div class="concept-card-val">Verdadeiro ou falso</div></div>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span>    <span class="var">quantidade</span> = <span class="num">10</span>;
+  <span class="type">double</span> <span class="var">preco</span>      = <span class="num">29.90</span>;
+  <span class="type">String</span> <span class="var">produto</span>    = <span class="str">'Café'</span>;
+  <span class="type">bool</span>   <span class="var">disponivel</span> = <span class="kw">true</span>;
+
+  <span class="fn">print</span>(<span class="var">quantidade</span>);
+  <span class="fn">print</span>(<span class="var">preco</span>);
+  <span class="fn">print</span>(<span class="var">produto</span>);
+  <span class="fn">print</span>(<span class="var">disponivel</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">final e const</div>
+
+  <div class="explanation">
+    Quando um valor não deve mudar após ser definido, use <code>final</code> ou <code>const</code>. Isso deixa o código mais seguro e legible.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">final</span> <span class="var">nome</span> = <span class="str">'Ana'</span>;     <span class="com">// definido em tempo de execução, não muda</span>
+  <span class="kw">const</span> <span class="var">pi</span>   = <span class="num">3.14159</span>; <span class="com">// constante em tempo de compilação</span>
+
+  <span class="fn">print</span>(<span class="var">nome</span>);
+  <span class="fn">print</span>(<span class="var">pi</span>);
+
+  <span class="com">// nome = 'outra'; // ERRO: final não pode ser reatribuído</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>final vs const</strong><br>
+    <code>final</code> é calculado uma vez em tempo de execução. <code>const</code> deve ser um valor completamente conhecido em tempo de compilação (números literais, strings fixas etc.).
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Conversão entre tipos</div>
+
+  <div class="explanation">
+    Dart não converte tipos automaticamente. Use os métodos de conversão quando precisar transformar um tipo em outro.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// String para número</span>
+  <span class="type">int</span>    <span class="var">a</span> = <span class="type">int</span>.<span class="fn">parse</span>(<span class="str">'42'</span>);
+  <span class="type">double</span> <span class="var">b</span> = <span class="type">double</span>.<span class="fn">parse</span>(<span class="str">'3.14'</span>);
+
+  <span class="com">// Número para String</span>
+  <span class="type">String</span> <span class="var">s</span> = <span class="num">100</span>.<span class="fn">toString</span>();
+
+  <span class="com">// int para double e vice-versa</span>
+  <span class="type">double</span> <span class="var">d</span> = <span class="num">5</span>.<span class="fn">toDouble</span>();
+  <span class="type">int</span>    <span class="var">i</span> = <span class="num">3.9</span>.<span class="fn">toInt</span>();   <span class="com">// trunca: vira 3</span>
+
+  <span class="fn">print</span>(<span class="str">'$a $b $s $d $i'</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Tipos explícitos</div><div class="exercise-sub">Declarando com o tipo correto</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare: <code>int pontos = 150</code>, <code>double nota = 8.5</code>, <code>String turma = 'A'</code>, <code>bool aprovado = true</code>. Exiba todas com <code>print()</code>.</div>
+      <textarea class="exercise-input" id="ex2-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex2-1', 'dp2-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol2-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp2-1"></div>
+      <div class="solution-wrap" id="sol2-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span>    <span class="var">pontos</span>   = <span class="num">150</span>;
+  <span class="type">double</span> <span class="var">nota</span>     = <span class="num">8.5</span>;
+  <span class="type">String</span> <span class="var">turma</span>    = <span class="str">'A'</span>;
+  <span class="type">bool</span>   <span class="var">aprovado</span> = <span class="kw">true</span>;
+
+  <span class="fn">print</span>(<span class="var">pontos</span>);
+  <span class="fn">print</span>(<span class="var">nota</span>);
+  <span class="fn">print</span>(<span class="var">turma</span>);
+  <span class="fn">print</span>(<span class="var">aprovado</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Conversão</div><div class="exercise-sub">Transformando tipos</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Converta a String <code>'2024'</code> para <code>int</code>, o double <code>9.7</code> para <code>int</code> (truncando) e o inteiro <code>55</code> para <code>String</code>. Exiba os três resultados.</div>
+      <textarea class="exercise-input" id="ex2-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex2-2', 'dp2-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol2-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp2-2"></div>
+      <div class="solution-wrap" id="sol2-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span>    <span class="var">ano</span> = <span class="type">int</span>.<span class="fn">parse</span>(<span class="str">'2024'</span>);
+  <span class="type">int</span>    <span class="var">t</span>   = <span class="num">9.7</span>.<span class="fn">toInt</span>();
+  <span class="type">String</span> <span class="var">s</span>   = <span class="num">55</span>.<span class="fn">toString</span>();
+
+  <span class="fn">print</span>(<span class="var">ano</span>);
+  <span class="fn">print</span>(<span class="var">t</span>);
+  <span class="fn">print</span>(<span class="var">s</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(1)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(2)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-3">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 03</div>
+    <div class="lesson-title">Trabalhando com <code style="font-size:22px;">Strings</code></div>
+    <div class="lesson-subtitle">Strings são o tipo mais usado em programas reais. Dart oferece interpolação e métodos poderosos para manipulá-las.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Interpolação de strings</div>
+
+  <div class="explanation">
+    Em vez de concatenar strings com <code>+</code>, Dart permite embutir variáveis e expressões diretamente dentro de uma string usando <code>$variavel</code> ou <code>${expressão}</code>.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">nome</span>  = <span class="str">'Ana'</span>;
+  <span class="type">int</span>    <span class="var">idade</span> = <span class="num">25</span>;
+
+  <span class="fn">print</span>(<span class="str">'Olá, $nome!'</span>);                        <span class="com">// Olá, Ana!</span>
+  <span class="fn">print</span>(<span class="str">'Idade: $idade anos'</span>);                 <span class="com">// Idade: 25 anos</span>
+  <span class="fn">print</span>(<span class="str">'Daqui a 5 anos: ${idade + 5} anos'</span>);  <span class="com">// Daqui a 5 anos: 30 anos</span>
+  <span class="fn">print</span>(<span class="str">'Nome em maiúsculas: ${nome.toUpperCase()}'</span>);
+}</pre>
+  </div>
+
+  <div class="info-box">
+    Use <code>$variavel</code> para variáveis simples e <code>${expressão}</code> quando precisar calcular algo ou chamar um método dentro da string.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Métodos essenciais</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">s</span> = <span class="str">'  Dart é incrivel!  '</span>;
+
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="var">length</span>);               <span class="com">// quantidade de caracteres</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">trim</span>());               <span class="com">// remove espaços das bordas</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">toUpperCase</span>());        <span class="com">// DART É INCRIVEL!</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">toLowerCase</span>());        <span class="com">// dart é incrivel!</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">contains</span>(<span class="str">'Dart'</span>));    <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">s</span>.<span class="fn">replaceAll</span>(<span class="str">'!'</span>, <span class="str">'.'</span>)); <span class="com">// troca caracteres</span>
+}</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart — split e substring</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">frase</span> = <span class="str">'maçã,banana,uva'</span>;
+
+  <span class="kw">var</span> <span class="var">frutas</span> = <span class="var">frase</span>.<span class="fn">split</span>(<span class="str">','</span>); <span class="com">// divide em lista</span>
+  <span class="fn">print</span>(<span class="var">frutas</span>);              <span class="com">// [maçã, banana, uva]</span>
+
+  <span class="fn">print</span>(<span class="var">frase</span>.<span class="fn">substring</span>(<span class="num">0</span>, <span class="num">5</span>)); <span class="com">// maçã,</span>
+  <span class="fn">print</span>(<span class="var">frase</span>.<span class="fn">startsWith</span>(<span class="str">'ma'</span>)); <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">frase</span>.<span class="fn">endsWith</span>(<span class="str">'uva'</span>));  <span class="com">// true</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Strings multilinha</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">texto</span> = <span class="str">'''</span>
+<span class="str">Linha 1</span>
+<span class="str">Linha 2</span>
+<span class="str">Linha 3</span>
+<span class="str">'''</span>;
+  <span class="fn">print</span>(<span class="var">texto</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Interpolação</div><div class="exercise-sub">Montando frases com variáveis</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare <code>String nome</code> e <code>int ano</code>. Use interpolação para exibir: <strong>"[nome] nasceu em [ano] e tem [idade calculada] anos."</strong> (use 2025 como ano atual).</div>
+      <textarea class="exercise-input" id="ex3-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex3-1', 'dp3-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol3-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp3-1"></div>
+      <div class="solution-wrap" id="sol3-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">nome</span> = <span class="str">'Ana'</span>;
+  <span class="type">int</span>    <span class="var">ano</span>  = <span class="num">2000</span>;
+  <span class="fn">print</span>(<span class="str">'$nome nasceu em $ano e tem ${2025 - ano} anos.'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Métodos de String</div><div class="exercise-sub">Transformando texto</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a string <code>'  flutter é top!  '</code>, exiba: o texto sem espaços nas bordas, em UPPERCASE e o número de caracteres (após o trim).</div>
+      <textarea class="exercise-input" id="ex3-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex3-2', 'dp3-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol3-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp3-2"></div>
+      <div class="solution-wrap" id="sol3-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">s</span> = <span class="str">'  flutter é top!  '</span>;
+  <span class="kw">var</span> <span class="var">limpa</span> = <span class="var">s</span>.<span class="fn">trim</span>();
+  <span class="fn">print</span>(<span class="var">limpa</span>);
+  <span class="fn">print</span>(<span class="var">limpa</span>.<span class="fn">toUpperCase</span>());
+  <span class="fn">print</span>(<span class="var">limpa</span>.<span class="var">length</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(2)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(3)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-4">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 04</div>
+    <div class="lesson-title"><code style="font-size:22px;">Operadores</code></div>
+    <div class="lesson-subtitle">Operadores são os símbolos que permitem calcular, comparar e combinar valores em Dart.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores aritméticos</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="num">10</span> + <span class="num">3</span>);  <span class="com">// 13  adição</span>
+  <span class="fn">print</span>(<span class="num">10</span> - <span class="num">3</span>);  <span class="com">// 7   subtração</span>
+  <span class="fn">print</span>(<span class="num">10</span> * <span class="num">3</span>);  <span class="com">// 30  multiplicação</span>
+  <span class="fn">print</span>(<span class="num">10</span> / <span class="num">3</span>);  <span class="com">// 3.333... divisão real</span>
+  <span class="fn">print</span>(<span class="num">10</span> ~/ <span class="num">3</span>); <span class="com">// 3   divisão inteira</span>
+  <span class="fn">print</span>(<span class="num">10</span> % <span class="num">3</span>);  <span class="com">// 1   resto da divisão</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>~/</strong> é o operador de divisão inteira do Dart — descarta a parte decimal. <strong>%</strong> retorna o resto.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores de comparação</div>
+
+  <div class="explanation">
+    Operadores de comparação sempre retornam um <code>bool</code> (<code>true</code> ou <code>false</code>).
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="num">5</span> == <span class="num">5</span>);  <span class="com">// true   igual</span>
+  <span class="fn">print</span>(<span class="num">5</span> != <span class="num">3</span>);  <span class="com">// true   diferente</span>
+  <span class="fn">print</span>(<span class="num">5</span> &gt;  <span class="num">3</span>);  <span class="com">// true   maior</span>
+  <span class="fn">print</span>(<span class="num">5</span> &lt;  <span class="num">3</span>);  <span class="com">// false  menor</span>
+  <span class="fn">print</span>(<span class="num">5</span> &gt;= <span class="num">5</span>);  <span class="com">// true   maior ou igual</span>
+  <span class="fn">print</span>(<span class="num">5</span> &lt;= <span class="num">4</span>);  <span class="com">// false  menor ou igual</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores lógicos</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">bool</span> <span class="var">a</span> = <span class="kw">true</span>;
+  <span class="type">bool</span> <span class="var">b</span> = <span class="kw">false</span>;
+
+  <span class="fn">print</span>(<span class="var">a</span> &amp;&amp; <span class="var">b</span>); <span class="com">// false  E (ambos precisam ser true)</span>
+  <span class="fn">print</span>(<span class="var">a</span> || <span class="var">b</span>); <span class="com">// true   OU (basta um ser true)</span>
+  <span class="fn">print</span>(!<span class="var">a</span>);     <span class="com">// false  NÃO (inverte o valor)</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores de atribuição</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">x</span> = <span class="num">10</span>;
+  <span class="var">x</span> += <span class="num">5</span>;  <span class="com">// x = x + 5  → 15</span>
+  <span class="var">x</span> -= <span class="num">3</span>;  <span class="com">// x = x - 3  → 12</span>
+  <span class="var">x</span> *= <span class="num">2</span>;  <span class="com">// x = x * 2  → 24</span>
+  <span class="var">x</span> ~/= <span class="num">4</span>; <span class="com">// x = x ~/ 4 → 6</span>
+  <span class="fn">print</span>(<span class="var">x</span>); <span class="com">// 6</span>
+
+  <span class="type">int</span> <span class="var">n</span> = <span class="num">0</span>;
+  <span class="var">n</span>++;      <span class="com">// incrementa: n = 1</span>
+  <span class="var">n</span>--;      <span class="com">// decrementa: n = 0</span>
+  <span class="fn">print</span>(<span class="var">n</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Calculadora básica</div><div class="exercise-sub">Usando operadores aritméticos</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dados <code>int a = 17</code> e <code>int b = 5</code>, exiba: a soma, a diferença, o produto, a divisão inteira e o resto.</div>
+      <textarea class="exercise-input" id="ex4-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex4-1', 'dp4-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol4-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp4-1"></div>
+      <div class="solution-wrap" id="sol4-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">a</span> = <span class="num">17</span>;
+  <span class="type">int</span> <span class="var">b</span> = <span class="num">5</span>;
+  <span class="fn">print</span>(<span class="var">a</span> + <span class="var">b</span>);
+  <span class="fn">print</span>(<span class="var">a</span> - <span class="var">b</span>);
+  <span class="fn">print</span>(<span class="var">a</span> * <span class="var">b</span>);
+  <span class="fn">print</span>(<span class="var">a</span> ~/ <span class="var">b</span>);
+  <span class="fn">print</span>(<span class="var">a</span> % <span class="var">b</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Comparações</div><div class="exercise-sub">Testando operadores booleanos</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dados <code>int x = 8</code> e <code>int y = 12</code>, exiba: se x é menor que y, se x é igual a y e se x+5 é maior ou igual a y.</div>
+      <textarea class="exercise-input" id="ex4-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex4-2', 'dp4-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol4-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp4-2"></div>
+      <div class="solution-wrap" id="sol4-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">x</span> = <span class="num">8</span>;
+  <span class="type">int</span> <span class="var">y</span> = <span class="num">12</span>;
+  <span class="fn">print</span>(<span class="var">x</span> &lt; <span class="var">y</span>);
+  <span class="fn">print</span>(<span class="var">x</span> == <span class="var">y</span>);
+  <span class="fn">print</span>(<span class="var">x</span> + <span class="num">5</span> &gt;= <span class="var">y</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(3)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(4)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-5">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 05</div>
+    <div class="lesson-title"><code style="font-size:22px;">Condicionais</code></div>
+    <div class="lesson-subtitle">Condicionais permitem que o programa tome decisões e execute caminhos diferentes dependendo de uma condição.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">if / else</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">idade</span> = <span class="num">20</span>;
+
+  <span class="kw">if</span> (<span class="var">idade</span> &gt;= <span class="num">18</span>) {
+    <span class="fn">print</span>(<span class="str">'Maior de idade'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Menor de idade'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">else if</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">double</span> <span class="var">nota</span> = <span class="num">7.5</span>;
+
+  <span class="kw">if</span> (<span class="var">nota</span> &gt;= <span class="num">9</span>) {
+    <span class="fn">print</span>(<span class="str">'Excelente'</span>);
+  } <span class="kw">else if</span> (<span class="var">nota</span> &gt;= <span class="num">7</span>) {
+    <span class="fn">print</span>(<span class="str">'Aprovado'</span>);
+  } <span class="kw">else if</span> (<span class="var">nota</span> &gt;= <span class="num">5</span>) {
+    <span class="fn">print</span>(<span class="str">'Recuperação'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Reprovado'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operador ternário</div>
+
+  <div class="explanation">
+    Para condições simples, o operador ternário permite escrever um if/else em uma só linha: <code>condição ? valorSeTrue : valorSeFalse</code>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">x</span> = <span class="num">15</span>;
+  <span class="type">String</span> <span class="var">msg</span> = <span class="var">x</span> % <span class="num">2</span> == <span class="num">0</span> ? <span class="str">'par'</span> : <span class="str">'ímpar'</span>;
+  <span class="fn">print</span>(<span class="str">'$x é $msg'</span>); <span class="com">// 15 é ímpar</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">switch / case</div>
+
+  <div class="explanation">
+    Use <code>switch</code> quando precisar comparar uma mesma variável com vários valores possíveis.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">dia</span> = <span class="num">3</span>;
+
+  <span class="kw">switch</span> (<span class="var">dia</span>) {
+    <span class="kw">case</span> <span class="num">1</span>:
+      <span class="fn">print</span>(<span class="str">'Segunda'</span>);
+    <span class="kw">case</span> <span class="num">2</span>:
+      <span class="fn">print</span>(<span class="str">'Terça'</span>);
+    <span class="kw">case</span> <span class="num">3</span>:
+      <span class="fn">print</span>(<span class="str">'Quarta'</span>);
+    <span class="kw">default</span>:
+      <span class="fn">print</span>(<span class="str">'Outro dia'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    No Dart moderno (versão 3+) não é necessário <code>break</code> nos cases — cada <code>case</code> termina automaticamente.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Classificador de notas</div><div class="exercise-sub">if / else if / else</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada uma variável <code>double nota</code>, classifique: &ge;9 → "A", &ge;7 → "B", &ge;5 → "C", abaixo → "D".</div>
+      <textarea class="exercise-input" id="ex5-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex5-1', 'dp5-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol5-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp5-1"></div>
+      <div class="solution-wrap" id="sol5-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">double</span> <span class="var">nota</span> = <span class="num">7.5</span>;
+  <span class="kw">if</span> (<span class="var">nota</span> &gt;= <span class="num">9</span>) {
+    <span class="fn">print</span>(<span class="str">'A'</span>);
+  } <span class="kw">else if</span> (<span class="var">nota</span> &gt;= <span class="num">7</span>) {
+    <span class="fn">print</span>(<span class="str">'B'</span>);
+  } <span class="kw">else if</span> (<span class="var">nota</span> &gt;= <span class="num">5</span>) {
+    <span class="fn">print</span>(<span class="str">'C'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'D'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Dia da semana</div><div class="exercise-sub">Usando switch</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Use <code>switch</code> para exibir o nome do dia da semana dado um <code>int dia</code> de 1 a 7. Para valores fora desse intervalo, exiba "Inválido".</div>
+      <textarea class="exercise-input" id="ex5-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex5-2', 'dp5-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol5-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp5-2"></div>
+      <div class="solution-wrap" id="sol5-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">dia</span> = <span class="num">4</span>;
+  <span class="kw">switch</span> (<span class="var">dia</span>) {
+    <span class="kw">case</span> <span class="num">1</span>: <span class="fn">print</span>(<span class="str">'Segunda'</span>);
+    <span class="kw">case</span> <span class="num">2</span>: <span class="fn">print</span>(<span class="str">'Terça'</span>);
+    <span class="kw">case</span> <span class="num">3</span>: <span class="fn">print</span>(<span class="str">'Quarta'</span>);
+    <span class="kw">case</span> <span class="num">4</span>: <span class="fn">print</span>(<span class="str">'Quinta'</span>);
+    <span class="kw">case</span> <span class="num">5</span>: <span class="fn">print</span>(<span class="str">'Sexta'</span>);
+    <span class="kw">case</span> <span class="num">6</span>: <span class="fn">print</span>(<span class="str">'Sábado'</span>);
+    <span class="kw">case</span> <span class="num">7</span>: <span class="fn">print</span>(<span class="str">'Domingo'</span>);
+    <span class="kw">default</span>: <span class="fn">print</span>(<span class="str">'Inválido'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(4)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(5)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-6">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 06</div>
+    <div class="lesson-title"><code style="font-size:22px;">Loops</code></div>
+    <div class="lesson-subtitle">Loops executam um bloco de código repetidamente enquanto uma condição for verdadeira ou para cada item de uma coleção.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Loop for</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">for</span> (<span class="type">int</span> <span class="var">i</span> = <span class="num">1</span>; <span class="var">i</span> &lt;= <span class="num">5</span>; <span class="var">i</span>++) {
+    <span class="fn">print</span>(<span class="str">'Contagem: $i'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    O <code>for</code> tem três partes: <strong>inicialização</strong> (<code>int i = 1</code>) · <strong>condição</strong> (<code>i &lt;= 5</code>) · <strong>incremento</strong> (<code>i++</code>). Executa enquanto a condição for true.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">for-in</div>
+
+  <div class="explanation">
+    Use <code>for-in</code> para percorrer todos os itens de uma lista sem precisar de índice.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">frutas</span> = [<span class="str">'maçã'</span>, <span class="str">'banana'</span>, <span class="str">'uva'</span>];
+
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">fruta</span> <span class="kw">in</span> <span class="var">frutas</span>) {
+    <span class="fn">print</span>(<span class="var">fruta</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">while</div>
+
+  <div class="explanation">
+    O <code>while</code> repete o bloco enquanto a condição for <code>true</code>. Use quando não sabe quantas repetições serão necessárias.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">n</span> = <span class="num">1</span>;
+
+  <span class="kw">while</span> (<span class="var">n</span> &lt;= <span class="num">5</span>) {
+    <span class="fn">print</span>(<span class="str">'n = $n'</span>);
+    <span class="var">n</span>++;
+  }
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">break e continue</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">for</span> (<span class="type">int</span> <span class="var">i</span> = <span class="num">1</span>; <span class="var">i</span> &lt;= <span class="num">10</span>; <span class="var">i</span>++) {
+    <span class="kw">if</span> (<span class="var">i</span> == <span class="num">4</span>) <span class="kw">continue</span>; <span class="com">// pula o 4</span>
+    <span class="kw">if</span> (<span class="var">i</span> == <span class="num">7</span>) <span class="kw">break</span>;    <span class="com">// para no 7</span>
+    <span class="fn">print</span>(<span class="var">i</span>);
+  }
+  <span class="com">// exibe: 1 2 3 5 6</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Tabuada</div><div class="exercise-sub">Loop for com cálculo</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Use um <code>for</code> para exibir a tabuada do 7 (de 7×1 até 7×10), no formato <strong>"7 x 1 = 7"</strong>.</div>
+      <textarea class="exercise-input" id="ex6-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex6-1', 'dp6-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol6-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp6-1"></div>
+      <div class="solution-wrap" id="sol6-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">for</span> (<span class="type">int</span> <span class="var">i</span> = <span class="num">1</span>; <span class="var">i</span> &lt;= <span class="num">10</span>; <span class="var">i</span>++) {
+    <span class="fn">print</span>(<span class="str">'7 x $i = ${7 * i}'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Só os ímpares</div><div class="exercise-sub">for com continue</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Use um <code>for</code> de 1 a 20 e exiba apenas os números <strong>ímpares</strong> usando <code>continue</code> para pular os pares.</div>
+      <textarea class="exercise-input" id="ex6-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex6-2', 'dp6-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol6-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp6-2"></div>
+      <div class="solution-wrap" id="sol6-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">for</span> (<span class="type">int</span> <span class="var">i</span> = <span class="num">1</span>; <span class="var">i</span> &lt;= <span class="num">20</span>; <span class="var">i</span>++) {
+    <span class="kw">if</span> (<span class="var">i</span> % <span class="num">2</span> == <span class="num">0</span>) <span class="kw">continue</span>;
+    <span class="fn">print</span>(<span class="var">i</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(5)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(6)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-7">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 07</div>
+    <div class="lesson-title"><code style="font-size:22px;">Funções</code></div>
+    <div class="lesson-subtitle">Funções organizam o código em blocos reutilizáveis. Em Dart, toda função tem um tipo de retorno, um nome e parâmetros opcionais.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Declarando uma função</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">int</span> <span class="fn">somar</span>(<span class="type">int</span> <span class="var">a</span>, <span class="type">int</span> <span class="var">b</span>) {
+  <span class="kw">return</span> <span class="var">a</span> + <span class="var">b</span>;
+}
 
 <span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MyApp</span>());
+  <span class="type">int</span> <span class="var">resultado</span> = <span class="fn">somar</span>(<span class="num">3</span>, <span class="num">4</span>);
+  <span class="fn">print</span>(<span class="var">resultado</span>); <span class="com">// 7</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    O tipo antes do nome (<code>int</code>) é o tipo de retorno. Use <code>void</code> quando a função não retorna nada.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Função com seta (arrow)</div>
+
+  <div class="explanation">
+    Quando o corpo da função é uma única expressão, você pode usar a sintaxe de seta <code>=&gt;</code> para encurtar.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">int</span>    <span class="fn">dobro</span>(<span class="type">int</span> <span class="var">n</span>)            =&gt; <span class="var">n</span> * <span class="num">2</span>;
+<span class="type">String</span> <span class="fn">saudar</span>(<span class="type">String</span> <span class="var">nome</span>)    =&gt; <span class="str">'Olá, $nome!'</span>;
+<span class="type">bool</span>   <span class="fn">ehPar</span>(<span class="type">int</span> <span class="var">n</span>)            =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">dobro</span>(<span class="num">5</span>));        <span class="com">// 10</span>
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="str">'Ana'</span>));  <span class="com">// Olá, Ana!</span>
+  <span class="fn">print</span>(<span class="fn">ehPar</span>(<span class="num">8</span>));        <span class="com">// true</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Parâmetros nomeados</div>
+
+  <div class="explanation">
+    Parâmetros entre chaves <code>{}</code> são <strong>nomeados</strong> — devem ser passados pelo nome na chamada. Use <code>required</code> para tornar obrigatórios.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">String</span> <span class="fn">apresentar</span>({
+  <span class="kw">required</span> <span class="type">String</span> <span class="var">nome</span>,
+  <span class="type">int</span> <span class="var">idade</span> = <span class="num">0</span>,
+}) {
+  <span class="kw">return</span> <span class="str">'$nome, $idade anos'</span>;
 }
 
-<span class="kw">class</span> <span class="type">MyApp</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
-  <span class="kw">const</span> <span class="fn">MyApp</span>({<span class="kw">super</span>.key});
-
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="kw">const</span> <span class="type">MaterialApp</span>(
-      home: <span class="type">Scaffold</span>(
-        body: <span class="type">Center</span>(
-          child: <span class="type">Text</span>(<span class="str">'Olá Flutter!'</span>),
-        ),
-      ),
-    );
-  }
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">apresentar</span>(<span class="var">nome</span>: <span class="str">'Ana'</span>, <span class="var">idade</span>: <span class="num">25</span>));
+  <span class="fn">print</span>(<span class="fn">apresentar</span>(<span class="var">nome</span>: <span class="str">'João'</span>)); <span class="com">// idade usa o padrão 0</span>
 }</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Calcular área</div><div class="exercise-sub">Função com retorno</div></div>
     </div>
-
-    <div class="info-box">
-      <strong>Fluxo de execução</strong>
-      <code>main()</code> → <code>runApp()</code> → widget raiz → <code>build()</code> → tela renderizada
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">MaterialApp e Scaffold</div>
-
-    <div class="explanation">
-      <strong>MaterialApp</strong> configura o app todo (tema, rotas, título). <strong>Scaffold</strong> oferece a estrutura visual básica de uma tela: AppBar, body, FloatingActionButton etc.
-    </div>
-
-    <div class="concept-grid">
-      <div class="concept-card">
-        <div class="concept-card-title">MaterialApp</div>
-        <div class="concept-card-val">Configura o app</div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>double areaRetangulo(double largura, double altura)</code> que retorne a área. Chame-a com alguns valores e exiba o resultado.</div>
+      <textarea class="exercise-input" id="ex7-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-1', 'dp7-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-1')">Ver solução</button>
       </div>
-      <div class="concept-card">
-        <div class="concept-card-title">Scaffold</div>
-        <div class="concept-card-val">Estrutura de uma tela</div>
-      </div>
-      <div class="concept-card">
-        <div class="concept-card-title">AppBar</div>
-        <div class="concept-card-val">Barra superior</div>
-      </div>
-      <div class="concept-card">
-        <div class="concept-card-title">body</div>
-        <div class="concept-card-val">Conteúdo principal</div>
-      </div>
-    </div>
+      <div class="dartpad-wrap" id="dp7-1"></div>
+      <div class="solution-wrap" id="sol7-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">double</span> <span class="fn">areaRetangulo</span>(<span class="type">double</span> <span class="var">largura</span>, <span class="type">double</span> <span class="var">altura</span>) =&gt;
+    <span class="var">largura</span> * <span class="var">altura</span>;
 
-    <div class="divider"></div>
-    <div class="section-title">Exercícios de fixação</div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">01</div>
-        <div>
-          <div class="exercise-title">Função main</div>
-          <div class="exercise-sub">Ponto de entrada do app</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Escreva a função <code>main()</code> que chama <code>runApp()</code> passando um widget chamado <strong>MeuApp</strong>. Use a sintaxe de seta <code>=></code>.</div>
-        <textarea class="exercise-input" id="ex1-1" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex1-1', 'dp1-1')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol1-1')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp1-1"></div>
-        <div class="solution-wrap" id="sol1-1">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="kw">void</span> <span class="fn">main</span>() => <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MeuApp</span>());</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">02</div>
-        <div>
-          <div class="exercise-title">App mínimo completo</div>
-          <div class="exercise-sub">Juntando tudo que aprendeu</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie um app Flutter completo que exibe <strong>"Meu Primeiro App"</strong> centralizado na tela. Use <code>MaterialApp</code>, <code>Scaffold</code>, <code>Center</code> e <code>Text</code>.</div>
-        <textarea class="exercise-input" id="ex1-2" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex1-2', 'dp1-2')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol1-2')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp1-2"></div>
-        <div class="solution-wrap" id="sol1-2">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
-
-<span class="kw">void</span> <span class="fn">main</span>() => <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MeuApp</span>());
-
-<span class="kw">class</span> <span class="type">MeuApp</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
-  <span class="kw">const</span> <span class="fn">MeuApp</span>({<span class="kw">super</span>.key});
-
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="kw">const</span> <span class="type">MaterialApp</span>(
-      home: <span class="type">Scaffold</span>(
-        body: <span class="type">Center</span>(
-          child: <span class="type">Text</span>(<span class="str">'Meu Primeiro App'</span>),
-        ),
-      ),
-    );
-  }
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">areaRetangulo</span>(<span class="num">5</span>, <span class="num">3</span>));   <span class="com">// 15.0</span>
+  <span class="fn">print</span>(<span class="fn">areaRetangulo</span>(<span class="num">10</span>, <span class="num">2.5</span>)); <span class="com">// 25.0</span>
 }</pre>
-          </div>
         </div>
       </div>
-    </div>
-
-    <div class="lesson-nav">
-      <button class="btn btn-nav" style="visibility:hidden">← Voltar</button>
-      <button class="btn btn-primary" onclick="completeAndNext(1)">Próximo módulo →</button>
     </div>
   </div>
 
-  <div class="lesson" id="lesson-2">
-    <div class="lesson-header">
-      <div class="lesson-badge">Módulo 02</div>
-      <div class="lesson-title">Tudo é <code style="font-size:22px;">Widget</code></div>
-      <div class="lesson-subtitle">Em Flutter, cada elemento visual é um widget — do texto mais simples à tela inteira.</div>
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Saudação personalizada</div><div class="exercise-sub">Parâmetros nomeados</div></div>
     </div>
-
-    <div class="divider"></div>
-    <div class="section-title">O conceito de Widget</div>
-
-    <div class="explanation">
-      Em Flutter, <strong>tudo é widget</strong>. Textos, botões, imagens, espaçamentos, cores — cada peça da interface é um widget. Eles se combinam como peças de Lego para formar a tela completa.
-    </div>
-
-    <div class="concept-grid">
-      <div class="concept-card">
-        <div class="concept-card-title">StatelessWidget</div>
-        <div class="concept-card-val">Sem estado — não muda após renderizado</div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>saudar</code> com parâmetros nomeados <code>required String nome</code> e <code>String periodo = 'dia'</code>. Retorne <strong>"Bom [periodo], [nome]!"</strong>.</div>
+      <textarea class="exercise-input" id="ex7-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-2', 'dp7-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-2')">Ver solução</button>
       </div>
-      <div class="concept-card">
-        <div class="concept-card-title">StatefulWidget</div>
-        <div class="concept-card-val">Com estado — pode se atualizar dinamicamente</div>
+      <div class="dartpad-wrap" id="dp7-2"></div>
+      <div class="solution-wrap" id="sol7-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">String</span> <span class="fn">saudar</span>({
+  <span class="kw">required</span> <span class="type">String</span> <span class="var">nome</span>,
+  <span class="type">String</span> <span class="var">periodo</span> = <span class="str">'dia'</span>,
+}) =&gt; <span class="str">'Bom $periodo, $nome!'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Ana'</span>));
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'João'</span>, <span class="var">periodo</span>: <span class="str">'tarde'</span>));
+}</pre>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="divider"></div>
-    <div class="section-title">StatelessWidget</div>
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(6)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(7)">Próximo módulo →</button>
+  </div>
+</div>
 
-    <div class="explanation">
-      Um <strong>StatelessWidget</strong> é um widget estático. Você sobrescreve o método <code>build()</code> para dizer o que ele deve desenhar na tela.
+<div class="lesson" id="lesson-8">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 08</div>
+    <div class="lesson-title"><code style="font-size:22px;">Listas</code></div>
+    <div class="lesson-subtitle">Uma lista é uma coleção ordenada de valores do mesmo tipo. Em Dart é representada por <code>List&lt;T&gt;</code>.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Criando e acessando listas</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">nomes</span> = [<span class="str">'Ana'</span>, <span class="str">'Bruno'</span>, <span class="str">'Carla'</span>];
+
+  <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">0</span>]);        <span class="com">// Ana   (primeiro elemento)</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">2</span>]);        <span class="com">// Carla (terceiro elemento)</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">length</span>);   <span class="com">// 3</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">first</span>);    <span class="com">// Ana</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">last</span>);     <span class="com">// Carla</span>
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    O índice começa em <strong>0</strong>. O primeiro elemento é <code>lista[0]</code>, o segundo é <code>lista[1]</code>, e assim por diante.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Modificando listas</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>];
+
+  <span class="var">nums</span>.<span class="fn">add</span>(<span class="num">40</span>);          <span class="com">// adiciona ao final</span>
+  <span class="var">nums</span>.<span class="fn">insert</span>(<span class="num">0</span>, <span class="num">5</span>);    <span class="com">// insere na posição 0</span>
+  <span class="var">nums</span>.<span class="fn">remove</span>(<span class="num">20</span>);       <span class="com">// remove o valor 20</span>
+  <span class="var">nums</span>.<span class="fn">removeAt</span>(<span class="num">0</span>);     <span class="com">// remove pelo índice</span>
+
+  <span class="fn">print</span>(<span class="var">nums</span>); <span class="com">// [10, 30, 40]</span>
+  <span class="fn">print</span>(<span class="var">nums</span>.<span class="fn">contains</span>(<span class="num">30</span>)); <span class="com">// true</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Percorrendo e transformando</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>];
+
+  <span class="com">// forEach: percorre cada item</span>
+  <span class="var">nums</span>.<span class="fn">forEach</span>((<span class="var">n</span>) =&gt; <span class="fn">print</span>(<span class="var">n</span>));
+
+  <span class="com">// map: transforma cada item</span>
+  <span class="kw">var</span> <span class="var">dobros</span> = <span class="var">nums</span>.<span class="fn">map</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> * <span class="num">2</span>).<span class="fn">toList</span>();
+  <span class="fn">print</span>(<span class="var">dobros</span>); <span class="com">// [2, 4, 6, 8, 10]</span>
+
+  <span class="com">// where: filtra itens</span>
+  <span class="kw">var</span> <span class="var">pares</span> = <span class="var">nums</span>.<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>).<span class="fn">toList</span>();
+  <span class="fn">print</span>(<span class="var">pares</span>);  <span class="com">// [2, 4]</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Lista de compras</div><div class="exercise-sub">Criando e modificando</div></div>
     </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart</div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma lista com 3 itens de compras. Adicione mais 2 itens com <code>add()</code>, remova o segundo item e exiba a lista final e seu tamanho.</div>
+      <textarea class="exercise-input" id="ex8-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex8-1', 'dp8-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol8-1')">Ver solução</button>
       </div>
-      <pre><span class="kw">class</span> <span class="type">MeuWidget</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
-  <span class="kw">const</span> <span class="fn">MeuWidget</span>({<span class="kw">super</span>.key});
+      <div class="dartpad-wrap" id="dp8-1"></div>
+      <div class="solution-wrap" id="sol8-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">compras</span> = [<span class="str">'leite'</span>, <span class="str">'pão'</span>, <span class="str">'ovos'</span>];
+  <span class="var">compras</span>.<span class="fn">add</span>(<span class="str">'manteiga'</span>);
+  <span class="var">compras</span>.<span class="fn">add</span>(<span class="str">'café'</span>);
+  <span class="var">compras</span>.<span class="fn">removeAt</span>(<span class="num">1</span>); <span class="com">// remove 'pão'</span>
+  <span class="fn">print</span>(<span class="var">compras</span>);
+  <span class="fn">print</span>(<span class="var">compras</span>.<span class="var">length</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Olá, Flutter!'</span>);
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Filtrar maiores</div><div class="exercise-sub">Usando where</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a lista <code>[4, 17, 3, 22, 8, 15, 1]</code>, use <code>where()</code> para criar uma nova lista apenas com números maiores que 10 e exiba o resultado.</div>
+      <textarea class="exercise-input" id="ex8-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex8-2', 'dp8-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol8-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp8-2"></div>
+      <div class="solution-wrap" id="sol8-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">4</span>, <span class="num">17</span>, <span class="num">3</span>, <span class="num">22</span>, <span class="num">8</span>, <span class="num">15</span>, <span class="num">1</span>];
+  <span class="kw">var</span> <span class="var">maiores</span> = <span class="var">nums</span>.<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> &gt; <span class="num">10</span>).<span class="fn">toList</span>();
+  <span class="fn">print</span>(<span class="var">maiores</span>); <span class="com">// [17, 22, 15]</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(7)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(8)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-9">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 09</div>
+    <div class="lesson-title"><code style="font-size:22px;">Mapas</code></div>
+    <div class="lesson-subtitle">Um mapa armazena pares de <strong>chave → valor</strong>. Ideal para representar dados estruturados como configurações, dicionários e registros.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Criando e acessando mapas</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">int</span>&gt; <span class="var">idades</span> = {
+    <span class="str">'Ana'</span>:   <span class="num">25</span>,
+    <span class="str">'Bruno'</span>: <span class="num">30</span>,
+    <span class="str">'Carla'</span>: <span class="num">22</span>,
+  };
+
+  <span class="fn">print</span>(<span class="var">idades</span>[<span class="str">'Ana'</span>]);    <span class="com">// 25</span>
+  <span class="fn">print</span>(<span class="var">idades</span>.<span class="var">length</span>);   <span class="com">// 3</span>
+  <span class="fn">print</span>(<span class="var">idades</span>.<span class="var">keys</span>);     <span class="com">// (Ana, Bruno, Carla)</span>
+  <span class="fn">print</span>(<span class="var">idades</span>.<span class="var">values</span>);   <span class="com">// (25, 30, 22)</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Modificando mapas</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">cores</span> = {<span class="str">'céu'</span>: <span class="str">'azul'</span>, <span class="str">'grama'</span>: <span class="str">'verde'</span>};
+
+  <span class="var">cores</span>[<span class="str">'sol'</span>] = <span class="str">'amarelo'</span>;  <span class="com">// adiciona nova entrada</span>
+  <span class="var">cores</span>[<span class="str">'céu'</span>] = <span class="str">'cinza'</span>;   <span class="com">// atualiza valor existente</span>
+  <span class="var">cores</span>.<span class="fn">remove</span>(<span class="str">'grama'</span>);    <span class="com">// remove pela chave</span>
+
+  <span class="fn">print</span>(<span class="var">cores</span>.<span class="fn">containsKey</span>(<span class="str">'sol'</span>));   <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">cores</span>.<span class="fn">containsKey</span>(<span class="str">'grama'</span>)); <span class="com">// false</span>
+  <span class="fn">print</span>(<span class="var">cores</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Percorrendo um mapa</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">notas</span> = {<span class="str">'Ana'</span>: <span class="num">9.0</span>, <span class="str">'Bruno'</span>: <span class="num">7.5</span>, <span class="str">'Carla'</span>: <span class="num">8.2</span>};
+
+  <span class="com">// forEach com chave e valor</span>
+  <span class="var">notas</span>.<span class="fn">forEach</span>((<span class="var">nome</span>, <span class="var">nota</span>) {
+    <span class="fn">print</span>(<span class="str">'$nome: $nota'</span>);
+  });
+
+  <span class="com">// for-in com entries</span>
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">entry</span> <span class="kw">in</span> <span class="var">notas</span>.<span class="var">entries</span>) {
+    <span class="fn">print</span>(<span class="str">'${entry.key} tirou ${entry.value}'</span>);
   }
 }</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Agenda telefônica</div><div class="exercise-sub">Criando e consultando</div></div>
     </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Widgets essenciais</div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — Text</div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um <code>Map&lt;String, String&gt;</code> com nomes e telefones de 3 contatos. Adicione um 4º contato, remova um existente e exiba todos os nomes e o tamanho final.</div>
+      <textarea class="exercise-input" id="ex9-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex9-1', 'dp9-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol9-1')">Ver solução</button>
       </div>
-      <pre><span class="type">Text</span>(<span class="str">'Olá Mundo!'</span>)
-
-<span class="type">Text</span>(
-  <span class="str">'Texto estilizado'</span>,
-  style: <span class="type">TextStyle</span>(
-    fontWeight: <span class="type">FontWeight</span>.bold,
-    fontSize: <span class="num">24</span>,
-    color: <span class="type">Colors</span>.blue,
-  ),
-)</pre>
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — Icon e Image</div>
-      </div>
-      <pre><span class="type">Icon</span>(<span class="type">Icons</span>.star, color: <span class="type">Colors</span>.amber, size: <span class="num">48</span>)
-
-<span class="type">Image</span>.<span class="fn">network</span>(<span class="str">'https://exemplo.com/foto.jpg'</span>)
-
-<span class="type">Image</span>.<span class="fn">asset</span>(<span class="str">'assets/imagem.png'</span>)</pre>
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — Container</div>
-      </div>
-      <pre><span class="type">Container</span>(
-  width: <span class="num">200</span>,
-  height: <span class="num">100</span>,
-  color: <span class="type">Colors</span>.blue,
-  child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Dentro do container'</span>),
-)</pre>
-    </div>
-
-    <div class="info-box">
-      <strong>child vs children</strong>
-      A propriedade <code>child</code> recebe <strong>um único</strong> widget filho. Para múltiplos filhos, use <code>children</code> (uma lista) com widgets como <code>Column</code> ou <code>Row</code>.
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Exercícios de fixação</div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">01</div>
-        <div>
-          <div class="exercise-title">Primeiro Widget</div>
-          <div class="exercise-sub">Criando um StatelessWidget</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie um <code>StatelessWidget</code> chamado <strong>Saudacao</strong> que retorna um <code>Text</code> com a mensagem <strong>"Bem-vindo ao Flutter!"</strong>.</div>
-        <textarea class="exercise-input" id="ex2-1" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex2-1', 'dp2-1')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol2-1')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp2-1"></div>
-        <div class="solution-wrap" id="sol2-1">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="kw">class</span> <span class="type">Saudacao</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
-  <span class="kw">const</span> <span class="fn">Saudacao</span>({<span class="kw">super</span>.key});
-
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Bem-vindo ao Flutter!'</span>);
-  }
+      <div class="dartpad-wrap" id="dp9-1"></div>
+      <div class="solution-wrap" id="sol9-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; <span class="var">agenda</span> = {
+    <span class="str">'Ana'</span>:   <span class="str">'9999-1111'</span>,
+    <span class="str">'Bruno'</span>: <span class="str">'9999-2222'</span>,
+    <span class="str">'Carla'</span>: <span class="str">'9999-3333'</span>,
+  };
+  <span class="var">agenda</span>[<span class="str">'Diego'</span>] = <span class="str">'9999-4444'</span>;
+  <span class="var">agenda</span>.<span class="fn">remove</span>(<span class="str">'Bruno'</span>);
+  <span class="fn">print</span>(<span class="var">agenda</span>.<span class="var">keys</span>);
+  <span class="fn">print</span>(<span class="var">agenda</span>.<span class="var">length</span>);
 }</pre>
-          </div>
         </div>
       </div>
-    </div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">02</div>
-        <div>
-          <div class="exercise-title">Container colorido</div>
-          <div class="exercise-sub">Usando Container com cor e filho</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie um <code>Container</code> de <strong>150×150</strong> pixels com <code>color: Colors.teal</code> e um filho <code>Center</code> contendo um <code>Text</code> com <strong>"Teal"</strong>.</div>
-        <textarea class="exercise-input" id="ex2-2" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex2-2', 'dp2-2')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol2-2')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp2-2"></div>
-        <div class="solution-wrap" id="sol2-2">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="type">Container</span>(
-  width: <span class="num">150</span>,
-  height: <span class="num">150</span>,
-  color: <span class="type">Colors</span>.teal,
-  child: <span class="kw">const</span> <span class="type">Center</span>(
-    child: <span class="type">Text</span>(<span class="str">'Teal'</span>),
-  ),
-)</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lesson-nav">
-      <button class="btn btn-nav" onclick="goTo(1)">← Voltar</button>
-      <button class="btn btn-primary" onclick="completeAndNext(2)">Próximo módulo →</button>
     </div>
   </div>
 
-  <div class="lesson" id="lesson-3">
-    <div class="lesson-header">
-      <div class="lesson-badge">Módulo 03</div>
-      <div class="lesson-title">Layout com <code style="font-size:22px;">Column</code> e <code style="font-size:22px;">Row</code></div>
-      <div class="lesson-subtitle">Organize widgets vertical e horizontalmente para construir qualquer tipo de tela.</div>
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Relatório de notas</div><div class="exercise-sub">Percorrendo com forEach</div></div>
     </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Scaffold e AppBar</div>
-
-    <div class="explanation">
-      O <strong>Scaffold</strong> é o esqueleto de uma tela. Ele aceita uma <code>AppBar</code> no topo e um <code>body</code> onde vai o conteúdo principal.
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart</div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dado o mapa <code>{'Alice': 8.5, 'Bob': 6.0, 'Clara': 9.5}</code>, use <code>forEach</code> para exibir cada aluno no formato: <strong>"Alice: 8.5 - Aprovado"</strong> (aprovado se nota &ge; 7).</div>
+      <textarea class="exercise-input" id="ex9-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex9-2', 'dp9-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol9-2')">Ver solução</button>
       </div>
-      <pre><span class="type">Scaffold</span>(
-  appBar: <span class="type">AppBar</span>(
-    title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Meu App'</span>),
-    backgroundColor: <span class="type">Colors</span>.blue,
-  ),
-  body: <span class="kw">const</span> <span class="type">Center</span>(
-    child: <span class="type">Text</span>(<span class="str">'Conteúdo aqui'</span>),
-  ),
-)</pre>
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Column e Row</div>
-
-    <div class="explanation">
-      <strong>Column</strong> organiza widgets um abaixo do outro (eixo vertical). <strong>Row</strong> organiza widgets lado a lado (eixo horizontal). Ambos aceitam uma lista de filhos em <code>children</code>.
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — Column</div>
-      </div>
-      <pre><span class="type">Column</span>(
-  mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
-  crossAxisAlignment: <span class="type">CrossAxisAlignment</span>.center,
-  children: <span class="kw">const</span> [
-    <span class="type">Text</span>(<span class="str">'Linha 1'</span>),
-    <span class="type">Text</span>(<span class="str">'Linha 2'</span>),
-    <span class="type">Text</span>(<span class="str">'Linha 3'</span>),
-  ],
-)</pre>
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — Row</div>
-      </div>
-      <pre><span class="type">Row</span>(
-  mainAxisAlignment: <span class="type">MainAxisAlignment</span>.spaceEvenly,
-  children: <span class="kw">const</span> [
-    <span class="type">Icon</span>(<span class="type">Icons</span>.home),
-    <span class="type">Icon</span>(<span class="type">Icons</span>.search),
-    <span class="type">Icon</span>(<span class="type">Icons</span>.person),
-  ],
-)</pre>
-    </div>
-
-    <div class="info-box yellow">
-      <strong>mainAxisAlignment</strong>
-      <code>start</code> · <code>end</code> · <code>center</code> · <code>spaceBetween</code> · <code>spaceAround</code> · <code>spaceEvenly</code>
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Espaçamento e agrupamento</div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart</div>
-      </div>
-      <pre><span class="type">SizedBox</span>(height: <span class="num">16</span>)         <span class="com">// espaço fixo vertical</span>
-<span class="type">SizedBox</span>(width: <span class="num">8</span>)           <span class="com">// espaço fixo horizontal</span>
-
-<span class="type">Padding</span>(                      <span class="com">// espaçamento interno</span>
-  padding: <span class="type">EdgeInsets</span>.all(<span class="num">16</span>),
-  child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Com padding'</span>),
-)
-
-<span class="type">Center</span>(child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Centralizado'</span>))
-
-<span class="type">Expanded</span>(child: <span class="type">Container</span>(color: <span class="type">Colors</span>.blue)) <span class="com">// ocupa espaço restante</span></pre>
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Exercícios de fixação</div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">01</div>
-        <div>
-          <div class="exercise-title">Tela com AppBar</div>
-          <div class="exercise-sub">Scaffold completo com Column</div>
+      <div class="dartpad-wrap" id="dp9-2"></div>
+      <div class="solution-wrap" id="sol9-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">notas</span> = {<span class="str">'Alice'</span>: <span class="num">8.5</span>, <span class="str">'Bob'</span>: <span class="num">6.0</span>, <span class="str">'Clara'</span>: <span class="num">9.5</span>};
+  <span class="var">notas</span>.<span class="fn">forEach</span>((<span class="var">nome</span>, <span class="var">nota</span>) {
+    <span class="kw">var</span> <span class="var">status</span> = <span class="var">nota</span> &gt;= <span class="num">7</span> ? <span class="str">'Aprovado'</span> : <span class="str">'Reprovado'</span>;
+    <span class="fn">print</span>(<span class="str">'$nome: $nota - $status'</span>);
+  });
+}</pre>
         </div>
       </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie um <code>Scaffold</code> com <code>AppBar</code> de título <strong>"Minha Tela"</strong> e um <code>body</code> com <code>Column</code> centralizada contendo três <code>Text</code>: <strong>"Item 1"</strong>, <strong>"Item 2"</strong> e <strong>"Item 3"</strong>.</div>
-        <textarea class="exercise-input" id="ex3-1" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex3-1', 'dp3-1')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol3-1')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp3-1"></div>
-        <div class="solution-wrap" id="sol3-1">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="type">Scaffold</span>(
-  appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Minha Tela'</span>)),
-  body: <span class="kw">const</span> <span class="type">Column</span>(
-    mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
-    children: [
-      <span class="type">Text</span>(<span class="str">'Item 1'</span>),
-      <span class="type">Text</span>(<span class="str">'Item 2'</span>),
-      <span class="type">Text</span>(<span class="str">'Item 3'</span>),
-    ],
-  ),
-)</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">02</div>
-        <div>
-          <div class="exercise-title">Barra de ícones</div>
-          <div class="exercise-sub">Row com espaçamento uniforme</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie uma <code>Row</code> com <code>mainAxisAlignment: MainAxisAlignment.spaceEvenly</code> contendo três ícones: <code>Icons.home</code>, <code>Icons.search</code> e <code>Icons.settings</code>.</div>
-        <textarea class="exercise-input" id="ex3-2" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex3-2', 'dp3-2')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol3-2')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp3-2"></div>
-        <div class="solution-wrap" id="sol3-2">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="type">Row</span>(
-  mainAxisAlignment: <span class="type">MainAxisAlignment</span>.spaceEvenly,
-  children: <span class="kw">const</span> [
-    <span class="type">Icon</span>(<span class="type">Icons</span>.home),
-    <span class="type">Icon</span>(<span class="type">Icons</span>.search),
-    <span class="type">Icon</span>(<span class="type">Icons</span>.settings),
-  ],
-)</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lesson-nav">
-      <button class="btn btn-nav" onclick="goTo(2)">← Voltar</button>
-      <button class="btn btn-primary" onclick="completeAndNext(3)">Próximo módulo →</button>
     </div>
   </div>
 
-  <div class="lesson" id="lesson-4">
-    <div class="lesson-header">
-      <div class="lesson-badge">Módulo 04</div>
-      <div class="lesson-title">Estilo com <code style="font-size:22px;">TextStyle</code> e <code style="font-size:22px;">BoxDecoration</code></div>
-      <div class="lesson-subtitle">Deixe seus widgets bonitos com cores, fontes, bordas e gradientes.</div>
-    </div>
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(8)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(9)">Próximo módulo →</button>
+  </div>
+</div>
 
-    <div class="divider"></div>
-    <div class="section-title">TextStyle</div>
-
-    <div class="explanation">
-      O <strong>TextStyle</strong> estiliza um <code>Text</code>: controla fonte, tamanho, peso, cor, espaçamento entre letras e muito mais.
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart</div>
-      </div>
-      <pre><span class="type">Text</span>(
-  <span class="str">'Flutter é incrível'</span>,
-  style: <span class="type">TextStyle</span>(
-    fontSize: <span class="num">24</span>,
-    fontWeight: <span class="type">FontWeight</span>.bold,
-    color: <span class="type">Colors</span>.deepPurple,
-    letterSpacing: <span class="num">1.5</span>,
-    fontStyle: <span class="type">FontStyle</span>.italic,
-    decoration: <span class="type">TextDecoration</span>.underline,
-  ),
-)</pre>
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Colors</div>
-
-    <div class="explanation">
-      O Flutter tem uma paleta completa acessível via <code>Colors</code>. Você também pode usar <code>Color(0xFFRRGGBB)</code> para hex customizado.
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart</div>
-      </div>
-      <pre><span class="type">Colors</span>.blue              <span class="com">// azul padrão</span>
-<span class="type">Colors</span>.blue[<span class="num">700</span>]          <span class="com">// tonalidade (100–900)</span>
-<span class="type">Colors</span>.transparent
-<span class="type">Color</span>(<span class="num">0xFF42A5F5</span>)         <span class="com">// hex ARGB completo</span>
-<span class="type">Color</span>.<span class="fn">fromRGBO</span>(<span class="num">66</span>, <span class="num">165</span>, <span class="num">245</span>, <span class="num">1.0</span>)  <span class="com">// RGB + opacidade</span></pre>
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">BoxDecoration</div>
-
-    <div class="explanation">
-      O <strong>BoxDecoration</strong> estiliza um <code>Container</code>: cor, borda, raio dos cantos, gradiente e sombra. Quando usado, substitui a propriedade <code>color</code> direta do Container.
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — Card com sombra</div>
-      </div>
-      <pre><span class="type">Container</span>(
-  width: <span class="num">200</span>,
-  height: <span class="num">80</span>,
-  decoration: <span class="type">BoxDecoration</span>(
-    color: <span class="type">Colors</span>.blue,
-    borderRadius: <span class="type">BorderRadius</span>.<span class="fn">circular</span>(<span class="num">16</span>),
-    boxShadow: [
-      <span class="type">BoxShadow</span>(
-        color: <span class="type">Colors</span>.black26,
-        blurRadius: <span class="num">8</span>,
-        offset: <span class="type">Offset</span>(<span class="num">0</span>, <span class="num">4</span>),
-      ),
-    ],
-  ),
-  child: <span class="kw">const</span> <span class="type">Center</span>(child: <span class="type">Text</span>(<span class="str">'Card'</span>)),
-)</pre>
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — Gradiente</div>
-      </div>
-      <pre><span class="type">Container</span>(
-  decoration: <span class="type">BoxDecoration</span>(
-    gradient: <span class="type">LinearGradient</span>(
-      colors: [<span class="type">Colors</span>.blue, <span class="type">Colors</span>.purple],
-      begin: <span class="type">Alignment</span>.topLeft,
-      end: <span class="type">Alignment</span>.bottomRight,
-    ),
-  ),
-)</pre>
-    </div>
-
-    <div class="divider"></div>
-    <div class="section-title">Exercícios de fixação</div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">01</div>
-        <div>
-          <div class="exercise-title">Texto estilizado</div>
-          <div class="exercise-sub">Usando TextStyle</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie um <code>Text</code> com o conteúdo <strong>"Flutter"</strong> usando <code>TextStyle</code> com <code>fontSize: 32</code>, <code>fontWeight: FontWeight.bold</code> e <code>color: Colors.blue</code>.</div>
-        <textarea class="exercise-input" id="ex4-1" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex4-1', 'dp4-1')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol4-1')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp4-1"></div>
-        <div class="solution-wrap" id="sol4-1">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="type">Text</span>(
-  <span class="str">'Flutter'</span>,
-  style: <span class="type">TextStyle</span>(
-    fontSize: <span class="num">32</span>,
-    fontWeight: <span class="type">FontWeight</span>.bold,
-    color: <span class="type">Colors</span>.blue,
-  ),
-)</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">02</div>
-        <div>
-          <div class="exercise-title">Card com borda arredondada</div>
-          <div class="exercise-sub">Usando BoxDecoration</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie um <code>Container</code> de <strong>300×100</strong> com <code>BoxDecoration</code> usando <code>color: Colors.indigo</code> e <code>borderRadius: BorderRadius.circular(20)</code>. Coloque um <code>Text</code> <strong>"Meu Card"</strong> em branco centralizado.</div>
-        <textarea class="exercise-input" id="ex4-2" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex4-2', 'dp4-2')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol4-2')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp4-2"></div>
-        <div class="solution-wrap" id="sol4-2">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="type">Container</span>(
-  width: <span class="num">300</span>,
-  height: <span class="num">100</span>,
-  decoration: <span class="type">BoxDecoration</span>(
-    color: <span class="type">Colors</span>.indigo,
-    borderRadius: <span class="type">BorderRadius</span>.<span class="fn">circular</span>(<span class="num">20</span>),
-  ),
-  child: <span class="kw">const</span> <span class="type">Center</span>(
-    child: <span class="type">Text</span>(
-      <span class="str">'Meu Card'</span>,
-      style: <span class="type">TextStyle</span>(color: <span class="type">Colors</span>.white, fontSize: <span class="num">18</span>),
-    ),
-  ),
-)</pre>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="lesson-nav">
-      <button class="btn btn-nav" onclick="goTo(3)">← Voltar</button>
-      <button class="btn btn-primary" onclick="completeAndNext(4)">Próximo módulo →</button>
-    </div>
+<div class="lesson" id="lesson-10">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 10</div>
+    <div class="lesson-title"><code style="font-size:22px;">Classes</code></div>
+    <div class="lesson-subtitle">Uma classe é um molde para criar objetos. Ela define quais dados (propriedades) e comportamentos (métodos) esses objetos terão.</div>
   </div>
 
-  <div class="lesson" id="lesson-5">
-    <div class="lesson-header">
-      <div class="lesson-badge">Módulo 05</div>
-      <div class="lesson-title">Interatividade com <code style="font-size:22px;">StatefulWidget</code></div>
-      <div class="lesson-subtitle">Adicione estado e interação aos seus widgets para criar apps dinâmicos.</div>
-    </div>
+  <div class="divider"></div>
+  <div class="section-title">Declarando uma classe</div>
 
-    <div class="divider"></div>
-    <div class="section-title">StatefulWidget</div>
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Pessoa</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+  <span class="type">int</span>    <span class="var">idade</span>;
 
-    <div class="explanation">
-      Um <strong>StatefulWidget</strong> tem <em>estado</em> — dados que podem mudar ao longo do tempo. Quando o estado muda, o Flutter redesenha o widget automaticamente.
-    </div>
+  <span class="fn">Pessoa</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">idade</span>);
 
-    <div class="explanation">
-      Um StatefulWidget é composto de <strong>duas classes</strong>: a classe do widget e a classe de estado (<code>State</code>).
-    </div>
-
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — Estrutura</div>
-      </div>
-      <pre><span class="kw">class</span> <span class="type">MeuWidget</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
-  <span class="kw">const</span> <span class="fn">MeuWidget</span>({<span class="kw">super</span>.key});
-
-  <span class="op">@override</span>
-  <span class="type">State</span>&lt;<span class="type">MeuWidget</span>&gt; <span class="fn">createState</span>() => _MeuWidgetState();
+  <span class="kw">void</span> <span class="fn">apresentar</span>() {
+    <span class="fn">print</span>(<span class="str">'Olá, sou $nome e tenho $idade anos.'</span>);
+  }
 }
 
-<span class="kw">class</span> <span class="type">_MeuWidgetState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">MeuWidget</span>&gt; {
-  <span class="kw">int</span> <span class="var">contador</span> = <span class="num">0</span>;  <span class="com">// variável de estado</span>
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">p1</span> = <span class="type">Pessoa</span>(<span class="str">'Ana'</span>, <span class="num">25</span>);
+  <span class="kw">var</span> <span class="var">p2</span> = <span class="type">Pessoa</span>(<span class="str">'Bruno'</span>, <span class="num">30</span>);
 
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="type">Text</span>(<span class="str">'$<span class="var">contador</span>'</span>);
-  }
+  <span class="var">p1</span>.<span class="fn">apresentar</span>(); <span class="com">// Olá, sou Ana e tenho 25 anos.</span>
+  <span class="var">p2</span>.<span class="fn">apresentar</span>(); <span class="com">// Olá, sou Bruno e tenho 30 anos.</span>
+  <span class="fn">print</span>(<span class="var">p1</span>.<span class="var">nome</span>);    <span class="com">// Ana</span>
 }</pre>
-    </div>
+  </div>
 
-    <div class="divider"></div>
-    <div class="section-title">setState()</div>
+  <div class="info-box">
+    <code>this.nome</code> no construtor é um atalho do Dart — significa: "pegue o parâmetro <code>nome</code> e atribua à propriedade <code>this.nome</code>".
+  </div>
 
-    <div class="explanation">
-      Para atualizar a tela quando uma variável muda, envolva a mudança dentro de <code>setState()</code>. Isso avisa ao Flutter que ele precisa redesenhar o widget.
-    </div>
+  <div class="divider"></div>
+  <div class="section-title">Construtor nomeado</div>
 
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart</div>
-      </div>
-      <pre><span class="fn">setState</span>(() {
-  <span class="var">contador</span>++;  <span class="com">// qualquer mudança de estado aqui</span>
-});</pre>
-    </div>
+  <div class="explanation">
+    Dart permite criar construtores alternativos com nomes, úteis para diferentes formas de inicializar um objeto.
+  </div>
 
-    <div class="info-box yellow">
-      <strong>Atenção</strong>
-      Mudar uma variável sem <code>setState()</code> não atualiza a tela. O Flutter só redesenha quando você chama <code>setState()</code>.
-    </div>
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Ponto</span> {
+  <span class="type">double</span> <span class="var">x</span>;
+  <span class="type">double</span> <span class="var">y</span>;
 
-    <div class="divider"></div>
-    <div class="section-title">Exemplo completo — Contador</div>
+  <span class="fn">Ponto</span>(<span class="kw">this</span>.<span class="var">x</span>, <span class="kw">this</span>.<span class="var">y</span>);
 
-    <div class="code-block">
-      <div class="code-header">
-        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
-        <div class="code-lang">Dart — App contador</div>
-      </div>
-      <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+  <span class="fn">Ponto</span>.<span class="fn">origem</span>() : <span class="var">x</span> = <span class="num">0</span>, <span class="var">y</span> = <span class="num">0</span>;
 
-<span class="kw">void</span> <span class="fn">main</span>() => <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">Contador</span>()));
-
-<span class="kw">class</span> <span class="type">Contador</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
-  <span class="kw">const</span> <span class="fn">Contador</span>({<span class="kw">super</span>.key});
-
-  <span class="op">@override</span>
-  <span class="type">State</span>&lt;<span class="type">Contador</span>&gt; <span class="fn">createState</span>() => _ContadorState();
+  <span class="type">double</span> <span class="fn">distanciaOrigem</span>() {
+    <span class="kw">return</span> (<span class="var">x</span> * <span class="var">x</span> + <span class="var">y</span> * <span class="var">y</span>);
+  }
 }
 
-<span class="kw">class</span> <span class="type">_ContadorState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Contador</span>&gt; {
-  <span class="kw">int</span> <span class="var">_count</span> = <span class="num">0</span>;
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">p</span>  = <span class="type">Ponto</span>(<span class="num">3</span>, <span class="num">4</span>);
+  <span class="kw">var</span> <span class="var">p0</span> = <span class="type">Ponto</span>.<span class="fn">origem</span>();
 
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="type">Scaffold</span>(
-      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Contador'</span>)),
-      body: <span class="type">Center</span>(
-        child: <span class="type">Column</span>(
-          mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
-          children: [
-            <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Você clicou:'</span>),
-            <span class="type">Text</span>(
-              <span class="str">'$<span class="var">_count</span>'</span>,
-              style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">48</span>, fontWeight: <span class="type">FontWeight</span>.bold),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: <span class="type">FloatingActionButton</span>(
-        onPressed: () => <span class="fn">setState</span>(() => <span class="var">_count</span>++),
-        child: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.add),
-      ),
-    );
-  }
+  <span class="fn">print</span>(<span class="var">p</span>.<span class="fn">distanciaOrigem</span>());  <span class="com">// 25.0</span>
+  <span class="fn">print</span>(<span class="var">p0</span>.<span class="var">x</span>);               <span class="com">// 0.0</span>
 }</pre>
-    </div>
+  </div>
 
-    <div class="divider"></div>
-    <div class="section-title">Exercícios de fixação</div>
+  <div class="divider"></div>
+  <div class="section-title">toString()</div>
 
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">01</div>
-        <div>
-          <div class="exercise-title">Estrutura StatefulWidget</div>
-          <div class="exercise-sub">As duas classes necessárias</div>
-        </div>
-      </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Crie a estrutura básica de um <code>StatefulWidget</code> chamado <strong>Placar</strong> com uma variável de estado <code>int pontos = 0</code> e um <code>Text</code> que exibe o valor de <code>pontos</code>.</div>
-        <textarea class="exercise-input" id="ex5-1" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex5-1', 'dp5-1')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol5-1')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp5-1"></div>
-        <div class="solution-wrap" id="sol5-1">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="kw">class</span> <span class="type">Placar</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
-  <span class="kw">const</span> <span class="fn">Placar</span>({<span class="kw">super</span>.key});
+  <div class="explanation">
+    Sobrescrever <code>toString()</code> permite que o <code>print()</code> exiba o objeto de forma legible.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Produto</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+  <span class="type">double</span> <span class="var">preco</span>;
+
+  <span class="fn">Produto</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">preco</span>);
 
   <span class="op">@override</span>
-  <span class="type">State</span>&lt;<span class="type">Placar</span>&gt; <span class="fn">createState</span>() => _PlacarState();
+  <span class="type">String</span> <span class="fn">toString</span>() =&gt; <span class="str">'Produto($nome, R\$ $preco)'</span>;
 }
 
-<span class="kw">class</span> <span class="type">_PlacarState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Placar</span>&gt; {
-  <span class="kw">int</span> <span class="var">pontos</span> = <span class="num">0</span>;
-
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="type">Text</span>(<span class="str">'$<span class="var">pontos</span>'</span>);
-  }
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">p</span> = <span class="type">Produto</span>(<span class="str">'Café'</span>, <span class="num">12.50</span>);
+  <span class="fn">print</span>(<span class="var">p</span>); <span class="com">// Produto(Café, R$ 12.5)</span>
 }</pre>
-          </div>
-        </div>
-      </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Classe Carro</div><div class="exercise-sub">Propriedades e métodos</div></div>
     </div>
-
-    <div class="exercise-card">
-      <div class="exercise-header">
-        <div class="exercise-icon">02</div>
-        <div>
-          <div class="exercise-title">Botão que incrementa</div>
-          <div class="exercise-sub">setState com ElevatedButton</div>
-        </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe <code>Carro</code> com as propriedades <code>String marca</code>, <code>String modelo</code> e <code>int ano</code>. Adicione um método <code>descricao()</code> que exiba <strong>"[marca] [modelo] ([ano])"</strong>. Crie dois carros e chame o método.</div>
+      <textarea class="exercise-input" id="ex10-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex10-1', 'dp10-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol10-1')">Ver solução</button>
       </div>
-      <div class="exercise-body">
-        <div class="exercise-desc">Expanda o widget <strong>Placar</strong>: adicione um <code>ElevatedButton</code> com texto <strong>"Marcar ponto"</strong> que, ao ser pressionado, incrementa <code>pontos</code> usando <code>setState()</code>. Exiba os pontos com <code>fontSize: 32</code>.</div>
-        <textarea class="exercise-input" id="ex5-2" placeholder="Digite seu código Dart aqui..."></textarea>
-        <div class="exercise-actions">
-          <button class="btn btn-primary" onclick="runInDartPad('ex5-2', 'dp5-2')">▶ Executar</button>
-          <button class="btn btn-ghost" onclick="showSolution('sol5-2')">Ver solução</button>
-        </div>
-        <div class="dartpad-wrap" id="dp5-2"></div>
-        <div class="solution-wrap" id="sol5-2">
-          <div class="code-block" style="margin-top:0">
-            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
-            <pre><span class="kw">class</span> <span class="type">_PlacarState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Placar</span>&gt; {
-  <span class="kw">int</span> <span class="var">pontos</span> = <span class="num">0</span>;
+      <div class="dartpad-wrap" id="dp10-1"></div>
+      <div class="solution-wrap" id="sol10-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Carro</span> {
+  <span class="type">String</span> <span class="var">marca</span>;
+  <span class="type">String</span> <span class="var">modelo</span>;
+  <span class="type">int</span>    <span class="var">ano</span>;
 
-  <span class="op">@override</span>
-  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> context) {
-    <span class="kw">return</span> <span class="type">Column</span>(
-      mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
-      children: [
-        <span class="type">Text</span>(
-          <span class="str">'Pontos: $<span class="var">pontos</span>'</span>,
-          style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">32</span>),
-        ),
-        <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">16</span>),
-        <span class="type">ElevatedButton</span>(
-          onPressed: () => <span class="fn">setState</span>(() => <span class="var">pontos</span>++),
-          child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Marcar ponto'</span>),
-        ),
-      ],
-    );
-  }
+  <span class="fn">Carro</span>(<span class="kw">this</span>.<span class="var">marca</span>, <span class="kw">this</span>.<span class="var">modelo</span>, <span class="kw">this</span>.<span class="var">ano</span>);
+
+  <span class="kw">void</span> <span class="fn">descricao</span>() =&gt;
+      <span class="fn">print</span>(<span class="str">'$marca $modelo ($ano)'</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">c1</span> = <span class="type">Carro</span>(<span class="str">'Toyota'</span>, <span class="str">'Corolla'</span>, <span class="num">2022</span>);
+  <span class="kw">var</span> <span class="var">c2</span> = <span class="type">Carro</span>(<span class="str">'Honda'</span>, <span class="str">'Civic'</span>, <span class="num">2023</span>);
+  <span class="var">c1</span>.<span class="fn">descricao</span>();
+  <span class="var">c2</span>.<span class="fn">descricao</span>();
 }</pre>
-          </div>
         </div>
       </div>
-    </div>
-
-    <div class="lesson-nav">
-      <button class="btn btn-nav" onclick="goTo(4)">← Voltar</button>
-      <button class="btn btn-primary" onclick="completeAndNext(5)">Próximo módulo →</button>
     </div>
   </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(9)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(10)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-11">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 11</div>
+    <div class="lesson-title"><code style="font-size:22px;">Herança</code></div>
+    <div class="lesson-subtitle">Herança permite que uma classe herde propriedades e métodos de outra, evitando repetição e criando hierarquias de tipos — base do Flutter.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">extends e @override</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Animal</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+
+  <span class="fn">Animal</span>(<span class="kw">this</span>.<span class="var">nome</span>);
+
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz algum som.'</span>);
+  }
+}
+
+<span class="kw">class</span> <span class="type">Cachorro</span> <span class="kw">extends</span> <span class="type">Animal</span> {
+  <span class="fn">Cachorro</span>(<span class="type">String</span> <span class="var">nome</span>) : <span class="kw">super</span>(<span class="var">nome</span>);
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz: Au au!'</span>);
+  }
+}
+
+<span class="kw">class</span> <span class="type">Gato</span> <span class="kw">extends</span> <span class="type">Animal</span> {
+  <span class="fn">Gato</span>(<span class="type">String</span> <span class="var">nome</span>) : <span class="kw">super</span>(<span class="var">nome</span>);
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz: Miau!'</span>);
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">animais</span> = [<span class="type">Cachorro</span>(<span class="str">'Rex'</span>), <span class="type">Gato</span>(<span class="str">'Luna'</span>), <span class="type">Cachorro</span>(<span class="str">'Bob'</span>)];
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">a</span> <span class="kw">in</span> <span class="var">animais</span>) {
+    <span class="var">a</span>.<span class="fn">falar</span>(); <span class="com">// polimorfismo: cada um usa seu próprio falar()</span>
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>super</strong> chama o construtor da classe pai. <strong>@override</strong> indica que estamos substituindo um método herdado — sem isso o Dart exibe um aviso.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Classes abstratas</div>
+
+  <div class="explanation">
+    Uma classe <code>abstract</code> não pode ser instanciada diretamente — ela serve apenas como contrato que as subclasses devem implementar.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">abstract class</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="fn">area</span>();      <span class="com">// método abstrato: sem corpo</span>
+  <span class="type">double</span> <span class="fn">perimetro</span>();
+}
+
+<span class="kw">class</span> <span class="type">Retangulo</span> <span class="kw">extends</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="var">l</span>, <span class="var">a</span>;
+  <span class="fn">Retangulo</span>(<span class="kw">this</span>.<span class="var">l</span>, <span class="kw">this</span>.<span class="var">a</span>);
+
+  <span class="op">@override</span> <span class="type">double</span> <span class="fn">area</span>()      =&gt; <span class="var">l</span> * <span class="var">a</span>;
+  <span class="op">@override</span> <span class="type">double</span> <span class="fn">perimetro</span>() =&gt; <span class="num">2</span> * (<span class="var">l</span> + <span class="var">a</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">r</span> = <span class="type">Retangulo</span>(<span class="num">5</span>, <span class="num">3</span>);
+  <span class="fn">print</span>(<span class="var">r</span>.<span class="fn">area</span>());       <span class="com">// 15.0</span>
+  <span class="fn">print</span>(<span class="var">r</span>.<span class="fn">perimetro</span>()); <span class="com">// 16.0</span>
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Conexão com Flutter</strong><br>
+    Todo widget Flutter segue exatamente esse padrão: <code>StatelessWidget</code> é uma classe abstrata que você estende, obrigada a implementar o método <code>build()</code> — que é o próximo passo do curso!
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Hierarquia de veículos</div><div class="exercise-sub">extends e @override</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe base <code>Veiculo</code> com <code>String marca</code> e método <code>mover()</code>. Crie as subclasses <code>Carro</code> e <code>Moto</code>, cada uma sobreescrevendo <code>mover()</code> com uma mensagem diferente.</div>
+      <textarea class="exercise-input" id="ex11-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex11-1', 'dp11-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol11-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp11-1"></div>
+      <div class="solution-wrap" id="sol11-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Veiculo</span> {
+  <span class="type">String</span> <span class="var">marca</span>;
+  <span class="fn">Veiculo</span>(<span class="kw">this</span>.<span class="var">marca</span>);
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca se move.'</span>);
+}
+
+<span class="kw">class</span> <span class="type">Carro</span> <span class="kw">extends</span> <span class="type">Veiculo</span> {
+  <span class="fn">Carro</span>(<span class="type">String</span> <span class="var">marca</span>) : <span class="kw">super</span>(<span class="var">marca</span>);
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca anda sobre 4 rodas.'</span>);
+}
+
+<span class="kw">class</span> <span class="type">Moto</span> <span class="kw">extends</span> <span class="type">Veiculo</span> {
+  <span class="fn">Moto</span>(<span class="type">String</span> <span class="var">marca</span>) : <span class="kw">super</span>(<span class="var">marca</span>);
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca anda sobre 2 rodas.'</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">frota</span> = [<span class="type">Carro</span>(<span class="str">'Toyota'</span>), <span class="type">Moto</span>(<span class="str">'Honda'</span>)];
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">v</span> <span class="kw">in</span> <span class="var">frota</span>) <span class="var">v</span>.<span class="fn">mover</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(10)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(11)">✔ Concluir curso</button>
+  </div>
+</div>
 
 </main>
 

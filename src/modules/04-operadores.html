@@ -1,0 +1,147 @@
+<!-- module: num="4" nav="Operadores" -->
+<div class="lesson" id="lesson-4">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 04</div>
+    <div class="lesson-title"><code style="font-size:22px;">Operadores</code></div>
+    <div class="lesson-subtitle">Operadores são os símbolos que permitem calcular, comparar e combinar valores em Dart.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores aritméticos</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="num">10</span> + <span class="num">3</span>);  <span class="com">// 13  adição</span>
+  <span class="fn">print</span>(<span class="num">10</span> - <span class="num">3</span>);  <span class="com">// 7   subtração</span>
+  <span class="fn">print</span>(<span class="num">10</span> * <span class="num">3</span>);  <span class="com">// 30  multiplicação</span>
+  <span class="fn">print</span>(<span class="num">10</span> / <span class="num">3</span>);  <span class="com">// 3.333... divisão real</span>
+  <span class="fn">print</span>(<span class="num">10</span> ~/ <span class="num">3</span>); <span class="com">// 3   divisão inteira</span>
+  <span class="fn">print</span>(<span class="num">10</span> % <span class="num">3</span>);  <span class="com">// 1   resto da divisão</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>~/</strong> é o operador de divisão inteira do Dart — descarta a parte decimal. <strong>%</strong> retorna o resto.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores de comparação</div>
+
+  <div class="explanation">
+    Operadores de comparação sempre retornam um <code>bool</code> (<code>true</code> ou <code>false</code>).
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="num">5</span> == <span class="num">5</span>);  <span class="com">// true   igual</span>
+  <span class="fn">print</span>(<span class="num">5</span> != <span class="num">3</span>);  <span class="com">// true   diferente</span>
+  <span class="fn">print</span>(<span class="num">5</span> &gt;  <span class="num">3</span>);  <span class="com">// true   maior</span>
+  <span class="fn">print</span>(<span class="num">5</span> &lt;  <span class="num">3</span>);  <span class="com">// false  menor</span>
+  <span class="fn">print</span>(<span class="num">5</span> &gt;= <span class="num">5</span>);  <span class="com">// true   maior ou igual</span>
+  <span class="fn">print</span>(<span class="num">5</span> &lt;= <span class="num">4</span>);  <span class="com">// false  menor ou igual</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores lógicos</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">bool</span> <span class="var">a</span> = <span class="kw">true</span>;
+  <span class="type">bool</span> <span class="var">b</span> = <span class="kw">false</span>;
+
+  <span class="fn">print</span>(<span class="var">a</span> &amp;&amp; <span class="var">b</span>); <span class="com">// false  E (ambos precisam ser true)</span>
+  <span class="fn">print</span>(<span class="var">a</span> || <span class="var">b</span>); <span class="com">// true   OU (basta um ser true)</span>
+  <span class="fn">print</span>(!<span class="var">a</span>);     <span class="com">// false  NÃO (inverte o valor)</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores de atribuição</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">x</span> = <span class="num">10</span>;
+  <span class="var">x</span> += <span class="num">5</span>;  <span class="com">// x = x + 5  → 15</span>
+  <span class="var">x</span> -= <span class="num">3</span>;  <span class="com">// x = x - 3  → 12</span>
+  <span class="var">x</span> *= <span class="num">2</span>;  <span class="com">// x = x * 2  → 24</span>
+  <span class="var">x</span> ~/= <span class="num">4</span>; <span class="com">// x = x ~/ 4 → 6</span>
+  <span class="fn">print</span>(<span class="var">x</span>); <span class="com">// 6</span>
+
+  <span class="type">int</span> <span class="var">n</span> = <span class="num">0</span>;
+  <span class="var">n</span>++;      <span class="com">// incrementa: n = 1</span>
+  <span class="var">n</span>--;      <span class="com">// decrementa: n = 0</span>
+  <span class="fn">print</span>(<span class="var">n</span>);
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Calculadora básica</div><div class="exercise-sub">Usando operadores aritméticos</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dados <code>int a = 17</code> e <code>int b = 5</code>, exiba: a soma, a diferença, o produto, a divisão inteira e o resto.</div>
+      <textarea class="exercise-input" id="ex4-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex4-1', 'dp4-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol4-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp4-1"></div>
+      <div class="solution-wrap" id="sol4-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">a</span> = <span class="num">17</span>;
+  <span class="type">int</span> <span class="var">b</span> = <span class="num">5</span>;
+  <span class="fn">print</span>(<span class="var">a</span> + <span class="var">b</span>);
+  <span class="fn">print</span>(<span class="var">a</span> - <span class="var">b</span>);
+  <span class="fn">print</span>(<span class="var">a</span> * <span class="var">b</span>);
+  <span class="fn">print</span>(<span class="var">a</span> ~/ <span class="var">b</span>);
+  <span class="fn">print</span>(<span class="var">a</span> % <span class="var">b</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Comparações</div><div class="exercise-sub">Testando operadores booleanos</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dados <code>int x = 8</code> e <code>int y = 12</code>, exiba: se x é menor que y, se x é igual a y e se x+5 é maior ou igual a y.</div>
+      <textarea class="exercise-input" id="ex4-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex4-2', 'dp4-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol4-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp4-2"></div>
+      <div class="solution-wrap" id="sol4-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">x</span> = <span class="num">8</span>;
+  <span class="type">int</span> <span class="var">y</span> = <span class="num">12</span>;
+  <span class="fn">print</span>(<span class="var">x</span> &lt; <span class="var">y</span>);
+  <span class="fn">print</span>(<span class="var">x</span> == <span class="var">y</span>);
+  <span class="fn">print</span>(<span class="var">x</span> + <span class="num">5</span> &gt;= <span class="var">y</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(3)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(4)">Próximo módulo →</button>
+  </div>
+</div>

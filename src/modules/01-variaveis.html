@@ -1,0 +1,197 @@
+<!-- module: num="1" nav="Variáveis" -->
+<div class="lesson active" id="lesson-1">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 01</div>
+    <div class="lesson-title">Variáveis e <code style="font-size:22px;">print()</code></div>
+    <div class="lesson-subtitle">O ponto de partida de qualquer programa Dart: exibir dados e guardar informações na memória.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">O ponto de entrada: main()</div>
+
+  <div class="explanation">
+    Todo programa Dart começa pela função <code>main()</code>. É o ponto de entrada — quando você executa o programa, o Dart procura essa função e começa a rodar o código dentro dela.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// seu código vai aqui</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>void</strong> significa que a função não retorna nenhum valor. Todo programa Dart precisa de uma função <code>main()</code> para ser executado.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exibindo dados com print()</div>
+
+  <div class="explanation">
+    A função <code>print()</code> exibe qualquer valor no console. É a forma mais simples de ver o resultado do seu código.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="str">'Olá, Dart!'</span>);
+  <span class="fn">print</span>(<span class="num">42</span>);
+  <span class="fn">print</span>(<span class="num">3.14</span>);
+  <span class="fn">print</span>(<span class="kw">true</span>);
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Saída no console</strong><br>
+    Olá, Dart!<br>42<br>3.14<br>true
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Variáveis</div>
+
+  <div class="explanation">
+    Uma variável guarda um valor na memória. Em Dart você pode usar <code>var</code> (o tipo é inferido automaticamente) ou declarar o tipo de forma explícita.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart — com var</div>
+    </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nome</span>   = <span class="str">'Ana'</span>;  <span class="com">// Dart infere: String</span>
+  <span class="kw">var</span> <span class="var">idade</span>  = <span class="num">25</span>;    <span class="com">// Dart infere: int</span>
+  <span class="kw">var</span> <span class="var">altura</span> = <span class="num">1.68</span>; <span class="com">// Dart infere: double</span>
+  <span class="kw">var</span> <span class="var">ativo</span>  = <span class="kw">true</span>; <span class="com">// Dart infere: bool</span>
+
+  <span class="fn">print</span>(<span class="var">nome</span>);
+  <span class="fn">print</span>(<span class="var">idade</span>);
+  <span class="fn">print</span>(<span class="var">altura</span>);
+  <span class="fn">print</span>(<span class="var">ativo</span>);
+}</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart — tipo explícito</div>
+    </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">cidade</span> = <span class="str">'São Paulo'</span>;
+  <span class="type">int</span>    <span class="var">ano</span>    = <span class="num">2025</span>;
+  <span class="type">double</span> <span class="var">pi</span>     = <span class="num">3.14159</span>;
+  <span class="type">bool</span>   <span class="var">aberto</span> = <span class="kw">false</span>;
+
+  <span class="fn">print</span>(<span class="var">cidade</span>);
+  <span class="fn">print</span>(<span class="var">ano</span>);
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    <strong>Regras para nomes de variáveis</strong><br>
+    Começam com letra ou <code>_</code> · sem espaços · sensíveis a maiúsculas (<code>nome</code> ≠ <code>Nome</code>) · use camelCase: <code>nomeCompleto</code>, <code>idadeMaxima</code>.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div>
+        <div class="exercise-title">Olá, Dart!</div>
+        <div class="exercise-sub">Primeiro programa</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Escreva um programa com <code>main()</code> que exiba <strong>"Olá, Dart!"</strong> no console.</div>
+      <textarea class="exercise-input" id="ex1-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex1-1', 'dp1-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol1-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp1-1"></div>
+      <div class="solution-wrap" id="sol1-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="str">'Olá, Dart!'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div>
+        <div class="exercise-title">Múltiplos prints</div>
+        <div class="exercise-sub">Diferentes tipos de dados</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Escreva um programa que exiba em linhas separadas: seu <strong>nome</strong>, sua <strong>idade</strong> (inteiro) e se você é <strong>estudante</strong> (true/false).</div>
+      <textarea class="exercise-input" id="ex1-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex1-2', 'dp1-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol1-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp1-2"></div>
+      <div class="solution-wrap" id="sol1-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="str">'Ana'</span>);
+  <span class="fn">print</span>(<span class="num">25</span>);
+  <span class="fn">print</span>(<span class="kw">true</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div>
+        <div class="exercise-title">Cartão de visitas</div>
+        <div class="exercise-sub">Variáveis com tipo explícito</div>
+      </div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare com <strong>tipo explícito</strong> as variáveis <code>String nome</code>, <code>int idade</code> e <code>double altura</code>. Depois exiba cada uma com <code>print()</code>.</div>
+      <textarea class="exercise-input" id="ex1-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex1-3', 'dp1-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol1-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp1-3"></div>
+      <div class="solution-wrap" id="sol1-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">nome</span>   = <span class="str">'Ana'</span>;
+  <span class="type">int</span>    <span class="var">idade</span>  = <span class="num">25</span>;
+  <span class="type">double</span> <span class="var">altura</span> = <span class="num">1.68</span>;
+
+  <span class="fn">print</span>(<span class="var">nome</span>);
+  <span class="fn">print</span>(<span class="var">idade</span>);
+  <span class="fn">print</span>(<span class="var">altura</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" style="visibility:hidden">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(1)">Próximo módulo →</button>
+  </div>
+</div>
