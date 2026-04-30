@@ -1,0 +1,138 @@
+<!-- module: num="11" nav="Herança" -->
+<div class="lesson" id="lesson-11">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 11</div>
+    <div class="lesson-title"><code style="font-size:22px;">Herança</code></div>
+    <div class="lesson-subtitle">Herança permite que uma classe herde propriedades e métodos de outra, evitando repetição e criando hierarquias de tipos — base do Flutter.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">extends e @override</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Animal</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+
+  <span class="fn">Animal</span>(<span class="kw">this</span>.<span class="var">nome</span>);
+
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz algum som.'</span>);
+  }
+}
+
+<span class="kw">class</span> <span class="type">Cachorro</span> <span class="kw">extends</span> <span class="type">Animal</span> {
+  <span class="fn">Cachorro</span>(<span class="type">String</span> <span class="var">nome</span>) : <span class="kw">super</span>(<span class="var">nome</span>);
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz: Au au!'</span>);
+  }
+}
+
+<span class="kw">class</span> <span class="type">Gato</span> <span class="kw">extends</span> <span class="type">Animal</span> {
+  <span class="fn">Gato</span>(<span class="type">String</span> <span class="var">nome</span>) : <span class="kw">super</span>(<span class="var">nome</span>);
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">falar</span>() {
+    <span class="fn">print</span>(<span class="str">'$nome faz: Miau!'</span>);
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">animais</span> = [<span class="type">Cachorro</span>(<span class="str">'Rex'</span>), <span class="type">Gato</span>(<span class="str">'Luna'</span>), <span class="type">Cachorro</span>(<span class="str">'Bob'</span>)];
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">a</span> <span class="kw">in</span> <span class="var">animais</span>) {
+    <span class="var">a</span>.<span class="fn">falar</span>(); <span class="com">// polimorfismo: cada um usa seu próprio falar()</span>
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>super</strong> chama o construtor da classe pai. <strong>@override</strong> indica que estamos substituindo um método herdado — sem isso o Dart exibe um aviso.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Classes abstratas</div>
+
+  <div class="explanation">
+    Uma classe <code>abstract</code> não pode ser instanciada diretamente — ela serve apenas como contrato que as subclasses devem implementar.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">abstract class</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="fn">area</span>();      <span class="com">// método abstrato: sem corpo</span>
+  <span class="type">double</span> <span class="fn">perimetro</span>();
+}
+
+<span class="kw">class</span> <span class="type">Retangulo</span> <span class="kw">extends</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="var">l</span>, <span class="var">a</span>;
+  <span class="fn">Retangulo</span>(<span class="kw">this</span>.<span class="var">l</span>, <span class="kw">this</span>.<span class="var">a</span>);
+
+  <span class="op">@override</span> <span class="type">double</span> <span class="fn">area</span>()      =&gt; <span class="var">l</span> * <span class="var">a</span>;
+  <span class="op">@override</span> <span class="type">double</span> <span class="fn">perimetro</span>() =&gt; <span class="num">2</span> * (<span class="var">l</span> + <span class="var">a</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">r</span> = <span class="type">Retangulo</span>(<span class="num">5</span>, <span class="num">3</span>);
+  <span class="fn">print</span>(<span class="var">r</span>.<span class="fn">area</span>());       <span class="com">// 15.0</span>
+  <span class="fn">print</span>(<span class="var">r</span>.<span class="fn">perimetro</span>()); <span class="com">// 16.0</span>
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Conexão com Flutter</strong><br>
+    Todo widget Flutter segue exatamente esse padrão: <code>StatelessWidget</code> é uma classe abstrata que você estende, obrigada a implementar o método <code>build()</code> — que é o próximo passo do curso!
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Hierarquia de veículos</div><div class="exercise-sub">extends e @override</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe base <code>Veiculo</code> com <code>String marca</code> e método <code>mover()</code>. Crie as subclasses <code>Carro</code> e <code>Moto</code>, cada uma sobreescrevendo <code>mover()</code> com uma mensagem diferente.</div>
+      <textarea class="exercise-input" id="ex11-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex11-1', 'dp11-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol11-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp11-1"></div>
+      <div class="solution-wrap" id="sol11-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Veiculo</span> {
+  <span class="type">String</span> <span class="var">marca</span>;
+  <span class="fn">Veiculo</span>(<span class="kw">this</span>.<span class="var">marca</span>);
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca se move.'</span>);
+}
+
+<span class="kw">class</span> <span class="type">Carro</span> <span class="kw">extends</span> <span class="type">Veiculo</span> {
+  <span class="fn">Carro</span>(<span class="type">String</span> <span class="var">marca</span>) : <span class="kw">super</span>(<span class="var">marca</span>);
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca anda sobre 4 rodas.'</span>);
+}
+
+<span class="kw">class</span> <span class="type">Moto</span> <span class="kw">extends</span> <span class="type">Veiculo</span> {
+  <span class="fn">Moto</span>(<span class="type">String</span> <span class="var">marca</span>) : <span class="kw">super</span>(<span class="var">marca</span>);
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">mover</span>() =&gt; <span class="fn">print</span>(<span class="str">'$marca anda sobre 2 rodas.'</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">frota</span> = [<span class="type">Carro</span>(<span class="str">'Toyota'</span>), <span class="type">Moto</span>(<span class="str">'Honda'</span>)];
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">v</span> <span class="kw">in</span> <span class="var">frota</span>) <span class="var">v</span>.<span class="fn">mover</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(10)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(11)">✔ Concluir curso</button>
+  </div>
+</div>
