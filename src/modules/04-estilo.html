@@ -1,0 +1,172 @@
+<!-- module: num="4" nav="Estilo" -->
+  <div class="lesson" id="lesson-4">
+    <div class="lesson-header">
+      <div class="lesson-badge">Módulo 04</div>
+      <div class="lesson-title">Estilo com <code style="font-size:22px;">TextStyle</code> e <code style="font-size:22px;">BoxDecoration</code></div>
+      <div class="lesson-subtitle">Deixe seus widgets bonitos com cores, fontes, bordas e gradientes.</div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-title">TextStyle</div>
+
+    <div class="explanation">
+      O <strong>TextStyle</strong> estiliza um <code>Text</code>: controla fonte, tamanho, peso, cor, espaçamento entre letras e muito mais.
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+        <div class="code-lang">Dart</div>
+      </div>
+      <pre><span class="type">Text</span>(
+  <span class="str">'Flutter é incrível'</span>,
+  style: <span class="type">TextStyle</span>(
+    fontSize: <span class="num">24</span>,
+    fontWeight: <span class="type">FontWeight</span>.bold,
+    color: <span class="type">Colors</span>.deepPurple,
+    letterSpacing: <span class="num">1.5</span>,
+    fontStyle: <span class="type">FontStyle</span>.italic,
+    decoration: <span class="type">TextDecoration</span>.underline,
+  ),
+)</pre>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-title">Colors</div>
+
+    <div class="explanation">
+      O Flutter tem uma paleta completa acessível via <code>Colors</code>. Você também pode usar <code>Color(0xFFRRGGBB)</code> para hex customizado.
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+        <div class="code-lang">Dart</div>
+      </div>
+      <pre><span class="type">Colors</span>.blue              <span class="com">// azul padrão</span>
+<span class="type">Colors</span>.blue[<span class="num">700</span>]          <span class="com">// tonalidade (100–900)</span>
+<span class="type">Colors</span>.transparent
+<span class="type">Color</span>(<span class="num">0xFF42A5F5</span>)         <span class="com">// hex ARGB completo</span>
+<span class="type">Color</span>.<span class="fn">fromRGBO</span>(<span class="num">66</span>, <span class="num">165</span>, <span class="num">245</span>, <span class="num">1.0</span>)  <span class="com">// RGB + opacidade</span></pre>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-title">BoxDecoration</div>
+
+    <div class="explanation">
+      O <strong>BoxDecoration</strong> estiliza um <code>Container</code>: cor, borda, raio dos cantos, gradiente e sombra. Quando usado, substitui a propriedade <code>color</code> direta do Container.
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+        <div class="code-lang">Dart — Card com sombra</div>
+      </div>
+      <pre><span class="type">Container</span>(
+  width: <span class="num">200</span>,
+  height: <span class="num">80</span>,
+  decoration: <span class="type">BoxDecoration</span>(
+    color: <span class="type">Colors</span>.blue,
+    borderRadius: <span class="type">BorderRadius</span>.<span class="fn">circular</span>(<span class="num">16</span>),
+    boxShadow: [
+      <span class="type">BoxShadow</span>(
+        color: <span class="type">Colors</span>.black26,
+        blurRadius: <span class="num">8</span>,
+        offset: <span class="type">Offset</span>(<span class="num">0</span>, <span class="num">4</span>),
+      ),
+    ],
+  ),
+  child: <span class="kw">const</span> <span class="type">Center</span>(child: <span class="type">Text</span>(<span class="str">'Card'</span>)),
+)</pre>
+    </div>
+
+    <div class="code-block">
+      <div class="code-header">
+        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+        <div class="code-lang">Dart — Gradiente</div>
+      </div>
+      <pre><span class="type">Container</span>(
+  decoration: <span class="type">BoxDecoration</span>(
+    gradient: <span class="type">LinearGradient</span>(
+      colors: [<span class="type">Colors</span>.blue, <span class="type">Colors</span>.purple],
+      begin: <span class="type">Alignment</span>.topLeft,
+      end: <span class="type">Alignment</span>.bottomRight,
+    ),
+  ),
+)</pre>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section-title">Exercícios de fixação</div>
+
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div class="exercise-icon">01</div>
+        <div>
+          <div class="exercise-title">Texto estilizado</div>
+          <div class="exercise-sub">Usando TextStyle</div>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-desc">Crie um <code>Text</code> com o conteúdo <strong>"Flutter"</strong> usando <code>TextStyle</code> com <code>fontSize: 32</code>, <code>fontWeight: FontWeight.bold</code> e <code>color: Colors.blue</code>.</div>
+        <textarea class="exercise-input" id="ex4-1" placeholder="Digite seu código Dart aqui..."></textarea>
+        <div class="exercise-actions">
+          <button class="btn btn-ghost" onclick="showSolution('sol4-1')">Ver solução</button>
+        </div>
+        <div class="solution-wrap" id="sol4-1">
+          <div class="code-block" style="margin-top:0">
+            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+            <pre><span class="type">Text</span>(
+  <span class="str">'Flutter'</span>,
+  style: <span class="type">TextStyle</span>(
+    fontSize: <span class="num">32</span>,
+    fontWeight: <span class="type">FontWeight</span>.bold,
+    color: <span class="type">Colors</span>.blue,
+  ),
+)</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exercise-card">
+      <div class="exercise-header">
+        <div class="exercise-icon">02</div>
+        <div>
+          <div class="exercise-title">Card com borda arredondada</div>
+          <div class="exercise-sub">Usando BoxDecoration</div>
+        </div>
+      </div>
+      <div class="exercise-body">
+        <div class="exercise-desc">Crie um <code>Container</code> de <strong>300×100</strong> com <code>BoxDecoration</code> usando <code>color: Colors.indigo</code> e <code>borderRadius: BorderRadius.circular(20)</code>. Coloque um <code>Text</code> <strong>"Meu Card"</strong> em branco centralizado.</div>
+        <textarea class="exercise-input" id="ex4-2" placeholder="Digite seu código Dart aqui..."></textarea>
+        <div class="exercise-actions">
+          <button class="btn btn-ghost" onclick="showSolution('sol4-2')">Ver solução</button>
+        </div>
+        <div class="solution-wrap" id="sol4-2">
+          <div class="code-block" style="margin-top:0">
+            <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+            <pre><span class="type">Container</span>(
+  width: <span class="num">300</span>,
+  height: <span class="num">100</span>,
+  decoration: <span class="type">BoxDecoration</span>(
+    color: <span class="type">Colors</span>.indigo,
+    borderRadius: <span class="type">BorderRadius</span>.<span class="fn">circular</span>(<span class="num">20</span>),
+  ),
+  child: <span class="kw">const</span> <span class="type">Center</span>(
+    child: <span class="type">Text</span>(
+      <span class="str">'Meu Card'</span>,
+      style: <span class="type">TextStyle</span>(color: <span class="type">Colors</span>.white, fontSize: <span class="num">18</span>),
+    ),
+  ),
+)</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn btn-nav" onclick="goTo(3)">← Voltar</button>
+      <button class="btn btn-primary" onclick="completeAndNext(4)">Próximo módulo →</button>
+    </div>
+  </div>
