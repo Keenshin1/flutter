@@ -169,8 +169,8 @@
       <div class="code-lang">Dart — com var</div>
     </div>
     <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="kw">var</span> <span class="var">nome</span>   = <span class="str">'Ana'</span>;  <span class="com">// Dart infere: String</span>
-  <span class="kw">var</span> <span class="var">idade</span>  = <span class="num">25</span>;    <span class="com">// Dart infere: int</span>
+  <span class="kw">var</span> <span class="var">nome</span>   = <span class="str">'Tainá'</span>;  <span class="com">// Dart infere: String</span>
+  <span class="kw">var</span> <span class="var">idade</span>  = <span class="num">28</span>;      <span class="com">// Dart infere: int</span>
   <span class="kw">var</span> <span class="var">altura</span> = <span class="num">1.68</span>; <span class="com">// Dart infere: double</span>
   <span class="kw">var</span> <span class="var">ativo</span>  = <span class="kw">true</span>; <span class="com">// Dart infere: bool</span>
 
@@ -252,8 +252,8 @@
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="fn">print</span>(<span class="str">'Ana'</span>);
-  <span class="fn">print</span>(<span class="num">25</span>);
+  <span class="fn">print</span>(<span class="str">'Tainá'</span>);
+  <span class="fn">print</span>(<span class="num">28</span>);
   <span class="fn">print</span>(<span class="kw">true</span>);
 }</pre>
         </div>
@@ -281,8 +281,8 @@
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="type">String</span> <span class="var">nome</span>   = <span class="str">'Ana'</span>;
-  <span class="type">int</span>    <span class="var">idade</span>  = <span class="num">25</span>;
+  <span class="type">String</span> <span class="var">nome</span>   = <span class="str">'Tainá'</span>;
+  <span class="type">int</span>    <span class="var">idade</span>  = <span class="num">28</span>;
   <span class="type">double</span> <span class="var">altura</span> = <span class="num">1.68</span>;
 
   <span class="fn">print</span>(<span class="var">nome</span>);
@@ -342,7 +342,7 @@
   <div class="code-block">
     <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
     <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="kw">final</span> <span class="var">nome</span> = <span class="str">'Ana'</span>;     <span class="com">// definido em tempo de execução, não muda</span>
+  <span class="kw">final</span> <span class="var">nome</span> = <span class="str">'Tainá'</span>;     <span class="com">// definido em tempo de execução, não muda</span>
   <span class="kw">const</span> <span class="var">pi</span>   = <span class="num">3.14159</span>; <span class="com">// constante em tempo de compilação</span>
 
   <span class="fn">print</span>(<span class="var">nome</span>);
@@ -470,12 +470,12 @@
   <div class="code-block">
     <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
     <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="type">String</span> <span class="var">nome</span>  = <span class="str">'Ana'</span>;
-  <span class="type">int</span>    <span class="var">idade</span> = <span class="num">25</span>;
+  <span class="type">String</span> <span class="var">nome</span>  = <span class="str">'Tainá'</span>;
+  <span class="type">int</span>    <span class="var">idade</span> = <span class="num">28</span>;
 
-  <span class="fn">print</span>(<span class="str">'Olá, $nome!'</span>);                        <span class="com">// Olá, Ana!</span>
-  <span class="fn">print</span>(<span class="str">'Idade: $idade anos'</span>);                 <span class="com">// Idade: 25 anos</span>
-  <span class="fn">print</span>(<span class="str">'Daqui a 5 anos: ${idade + 5} anos'</span>);  <span class="com">// Daqui a 5 anos: 30 anos</span>
+  <span class="fn">print</span>(<span class="str">'Olá, $nome!'</span>);                        <span class="com">// Olá, Tainá!</span>
+  <span class="fn">print</span>(<span class="str">'Idade: $idade anos'</span>);                 <span class="com">// Idade: 28 anos</span>
+  <span class="fn">print</span>(<span class="str">'Daqui a 5 anos: ${idade + 5} anos'</span>);  <span class="com">// Daqui a 5 anos: 33 anos</span>
   <span class="fn">print</span>(<span class="str">'Nome em maiúsculas: ${nome.toUpperCase()}'</span>);
 }</pre>
   </div>
@@ -550,8 +550,8 @@
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="type">String</span> <span class="var">nome</span> = <span class="str">'Ana'</span>;
-  <span class="type">int</span>    <span class="var">ano</span>  = <span class="num">2000</span>;
+  <span class="type">String</span> <span class="var">nome</span> = <span class="str">'Tainá'</span>;
+  <span class="type">int</span>    <span class="var">ano</span>  = <span class="num">1997</span>;
   <span class="fn">print</span>(<span class="str">'$nome nasceu em $ano e tem ${2025 - ano} anos.'</span>);
 }</pre>
         </div>
@@ -753,7 +753,7 @@
   <div class="code-block">
     <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
     <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="type">int</span> <span class="var">idade</span> = <span class="num">20</span>;
+  <span class="type">int</span> <span class="var">idade</span> = <span class="num">28</span>;
 
   <span class="kw">if</span> (<span class="var">idade</span> &gt;= <span class="num">18</span>) {
     <span class="fn">print</span>(<span class="str">'Maior de idade'</span>);
@@ -1082,7 +1082,7 @@
 
 <span class="kw">void</span> <span class="fn">main</span>() {
   <span class="fn">print</span>(<span class="fn">dobro</span>(<span class="num">5</span>));        <span class="com">// 10</span>
-  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="str">'Ana'</span>));  <span class="com">// Olá, Ana!</span>
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="str">'Tainá'</span>));  <span class="com">// Olá, Tainá!</span>
   <span class="fn">print</span>(<span class="fn">ehPar</span>(<span class="num">8</span>));        <span class="com">// true</span>
 }</pre>
   </div>
@@ -1104,8 +1104,8 @@
 }
 
 <span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="fn">print</span>(<span class="fn">apresentar</span>(<span class="var">nome</span>: <span class="str">'Ana'</span>, <span class="var">idade</span>: <span class="num">25</span>));
-  <span class="fn">print</span>(<span class="fn">apresentar</span>(<span class="var">nome</span>: <span class="str">'João'</span>)); <span class="com">// idade usa o padrão 0</span>
+  <span class="fn">print</span>(<span class="fn">apresentar</span>(<span class="var">nome</span>: <span class="str">'Tainá'</span>, <span class="var">idade</span>: <span class="num">28</span>));
+  <span class="fn">print</span>(<span class="fn">apresentar</span>(<span class="var">nome</span>: <span class="str">'Tainá'</span>)); <span class="com">// idade usa o padrão 0</span>
 }</pre>
   </div>
 
@@ -1162,8 +1162,8 @@
 }) =&gt; <span class="str">'Bom $periodo, $nome!'</span>;
 
 <span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Ana'</span>));
-  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'João'</span>, <span class="var">periodo</span>: <span class="str">'tarde'</span>));
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Tainá'</span>));
+  <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Tainá'</span>, <span class="var">periodo</span>: <span class="str">'tarde'</span>));
 }</pre>
         </div>
       </div>
@@ -1189,9 +1189,9 @@
   <div class="code-block">
     <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
     <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">nomes</span> = [<span class="str">'Ana'</span>, <span class="str">'Bruno'</span>, <span class="str">'Carla'</span>];
+  <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">nomes</span> = [<span class="str">'Tainá'</span>, <span class="str">'Bruno'</span>, <span class="str">'Carla'</span>];
 
-  <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">0</span>]);        <span class="com">// Ana   (primeiro elemento)</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">0</span>]);        <span class="com">// Tainá (primeiro elemento)</span>
   <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">2</span>]);        <span class="com">// Carla (terceiro elemento)</span>
   <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">length</span>);   <span class="com">// 3</span>
   <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">first</span>);    <span class="com">// Ana</span>
@@ -1320,15 +1320,15 @@
     <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
     <pre><span class="kw">void</span> <span class="fn">main</span>() {
   <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">int</span>&gt; <span class="var">idades</span> = {
-    <span class="str">'Ana'</span>:   <span class="num">25</span>,
-    <span class="str">'Bruno'</span>: <span class="num">30</span>,
-    <span class="str">'Carla'</span>: <span class="num">22</span>,
+    <span class="str">'Tainá'</span>: <span class="num">28</span>,
+    <span class="str">'Bruno'</span>: <span class="num">28</span>,
+    <span class="str">'Carla'</span>: <span class="num">28</span>,
   };
 
-  <span class="fn">print</span>(<span class="var">idades</span>[<span class="str">'Ana'</span>]);    <span class="com">// 25</span>
+  <span class="fn">print</span>(<span class="var">idades</span>[<span class="str">'Tainá'</span>]);  <span class="com">// 28</span>
   <span class="fn">print</span>(<span class="var">idades</span>.<span class="var">length</span>);   <span class="com">// 3</span>
-  <span class="fn">print</span>(<span class="var">idades</span>.<span class="var">keys</span>);     <span class="com">// (Ana, Bruno, Carla)</span>
-  <span class="fn">print</span>(<span class="var">idades</span>.<span class="var">values</span>);   <span class="com">// (25, 30, 22)</span>
+  <span class="fn">print</span>(<span class="var">idades</span>.<span class="var">keys</span>);     <span class="com">// (Tainá, Bruno, Carla)</span>
+  <span class="fn">print</span>(<span class="var">idades</span>.<span class="var">values</span>);   <span class="com">// (28, 28, 28)</span>
 }</pre>
   </div>
 
@@ -1356,7 +1356,7 @@
   <div class="code-block">
     <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
     <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="kw">var</span> <span class="var">notas</span> = {<span class="str">'Ana'</span>: <span class="num">9.0</span>, <span class="str">'Bruno'</span>: <span class="num">7.5</span>, <span class="str">'Carla'</span>: <span class="num">8.2</span>};
+  <span class="kw">var</span> <span class="var">notas</span> = {<span class="str">'Tainá'</span>: <span class="num">9.0</span>, <span class="str">'Bruno'</span>: <span class="num">7.5</span>, <span class="str">'Carla'</span>: <span class="num">8.2</span>};
 
   <span class="com">// forEach com chave e valor</span>
   <span class="var">notas</span>.<span class="fn">forEach</span>((<span class="var">nome</span>, <span class="var">nota</span>) {
@@ -1391,7 +1391,7 @@
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">void</span> <span class="fn">main</span>() {
   <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; <span class="var">agenda</span> = {
-    <span class="str">'Ana'</span>:   <span class="str">'9999-1111'</span>,
+    <span class="str">'Tainá'</span>: <span class="str">'9999-1111'</span>,
     <span class="str">'Bruno'</span>: <span class="str">'9999-2222'</span>,
     <span class="str">'Carla'</span>: <span class="str">'9999-3333'</span>,
   };
@@ -1411,7 +1411,7 @@
       <div><div class="exercise-title">Relatório de notas</div><div class="exercise-sub">Percorrendo com forEach</div></div>
     </div>
     <div class="exercise-body">
-      <div class="exercise-desc">Dado o mapa <code>{'Alice': 8.5, 'Bob': 6.0, 'Clara': 9.5}</code>, use <code>forEach</code> para exibir cada aluno no formato: <strong>"Alice: 8.5 - Aprovado"</strong> (aprovado se nota &ge; 7).</div>
+      <div class="exercise-desc">Dado o mapa <code>{'Tainá': 8.5, 'Bob': 6.0, 'Clara': 9.5}</code>, use <code>forEach</code> para exibir cada aluno no formato: <strong>"Tainá: 8.5 - Aprovado"</strong> (aprovado se nota &ge; 7).</div>
       <textarea class="exercise-input" id="ex9-2" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
         <button class="btn btn-primary" onclick="runInDartPad('ex9-2', 'dp9-2')">▶ Executar</button>
@@ -1422,7 +1422,7 @@
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="kw">var</span> <span class="var">notas</span> = {<span class="str">'Alice'</span>: <span class="num">8.5</span>, <span class="str">'Bob'</span>: <span class="num">6.0</span>, <span class="str">'Clara'</span>: <span class="num">9.5</span>};
+  <span class="kw">var</span> <span class="var">notas</span> = {<span class="str">'Tainá'</span>: <span class="num">8.5</span>, <span class="str">'Bob'</span>: <span class="num">6.0</span>, <span class="str">'Clara'</span>: <span class="num">9.5</span>};
   <span class="var">notas</span>.<span class="fn">forEach</span>((<span class="var">nome</span>, <span class="var">nota</span>) {
     <span class="kw">var</span> <span class="var">status</span> = <span class="var">nota</span> &gt;= <span class="num">7</span> ? <span class="str">'Aprovado'</span> : <span class="str">'Reprovado'</span>;
     <span class="fn">print</span>(<span class="str">'$nome: $nota - $status'</span>);
@@ -1463,12 +1463,12 @@
 }
 
 <span class="kw">void</span> <span class="fn">main</span>() {
-  <span class="kw">var</span> <span class="var">p1</span> = <span class="type">Pessoa</span>(<span class="str">'Ana'</span>, <span class="num">25</span>);
-  <span class="kw">var</span> <span class="var">p2</span> = <span class="type">Pessoa</span>(<span class="str">'Bruno'</span>, <span class="num">30</span>);
+  <span class="kw">var</span> <span class="var">p1</span> = <span class="type">Pessoa</span>(<span class="str">'Tainá'</span>, <span class="num">28</span>);
+  <span class="kw">var</span> <span class="var">p2</span> = <span class="type">Pessoa</span>(<span class="str">'Bruno'</span>, <span class="num">28</span>);
 
-  <span class="var">p1</span>.<span class="fn">apresentar</span>(); <span class="com">// Olá, sou Ana e tenho 25 anos.</span>
-  <span class="var">p2</span>.<span class="fn">apresentar</span>(); <span class="com">// Olá, sou Bruno e tenho 30 anos.</span>
-  <span class="fn">print</span>(<span class="var">p1</span>.<span class="var">nome</span>);    <span class="com">// Ana</span>
+  <span class="var">p1</span>.<span class="fn">apresentar</span>(); <span class="com">// Olá, sou Tainá e tenho 28 anos.</span>
+  <span class="var">p2</span>.<span class="fn">apresentar</span>(); <span class="com">// Olá, sou Bruno e tenho 28 anos.</span>
+  <span class="fn">print</span>(<span class="var">p1</span>.<span class="var">nome</span>);    <span class="com">// Tainá</span>
 }</pre>
   </div>
 
