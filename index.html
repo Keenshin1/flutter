@@ -15,7 +15,7 @@
       <div class="logo-icon">Fl</div>
       <div>
         <div class="logo-text">Aprenda Flutter</div>
-        <div class="logo-sub">12 módulos · do zero</div>
+        <div class="logo-sub">13 módulos · do zero</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-label">
       <span>Progresso</span>
-      <span id="progress-text">0 / 12</span>
+      <span id="progress-text">0 / 13</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
@@ -103,6 +103,12 @@
       <span class="nav-dot"></span>
       <span class="nav-num">07</span>
       <span>Funções</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(8)" id="nav-8">
+      <span class="nav-dot"></span>
+      <span class="nav-num">08</span>
+      <span>Listas</span>
     </button>
   </div>
 </aside>
@@ -2057,6 +2063,136 @@
   <div class="lesson-nav">
     <button class="btn btn-nav" onclick="goTo(6)">← Voltar</button>
     <button class="btn btn-primary" onclick="completeAndNext(7)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-8">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 08</div>
+    <div class="lesson-title"><code style="font-size:22px;">Listas</code></div>
+    <div class="lesson-subtitle">Uma lista é uma coleção ordenada de valores do mesmo tipo. Em Dart é representada por <code>List&lt;T&gt;</code>.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Criando e acessando listas</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">List</span>&lt;<span class="type">String</span>&gt; <span class="var">nomes</span> = [<span class="str">'Ana'</span>, <span class="str">'Bruno'</span>, <span class="str">'Carla'</span>];
+
+  <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">0</span>]);        <span class="com">// Ana   (primeiro elemento)</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">2</span>]);        <span class="com">// Carla (terceiro elemento)</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">length</span>);   <span class="com">// 3</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">first</span>);    <span class="com">// Ana</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">last</span>);     <span class="com">// Carla</span>
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    O índice começa em <strong>0</strong>. O primeiro elemento é <code>lista[0]</code>, o segundo é <code>lista[1]</code>, e assim por diante.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Modificando listas</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>];
+
+  <span class="var">nums</span>.<span class="fn">add</span>(<span class="num">40</span>);          <span class="com">// adiciona ao final</span>
+  <span class="var">nums</span>.<span class="fn">insert</span>(<span class="num">0</span>, <span class="num">5</span>);    <span class="com">// insere na posição 0</span>
+  <span class="var">nums</span>.<span class="fn">remove</span>(<span class="num">20</span>);       <span class="com">// remove o valor 20</span>
+  <span class="var">nums</span>.<span class="fn">removeAt</span>(<span class="num">0</span>);     <span class="com">// remove pelo índice</span>
+
+  <span class="fn">print</span>(<span class="var">nums</span>); <span class="com">// [10, 30, 40]</span>
+  <span class="fn">print</span>(<span class="var">nums</span>.<span class="fn">contains</span>(<span class="num">30</span>)); <span class="com">// true</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Percorrendo e transformando</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>];
+
+  <span class="com">// forEach: percorre cada item</span>
+  <span class="var">nums</span>.<span class="fn">forEach</span>((<span class="var">n</span>) =&gt; <span class="fn">print</span>(<span class="var">n</span>));
+
+  <span class="com">// map: transforma cada item</span>
+  <span class="kw">var</span> <span class="var">dobros</span> = <span class="var">nums</span>.<span class="fn">map</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> * <span class="num">2</span>).<span class="fn">toList</span>();
+  <span class="fn">print</span>(<span class="var">dobros</span>); <span class="com">// [2, 4, 6, 8, 10]</span>
+
+  <span class="com">// where: filtra itens</span>
+  <span class="kw">var</span> <span class="var">pares</span> = <span class="var">nums</span>.<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>).<span class="fn">toList</span>();
+  <span class="fn">print</span>(<span class="var">pares</span>);  <span class="com">// [2, 4]</span>
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div><div class="exercise-title">Lista de compras</div><div class="exercise-sub">Criando e modificando</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma lista com 3 itens de compras. Adicione mais 2 itens com <code>add()</code>, remova o segundo item e exiba a lista final e seu tamanho.</div>
+      <textarea class="exercise-input" id="ex8-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex8-1', 'dp8-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol8-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp8-1"></div>
+      <div class="solution-wrap" id="sol8-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">compras</span> = [<span class="str">'leite'</span>, <span class="str">'pão'</span>, <span class="str">'ovos'</span>];
+  <span class="var">compras</span>.<span class="fn">add</span>(<span class="str">'manteiga'</span>);
+  <span class="var">compras</span>.<span class="fn">add</span>(<span class="str">'café'</span>);
+  <span class="var">compras</span>.<span class="fn">removeAt</span>(<span class="num">1</span>); <span class="com">// remove 'pão'</span>
+  <span class="fn">print</span>(<span class="var">compras</span>);
+  <span class="fn">print</span>(<span class="var">compras</span>.<span class="var">length</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div><div class="exercise-title">Filtrar maiores</div><div class="exercise-sub">Usando where</div></div>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a lista <code>[4, 17, 3, 22, 8, 15, 1]</code>, use <code>where()</code> para criar uma nova lista apenas com números maiores que 10 e exiba o resultado.</div>
+      <textarea class="exercise-input" id="ex8-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex8-2', 'dp8-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol8-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp8-2"></div>
+      <div class="solution-wrap" id="sol8-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">4</span>, <span class="num">17</span>, <span class="num">3</span>, <span class="num">22</span>, <span class="num">8</span>, <span class="num">15</span>, <span class="num">1</span>];
+  <span class="kw">var</span> <span class="var">maiores</span> = <span class="var">nums</span>.<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> &gt; <span class="num">10</span>).<span class="fn">toList</span>();
+  <span class="fn">print</span>(<span class="var">maiores</span>); <span class="com">// [17, 22, 15]</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(7)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(8)">Próximo módulo →</button>
   </div>
 </div>
 
