@@ -61,7 +61,7 @@ function runInDartPad(codeId, dpId) {
   let iframe = wrap.querySelector('iframe');
   if (!iframe) {
     iframe = document.createElement('iframe');
-    iframe.src = 'https://dartpad.dev/embed-flutter.html?run=false&null_safety=true&split=60&theme=dark';
+    iframe.src = 'https://dartpad.dev/embed-flutter.html?run=false&null_safety=true&split=0&theme=dark';
     wrap.innerHTML = '<div class="dartpad-loading">Carregando DartPad…</div>';
     wrap.appendChild(iframe);
     iframe.addEventListener('load', () => {
