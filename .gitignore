@@ -1,1 +1,3 @@
-index.html
+# Gerado automaticamente — não editar manualmente
+# build.yml reconstrói este arquivo em branches de feature
+# deploy.yml o reconstrói durante o deploy para GitHub Pages
