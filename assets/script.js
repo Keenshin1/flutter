@@ -44,9 +44,12 @@ function _wrapDartCode(code) {
   return "import 'package:flutter/material.dart';\n\nvoid main() => runApp(MaterialApp(home: Scaffold(body: SafeArea(child: Center(child: " + code + ")))));\n";
 }
 
-function _sendToDartPad(iframe, code) {
+function _sendToDartPad(iframe, code, wrap) {
   iframe.contentWindow.postMessage({ sourceCode: code, type: 'sourceCode' }, 'https://dartpad.dev');
-  setTimeout(() => iframe.contentWindow.postMessage({ type: 'run' }, 'https://dartpad.dev'), 500);
+  setTimeout(() => {
+    wrap && wrap.querySelector('.dartpad-loading')?.remove();
+    iframe.contentWindow.postMessage({ type: 'run' }, 'https://dartpad.dev');
+  }, 500);
 }
 
 function runInDartPad(codeId, dpId) {
@@ -63,13 +66,18 @@ function runInDartPad(codeId, dpId) {
     iframe = document.createElement('iframe');
     iframe.src = 'https://dartpad.dev/embed-flutter.html?run=false&null_safety=true&split=0&theme=dark';
     wrap.innerHTML = '<div class="dartpad-loading">Carregando DartPad…</div>';
+    iframe.style.visibility = 'hidden';
     wrap.appendChild(iframe);
     iframe.addEventListener('load', () => {
-      wrap.querySelector('.dartpad-loading')?.remove();
       iframe.dataset.loaded = '1';
-      setTimeout(() => _sendToDartPad(iframe, code), 800);
+      setTimeout(() => {
+        iframe.style.visibility = 'visible';
+        _sendToDartPad(iframe, code, wrap);
+      }, 800);
     }, { once: true });
   } else {
-    _sendToDartPad(iframe, code);
+    wrap.innerHTML = '<div class="dartpad-loading">Executando…</div>';
+    wrap.appendChild(iframe);
+    _sendToDartPad(iframe, code, wrap);
   }
 }
