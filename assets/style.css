@@ -479,6 +479,8 @@
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--bg2);
+    position: relative;
+    height: 430px;
   }
 
   .dartpad-wrap iframe {
@@ -490,8 +492,13 @@
   }
 
   .dartpad-loading {
-    padding: 24px;
-    text-align: center;
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg2);
     color: var(--text3);
     font-size: 13px;
     font-family: var(--mono);
@@ -507,5 +514,6 @@
     .sidebar { width: 100%; height: auto; position: static; }
     .main { padding: 24px 16px; }
     .concept-grid { grid-template-columns: 1fr; }
+    .dartpad-wrap { height: 350px; }
     .dartpad-wrap iframe { height: 448px; }
   }
