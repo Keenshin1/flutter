@@ -35,7 +35,7 @@
   <div class="section-title">final e const</div>
 
   <div class="explanation">
-    Quando um valor não deve mudar após ser definido, use <code>final</code> ou <code>const</code>. Isso deixa o código mais seguro e legible.
+    Quando um valor não deve mudar após ser definido, use <code>final</code> ou <code>const</code>. Isso deixa o código mais seguro e legível.
   </div>
 
   <div class="code-block">
@@ -87,7 +87,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Tipos explícitos</div><div class="exercise-sub">Declarando com o tipo correto</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Tipos explícitos</div>
+        <div class="exercise-sub">Declarando com o tipo correto</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Declare: <code>int pontos = 150</code>, <code>double nota = 8.5</code>, <code>String turma = 'A'</code>, <code>bool aprovado = true</code>. Exiba todas com <code>print()</code>.</div>
@@ -119,7 +123,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Conversão</div><div class="exercise-sub">Transformando tipos</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Conversão</div>
+        <div class="exercise-sub">Transformando tipos</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Converta a String <code>'2024'</code> para <code>int</code>, o double <code>9.7</code> para <code>int</code> (truncando) e o inteiro <code>55</code> para <code>String</code>. Exiba os três resultados.</div>
@@ -140,6 +148,42 @@
   <span class="fn">print</span>(<span class="var">ano</span>);
   <span class="fn">print</span>(<span class="var">t</span>);
   <span class="fn">print</span>(<span class="var">s</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Conversor de temperatura</div>
+        <div class="exercise-sub">Operações com tipos e conversão</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare <code>double fahrenheit = 98.6</code>. Calcule o Celsius com a fórmula <code>(f - 32) * 5 / 9</code> e armazene em <code>double celsius</code>. Exiba ambos os valores. Por fim, exiba também a versão truncada do Celsius convertida para <code>int</code> e depois de volta para <code>String</code> com <code>toString()</code>.</div>
+      <textarea class="exercise-input" id="ex2-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex2-3', 'dp2-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol2-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp2-3"></div>
+      <div class="solution-wrap" id="sol2-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">double</span> <span class="var">fahrenheit</span> = <span class="num">98.6</span>;
+  <span class="type">double</span> <span class="var">celsius</span>    = (<span class="var">fahrenheit</span> - <span class="num">32</span>) * <span class="num">5</span> / <span class="num">9</span>;
+  <span class="type">int</span>    <span class="var">celsiusInt</span> = <span class="var">celsius</span>.<span class="fn">toInt</span>();
+  <span class="type">String</span> <span class="var">celsiusStr</span> = <span class="var">celsiusInt</span>.<span class="fn">toString</span>();
+
+  <span class="fn">print</span>(<span class="str">'Fahrenheit: $fahrenheit'</span>);
+  <span class="fn">print</span>(<span class="str">'Celsius: $celsius'</span>);
+  <span class="fn">print</span>(<span class="str">'Celsius (int): $celsiusInt'</span>);
+  <span class="fn">print</span>(<span class="str">'Celsius (String): $celsiusStr'</span>);
 }</pre>
         </div>
       </div>

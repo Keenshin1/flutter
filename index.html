@@ -208,10 +208,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div>
+      <div style="flex:1">
         <div class="exercise-title">Olá, Dart!</div>
         <div class="exercise-sub">Primeiro programa</div>
       </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Escreva um programa com <code>main()</code> que exiba <strong>"Olá, Dart!"</strong> no console.</div>
@@ -235,10 +236,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div>
+      <div style="flex:1">
         <div class="exercise-title">Múltiplos prints</div>
         <div class="exercise-sub">Diferentes tipos de dados</div>
       </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Escreva um programa que exiba em linhas separadas: seu <strong>nome</strong>, sua <strong>idade</strong> (inteiro) e se você é <strong>estudante</strong> (true/false).</div>
@@ -264,10 +266,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">03</div>
-      <div>
+      <div style="flex:1">
         <div class="exercise-title">Cartão de visitas</div>
         <div class="exercise-sub">Variáveis com tipo explícito</div>
       </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Declare com <strong>tipo explícito</strong> as variáveis <code>String nome</code>, <code>int idade</code> e <code>double altura</code>. Depois exiba cada uma com <code>print()</code>.</div>
@@ -288,6 +291,41 @@
   <span class="fn">print</span>(<span class="var">nome</span>);
   <span class="fn">print</span>(<span class="var">idade</span>);
   <span class="fn">print</span>(<span class="var">altura</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">04</div>
+      <div style="flex:1">
+        <div class="exercise-title">Perfil completo</div>
+        <div class="exercise-sub">var, const e interpolação</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare variáveis com <code>var</code> para nome, cidade, ano de nascimento e altura. Use <code>const</code> para o ano atual (2025). Calcule a idade e exiba uma frase no formato: <strong>"[nome], [cidade], [idade] anos, [altura]m"</strong>.</div>
+      <textarea class="exercise-input" id="ex1-4" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex1-4', 'dp1-4')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol1-4')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp1-4"></div>
+      <div class="solution-wrap" id="sol1-4">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nome</span>    = <span class="str">'Tainá'</span>;
+  <span class="kw">var</span> <span class="var">cidade</span>  = <span class="str">'Curitiba'</span>;
+  <span class="kw">var</span> <span class="var">anoNasc</span> = <span class="num">1997</span>;
+  <span class="kw">var</span> <span class="var">altura</span>  = <span class="num">1.68</span>;
+  <span class="kw">const</span> <span class="var">anoAtual</span> = <span class="num">2025</span>;
+
+  <span class="type">int</span> <span class="var">idade</span> = <span class="var">anoAtual</span> - <span class="var">anoNasc</span>;
+  <span class="fn">print</span>(<span class="str">'$nome, $cidade, $idade anos, ${altura}m'</span>);
 }</pre>
         </div>
       </div>
@@ -336,7 +374,7 @@
   <div class="section-title">final e const</div>
 
   <div class="explanation">
-    Quando um valor não deve mudar após ser definido, use <code>final</code> ou <code>const</code>. Isso deixa o código mais seguro e legible.
+    Quando um valor não deve mudar após ser definido, use <code>final</code> ou <code>const</code>. Isso deixa o código mais seguro e legível.
   </div>
 
   <div class="code-block">
@@ -388,7 +426,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Tipos explícitos</div><div class="exercise-sub">Declarando com o tipo correto</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Tipos explícitos</div>
+        <div class="exercise-sub">Declarando com o tipo correto</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Declare: <code>int pontos = 150</code>, <code>double nota = 8.5</code>, <code>String turma = 'A'</code>, <code>bool aprovado = true</code>. Exiba todas com <code>print()</code>.</div>
@@ -420,7 +462,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Conversão</div><div class="exercise-sub">Transformando tipos</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Conversão</div>
+        <div class="exercise-sub">Transformando tipos</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Converta a String <code>'2024'</code> para <code>int</code>, o double <code>9.7</code> para <code>int</code> (truncando) e o inteiro <code>55</code> para <code>String</code>. Exiba os três resultados.</div>
@@ -441,6 +487,42 @@
   <span class="fn">print</span>(<span class="var">ano</span>);
   <span class="fn">print</span>(<span class="var">t</span>);
   <span class="fn">print</span>(<span class="var">s</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Conversor de temperatura</div>
+        <div class="exercise-sub">Operações com tipos e conversão</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare <code>double fahrenheit = 98.6</code>. Calcule o Celsius com a fórmula <code>(f - 32) * 5 / 9</code> e armazene em <code>double celsius</code>. Exiba ambos os valores. Por fim, exiba também a versão truncada do Celsius convertida para <code>int</code> e depois de volta para <code>String</code> com <code>toString()</code>.</div>
+      <textarea class="exercise-input" id="ex2-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex2-3', 'dp2-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol2-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp2-3"></div>
+      <div class="solution-wrap" id="sol2-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">double</span> <span class="var">fahrenheit</span> = <span class="num">98.6</span>;
+  <span class="type">double</span> <span class="var">celsius</span>    = (<span class="var">fahrenheit</span> - <span class="num">32</span>) * <span class="num">5</span> / <span class="num">9</span>;
+  <span class="type">int</span>    <span class="var">celsiusInt</span> = <span class="var">celsius</span>.<span class="fn">toInt</span>();
+  <span class="type">String</span> <span class="var">celsiusStr</span> = <span class="var">celsiusInt</span>.<span class="fn">toString</span>();
+
+  <span class="fn">print</span>(<span class="str">'Fahrenheit: $fahrenheit'</span>);
+  <span class="fn">print</span>(<span class="str">'Celsius: $celsius'</span>);
+  <span class="fn">print</span>(<span class="str">'Celsius (int): $celsiusInt'</span>);
+  <span class="fn">print</span>(<span class="str">'Celsius (String): $celsiusStr'</span>);
 }</pre>
         </div>
       </div>
@@ -536,7 +618,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Interpolação</div><div class="exercise-sub">Montando frases com variáveis</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Interpolação</div>
+        <div class="exercise-sub">Montando frases com variáveis</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Declare <code>String nome</code> e <code>int ano</code>. Use interpolação para exibir: <strong>"[nome] nasceu em [ano] e tem [idade calculada] anos."</strong> (use 2025 como ano atual).</div>
@@ -562,7 +648,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Métodos de String</div><div class="exercise-sub">Transformando texto</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Métodos de String</div>
+        <div class="exercise-sub">Transformando texto</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dada a string <code>'  flutter é top!  '</code>, exiba: o texto sem espaços nas bordas, em UPPERCASE e o número de caracteres (após o trim).</div>
@@ -581,6 +671,40 @@
   <span class="fn">print</span>(<span class="var">limpa</span>);
   <span class="fn">print</span>(<span class="var">limpa</span>.<span class="fn">toUpperCase</span>());
   <span class="fn">print</span>(<span class="var">limpa</span>.<span class="var">length</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Processando e-mail</div>
+        <div class="exercise-sub">Métodos encadeados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a string <code>'  Usuario.Teste@Email.COM  '</code>, use métodos encadeados para: remover espaços (<code>trim</code>), converter para minúsculas. Com o resultado: exiba o e-mail limpo, se ele contém <code>'@'</code>, se termina com <code>'.com'</code> e a parte antes do <code>'@'</code> usando <code>split('@')[0]</code>.</div>
+      <textarea class="exercise-input" id="ex3-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex3-3', 'dp3-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol3-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp3-3"></div>
+      <div class="solution-wrap" id="sol3-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">email</span> = <span class="str">'  Usuario.Teste@Email.COM  '</span>;
+  <span class="type">String</span> <span class="var">limpo</span> = <span class="var">email</span>.<span class="fn">trim</span>().<span class="fn">toLowerCase</span>();
+
+  <span class="fn">print</span>(<span class="var">limpo</span>);                          <span class="com">// usuario.teste@email.com</span>
+  <span class="fn">print</span>(<span class="var">limpo</span>.<span class="fn">contains</span>(<span class="str">'@'</span>));          <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">limpo</span>.<span class="fn">endsWith</span>(<span class="str">'.com'</span>));       <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">limpo</span>.<span class="fn">split</span>(<span class="str">'@'</span>)[<span class="num">0</span>]);           <span class="com">// usuario.teste</span>
 }</pre>
         </div>
       </div>
@@ -679,7 +803,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Calculadora básica</div><div class="exercise-sub">Usando operadores aritméticos</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Calculadora básica</div>
+        <div class="exercise-sub">Usando operadores aritméticos</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dados <code>int a = 17</code> e <code>int b = 5</code>, exiba: a soma, a diferença, o produto, a divisão inteira e o resto.</div>
@@ -709,7 +837,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Comparações</div><div class="exercise-sub">Testando operadores booleanos</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Comparações</div>
+        <div class="exercise-sub">Testando operadores booleanos</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dados <code>int x = 8</code> e <code>int y = 12</code>, exiba: se x é menor que y, se x é igual a y e se x+5 é maior ou igual a y.</div>
@@ -728,6 +860,95 @@
   <span class="fn">print</span>(<span class="var">x</span> &lt; <span class="var">y</span>);
   <span class="fn">print</span>(<span class="var">x</span> == <span class="var">y</span>);
   <span class="fn">print</span>(<span class="var">x</span> + <span class="num">5</span> &gt;= <span class="var">y</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Calculadora de IMC</div>
+        <div class="exercise-sub">Combinando operadores aritméticos e lógicos</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dados <code>double peso = 70.0</code> e <code>double altura = 1.75</code>, calcule o IMC (<code>peso / (altura * altura)</code>). Exiba o IMC. Use operadores lógicos para exibir a classificação: abaixo de 18.5 → "Abaixo do peso", entre 18.5 e 25 → "Peso normal", entre 25 e 30 → "Sobrepeso", acima → "Obesidade".</div>
+      <textarea class="exercise-input" id="ex4-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex4-3', 'dp4-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol4-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp4-3"></div>
+      <div class="solution-wrap" id="sol4-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">double</span> <span class="var">peso</span>   = <span class="num">70.0</span>;
+  <span class="type">double</span> <span class="var">altura</span> = <span class="num">1.75</span>;
+  <span class="type">double</span> <span class="var">imc</span>    = <span class="var">peso</span> / (<span class="var">altura</span> * <span class="var">altura</span>);
+
+  <span class="fn">print</span>(<span class="str">'IMC: $imc'</span>);
+
+  <span class="type">String</span> <span class="var">classificacao</span>;
+  <span class="kw">if</span> (<span class="var">imc</span> &lt; <span class="num">18.5</span>) {
+    <span class="var">classificacao</span> = <span class="str">'Abaixo do peso'</span>;
+  } <span class="kw">else if</span> (<span class="var">imc</span> &lt; <span class="num">25</span>) {
+    <span class="var">classificacao</span> = <span class="str">'Peso normal'</span>;
+  } <span class="kw">else if</span> (<span class="var">imc</span> &lt; <span class="num">30</span>) {
+    <span class="var">classificacao</span> = <span class="str">'Sobrepeso'</span>;
+  } <span class="kw">else</span> {
+    <span class="var">classificacao</span> = <span class="str">'Obesidade'</span>;
+  }
+  <span class="fn">print</span>(<span class="var">classificacao</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Revisão — Fase 1 (Módulos 01 a 04)</div>
+
+  <div class="info-box green">
+    <strong>Exercício integrador</strong><br>
+    Combine variáveis, tipos, strings e operadores num único programa.
+  </div>
+
+  <div class="exercise-card review">
+    <div class="exercise-header">
+      <div class="exercise-icon">R</div>
+      <div style="flex:1">
+        <div class="exercise-title">Mini currículo</div>
+        <div class="exercise-sub">Variáveis · Tipos · Strings · Operadores</div>
+      </div>
+      <span class="tag blue">Revisão</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare variáveis para: <code>String nome</code>, <code>int idade</code>, <code>double altura</code> e <code>bool estudandoFlutter</code>. Use <code>const</code> para o ano atual. Calcule o ano de nascimento. Converta a altura para <code>String</code> com <code>toString()</code>. Exiba tudo numa frase interpolada: <strong>"[nome], nascido em [ano], [altura]m, Flutter: [bool]"</strong>.</div>
+      <textarea class="exercise-input" id="exR1-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exR1-1', 'dpR1-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solR1-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpR1-1"></div>
+      <div class="solution-wrap" id="solR1-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">nome</span>             = <span class="str">'Tainá'</span>;
+  <span class="type">int</span>    <span class="var">idade</span>            = <span class="num">28</span>;
+  <span class="type">double</span> <span class="var">altura</span>           = <span class="num">1.68</span>;
+  <span class="type">bool</span>   <span class="var">estudandoFlutter</span> = <span class="kw">true</span>;
+  <span class="kw">const</span>  <span class="var">anoAtual</span>         = <span class="num">2025</span>;
+
+  <span class="type">int</span>    <span class="var">anoNasc</span>   = <span class="var">anoAtual</span> - <span class="var">idade</span>;
+  <span class="type">String</span> <span class="var">alturaStr</span> = <span class="var">altura</span>.<span class="fn">toString</span>();
+
+  <span class="fn">print</span>(<span class="str">'$nome, nascida em $anoNasc, ${alturaStr}m, Flutter: $estudandoFlutter'</span>);
 }</pre>
         </div>
       </div>
@@ -834,7 +1055,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Classificador de notas</div><div class="exercise-sub">if / else if / else</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Classificador de notas</div>
+        <div class="exercise-sub">if / else if / else</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dada uma variável <code>double nota</code>, classifique: &ge;9 → "A", &ge;7 → "B", &ge;5 → "C", abaixo → "D".</div>
@@ -867,7 +1092,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Dia da semana</div><div class="exercise-sub">Usando switch</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Dia da semana</div>
+        <div class="exercise-sub">Usando switch</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Use <code>switch</code> para exibir o nome do dia da semana dado um <code>int dia</code> de 1 a 7. Para valores fora desse intervalo, exiba "Inválido".</div>
@@ -892,6 +1121,45 @@
     <span class="kw">case</span> <span class="num">7</span>: <span class="fn">print</span>(<span class="str">'Domingo'</span>);
     <span class="kw">default</span>: <span class="fn">print</span>(<span class="str">'Inválido'</span>);
   }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Classificador de temperatura</div>
+        <div class="exercise-sub">if/else + ternário combinados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dado <code>int temp = 22</code>, use <code>if/else if/else</code> para classificar: abaixo de 10 → "Frio", entre 10 e 24 → "Agradável", 25 ou mais → "Quente". Em seguida, use o <strong>operador ternário</strong> para exibir se você precisa de agasalho (quando temp &lt; 15).</div>
+      <textarea class="exercise-input" id="ex5-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex5-3', 'dp5-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol5-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp5-3"></div>
+      <div class="solution-wrap" id="sol5-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">temp</span> = <span class="num">22</span>;
+
+  <span class="kw">if</span> (<span class="var">temp</span> &lt; <span class="num">10</span>) {
+    <span class="fn">print</span>(<span class="str">'Frio'</span>);
+  } <span class="kw">else if</span> (<span class="var">temp</span> &lt;= <span class="num">24</span>) {
+    <span class="fn">print</span>(<span class="str">'Agradável'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Quente'</span>);
+  }
+
+  <span class="type">String</span> <span class="var">agasalho</span> = <span class="var">temp</span> &lt; <span class="num">15</span> ? <span class="str">'Leve agasalho!'</span> : <span class="str">'Sem agasalho.'</span>;
+  <span class="fn">print</span>(<span class="var">agasalho</span>);
 }</pre>
         </div>
       </div>
@@ -985,7 +1253,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Tabuada</div><div class="exercise-sub">Loop for com cálculo</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Tabuada</div>
+        <div class="exercise-sub">Loop for com cálculo</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Use um <code>for</code> para exibir a tabuada do 7 (de 7×1 até 7×10), no formato <strong>"7 x 1 = 7"</strong>.</div>
@@ -1011,7 +1283,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Só os ímpares</div><div class="exercise-sub">for com continue</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Só os ímpares</div>
+        <div class="exercise-sub">for com continue</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Use um <code>for</code> de 1 a 20 e exiba apenas os números <strong>ímpares</strong> usando <code>continue</code> para pular os pares.</div>
@@ -1029,6 +1305,95 @@
     <span class="kw">if</span> (<span class="var">i</span> % <span class="num">2</span> == <span class="num">0</span>) <span class="kw">continue</span>;
     <span class="fn">print</span>(<span class="var">i</span>);
   }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">FizzBuzz</div>
+        <div class="exercise-sub">Loops + condicionais combinados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Clássico de programação: percorra os números de 1 a 30 com um <code>for</code>. Para múltiplos de 3 exiba <strong>"Fizz"</strong>, para múltiplos de 5 exiba <strong>"Buzz"</strong>, para múltiplos de ambos exiba <strong>"FizzBuzz"</strong>, e para os demais exiba o próprio número. Dica: teste o múltiplo de 15 primeiro.</div>
+      <textarea class="exercise-input" id="ex6-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex6-3', 'dp6-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol6-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp6-3"></div>
+      <div class="solution-wrap" id="sol6-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">for</span> (<span class="type">int</span> <span class="var">i</span> = <span class="num">1</span>; <span class="var">i</span> &lt;= <span class="num">30</span>; <span class="var">i</span>++) {
+    <span class="kw">if</span> (<span class="var">i</span> % <span class="num">15</span> == <span class="num">0</span>) {
+      <span class="fn">print</span>(<span class="str">'FizzBuzz'</span>);
+    } <span class="kw">else if</span> (<span class="var">i</span> % <span class="num">3</span> == <span class="num">0</span>) {
+      <span class="fn">print</span>(<span class="str">'Fizz'</span>);
+    } <span class="kw">else if</span> (<span class="var">i</span> % <span class="num">5</span> == <span class="num">0</span>) {
+      <span class="fn">print</span>(<span class="str">'Buzz'</span>);
+    } <span class="kw">else</span> {
+      <span class="fn">print</span>(<span class="var">i</span>);
+    }
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Revisão — Fase 2 (Módulos 05 e 06)</div>
+
+  <div class="info-box green">
+    <strong>Exercício integrador</strong><br>
+    Combine condicionais e loops para resolver um problema mais completo.
+  </div>
+
+  <div class="exercise-card review">
+    <div class="exercise-header">
+      <div class="exercise-icon">R</div>
+      <div style="flex:1">
+        <div class="exercise-title">Validador de senhas</div>
+        <div class="exercise-sub">Condicionais · Loops · Contadores</div>
+      </div>
+      <span class="tag blue">Revisão</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a lista <code>['abc', '12345678', 'Ab!3x9z', 'ok', 'segura123']</code>, percorra com <code>for-in</code>. Para cada senha, use <code>if/else</code> para classificar: comprimento &ge; 8 → "Válida", comprimento &ge; 4 → "Fraca", abaixo → "Inválida". Exiba cada senha com sua classificação e, ao final, exiba quantas são válidas.</div>
+      <textarea class="exercise-input" id="exR2-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exR2-1', 'dpR2-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solR2-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpR2-1"></div>
+      <div class="solution-wrap" id="solR2-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">senhas</span> = [<span class="str">'abc'</span>, <span class="str">'12345678'</span>, <span class="str">'Ab!3x9z'</span>, <span class="str">'ok'</span>, <span class="str">'segura123'</span>];
+  <span class="type">int</span> <span class="var">validas</span> = <span class="num">0</span>;
+
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">senha</span> <span class="kw">in</span> <span class="var">senhas</span>) {
+    <span class="type">String</span> <span class="var">status</span>;
+    <span class="kw">if</span> (<span class="var">senha</span>.<span class="var">length</span> &gt;= <span class="num">8</span>) {
+      <span class="var">status</span> = <span class="str">'Válida'</span>;
+      <span class="var">validas</span>++;
+    } <span class="kw">else if</span> (<span class="var">senha</span>.<span class="var">length</span> &gt;= <span class="num">4</span>) {
+      <span class="var">status</span> = <span class="str">'Fraca'</span>;
+    } <span class="kw">else</span> {
+      <span class="var">status</span> = <span class="str">'Inválida'</span>;
+    }
+    <span class="fn">print</span>(<span class="str">'$senha: $status'</span>);
+  }
+  <span class="fn">print</span>(<span class="str">'Válidas: $validas'</span>);
 }</pre>
         </div>
       </div>
@@ -1115,7 +1480,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Calcular área</div><div class="exercise-sub">Função com retorno</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Calcular área</div>
+        <div class="exercise-sub">Função com retorno</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma função <code>double areaRetangulo(double largura, double altura)</code> que retorne a área. Chame-a com alguns valores e exiba o resultado.</div>
@@ -1143,7 +1512,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Saudação personalizada</div><div class="exercise-sub">Parâmetros nomeados</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Saudação personalizada</div>
+        <div class="exercise-sub">Parâmetros nomeados</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma função <code>saudar</code> com parâmetros nomeados <code>required String nome</code> e <code>String periodo = 'dia'</code>. Retorne <strong>"Bom [periodo], [nome]!"</strong>.</div>
@@ -1164,6 +1537,43 @@
 <span class="kw">void</span> <span class="fn">main</span>() {
   <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Tainá'</span>));
   <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Tainá'</span>, <span class="var">periodo</span>: <span class="str">'tarde'</span>));
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Calculadora com funções arrow</div>
+        <div class="exercise-sub">Arrow functions + divisão segura</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie 4 funções arrow: <code>somar</code>, <code>subtrair</code>, <code>multiplicar</code> e <code>dividir</code>, todas recebendo dois <code>double</code>. A função <code>dividir</code> deve retornar <code>0</code> quando o divisor for <code>0</code> — use o operador ternário. Chame cada uma e exiba os resultados, incluindo uma divisão por zero.</div>
+      <textarea class="exercise-input" id="ex7-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-3', 'dp7-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp7-3"></div>
+      <div class="solution-wrap" id="sol7-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">double</span> <span class="fn">somar</span>(<span class="type">double</span> <span class="var">a</span>, <span class="type">double</span> <span class="var">b</span>)        =&gt; <span class="var">a</span> + <span class="var">b</span>;
+<span class="type">double</span> <span class="fn">subtrair</span>(<span class="type">double</span> <span class="var">a</span>, <span class="type">double</span> <span class="var">b</span>)     =&gt; <span class="var">a</span> - <span class="var">b</span>;
+<span class="type">double</span> <span class="fn">multiplicar</span>(<span class="type">double</span> <span class="var">a</span>, <span class="type">double</span> <span class="var">b</span>)  =&gt; <span class="var">a</span> * <span class="var">b</span>;
+<span class="type">double</span> <span class="fn">dividir</span>(<span class="type">double</span> <span class="var">a</span>, <span class="type">double</span> <span class="var">b</span>)       =&gt; <span class="var">b</span> == <span class="num">0</span> ? <span class="num">0</span> : <span class="var">a</span> / <span class="var">b</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">somar</span>(<span class="num">10</span>, <span class="num">3</span>));        <span class="com">// 13.0</span>
+  <span class="fn">print</span>(<span class="fn">subtrair</span>(<span class="num">10</span>, <span class="num">3</span>));     <span class="com">// 7.0</span>
+  <span class="fn">print</span>(<span class="fn">multiplicar</span>(<span class="num">10</span>, <span class="num">3</span>));  <span class="com">// 30.0</span>
+  <span class="fn">print</span>(<span class="fn">dividir</span>(<span class="num">10</span>, <span class="num">3</span>));       <span class="com">// 3.333...</span>
+  <span class="fn">print</span>(<span class="fn">dividir</span>(<span class="num">5</span>, <span class="num">0</span>));        <span class="com">// 0.0</span>
 }</pre>
         </div>
       </div>
@@ -1194,7 +1604,7 @@
   <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">0</span>]);        <span class="com">// Tainá (primeiro elemento)</span>
   <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">2</span>]);        <span class="com">// Carla (terceiro elemento)</span>
   <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">length</span>);   <span class="com">// 3</span>
-  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">first</span>);    <span class="com">// Ana</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">first</span>);    <span class="com">// Tainá</span>
   <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">last</span>);     <span class="com">// Carla</span>
 }</pre>
   </div>
@@ -1248,7 +1658,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Lista de compras</div><div class="exercise-sub">Criando e modificando</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Lista de compras</div>
+        <div class="exercise-sub">Criando e modificando</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma lista com 3 itens de compras. Adicione mais 2 itens com <code>add()</code>, remova o segundo item e exiba a lista final e seu tamanho.</div>
@@ -1277,7 +1691,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Filtrar maiores</div><div class="exercise-sub">Usando where</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Filtrar maiores</div>
+        <div class="exercise-sub">Usando where</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dada a lista <code>[4, 17, 3, 22, 8, 15, 1]</code>, use <code>where()</code> para criar uma nova lista apenas com números maiores que 10 e exiba o resultado.</div>
@@ -1294,6 +1712,45 @@
   <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">4</span>, <span class="num">17</span>, <span class="num">3</span>, <span class="num">22</span>, <span class="num">8</span>, <span class="num">15</span>, <span class="num">1</span>];
   <span class="kw">var</span> <span class="var">maiores</span> = <span class="var">nums</span>.<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> &gt; <span class="num">10</span>).<span class="fn">toList</span>();
   <span class="fn">print</span>(<span class="var">maiores</span>); <span class="com">// [17, 22, 15]</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Transformação encadeada</div>
+        <div class="exercise-sub">where + map + soma</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a lista <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>, em uma única cadeia de operações: filtre apenas os números <strong>pares</strong> com <code>where()</code>, depois dobre cada valor com <code>map()</code>. Exiba a lista resultante. Por fim, percorra com <code>for-in</code> e calcule a soma de todos os valores.</div>
+      <textarea class="exercise-input" id="ex8-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex8-3', 'dp8-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol8-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp8-3"></div>
+      <div class="solution-wrap" id="sol8-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>, <span class="num">7</span>, <span class="num">8</span>, <span class="num">9</span>, <span class="num">10</span>];
+
+  <span class="kw">var</span> <span class="var">resultado</span> = <span class="var">nums</span>
+      .<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>)
+      .<span class="fn">map</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> * <span class="num">2</span>)
+      .<span class="fn">toList</span>();
+
+  <span class="fn">print</span>(<span class="var">resultado</span>); <span class="com">// [4, 8, 12, 16, 20]</span>
+
+  <span class="type">int</span> <span class="var">soma</span> = <span class="num">0</span>;
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">n</span> <span class="kw">in</span> <span class="var">resultado</span>) <span class="var">soma</span> += <span class="var">n</span>;
+  <span class="fn">print</span>(<span class="str">'Soma: $soma'</span>); <span class="com">// Soma: 60</span>
 }</pre>
         </div>
       </div>
@@ -1376,7 +1833,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Agenda telefônica</div><div class="exercise-sub">Criando e consultando</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Agenda telefônica</div>
+        <div class="exercise-sub">Criando e consultando</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie um <code>Map&lt;String, String&gt;</code> com nomes e telefones de 3 contatos. Adicione um 4º contato, remova um existente e exiba todos os nomes e o tamanho final.</div>
@@ -1408,7 +1869,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Relatório de notas</div><div class="exercise-sub">Percorrendo com forEach</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Relatório de notas</div>
+        <div class="exercise-sub">Percorrendo com forEach</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dado o mapa <code>{'Tainá': 8.5, 'Bob': 6.0, 'Clara': 9.5}</code>, use <code>forEach</code> para exibir cada aluno no formato: <strong>"Tainá: 8.5 - Aprovado"</strong> (aprovado se nota &ge; 7).</div>
@@ -1427,6 +1892,99 @@
     <span class="kw">var</span> <span class="var">status</span> = <span class="var">nota</span> &gt;= <span class="num">7</span> ? <span class="str">'Aprovado'</span> : <span class="str">'Reprovado'</span>;
     <span class="fn">print</span>(<span class="str">'$nome: $nota - $status'</span>);
   });
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Inventário de loja</div>
+        <div class="exercise-sub">Map com operações avançadas</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um <code>Map&lt;String, int&gt;</code> representando um estoque (produto → quantidade) com pelo menos 5 itens. Percorra com <code>forEach</code> e exiba apenas os produtos com estoque <strong>abaixo de 5</strong> como "Estoque crítico". Por fim, use um <code>for-in</code> em <code>.values</code> para calcular e exibir o total de itens em estoque.</div>
+      <textarea class="exercise-input" id="ex9-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex9-3', 'dp9-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol9-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp9-3"></div>
+      <div class="solution-wrap" id="sol9-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">estoque</span> = {
+    <span class="str">'Café'</span>:      <span class="num">3</span>,
+    <span class="str">'Leite'</span>:     <span class="num">12</span>,
+    <span class="str">'Pão'</span>:       <span class="num">2</span>,
+    <span class="str">'Manteiga'</span>:  <span class="num">8</span>,
+    <span class="str">'Ovos'</span>:      <span class="num">1</span>,
+  };
+
+  <span class="var">estoque</span>.<span class="fn">forEach</span>((<span class="var">produto</span>, <span class="var">qtd</span>) {
+    <span class="kw">if</span> (<span class="var">qtd</span> &lt; <span class="num">5</span>) <span class="fn">print</span>(<span class="str">'$produto: Estoque crítico ($qtd)'</span>);
+  });
+
+  <span class="type">int</span> <span class="var">total</span> = <span class="num">0</span>;
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">qtd</span> <span class="kw">in</span> <span class="var">estoque</span>.<span class="var">values</span>) <span class="var">total</span> += <span class="var">qtd</span>;
+  <span class="fn">print</span>(<span class="str">'Total em estoque: $total'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Revisão — Fase 3 (Módulos 07 a 09)</div>
+
+  <div class="info-box green">
+    <strong>Exercício integrador</strong><br>
+    Combine funções, listas e mapas num único programa.
+  </div>
+
+  <div class="exercise-card review">
+    <div class="exercise-header">
+      <div class="exercise-icon">R</div>
+      <div style="flex:1">
+        <div class="exercise-title">Gerenciador de alunos</div>
+        <div class="exercise-sub">Funções · Listas · Mapas</div>
+      </div>
+      <span class="tag blue">Revisão</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>String status(double nota)</code> que retorne <strong>"Aprovado"</strong> (&ge;7), <strong>"Recuperação"</strong> (&ge;5) ou <strong>"Reprovado"</strong>. Dado o mapa <code>{'Tainá': 8.5, 'Bob': 4.0, 'Clara': 6.5, 'Diego': 9.0}</code>, percorra-o e exiba o nome + o resultado de <code>status(nota)</code> para cada aluno. Por fim, use <code>where()</code> nas chaves para criar e exibir uma lista apenas com os aprovados.</div>
+      <textarea class="exercise-input" id="exR3-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exR3-1', 'dpR3-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solR3-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpR3-1"></div>
+      <div class="solution-wrap" id="solR3-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">String</span> <span class="fn">status</span>(<span class="type">double</span> <span class="var">nota</span>) {
+  <span class="kw">if</span> (<span class="var">nota</span> &gt;= <span class="num">7</span>) <span class="kw">return</span> <span class="str">'Aprovado'</span>;
+  <span class="kw">if</span> (<span class="var">nota</span> &gt;= <span class="num">5</span>) <span class="kw">return</span> <span class="str">'Recuperação'</span>;
+  <span class="kw">return</span> <span class="str">'Reprovado'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">turma</span> = {<span class="str">'Tainá'</span>: <span class="num">8.5</span>, <span class="str">'Bob'</span>: <span class="num">4.0</span>, <span class="str">'Clara'</span>: <span class="num">6.5</span>, <span class="str">'Diego'</span>: <span class="num">9.0</span>};
+
+  <span class="var">turma</span>.<span class="fn">forEach</span>((<span class="var">nome</span>, <span class="var">nota</span>) {
+    <span class="fn">print</span>(<span class="str">'$nome: ${status(nota)}'</span>);
+  });
+
+  <span class="kw">var</span> <span class="var">aprovados</span> = <span class="var">turma</span>.<span class="var">keys</span>
+      .<span class="fn">where</span>((<span class="var">nome</span>) =&gt; <span class="var">turma</span>[<span class="var">nome</span>]! &gt;= <span class="num">7</span>)
+      .<span class="fn">toList</span>();
+  <span class="fn">print</span>(<span class="str">'Aprovados: $aprovados'</span>);
 }</pre>
         </div>
       </div>
@@ -1511,7 +2069,7 @@
   <div class="section-title">toString()</div>
 
   <div class="explanation">
-    Sobrescrever <code>toString()</code> permite que o <code>print()</code> exiba o objeto de forma legible.
+    Sobrescrever <code>toString()</code> permite que o <code>print()</code> exiba o objeto de forma legível.
   </div>
 
   <div class="code-block">
@@ -1538,7 +2096,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Classe Carro</div><div class="exercise-sub">Propriedades e métodos</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Classe Carro</div>
+        <div class="exercise-sub">Propriedades e métodos</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma classe <code>Carro</code> com as propriedades <code>String marca</code>, <code>String modelo</code> e <code>int ano</code>. Adicione um método <code>descricao()</code> que exiba <strong>"[marca] [modelo] ([ano])"</strong>. Crie dois carros e chame o método.</div>
@@ -1567,6 +2129,103 @@
   <span class="kw">var</span> <span class="var">c2</span> = <span class="type">Carro</span>(<span class="str">'Honda'</span>, <span class="str">'Civic'</span>, <span class="num">2023</span>);
   <span class="var">c1</span>.<span class="fn">descricao</span>();
   <span class="var">c2</span>.<span class="fn">descricao</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Produto com toString()</div>
+        <div class="exercise-sub">toString() + lista de objetos</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe <code>Produto</code> com <code>String nome</code>, <code>double preco</code> e <code>int estoque</code>. Sobrescreva <code>toString()</code> para retornar <strong>"[nome] — R$ [preco] (estoque: [estoque])"</strong>. Crie uma <code>List&lt;Produto&gt;</code> com 3 itens e exiba-os usando <code>forEach(print)</code>.</div>
+      <textarea class="exercise-input" id="ex10-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex10-2', 'dp10-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol10-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp10-2"></div>
+      <div class="solution-wrap" id="sol10-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Produto</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+  <span class="type">double</span> <span class="var">preco</span>;
+  <span class="type">int</span>    <span class="var">estoque</span>;
+
+  <span class="fn">Produto</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">preco</span>, <span class="kw">this</span>.<span class="var">estoque</span>);
+
+  <span class="op">@override</span>
+  <span class="type">String</span> <span class="fn">toString</span>() =&gt;
+      <span class="str">'$nome — R\$ $preco (estoque: $estoque)'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">produtos</span> = [
+    <span class="type">Produto</span>(<span class="str">'Café'</span>,      <span class="num">12.50</span>, <span class="num">3</span>),
+    <span class="type">Produto</span>(<span class="str">'Leite'</span>,     <span class="num">5.90</span>,  <span class="num">15</span>),
+    <span class="type">Produto</span>(<span class="str">'Manteiga'</span>,  <span class="num">18.00</span>, <span class="num">0</span>),
+  ];
+  <span class="var">produtos</span>.<span class="fn">forEach</span>(<span class="fn">print</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Conta bancária</div>
+        <div class="exercise-sub">Classe com lógica de negócio</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe <code>ContaBancaria</code> com <code>String titular</code> e <code>double saldo</code>. Implemente os métodos: <code>depositar(double v)</code> (soma ao saldo), <code>sacar(double v)</code> (subtrai do saldo, mas exibe <strong>"Saldo insuficiente"</strong> se o saldo for insuficiente) e sobrescreva <code>toString()</code>. Simule depósitos, saques válidos e um saque inválido.</div>
+      <textarea class="exercise-input" id="ex10-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex10-3', 'dp10-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol10-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp10-3"></div>
+      <div class="solution-wrap" id="sol10-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">ContaBancaria</span> {
+  <span class="type">String</span> <span class="var">titular</span>;
+  <span class="type">double</span> <span class="var">saldo</span>;
+
+  <span class="fn">ContaBancaria</span>(<span class="kw">this</span>.<span class="var">titular</span>, <span class="kw">this</span>.<span class="var">saldo</span>);
+
+  <span class="kw">void</span> <span class="fn">depositar</span>(<span class="type">double</span> <span class="var">v</span>) =&gt; <span class="var">saldo</span> += <span class="var">v</span>;
+
+  <span class="kw">void</span> <span class="fn">sacar</span>(<span class="type">double</span> <span class="var">v</span>) {
+    <span class="kw">if</span> (<span class="var">v</span> &gt; <span class="var">saldo</span>) {
+      <span class="fn">print</span>(<span class="str">'Saldo insuficiente'</span>);
+    } <span class="kw">else</span> {
+      <span class="var">saldo</span> -= <span class="var">v</span>;
+    }
+  }
+
+  <span class="op">@override</span>
+  <span class="type">String</span> <span class="fn">toString</span>() =&gt; <span class="str">'Conta de $titular: R\$ $saldo'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">conta</span> = <span class="type">ContaBancaria</span>(<span class="str">'Tainá'</span>, <span class="num">1000.0</span>);
+  <span class="var">conta</span>.<span class="fn">depositar</span>(<span class="num">500</span>);
+  <span class="var">conta</span>.<span class="fn">sacar</span>(<span class="num">200</span>);
+  <span class="var">conta</span>.<span class="fn">sacar</span>(<span class="num">2000</span>); <span class="com">// Saldo insuficiente</span>
+  <span class="fn">print</span>(<span class="var">conta</span>);       <span class="com">// Conta de Tainá: R$ 1300.0</span>
 }</pre>
         </div>
       </div>
@@ -1671,7 +2330,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Hierarquia de veículos</div><div class="exercise-sub">extends e @override</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Hierarquia de veículos</div>
+        <div class="exercise-sub">extends e @override</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma classe base <code>Veiculo</code> com <code>String marca</code> e método <code>mover()</code>. Crie as subclasses <code>Carro</code> e <code>Moto</code>, cada uma sobreescrevendo <code>mover()</code> com uma mensagem diferente.</div>
@@ -1705,6 +2368,184 @@
 <span class="kw">void</span> <span class="fn">main</span>() {
   <span class="kw">var</span> <span class="var">frota</span> = [<span class="type">Carro</span>(<span class="str">'Toyota'</span>), <span class="type">Moto</span>(<span class="str">'Honda'</span>)];
   <span class="kw">for</span> (<span class="kw">var</span> <span class="var">v</span> <span class="kw">in</span> <span class="var">frota</span>) <span class="var">v</span>.<span class="fn">mover</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Formas geométricas</div>
+        <div class="exercise-sub">Classe abstrata com múltiplas implementações</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe <code>abstract Forma</code> com os métodos abstratos <code>double area()</code> e <code>String nome()</code>. Implemente <code>Circulo(double raio)</code> (área = 3.14159 × raio²) e <code>Retangulo(double largura, double altura)</code>. Crie uma <code>List&lt;Forma&gt;</code> com 3 formas mistas e exiba o nome e área de cada uma.</div>
+      <textarea class="exercise-input" id="ex11-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex11-2', 'dp11-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol11-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp11-2"></div>
+      <div class="solution-wrap" id="sol11-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">abstract class</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="fn">area</span>();
+  <span class="type">String</span> <span class="fn">nome</span>();
+}
+
+<span class="kw">class</span> <span class="type">Circulo</span> <span class="kw">extends</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="var">raio</span>;
+  <span class="fn">Circulo</span>(<span class="kw">this</span>.<span class="var">raio</span>);
+  <span class="op">@override</span> <span class="type">double</span> <span class="fn">area</span>() =&gt; <span class="num">3.14159</span> * <span class="var">raio</span> * <span class="var">raio</span>;
+  <span class="op">@override</span> <span class="type">String</span> <span class="fn">nome</span>() =&gt; <span class="str">'Círculo'</span>;
+}
+
+<span class="kw">class</span> <span class="type">Retangulo</span> <span class="kw">extends</span> <span class="type">Forma</span> {
+  <span class="type">double</span> <span class="var">largura</span>, <span class="var">altura</span>;
+  <span class="fn">Retangulo</span>(<span class="kw">this</span>.<span class="var">largura</span>, <span class="kw">this</span>.<span class="var">altura</span>);
+  <span class="op">@override</span> <span class="type">double</span> <span class="fn">area</span>() =&gt; <span class="var">largura</span> * <span class="var">altura</span>;
+  <span class="op">@override</span> <span class="type">String</span> <span class="fn">nome</span>() =&gt; <span class="str">'Retângulo'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">List</span>&lt;<span class="type">Forma</span>&gt; <span class="var">formas</span> = [
+    <span class="type">Circulo</span>(<span class="num">5</span>),
+    <span class="type">Retangulo</span>(<span class="num">4</span>, <span class="num">6</span>),
+    <span class="type">Circulo</span>(<span class="num">3</span>),
+  ];
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">f</span> <span class="kw">in</span> <span class="var">formas</span>) {
+    <span class="fn">print</span>(<span class="str">'${f.nome()}: área = ${f.area()}'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Simulando widgets Flutter</div>
+        <div class="exercise-sub">Hierarquia abstrata inspirada no Flutter</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Simule a arquitetura do Flutter: crie <code>abstract class Widget</code> com o método abstrato <code>String build()</code>. Implemente <code>Text(String texto)</code> e <code>Button(String rotulo, String acao)</code>. Crie uma classe <code>Column</code> que recebe <code>List&lt;Widget&gt; filhos</code> e implementa <code>build()</code> chamando <code>build()</code> de cada filho, separados por quebra de linha. Demonstre criando uma tela com título e dois botões.</div>
+      <textarea class="exercise-input" id="ex11-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex11-3', 'dp11-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol11-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp11-3"></div>
+      <div class="solution-wrap" id="sol11-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">abstract class</span> <span class="type">Widget</span> {
+  <span class="type">String</span> <span class="fn">build</span>();
+}
+
+<span class="kw">class</span> <span class="type">Text</span> <span class="kw">extends</span> <span class="type">Widget</span> {
+  <span class="type">String</span> <span class="var">texto</span>;
+  <span class="fn">Text</span>(<span class="kw">this</span>.<span class="var">texto</span>);
+  <span class="op">@override</span>
+  <span class="type">String</span> <span class="fn">build</span>() =&gt; <span class="str">'Text("$texto")'</span>;
+}
+
+<span class="kw">class</span> <span class="type">Button</span> <span class="kw">extends</span> <span class="type">Widget</span> {
+  <span class="type">String</span> <span class="var">rotulo</span>, <span class="var">acao</span>;
+  <span class="fn">Button</span>(<span class="kw">this</span>.<span class="var">rotulo</span>, <span class="kw">this</span>.<span class="var">acao</span>);
+  <span class="op">@override</span>
+  <span class="type">String</span> <span class="fn">build</span>() =&gt; <span class="str">'Button("$rotulo" → $acao)'</span>;
+}
+
+<span class="kw">class</span> <span class="type">Column</span> <span class="kw">extends</span> <span class="type">Widget</span> {
+  <span class="type">List</span>&lt;<span class="type">Widget</span>&gt; <span class="var">filhos</span>;
+  <span class="fn">Column</span>(<span class="kw">this</span>.<span class="var">filhos</span>);
+  <span class="op">@override</span>
+  <span class="type">String</span> <span class="fn">build</span>() =&gt; <span class="var">filhos</span>.<span class="fn">map</span>((<span class="var">w</span>) =&gt; <span class="str">'  ${w.build()}'</span>).<span class="fn">join</span>(<span class="str">'\n'</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">tela</span> = <span class="type">Column</span>([
+    <span class="type">Text</span>(<span class="str">'Bem-vindo ao Flutter!'</span>),
+    <span class="type">Button</span>(<span class="str">'Entrar'</span>,    <span class="str">'login()'</span>),
+    <span class="type">Button</span>(<span class="str">'Cadastrar'</span>, <span class="str">'register()'</span>),
+  ]);
+  <span class="fn">print</span>(<span class="var">tela</span>.<span class="fn">build</span>());
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Revisão — Fase 4 (Módulos 10 e 11)</div>
+
+  <div class="info-box green">
+    <strong>Exercício integrador</strong><br>
+    Combine classes, herança e coleções num programa completo.
+  </div>
+
+  <div class="exercise-card review">
+    <div class="exercise-header">
+      <div class="exercise-icon">R</div>
+      <div style="flex:1">
+        <div class="exercise-title">Sistema de funcionários</div>
+        <div class="exercise-sub">Classes · Herança · Listas · Polimorfismo</div>
+      </div>
+      <span class="tag blue">Revisão</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe base <code>Funcionario</code> com <code>String nome</code>, <code>double salarioBase</code> e o método <code>double calcularSalario()</code> que retorna o salário base. Crie <code>Gerente(double bonus)</code> e <code>Vendedor(int vendas, double comissaoPorVenda)</code>, ambos sobrescrevendo <code>calcularSalario()</code>. Guarde-os em <code>List&lt;Funcionario&gt;</code>, percorra e exiba o nome e salário total de cada um.</div>
+      <textarea class="exercise-input" id="exR4-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exR4-1', 'dpR4-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solR4-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpR4-1"></div>
+      <div class="solution-wrap" id="solR4-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Funcionario</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+  <span class="type">double</span> <span class="var">salarioBase</span>;
+  <span class="fn">Funcionario</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">salarioBase</span>);
+  <span class="type">double</span> <span class="fn">calcularSalario</span>() =&gt; <span class="var">salarioBase</span>;
+}
+
+<span class="kw">class</span> <span class="type">Gerente</span> <span class="kw">extends</span> <span class="type">Funcionario</span> {
+  <span class="type">double</span> <span class="var">bonus</span>;
+  <span class="fn">Gerente</span>(<span class="type">String</span> <span class="var">nome</span>, <span class="type">double</span> <span class="var">base</span>, <span class="kw">this</span>.<span class="var">bonus</span>) : <span class="kw">super</span>(<span class="var">nome</span>, <span class="var">base</span>);
+  <span class="op">@override</span>
+  <span class="type">double</span> <span class="fn">calcularSalario</span>() =&gt; <span class="var">salarioBase</span> + <span class="var">bonus</span>;
+}
+
+<span class="kw">class</span> <span class="type">Vendedor</span> <span class="kw">extends</span> <span class="type">Funcionario</span> {
+  <span class="type">int</span>    <span class="var">vendas</span>;
+  <span class="type">double</span> <span class="var">comissaoPorVenda</span>;
+  <span class="fn">Vendedor</span>(<span class="type">String</span> <span class="var">nome</span>, <span class="type">double</span> <span class="var">base</span>, <span class="kw">this</span>.<span class="var">vendas</span>, <span class="kw">this</span>.<span class="var">comissaoPorVenda</span>)
+      : <span class="kw">super</span>(<span class="var">nome</span>, <span class="var">base</span>);
+  <span class="op">@override</span>
+  <span class="type">double</span> <span class="fn">calcularSalario</span>() =&gt; <span class="var">salarioBase</span> + (<span class="var">vendas</span> * <span class="var">comissaoPorVenda</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">List</span>&lt;<span class="type">Funcionario</span>&gt; <span class="var">equipe</span> = [
+    <span class="type">Gerente</span>(<span class="str">'Tainá'</span>,  <span class="num">5000</span>, <span class="num">1500</span>),
+    <span class="type">Vendedor</span>(<span class="str">'Bruno'</span>, <span class="num">2000</span>, <span class="num">10</span>, <span class="num">150</span>),
+    <span class="type">Vendedor</span>(<span class="str">'Carla'</span>, <span class="num">2000</span>, <span class="num">7</span>,  <span class="num">150</span>),
+  ];
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">f</span> <span class="kw">in</span> <span class="var">equipe</span>) {
+    <span class="fn">print</span>(<span class="str">'${f.nome}: R\$ ${f.calcularSalario()}'</span>);
+  }
 }</pre>
         </div>
       </div>

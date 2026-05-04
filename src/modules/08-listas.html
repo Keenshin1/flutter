@@ -17,7 +17,7 @@
   <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">0</span>]);        <span class="com">// Tainá (primeiro elemento)</span>
   <span class="fn">print</span>(<span class="var">nomes</span>[<span class="num">2</span>]);        <span class="com">// Carla (terceiro elemento)</span>
   <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">length</span>);   <span class="com">// 3</span>
-  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">first</span>);    <span class="com">// Ana</span>
+  <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">first</span>);    <span class="com">// Tainá</span>
   <span class="fn">print</span>(<span class="var">nomes</span>.<span class="var">last</span>);     <span class="com">// Carla</span>
 }</pre>
   </div>
@@ -71,7 +71,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Lista de compras</div><div class="exercise-sub">Criando e modificando</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Lista de compras</div>
+        <div class="exercise-sub">Criando e modificando</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma lista com 3 itens de compras. Adicione mais 2 itens com <code>add()</code>, remova o segundo item e exiba a lista final e seu tamanho.</div>
@@ -100,7 +104,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Filtrar maiores</div><div class="exercise-sub">Usando where</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Filtrar maiores</div>
+        <div class="exercise-sub">Usando where</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dada a lista <code>[4, 17, 3, 22, 8, 15, 1]</code>, use <code>where()</code> para criar uma nova lista apenas com números maiores que 10 e exiba o resultado.</div>
@@ -117,6 +125,45 @@
   <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">4</span>, <span class="num">17</span>, <span class="num">3</span>, <span class="num">22</span>, <span class="num">8</span>, <span class="num">15</span>, <span class="num">1</span>];
   <span class="kw">var</span> <span class="var">maiores</span> = <span class="var">nums</span>.<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> &gt; <span class="num">10</span>).<span class="fn">toList</span>();
   <span class="fn">print</span>(<span class="var">maiores</span>); <span class="com">// [17, 22, 15]</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Transformação encadeada</div>
+        <div class="exercise-sub">where + map + soma</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a lista <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>, em uma única cadeia de operações: filtre apenas os números <strong>pares</strong> com <code>where()</code>, depois dobre cada valor com <code>map()</code>. Exiba a lista resultante. Por fim, percorra com <code>for-in</code> e calcule a soma de todos os valores.</div>
+      <textarea class="exercise-input" id="ex8-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex8-3', 'dp8-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol8-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp8-3"></div>
+      <div class="solution-wrap" id="sol8-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nums</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>, <span class="num">7</span>, <span class="num">8</span>, <span class="num">9</span>, <span class="num">10</span>];
+
+  <span class="kw">var</span> <span class="var">resultado</span> = <span class="var">nums</span>
+      .<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>)
+      .<span class="fn">map</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> * <span class="num">2</span>)
+      .<span class="fn">toList</span>();
+
+  <span class="fn">print</span>(<span class="var">resultado</span>); <span class="com">// [4, 8, 12, 16, 20]</span>
+
+  <span class="type">int</span> <span class="var">soma</span> = <span class="num">0</span>;
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">n</span> <span class="kw">in</span> <span class="var">resultado</span>) <span class="var">soma</span> += <span class="var">n</span>;
+  <span class="fn">print</span>(<span class="str">'Soma: $soma'</span>); <span class="com">// Soma: 60</span>
 }</pre>
         </div>
       </div>

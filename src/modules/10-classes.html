@@ -71,7 +71,7 @@
   <div class="section-title">toString()</div>
 
   <div class="explanation">
-    Sobrescrever <code>toString()</code> permite que o <code>print()</code> exiba o objeto de forma legible.
+    Sobrescrever <code>toString()</code> permite que o <code>print()</code> exiba o objeto de forma legível.
   </div>
 
   <div class="code-block">
@@ -98,7 +98,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Classe Carro</div><div class="exercise-sub">Propriedades e métodos</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Classe Carro</div>
+        <div class="exercise-sub">Propriedades e métodos</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma classe <code>Carro</code> com as propriedades <code>String marca</code>, <code>String modelo</code> e <code>int ano</code>. Adicione um método <code>descricao()</code> que exiba <strong>"[marca] [modelo] ([ano])"</strong>. Crie dois carros e chame o método.</div>
@@ -127,6 +131,103 @@
   <span class="kw">var</span> <span class="var">c2</span> = <span class="type">Carro</span>(<span class="str">'Honda'</span>, <span class="str">'Civic'</span>, <span class="num">2023</span>);
   <span class="var">c1</span>.<span class="fn">descricao</span>();
   <span class="var">c2</span>.<span class="fn">descricao</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Produto com toString()</div>
+        <div class="exercise-sub">toString() + lista de objetos</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe <code>Produto</code> com <code>String nome</code>, <code>double preco</code> e <code>int estoque</code>. Sobrescreva <code>toString()</code> para retornar <strong>"[nome] — R$ [preco] (estoque: [estoque])"</strong>. Crie uma <code>List&lt;Produto&gt;</code> com 3 itens e exiba-os usando <code>forEach(print)</code>.</div>
+      <textarea class="exercise-input" id="ex10-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex10-2', 'dp10-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol10-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp10-2"></div>
+      <div class="solution-wrap" id="sol10-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Produto</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+  <span class="type">double</span> <span class="var">preco</span>;
+  <span class="type">int</span>    <span class="var">estoque</span>;
+
+  <span class="fn">Produto</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">preco</span>, <span class="kw">this</span>.<span class="var">estoque</span>);
+
+  <span class="op">@override</span>
+  <span class="type">String</span> <span class="fn">toString</span>() =&gt;
+      <span class="str">'$nome — R\$ $preco (estoque: $estoque)'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">produtos</span> = [
+    <span class="type">Produto</span>(<span class="str">'Café'</span>,      <span class="num">12.50</span>, <span class="num">3</span>),
+    <span class="type">Produto</span>(<span class="str">'Leite'</span>,     <span class="num">5.90</span>,  <span class="num">15</span>),
+    <span class="type">Produto</span>(<span class="str">'Manteiga'</span>,  <span class="num">18.00</span>, <span class="num">0</span>),
+  ];
+  <span class="var">produtos</span>.<span class="fn">forEach</span>(<span class="fn">print</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Conta bancária</div>
+        <div class="exercise-sub">Classe com lógica de negócio</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma classe <code>ContaBancaria</code> com <code>String titular</code> e <code>double saldo</code>. Implemente os métodos: <code>depositar(double v)</code> (soma ao saldo), <code>sacar(double v)</code> (subtrai do saldo, mas exibe <strong>"Saldo insuficiente"</strong> se o saldo for insuficiente) e sobrescreva <code>toString()</code>. Simule depósitos, saques válidos e um saque inválido.</div>
+      <textarea class="exercise-input" id="ex10-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex10-3', 'dp10-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol10-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp10-3"></div>
+      <div class="solution-wrap" id="sol10-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">ContaBancaria</span> {
+  <span class="type">String</span> <span class="var">titular</span>;
+  <span class="type">double</span> <span class="var">saldo</span>;
+
+  <span class="fn">ContaBancaria</span>(<span class="kw">this</span>.<span class="var">titular</span>, <span class="kw">this</span>.<span class="var">saldo</span>);
+
+  <span class="kw">void</span> <span class="fn">depositar</span>(<span class="type">double</span> <span class="var">v</span>) =&gt; <span class="var">saldo</span> += <span class="var">v</span>;
+
+  <span class="kw">void</span> <span class="fn">sacar</span>(<span class="type">double</span> <span class="var">v</span>) {
+    <span class="kw">if</span> (<span class="var">v</span> &gt; <span class="var">saldo</span>) {
+      <span class="fn">print</span>(<span class="str">'Saldo insuficiente'</span>);
+    } <span class="kw">else</span> {
+      <span class="var">saldo</span> -= <span class="var">v</span>;
+    }
+  }
+
+  <span class="op">@override</span>
+  <span class="type">String</span> <span class="fn">toString</span>() =&gt; <span class="str">'Conta de $titular: R\$ $saldo'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">conta</span> = <span class="type">ContaBancaria</span>(<span class="str">'Tainá'</span>, <span class="num">1000.0</span>);
+  <span class="var">conta</span>.<span class="fn">depositar</span>(<span class="num">500</span>);
+  <span class="var">conta</span>.<span class="fn">sacar</span>(<span class="num">200</span>);
+  <span class="var">conta</span>.<span class="fn">sacar</span>(<span class="num">2000</span>); <span class="com">// Saldo insuficiente</span>
+  <span class="fn">print</span>(<span class="var">conta</span>);       <span class="com">// Conta de Tainá: R$ 1300.0</span>
 }</pre>
         </div>
       </div>

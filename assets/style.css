@@ -471,6 +471,11 @@
   .tag.green { background: rgba(62, 207, 130, 0.1); color: var(--green); border-color: rgba(62, 207, 130, 0.3); }
   .tag.yellow { background: rgba(245, 200, 66, 0.1); color: var(--yellow); border-color: rgba(245, 200, 66, 0.3); }
   .tag.blue { background: rgba(74, 158, 255, 0.1); color: var(--blue); border-color: rgba(74, 158, 255, 0.3); }
+  .tag.orange { background: rgba(255, 140, 66, 0.1); color: var(--orange); border-color: rgba(255, 140, 66, 0.3); }
+
+  .exercise-card.desafio { border-left: 3px solid var(--orange); }
+  .exercise-card.medio   { border-left: 3px solid var(--yellow); }
+  .exercise-card.review  { border-left: 3px solid var(--blue); }
 
   .dartpad-wrap {
     display: none;

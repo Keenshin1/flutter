@@ -80,7 +80,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Tabuada</div><div class="exercise-sub">Loop for com cálculo</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Tabuada</div>
+        <div class="exercise-sub">Loop for com cálculo</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Use um <code>for</code> para exibir a tabuada do 7 (de 7×1 até 7×10), no formato <strong>"7 x 1 = 7"</strong>.</div>
@@ -106,7 +110,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Só os ímpares</div><div class="exercise-sub">for com continue</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Só os ímpares</div>
+        <div class="exercise-sub">for com continue</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Use um <code>for</code> de 1 a 20 e exiba apenas os números <strong>ímpares</strong> usando <code>continue</code> para pular os pares.</div>
@@ -124,6 +132,95 @@
     <span class="kw">if</span> (<span class="var">i</span> % <span class="num">2</span> == <span class="num">0</span>) <span class="kw">continue</span>;
     <span class="fn">print</span>(<span class="var">i</span>);
   }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">FizzBuzz</div>
+        <div class="exercise-sub">Loops + condicionais combinados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Clássico de programação: percorra os números de 1 a 30 com um <code>for</code>. Para múltiplos de 3 exiba <strong>"Fizz"</strong>, para múltiplos de 5 exiba <strong>"Buzz"</strong>, para múltiplos de ambos exiba <strong>"FizzBuzz"</strong>, e para os demais exiba o próprio número. Dica: teste o múltiplo de 15 primeiro.</div>
+      <textarea class="exercise-input" id="ex6-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex6-3', 'dp6-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol6-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp6-3"></div>
+      <div class="solution-wrap" id="sol6-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">for</span> (<span class="type">int</span> <span class="var">i</span> = <span class="num">1</span>; <span class="var">i</span> &lt;= <span class="num">30</span>; <span class="var">i</span>++) {
+    <span class="kw">if</span> (<span class="var">i</span> % <span class="num">15</span> == <span class="num">0</span>) {
+      <span class="fn">print</span>(<span class="str">'FizzBuzz'</span>);
+    } <span class="kw">else if</span> (<span class="var">i</span> % <span class="num">3</span> == <span class="num">0</span>) {
+      <span class="fn">print</span>(<span class="str">'Fizz'</span>);
+    } <span class="kw">else if</span> (<span class="var">i</span> % <span class="num">5</span> == <span class="num">0</span>) {
+      <span class="fn">print</span>(<span class="str">'Buzz'</span>);
+    } <span class="kw">else</span> {
+      <span class="fn">print</span>(<span class="var">i</span>);
+    }
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Revisão — Fase 2 (Módulos 05 e 06)</div>
+
+  <div class="info-box green">
+    <strong>Exercício integrador</strong><br>
+    Combine condicionais e loops para resolver um problema mais completo.
+  </div>
+
+  <div class="exercise-card review">
+    <div class="exercise-header">
+      <div class="exercise-icon">R</div>
+      <div style="flex:1">
+        <div class="exercise-title">Validador de senhas</div>
+        <div class="exercise-sub">Condicionais · Loops · Contadores</div>
+      </div>
+      <span class="tag blue">Revisão</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a lista <code>['abc', '12345678', 'Ab!3x9z', 'ok', 'segura123']</code>, percorra com <code>for-in</code>. Para cada senha, use <code>if/else</code> para classificar: comprimento &ge; 8 → "Válida", comprimento &ge; 4 → "Fraca", abaixo → "Inválida". Exiba cada senha com sua classificação e, ao final, exiba quantas são válidas.</div>
+      <textarea class="exercise-input" id="exR2-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exR2-1', 'dpR2-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solR2-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpR2-1"></div>
+      <div class="solution-wrap" id="solR2-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">senhas</span> = [<span class="str">'abc'</span>, <span class="str">'12345678'</span>, <span class="str">'Ab!3x9z'</span>, <span class="str">'ok'</span>, <span class="str">'segura123'</span>];
+  <span class="type">int</span> <span class="var">validas</span> = <span class="num">0</span>;
+
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">senha</span> <span class="kw">in</span> <span class="var">senhas</span>) {
+    <span class="type">String</span> <span class="var">status</span>;
+    <span class="kw">if</span> (<span class="var">senha</span>.<span class="var">length</span> &gt;= <span class="num">8</span>) {
+      <span class="var">status</span> = <span class="str">'Válida'</span>;
+      <span class="var">validas</span>++;
+    } <span class="kw">else if</span> (<span class="var">senha</span>.<span class="var">length</span> &gt;= <span class="num">4</span>) {
+      <span class="var">status</span> = <span class="str">'Fraca'</span>;
+    } <span class="kw">else</span> {
+      <span class="var">status</span> = <span class="str">'Inválida'</span>;
+    }
+    <span class="fn">print</span>(<span class="str">'$senha: $status'</span>);
+  }
+  <span class="fn">print</span>(<span class="str">'Válidas: $validas'</span>);
 }</pre>
         </div>
       </div>

@@ -93,7 +93,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Classificador de notas</div><div class="exercise-sub">if / else if / else</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Classificador de notas</div>
+        <div class="exercise-sub">if / else if / else</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dada uma variável <code>double nota</code>, classifique: &ge;9 → "A", &ge;7 → "B", &ge;5 → "C", abaixo → "D".</div>
@@ -126,7 +130,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Dia da semana</div><div class="exercise-sub">Usando switch</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Dia da semana</div>
+        <div class="exercise-sub">Usando switch</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Use <code>switch</code> para exibir o nome do dia da semana dado um <code>int dia</code> de 1 a 7. Para valores fora desse intervalo, exiba "Inválido".</div>
@@ -151,6 +159,45 @@
     <span class="kw">case</span> <span class="num">7</span>: <span class="fn">print</span>(<span class="str">'Domingo'</span>);
     <span class="kw">default</span>: <span class="fn">print</span>(<span class="str">'Inválido'</span>);
   }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Classificador de temperatura</div>
+        <div class="exercise-sub">if/else + ternário combinados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dado <code>int temp = 22</code>, use <code>if/else if/else</code> para classificar: abaixo de 10 → "Frio", entre 10 e 24 → "Agradável", 25 ou mais → "Quente". Em seguida, use o <strong>operador ternário</strong> para exibir se você precisa de agasalho (quando temp &lt; 15).</div>
+      <textarea class="exercise-input" id="ex5-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex5-3', 'dp5-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol5-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp5-3"></div>
+      <div class="solution-wrap" id="sol5-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">temp</span> = <span class="num">22</span>;
+
+  <span class="kw">if</span> (<span class="var">temp</span> &lt; <span class="num">10</span>) {
+    <span class="fn">print</span>(<span class="str">'Frio'</span>);
+  } <span class="kw">else if</span> (<span class="var">temp</span> &lt;= <span class="num">24</span>) {
+    <span class="fn">print</span>(<span class="str">'Agradável'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Quente'</span>);
+  }
+
+  <span class="type">String</span> <span class="var">agasalho</span> = <span class="var">temp</span> &lt; <span class="num">15</span> ? <span class="str">'Leve agasalho!'</span> : <span class="str">'Sem agasalho.'</span>;
+  <span class="fn">print</span>(<span class="var">agasalho</span>);
 }</pre>
         </div>
       </div>

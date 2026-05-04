@@ -104,10 +104,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div>
+      <div style="flex:1">
         <div class="exercise-title">Olá, Dart!</div>
         <div class="exercise-sub">Primeiro programa</div>
       </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Escreva um programa com <code>main()</code> que exiba <strong>"Olá, Dart!"</strong> no console.</div>
@@ -131,10 +132,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div>
+      <div style="flex:1">
         <div class="exercise-title">Múltiplos prints</div>
         <div class="exercise-sub">Diferentes tipos de dados</div>
       </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Escreva um programa que exiba em linhas separadas: seu <strong>nome</strong>, sua <strong>idade</strong> (inteiro) e se você é <strong>estudante</strong> (true/false).</div>
@@ -160,10 +162,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">03</div>
-      <div>
+      <div style="flex:1">
         <div class="exercise-title">Cartão de visitas</div>
         <div class="exercise-sub">Variáveis com tipo explícito</div>
       </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Declare com <strong>tipo explícito</strong> as variáveis <code>String nome</code>, <code>int idade</code> e <code>double altura</code>. Depois exiba cada uma com <code>print()</code>.</div>
@@ -184,6 +187,41 @@
   <span class="fn">print</span>(<span class="var">nome</span>);
   <span class="fn">print</span>(<span class="var">idade</span>);
   <span class="fn">print</span>(<span class="var">altura</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">04</div>
+      <div style="flex:1">
+        <div class="exercise-title">Perfil completo</div>
+        <div class="exercise-sub">var, const e interpolação</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Declare variáveis com <code>var</code> para nome, cidade, ano de nascimento e altura. Use <code>const</code> para o ano atual (2025). Calcule a idade e exiba uma frase no formato: <strong>"[nome], [cidade], [idade] anos, [altura]m"</strong>.</div>
+      <textarea class="exercise-input" id="ex1-4" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex1-4', 'dp1-4')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol1-4')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp1-4"></div>
+      <div class="solution-wrap" id="sol1-4">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nome</span>    = <span class="str">'Tainá'</span>;
+  <span class="kw">var</span> <span class="var">cidade</span>  = <span class="str">'Curitiba'</span>;
+  <span class="kw">var</span> <span class="var">anoNasc</span> = <span class="num">1997</span>;
+  <span class="kw">var</span> <span class="var">altura</span>  = <span class="num">1.68</span>;
+  <span class="kw">const</span> <span class="var">anoAtual</span> = <span class="num">2025</span>;
+
+  <span class="type">int</span> <span class="var">idade</span> = <span class="var">anoAtual</span> - <span class="var">anoNasc</span>;
+  <span class="fn">print</span>(<span class="str">'$nome, $cidade, $idade anos, ${altura}m'</span>);
 }</pre>
         </div>
       </div>
