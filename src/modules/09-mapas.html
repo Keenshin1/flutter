@@ -69,7 +69,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Agenda telefônica</div><div class="exercise-sub">Criando e consultando</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Agenda telefônica</div>
+        <div class="exercise-sub">Criando e consultando</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie um <code>Map&lt;String, String&gt;</code> com nomes e telefones de 3 contatos. Adicione um 4º contato, remova um existente e exiba todos os nomes e o tamanho final.</div>
@@ -101,7 +105,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Relatório de notas</div><div class="exercise-sub">Percorrendo com forEach</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Relatório de notas</div>
+        <div class="exercise-sub">Percorrendo com forEach</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dado o mapa <code>{'Tainá': 8.5, 'Bob': 6.0, 'Clara': 9.5}</code>, use <code>forEach</code> para exibir cada aluno no formato: <strong>"Tainá: 8.5 - Aprovado"</strong> (aprovado se nota &ge; 7).</div>
@@ -120,6 +128,99 @@
     <span class="kw">var</span> <span class="var">status</span> = <span class="var">nota</span> &gt;= <span class="num">7</span> ? <span class="str">'Aprovado'</span> : <span class="str">'Reprovado'</span>;
     <span class="fn">print</span>(<span class="str">'$nome: $nota - $status'</span>);
   });
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Inventário de loja</div>
+        <div class="exercise-sub">Map com operações avançadas</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um <code>Map&lt;String, int&gt;</code> representando um estoque (produto → quantidade) com pelo menos 5 itens. Percorra com <code>forEach</code> e exiba apenas os produtos com estoque <strong>abaixo de 5</strong> como "Estoque crítico". Por fim, use um <code>for-in</code> em <code>.values</code> para calcular e exibir o total de itens em estoque.</div>
+      <textarea class="exercise-input" id="ex9-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex9-3', 'dp9-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol9-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp9-3"></div>
+      <div class="solution-wrap" id="sol9-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">estoque</span> = {
+    <span class="str">'Café'</span>:      <span class="num">3</span>,
+    <span class="str">'Leite'</span>:     <span class="num">12</span>,
+    <span class="str">'Pão'</span>:       <span class="num">2</span>,
+    <span class="str">'Manteiga'</span>:  <span class="num">8</span>,
+    <span class="str">'Ovos'</span>:      <span class="num">1</span>,
+  };
+
+  <span class="var">estoque</span>.<span class="fn">forEach</span>((<span class="var">produto</span>, <span class="var">qtd</span>) {
+    <span class="kw">if</span> (<span class="var">qtd</span> &lt; <span class="num">5</span>) <span class="fn">print</span>(<span class="str">'$produto: Estoque crítico ($qtd)'</span>);
+  });
+
+  <span class="type">int</span> <span class="var">total</span> = <span class="num">0</span>;
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">qtd</span> <span class="kw">in</span> <span class="var">estoque</span>.<span class="var">values</span>) <span class="var">total</span> += <span class="var">qtd</span>;
+  <span class="fn">print</span>(<span class="str">'Total em estoque: $total'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Revisão — Fase 3 (Módulos 07 a 09)</div>
+
+  <div class="info-box green">
+    <strong>Exercício integrador</strong><br>
+    Combine funções, listas e mapas num único programa.
+  </div>
+
+  <div class="exercise-card review">
+    <div class="exercise-header">
+      <div class="exercise-icon">R</div>
+      <div style="flex:1">
+        <div class="exercise-title">Gerenciador de alunos</div>
+        <div class="exercise-sub">Funções · Listas · Mapas</div>
+      </div>
+      <span class="tag blue">Revisão</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>String status(double nota)</code> que retorne <strong>"Aprovado"</strong> (&ge;7), <strong>"Recuperação"</strong> (&ge;5) ou <strong>"Reprovado"</strong>. Dado o mapa <code>{'Tainá': 8.5, 'Bob': 4.0, 'Clara': 6.5, 'Diego': 9.0}</code>, percorra-o e exiba o nome + o resultado de <code>status(nota)</code> para cada aluno. Por fim, use <code>where()</code> nas chaves para criar e exibir uma lista apenas com os aprovados.</div>
+      <textarea class="exercise-input" id="exR3-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exR3-1', 'dpR3-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solR3-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpR3-1"></div>
+      <div class="solution-wrap" id="solR3-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">String</span> <span class="fn">status</span>(<span class="type">double</span> <span class="var">nota</span>) {
+  <span class="kw">if</span> (<span class="var">nota</span> &gt;= <span class="num">7</span>) <span class="kw">return</span> <span class="str">'Aprovado'</span>;
+  <span class="kw">if</span> (<span class="var">nota</span> &gt;= <span class="num">5</span>) <span class="kw">return</span> <span class="str">'Recuperação'</span>;
+  <span class="kw">return</span> <span class="str">'Reprovado'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">turma</span> = {<span class="str">'Tainá'</span>: <span class="num">8.5</span>, <span class="str">'Bob'</span>: <span class="num">4.0</span>, <span class="str">'Clara'</span>: <span class="num">6.5</span>, <span class="str">'Diego'</span>: <span class="num">9.0</span>};
+
+  <span class="var">turma</span>.<span class="fn">forEach</span>((<span class="var">nome</span>, <span class="var">nota</span>) {
+    <span class="fn">print</span>(<span class="str">'$nome: ${status(nota)}'</span>);
+  });
+
+  <span class="kw">var</span> <span class="var">aprovados</span> = <span class="var">turma</span>.<span class="var">keys</span>
+      .<span class="fn">where</span>((<span class="var">nome</span>) =&gt; <span class="var">turma</span>[<span class="var">nome</span>]! &gt;= <span class="num">7</span>)
+      .<span class="fn">toList</span>();
+  <span class="fn">print</span>(<span class="str">'Aprovados: $aprovados'</span>);
 }</pre>
         </div>
       </div>

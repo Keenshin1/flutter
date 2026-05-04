@@ -73,7 +73,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Calcular área</div><div class="exercise-sub">Função com retorno</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Calcular área</div>
+        <div class="exercise-sub">Função com retorno</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma função <code>double areaRetangulo(double largura, double altura)</code> que retorne a área. Chame-a com alguns valores e exiba o resultado.</div>
@@ -101,7 +105,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Saudação personalizada</div><div class="exercise-sub">Parâmetros nomeados</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Saudação personalizada</div>
+        <div class="exercise-sub">Parâmetros nomeados</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma função <code>saudar</code> com parâmetros nomeados <code>required String nome</code> e <code>String periodo = 'dia'</code>. Retorne <strong>"Bom [periodo], [nome]!"</strong>.</div>
@@ -122,6 +130,43 @@
 <span class="kw">void</span> <span class="fn">main</span>() {
   <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Tainá'</span>));
   <span class="fn">print</span>(<span class="fn">saudar</span>(<span class="var">nome</span>: <span class="str">'Tainá'</span>, <span class="var">periodo</span>: <span class="str">'tarde'</span>));
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Calculadora com funções arrow</div>
+        <div class="exercise-sub">Arrow functions + divisão segura</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie 4 funções arrow: <code>somar</code>, <code>subtrair</code>, <code>multiplicar</code> e <code>dividir</code>, todas recebendo dois <code>double</code>. A função <code>dividir</code> deve retornar <code>0</code> quando o divisor for <code>0</code> — use o operador ternário. Chame cada uma e exiba os resultados, incluindo uma divisão por zero.</div>
+      <textarea class="exercise-input" id="ex7-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-3', 'dp7-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp7-3"></div>
+      <div class="solution-wrap" id="sol7-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">double</span> <span class="fn">somar</span>(<span class="type">double</span> <span class="var">a</span>, <span class="type">double</span> <span class="var">b</span>)        =&gt; <span class="var">a</span> + <span class="var">b</span>;
+<span class="type">double</span> <span class="fn">subtrair</span>(<span class="type">double</span> <span class="var">a</span>, <span class="type">double</span> <span class="var">b</span>)     =&gt; <span class="var">a</span> - <span class="var">b</span>;
+<span class="type">double</span> <span class="fn">multiplicar</span>(<span class="type">double</span> <span class="var">a</span>, <span class="type">double</span> <span class="var">b</span>)  =&gt; <span class="var">a</span> * <span class="var">b</span>;
+<span class="type">double</span> <span class="fn">dividir</span>(<span class="type">double</span> <span class="var">a</span>, <span class="type">double</span> <span class="var">b</span>)       =&gt; <span class="var">b</span> == <span class="num">0</span> ? <span class="num">0</span> : <span class="var">a</span> / <span class="var">b</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="fn">somar</span>(<span class="num">10</span>, <span class="num">3</span>));        <span class="com">// 13.0</span>
+  <span class="fn">print</span>(<span class="fn">subtrair</span>(<span class="num">10</span>, <span class="num">3</span>));     <span class="com">// 7.0</span>
+  <span class="fn">print</span>(<span class="fn">multiplicar</span>(<span class="num">10</span>, <span class="num">3</span>));  <span class="com">// 30.0</span>
+  <span class="fn">print</span>(<span class="fn">dividir</span>(<span class="num">10</span>, <span class="num">3</span>));       <span class="com">// 3.333...</span>
+  <span class="fn">print</span>(<span class="fn">dividir</span>(<span class="num">5</span>, <span class="num">0</span>));        <span class="com">// 0.0</span>
 }</pre>
         </div>
       </div>

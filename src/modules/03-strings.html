@@ -82,7 +82,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">01</div>
-      <div><div class="exercise-title">Interpolação</div><div class="exercise-sub">Montando frases com variáveis</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Interpolação</div>
+        <div class="exercise-sub">Montando frases com variáveis</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Declare <code>String nome</code> e <code>int ano</code>. Use interpolação para exibir: <strong>"[nome] nasceu em [ano] e tem [idade calculada] anos."</strong> (use 2025 como ano atual).</div>
@@ -108,7 +112,11 @@
   <div class="exercise-card">
     <div class="exercise-header">
       <div class="exercise-icon">02</div>
-      <div><div class="exercise-title">Métodos de String</div><div class="exercise-sub">Transformando texto</div></div>
+      <div style="flex:1">
+        <div class="exercise-title">Métodos de String</div>
+        <div class="exercise-sub">Transformando texto</div>
+      </div>
+      <span class="tag green">Básico</span>
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dada a string <code>'  flutter é top!  '</code>, exiba: o texto sem espaços nas bordas, em UPPERCASE e o número de caracteres (após o trim).</div>
@@ -127,6 +135,40 @@
   <span class="fn">print</span>(<span class="var">limpa</span>);
   <span class="fn">print</span>(<span class="var">limpa</span>.<span class="fn">toUpperCase</span>());
   <span class="fn">print</span>(<span class="var">limpa</span>.<span class="var">length</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Processando e-mail</div>
+        <div class="exercise-sub">Métodos encadeados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a string <code>'  Usuario.Teste@Email.COM  '</code>, use métodos encadeados para: remover espaços (<code>trim</code>), converter para minúsculas. Com o resultado: exiba o e-mail limpo, se ele contém <code>'@'</code>, se termina com <code>'.com'</code> e a parte antes do <code>'@'</code> usando <code>split('@')[0]</code>.</div>
+      <textarea class="exercise-input" id="ex3-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex3-3', 'dp3-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol3-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp3-3"></div>
+      <div class="solution-wrap" id="sol3-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span> <span class="var">email</span> = <span class="str">'  Usuario.Teste@Email.COM  '</span>;
+  <span class="type">String</span> <span class="var">limpo</span> = <span class="var">email</span>.<span class="fn">trim</span>().<span class="fn">toLowerCase</span>();
+
+  <span class="fn">print</span>(<span class="var">limpo</span>);                          <span class="com">// usuario.teste@email.com</span>
+  <span class="fn">print</span>(<span class="var">limpo</span>.<span class="fn">contains</span>(<span class="str">'@'</span>));          <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">limpo</span>.<span class="fn">endsWith</span>(<span class="str">'.com'</span>));       <span class="com">// true</span>
+  <span class="fn">print</span>(<span class="var">limpo</span>.<span class="fn">split</span>(<span class="str">'@'</span>)[<span class="num">0</span>]);           <span class="com">// usuario.teste</span>
 }</pre>
         </div>
       </div>
