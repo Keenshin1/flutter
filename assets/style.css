@@ -479,18 +479,32 @@
     overflow: hidden;
     border: 1px solid var(--border);
     background: var(--bg2);
+    position: relative;
+    /* Dart puro: apenas console, sem canvas Flutter */
+    height: 180px;
+  }
+
+  /* Exercícios Flutter: espaço para renderizar widgets */
+  .dartpad-wrap.flutter-embed {
+    height: 380px;
   }
 
   .dartpad-wrap iframe {
     width: 100%;
     height: 480px;
+    margin-top: -48px;
     border: none;
     display: block;
   }
 
   .dartpad-loading {
-    padding: 24px;
-    text-align: center;
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg2);
     color: var(--text3);
     font-size: 13px;
     font-family: var(--mono);
@@ -506,5 +520,7 @@
     .sidebar { width: 100%; height: auto; position: static; }
     .main { padding: 24px 16px; }
     .concept-grid { grid-template-columns: 1fr; }
-    .dartpad-wrap iframe { height: 400px; }
+    .dartpad-wrap { height: 140px; }
+    .dartpad-wrap.flutter-embed { height: 300px; }
+    .dartpad-wrap iframe { height: 420px; }
   }
