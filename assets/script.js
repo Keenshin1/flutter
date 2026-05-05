@@ -47,7 +47,7 @@ function _wrapDartCode(code) {
   if (classMatch) {
     const cls = classMatch[1];
     return {
-      code: "import 'package:flutter/material.dart';\n\nvoid main() => runApp(const MaterialApp(home: Scaffold(body: Center(child: " + cls + "())));\n\n" + code,
+      code: "import 'package:flutter/material.dart';\n\nvoid main() => runApp(const MaterialApp(home: Scaffold(body: Center(child: " + cls + "()))));\n\n" + code,
       flutter: true
     };
   }
