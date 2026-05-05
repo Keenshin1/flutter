@@ -189,9 +189,66 @@
     </div>
   </div>
 
-  <div class="exercise-card desafio">
+  <div class="exercise-card medio">
     <div class="exercise-header">
       <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Carrinho de compras</div>
+        <div class="exercise-sub">Composição: classe que contém lista de objetos</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie a classe <code>Produto</code> com <code>String nome</code> e <code>double preco</code>. Crie a classe <code>Carrinho</code> que possui uma <code>List&lt;Produto&gt;</code> internamente com os métodos: <code>adicionar(Produto p)</code>, <code>double total()</code> (soma dos preços) e <code>exibir()</code> (mostra cada produto e o total). Instancie um carrinho, adicione 3 produtos e chame <code>exibir()</code>.</div>
+      <textarea class="exercise-input" id="ex11-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex11-3', 'dp11-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol11-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp11-3"></div>
+      <div class="solution-wrap" id="sol11-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Produto</span> {
+  <span class="type">String</span> <span class="var">nome</span>;
+  <span class="type">double</span> <span class="var">preco</span>;
+  <span class="fn">Produto</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">preco</span>);
+}
+
+<span class="kw">class</span> <span class="type">Carrinho</span> {
+  <span class="type">List</span>&lt;<span class="type">Produto</span>&gt; <span class="var">_itens</span> = [];
+
+  <span class="kw">void</span> <span class="fn">adicionar</span>(<span class="type">Produto</span> <span class="var">p</span>) =&gt; <span class="var">_itens</span>.<span class="fn">add</span>(<span class="var">p</span>);
+
+  <span class="type">double</span> <span class="fn">total</span>() {
+    <span class="type">double</span> <span class="var">soma</span> = <span class="num">0</span>;
+    <span class="kw">for</span> (<span class="kw">var</span> <span class="var">p</span> <span class="kw">in</span> <span class="var">_itens</span>) <span class="var">soma</span> += <span class="var">p</span>.<span class="var">preco</span>;
+    <span class="kw">return</span> <span class="var">soma</span>;
+  }
+
+  <span class="kw">void</span> <span class="fn">exibir</span>() {
+    <span class="kw">for</span> (<span class="kw">var</span> <span class="var">p</span> <span class="kw">in</span> <span class="var">_itens</span>) {
+      <span class="fn">print</span>(<span class="str">'${p.nome}: R\$ ${p.preco}'</span>);
+    }
+    <span class="fn">print</span>(<span class="str">'Total: R\$ ${total()}'</span>);
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">carrinho</span> = <span class="type">Carrinho</span>();
+  <span class="var">carrinho</span>.<span class="fn">adicionar</span>(<span class="type">Produto</span>(<span class="str">'Caderno'</span>, <span class="num">25.90</span>));
+  <span class="var">carrinho</span>.<span class="fn">adicionar</span>(<span class="type">Produto</span>(<span class="str">'Caneta'</span>,  <span class="num">4.50</span>));
+  <span class="var">carrinho</span>.<span class="fn">adicionar</span>(<span class="type">Produto</span>(<span class="str">'Mochila'</span>, <span class="num">149.00</span>));
+  <span class="var">carrinho</span>.<span class="fn">exibir</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">04</div>
       <div style="flex:1">
         <div class="exercise-title">Simulando widgets Flutter</div>
         <div class="exercise-sub">Hierarquia abstrata inspirada no Flutter</div>
@@ -200,13 +257,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Simule a arquitetura do Flutter: crie <code>abstract class Widget</code> com o método abstrato <code>String build()</code>. Implemente <code>Text(String texto)</code> e <code>Button(String rotulo, String acao)</code>. Crie uma classe <code>Column</code> que recebe <code>List&lt;Widget&gt; filhos</code> e implementa <code>build()</code> chamando <code>build()</code> de cada filho, separados por quebra de linha. Demonstre criando uma tela com título e dois botões.</div>
-      <textarea class="exercise-input" id="ex11-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex11-4" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex11-3', 'dp11-3')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol11-3')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex11-4', 'dp11-4')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol11-4')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp11-3"></div>
-      <div class="solution-wrap" id="sol11-3">
+      <div class="dartpad-wrap" id="dp11-4"></div>
+      <div class="solution-wrap" id="sol11-4">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">abstract class</span> <span class="type">Widget</span> {
