@@ -1,0 +1,358 @@
+<!-- module: num="13" nav="Intro Flutter" -->
+<div class="lesson" id="lesson-13">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 13</div>
+    <div class="lesson-title"><code style="font-size:22px;">Introdução ao Flutter</code></div>
+    <div class="lesson-subtitle">Flutter é um framework onde <strong>tudo é widget</strong>: textos, botões, layouts e até o próprio aplicativo são widgets que você combina em uma árvore.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Tudo é widget</div>
+
+  <div class="explanation">
+    No Flutter, a interface inteira é construída aninhando widgets dentro de outros widgets — como uma árvore. Cada widget descreve <em>como deve ser exibido</em>; o Flutter cuida de renderizá-lo na tela.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Flutter</div></div>
+    <pre><span class="com">// Árvore de widgets — cada nível é um "filho" do anterior</span>
+<span class="type">MaterialApp</span>
+  └─ <span class="type">Scaffold</span>
+       └─ <span class="type">Column</span>
+            ├─ <span class="type">Text</span>(<span class="str">'Título'</span>)
+            ├─ <span class="type">Text</span>(<span class="str">'Subtítulo'</span>)
+            └─ <span class="type">Icon</span>(<span class="type">Icons</span>.star)</pre>
+  </div>
+
+  <div class="info-box yellow">
+    Tudo que você já aprendeu sobre classes, herança e classes abstratas em Dart é exatamente o que o Flutter usa por baixo. <code>StatelessWidget</code> é uma classe abstrata com o método abstrato <code>build()</code>.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">StatelessWidget — seu primeiro widget</div>
+
+  <div class="explanation">
+    Um <code>StatelessWidget</code> é um widget que <strong>não muda</strong> depois de criado. Você estende a classe e implementa o método <code>build()</code>, que retorna a árvore de widgets que representa a interface.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Flutter</div></div>
+    <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">class</span> <span class="type">Saudacao</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="type">Saudacao</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Olá, Flutter!'</span>);
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(
+    home: <span class="type">Scaffold</span>(body: <span class="type">Center</span>(child: <span class="type">Saudacao</span>())),
+  ));
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>const</strong> nos widgets é uma otimização importante: diz ao Flutter que o widget nunca vai mudar, permitindo que ele seja reutilizado sem reconstrução. Use sempre que possível.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">MaterialApp e Scaffold</div>
+
+  <div class="explanation">
+    <code>MaterialApp</code> configura o aplicativo (tema, rotas, título). <code>Scaffold</code> fornece a estrutura visual padrão do Material Design: barra superior, corpo, botão flutuante e outros.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Flutter</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(
+    title: <span class="str">'Meu App'</span>,
+    home: <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="type">Text</span>(<span class="str">'Início'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">Text</span>(<span class="str">'Conteúdo aqui'</span>),
+      ),
+    ),
+  ));
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Widgets visuais: Text e Icon</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Flutter</div></div>
+    <pre><span class="com">// Text com estilo</span>
+<span class="type">Text</span>(
+  <span class="str">'Flutter'</span>,
+  style: <span class="type">TextStyle</span>(
+    fontSize: <span class="num">32</span>,
+    fontWeight: <span class="type">FontWeight</span>.bold,
+    color: <span class="type">Colors</span>.blue,
+  ),
+)
+
+<span class="com">// Icon com cor e tamanho</span>
+<span class="type">Icon</span>(<span class="type">Icons</span>.favorite, color: <span class="type">Colors</span>.red, size: <span class="num">40</span>)</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Widgets de layout: Column, Row, Container</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Flutter</div></div>
+    <pre><span class="com">// Column: empilha widgets na vertical</span>
+<span class="type">Column</span>(
+  mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+  children: [
+    <span class="type">Text</span>(<span class="str">'Primeiro'</span>),
+    <span class="type">SizedBox</span>(height: <span class="num">8</span>),   <span class="com">// espaço fixo</span>
+    <span class="type">Text</span>(<span class="str">'Segundo'</span>),
+  ],
+)
+
+<span class="com">// Row: distribui widgets na horizontal</span>
+<span class="type">Row</span>(
+  mainAxisAlignment: <span class="type">MainAxisAlignment</span>.spaceEvenly,
+  children: [
+    <span class="type">Icon</span>(<span class="type">Icons</span>.home),
+    <span class="type">Icon</span>(<span class="type">Icons</span>.search),
+    <span class="type">Icon</span>(<span class="type">Icons</span>.person),
+  ],
+)
+
+<span class="com">// Container: caixa com tamanho, cor e padding</span>
+<span class="type">Container</span>(
+  padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.all(<span class="num">16</span>),
+  decoration: <span class="type">BoxDecoration</span>(
+    color: <span class="type">Colors</span>.blue.shade50,
+    borderRadius: <span class="type">BorderRadius</span>.circular(<span class="num">12</span>),
+  ),
+  child: <span class="type">Text</span>(<span class="str">'Dentro do container'</span>),
+)</pre>
+  </div>
+
+  <div class="info-box">
+    <strong>SizedBox</strong> é a forma idiomática de adicionar espaço entre widgets. Use <code>SizedBox(height: 8)</code> para espaço vertical e <code>SizedBox(width: 8)</code> para horizontal, em vez de padding desnecessário.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="info-box yellow">
+    Nos exercícios abaixo, escreva apenas a <strong>classe do widget</strong> — sem o <code>void main()</code>. O ambiente já envolve automaticamente seu widget em um <code>MaterialApp</code> com <code>Scaffold</code> para renderizar o resultado.
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Cartão de visita</div>
+        <div class="exercise-sub">StatelessWidget · Column · Text</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um <code>StatelessWidget</code> chamado <code>CartaoDeVisita</code> que retorna uma <code>Column</code> com <code>mainAxisSize: MainAxisSize.min</code> contendo: nome em negrito (fontSize 22), cargo em cinza (fontSize 14) e e-mail (fontSize 13, <code>Colors.blue</code>). Use <code>SizedBox</code> para separar os itens.</div>
+      <textarea class="exercise-input" id="ex13-1" placeholder="class CartaoDeVisita extends StatelessWidget { ... }"></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex13-1', 'dp13-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol13-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp13-1"></div>
+      <div class="solution-wrap" id="sol13-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">CartaoDeVisita</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="type">CartaoDeVisita</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Column</span>(
+      mainAxisSize: <span class="type">MainAxisSize</span>.min,
+      children: [
+        <span class="kw">const</span> <span class="type">Text</span>(
+          <span class="str">'Ana Souza'</span>,
+          style: <span class="type">TextStyle</span>(fontSize: <span class="num">22</span>, fontWeight: <span class="type">FontWeight</span>.bold),
+        ),
+        <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">6</span>),
+        <span class="kw">const</span> <span class="type">Text</span>(
+          <span class="str">'Desenvolvedora Flutter'</span>,
+          style: <span class="type">TextStyle</span>(fontSize: <span class="num">14</span>, color: <span class="type">Colors</span>.grey),
+        ),
+        <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">4</span>),
+        <span class="kw">const</span> <span class="type">Text</span>(
+          <span class="str">'ana@email.com'</span>,
+          style: <span class="type">TextStyle</span>(fontSize: <span class="num">13</span>, color: <span class="type">Colors</span>.blue),
+        ),
+      ],
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Painel informativo</div>
+        <div class="exercise-sub">Container · BoxDecoration · Row · Icon</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie o widget <code>PainelInfo</code> que retorna um <code>Container</code> com <code>padding: EdgeInsets.all(20)</code> e <code>BoxDecoration</code> com <code>color: Colors.indigo.shade50</code> e <code>borderRadius</code> de 16. Dentro, uma <code>Column</code> com: (1) uma <code>Row</code> com <code>Icon(Icons.info, color: Colors.indigo)</code> e um <code>Text</code> em negrito separados por <code>SizedBox(width: 8)</code>; (2) <code>SizedBox(height: 12)</code>; (3) um <code>Text</code> de descrição com <code>color: Colors.black54</code>.</div>
+      <textarea class="exercise-input" id="ex13-2" placeholder="class PainelInfo extends StatelessWidget { ... }"></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex13-2', 'dp13-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol13-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp13-2"></div>
+      <div class="solution-wrap" id="sol13-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">PainelInfo</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="type">PainelInfo</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Container</span>(
+      padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.all(<span class="num">20</span>),
+      decoration: <span class="type">BoxDecoration</span>(
+        color: <span class="type">Colors</span>.indigo.shade50,
+        borderRadius: <span class="type">BorderRadius</span>.circular(<span class="num">16</span>),
+      ),
+      child: <span class="type">Column</span>(
+        mainAxisSize: <span class="type">MainAxisSize</span>.min,
+        crossAxisAlignment: <span class="type">CrossAxisAlignment</span>.start,
+        children: [
+          <span class="type">Row</span>(
+            children: <span class="kw">const</span> [
+              <span class="type">Icon</span>(<span class="type">Icons</span>.info, color: <span class="type">Colors</span>.indigo),
+              <span class="type">SizedBox</span>(width: <span class="num">8</span>),
+              <span class="type">Text</span>(
+                <span class="str">'Dica importante'</span>,
+                style: <span class="type">TextStyle</span>(fontWeight: <span class="type">FontWeight</span>.bold),
+              ),
+            ],
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">12</span>),
+          <span class="kw">const</span> <span class="type">Text</span>(
+            <span class="str">'Widgets são imutáveis por padrão. Use StatefulWidget quando precisar de estado que muda.'</span>,
+            style: <span class="type">TextStyle</span>(color: <span class="type">Colors</span>.black54),
+          ),
+        ],
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Tela de perfil</div>
+        <div class="exercise-sub">CircleAvatar · Column · Row · layout completo</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie o widget <code>TelaPerfil</code> com a seguinte estrutura: uma <code>Column</code> principal contendo — (1) <code>CircleAvatar(radius: 40, backgroundColor: Colors.deepPurple, child: Text('AS', style: TextStyle(color: Colors.white, fontSize: 24)))</code>; (2) nome em negrito (fontSize 20); (3) cargo em cinza; (4) <code>Divider</code> com espaço acima e abaixo; (5) uma bio com texto; (6) uma <code>Row</code> com <code>MainAxisAlignment.spaceEvenly</code> exibindo 3 estatísticas, cada uma sendo uma <code>Column</code> com um número em negrito e um rótulo em cinza (ex: "42 Posts", "1.2k Seguidores", "180 Seguindo").</div>
+      <textarea class="exercise-input" id="ex13-3" placeholder="class TelaPerfil extends StatelessWidget { ... }"></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex13-3', 'dp13-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol13-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp13-3"></div>
+      <div class="solution-wrap" id="sol13-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">TelaPerfil</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="type">TelaPerfil</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Padding</span>(
+      padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.all(<span class="num">24</span>),
+      child: <span class="type">Column</span>(
+        mainAxisSize: <span class="type">MainAxisSize</span>.min,
+        children: [
+          <span class="kw">const</span> <span class="type">CircleAvatar</span>(
+            radius: <span class="num">40</span>,
+            backgroundColor: <span class="type">Colors</span>.deepPurple,
+            child: <span class="type">Text</span>(
+              <span class="str">'AS'</span>,
+              style: <span class="type">TextStyle</span>(color: <span class="type">Colors</span>.white, fontSize: <span class="num">24</span>),
+            ),
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">12</span>),
+          <span class="kw">const</span> <span class="type">Text</span>(
+            <span class="str">'Ana Souza'</span>,
+            style: <span class="type">TextStyle</span>(fontSize: <span class="num">20</span>, fontWeight: <span class="type">FontWeight</span>.bold),
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">4</span>),
+          <span class="kw">const</span> <span class="type">Text</span>(
+            <span class="str">'Desenvolvedora Flutter'</span>,
+            style: <span class="type">TextStyle</span>(color: <span class="type">Colors</span>.grey),
+          ),
+          <span class="kw">const</span> <span class="type">Divider</span>(height: <span class="num">32</span>),
+          <span class="kw">const</span> <span class="type">Text</span>(
+            <span class="str">'Apaixonada por UI bonita e código limpo. Criando apps Flutter desde 2020.'</span>,
+            textAlign: <span class="type">TextAlign</span>.center,
+            style: <span class="type">TextStyle</span>(color: <span class="type">Colors</span>.black54),
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">24</span>),
+          <span class="type">Row</span>(
+            mainAxisAlignment: <span class="type">MainAxisAlignment</span>.spaceEvenly,
+            children: <span class="kw">const</span> [
+              <span class="type">_Stat</span>(valor: <span class="str">'42'</span>,   rotulo: <span class="str">'Posts'</span>),
+              <span class="type">_Stat</span>(valor: <span class="str">'1.2k'</span>, rotulo: <span class="str">'Seguidores'</span>),
+              <span class="type">_Stat</span>(valor: <span class="str">'180'</span>,  rotulo: <span class="str">'Seguindo'</span>),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+<span class="kw">class</span> <span class="type">_Stat</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">final</span> <span class="type">String</span> <span class="var">valor</span>, <span class="var">rotulo</span>;
+  <span class="kw">const</span> <span class="type">_Stat</span>({required <span class="kw">this</span>.<span class="var">valor</span>, required <span class="kw">this</span>.<span class="var">rotulo</span>});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Column</span>(
+      children: [
+        <span class="type">Text</span>(<span class="var">valor</span>,  style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontWeight: <span class="type">FontWeight</span>.bold, fontSize: <span class="num">18</span>)),
+        <span class="type">Text</span>(<span class="var">rotulo</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(color: <span class="type">Colors</span>.grey, fontSize: <span class="num">12</span>)),
+      ],
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box green">
+    <strong>Próximo passo</strong><br>
+    Você aprendeu a construir interfaces estáticas com <code>StatelessWidget</code>. No próximo módulo, veremos <code>StatefulWidget</code> — widgets que reagem a interações do usuário e atualizam a tela automaticamente.
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(12)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(13)">✔ Concluir curso</button>
+  </div>
+</div>
