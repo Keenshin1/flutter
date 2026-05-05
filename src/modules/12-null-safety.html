@@ -1,0 +1,269 @@
+<!-- module: num="12" nav="Null Safety" -->
+<div class="lesson" id="lesson-12">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 12</div>
+    <div class="lesson-title"><code style="font-size:22px;">Null Safety</code></div>
+    <div class="lesson-subtitle">Null safety é o sistema do Dart que impede que variáveis recebam <code>null</code> por acidente — eliminando uma das causas mais comuns de erros em aplicativos.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">O problema do null</div>
+
+  <div class="explanation">
+    Em muitas linguagens, qualquer variável pode ser <code>null</code> sem aviso. Dart resolve isso no tipo: por padrão, uma variável <strong>não pode ser null</strong>. Para permitir null, você precisa declarar isso explicitamente com <code>?</code>.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">String</span>  <span class="var">nome</span>  = <span class="str">'Ana'</span>;  <span class="com">// nunca pode ser null</span>
+<span class="type">String</span>? <span class="var">apelido</span> = <span class="kw">null</span>;  <span class="com">// pode ser null (note o ?)</span>
+
+<span class="var">nome</span>    = <span class="kw">null</span>; <span class="com">// ERRO de compilação: String não aceita null</span>
+<span class="var">apelido</span> = <span class="kw">null</span>; <span class="com">// OK: String? aceita null</span></pre>
+  </div>
+
+  <div class="info-box yellow">
+    O compilador do Dart verifica null safety <strong>antes de rodar</strong> o programa. Se um erro for possível, ele aparece no editor — não em produção.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operador ?? — valor padrão</div>
+
+  <div class="explanation">
+    O operador <code>??</code> retorna o valor da esquerda se ele não for null; caso contrário, retorna o valor da direita.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">String</span>? <span class="var">cidade</span> = <span class="kw">null</span>;
+
+<span class="type">String</span> <span class="var">exibir</span> = <span class="var">cidade</span> ?? <span class="str">'Cidade não informada'</span>;
+<span class="fn">print</span>(<span class="var">exibir</span>); <span class="com">// Cidade não informada</span>
+
+<span class="var">cidade</span> = <span class="str">'São Paulo'</span>;
+<span class="fn">print</span>(<span class="var">cidade</span> ?? <span class="str">'Cidade não informada'</span>); <span class="com">// São Paulo</span></pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operador ?. — acesso seguro</div>
+
+  <div class="explanation">
+    O operador <code>?.</code> chama um método ou acessa uma propriedade <strong>somente se o objeto não for null</strong>. Se for null, o resultado inteiro é null em vez de lançar um erro.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">String</span>? <span class="var">texto</span> = <span class="kw">null</span>;
+
+<span class="fn">print</span>(<span class="var">texto</span>.<span class="fn">length</span>);   <span class="com">// ERRO: texto pode ser null</span>
+<span class="fn">print</span>(<span class="var">texto</span>?.<span class="fn">length</span>);  <span class="com">// OK: retorna null se texto for null</span>
+
+<span class="com">// Combinando ?. com ?? para garantir um valor</span>
+<span class="type">int</span> <span class="var">tamanho</span> = <span class="var">texto</span>?.<span class="fn">length</span> ?? <span class="num">0</span>;
+<span class="fn">print</span>(<span class="var">tamanho</span>); <span class="com">// 0</span></pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operador ! — forçar não-null</div>
+
+  <div class="explanation">
+    O operador <code>!</code> diz ao Dart: <em>"confie em mim, este valor não é null agora"</em>. Se você estiver errado, o programa lança um erro em tempo de execução — por isso use com cautela, somente quando tiver certeza.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">String</span>? <span class="var">input</span> = obterEntrada(); <span class="com">// pode retornar null</span>
+
+<span class="com">// Verificando antes de usar !</span>
+<span class="kw">if</span> (<span class="var">input</span> != <span class="kw">null</span>) {
+  <span class="fn">print</span>(<span class="var">input</span>.<span class="fn">toUpperCase</span>()); <span class="com">// Dart já sabe que não é null aqui</span>
+}
+
+<span class="com">// Ou forçando com ! (só se tiver certeza)</span>
+<span class="fn">print</span>(<span class="var">input</span>!.<span class="fn">toUpperCase</span>()); <span class="com">// erro em runtime se input for null</span></pre>
+  </div>
+
+  <div class="info-box">
+    <strong>Prefira o if</strong> ao <code>!</code> sempre que possível. O bloco <code>if (x != null)</code> é mais seguro: o Dart reconhece a verificação e trata <code>x</code> como não-nulo dentro do bloco automaticamente.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">late — inicialização tardia</div>
+
+  <div class="explanation">
+    Quando você sabe que uma variável <strong>não será null</strong>, mas não pode inicializá-la na declaração (por exemplo, em classes que recebem o valor depois do construtor), use <code>late</code>.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">class</span> <span class="type">Conexao</span> {
+  <span class="kw">late</span> <span class="type">String</span> <span class="var">host</span>; <span class="com">// será atribuído antes do uso</span>
+
+  <span class="kw">void</span> <span class="fn">configurar</span>(<span class="type">String</span> <span class="var">h</span>) {
+    <span class="var">host</span> = <span class="var">h</span>;
+  }
+
+  <span class="kw">void</span> <span class="fn">conectar</span>() =&gt; <span class="fn">print</span>(<span class="str">'Conectando a $host'</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">c</span> = <span class="type">Conexao</span>();
+  <span class="var">c</span>.<span class="fn">configurar</span>(<span class="str">'api.exemplo.com'</span>);
+  <span class="var">c</span>.<span class="fn">conectar</span>(); <span class="com">// Conectando a api.exemplo.com</span>
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Conexão com Flutter</strong><br>
+    No Flutter você verá <code>late</code> frequentemente em <code>State</code> para inicializar controladores e animações no <code>initState()</code>, e <code>String?</code> em campos de formulário que ainda não foram preenchidos pelo usuário.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Perfil opcional</div>
+        <div class="exercise-sub">Declaração e operador ??</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie as variáveis <code>String nome = 'Lucas'</code>, <code>String? bio</code> (sem valor) e <code>int? idade</code> (sem valor). Use <code>??</code> para exibir <em>"Sem bio"</em> caso <code>bio</code> seja null e <em>0</em> caso <code>idade</code> seja null.</div>
+      <textarea class="exercise-input" id="ex12-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex12-1', 'dp12-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol12-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp12-1"></div>
+      <div class="solution-wrap" id="sol12-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">String</span>  <span class="var">nome</span>  = <span class="str">'Lucas'</span>;
+  <span class="type">String</span>? <span class="var">bio</span>;
+  <span class="type">int</span>?    <span class="var">idade</span>;
+
+  <span class="fn">print</span>(<span class="var">nome</span>);
+  <span class="fn">print</span>(<span class="var">bio</span>   ?? <span class="str">'Sem bio'</span>); <span class="com">// Sem bio</span>
+  <span class="fn">print</span>(<span class="var">idade</span> ?? <span class="num">0</span>);         <span class="com">// 0</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Validador de cadastro</div>
+        <div class="exercise-sub">Operadores ?. e ?? com classes</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie a classe <code>Usuario</code> com <code>String nome</code> e <code>String? email</code>. Escreva a função <code>exibirInfo(Usuario? u)</code> que: (1) se <code>u</code> for null, imprime <em>"Usuário não encontrado"</em>; (2) caso contrário, exibe o nome e o email (usando <code>?.</code> e <code>??</code> para tratar email null). Teste com um usuário completo, um sem email e passando <code>null</code>.</div>
+      <textarea class="exercise-input" id="ex12-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex12-2', 'dp12-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol12-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp12-2"></div>
+      <div class="solution-wrap" id="sol12-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Usuario</span> {
+  <span class="type">String</span>  <span class="var">nome</span>;
+  <span class="type">String</span>? <span class="var">email</span>;
+  <span class="fn">Usuario</span>(<span class="kw">this</span>.<span class="var">nome</span>, {<span class="kw">this</span>.<span class="var">email</span>});
+}
+
+<span class="kw">void</span> <span class="fn">exibirInfo</span>(<span class="type">Usuario</span>? <span class="var">u</span>) {
+  <span class="kw">if</span> (<span class="var">u</span> == <span class="kw">null</span>) {
+    <span class="fn">print</span>(<span class="str">'Usuário não encontrado'</span>);
+    <span class="kw">return</span>;
+  }
+  <span class="fn">print</span>(<span class="str">'Nome: ${u.nome}'</span>);
+  <span class="fn">print</span>(<span class="str">'Email: ${u.email ?? "não informado"}'</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">exibirInfo</span>(<span class="type">Usuario</span>(<span class="str">'Ana'</span>, <span class="var">email</span>: <span class="str">'ana@email.com'</span>));
+  <span class="fn">print</span>(<span class="str">'---'</span>);
+  <span class="fn">exibirInfo</span>(<span class="type">Usuario</span>(<span class="str">'Bruno'</span>));
+  <span class="fn">print</span>(<span class="str">'---'</span>);
+  <span class="fn">exibirInfo</span>(<span class="kw">null</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Inventário com itens opcionais</div>
+        <div class="exercise-sub">late · ?? · ?. · List nullable</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie a classe <code>Produto</code> com <code>String nome</code>, <code>double preco</code> e <code>String? descricao</code>. Crie a classe <code>Inventario</code> com uma propriedade <code>late List&lt;Produto&gt; itens</code> e o método <code>carregar()</code> que atribui uma lista de 4 produtos (alguns sem descrição) a <code>itens</code>. Implemente <code>exibirCatalogo()</code> que percorre os itens e exibe o nome, preço e descrição (ou <em>"Sem descrição"</em> se null). Calcule e exiba o total do inventário.</div>
+      <textarea class="exercise-input" id="ex12-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex12-3', 'dp12-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol12-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp12-3"></div>
+      <div class="solution-wrap" id="sol12-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">class</span> <span class="type">Produto</span> {
+  <span class="type">String</span>  <span class="var">nome</span>;
+  <span class="type">double</span>  <span class="var">preco</span>;
+  <span class="type">String</span>? <span class="var">descricao</span>;
+  <span class="fn">Produto</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">preco</span>, {<span class="kw">this</span>.<span class="var">descricao</span>});
+}
+
+<span class="kw">class</span> <span class="type">Inventario</span> {
+  <span class="kw">late</span> <span class="type">List</span>&lt;<span class="type">Produto</span>&gt; <span class="var">itens</span>;
+
+  <span class="kw">void</span> <span class="fn">carregar</span>() {
+    <span class="var">itens</span> = [
+      <span class="type">Produto</span>(<span class="str">'Teclado'</span>,  <span class="num">250.0</span>, <span class="var">descricao</span>: <span class="str">'Mecânico RGB'</span>),
+      <span class="type">Produto</span>(<span class="str">'Mouse'</span>,    <span class="num">120.0</span>),
+      <span class="type">Produto</span>(<span class="str">'Monitor'</span>,  <span class="num">1200.0</span>, <span class="var">descricao</span>: <span class="str">'27" Full HD'</span>),
+      <span class="type">Produto</span>(<span class="str">'Mousepad'</span>, <span class="num">45.0</span>),
+    ];
+  }
+
+  <span class="kw">void</span> <span class="fn">exibirCatalogo</span>() {
+    <span class="type">double</span> <span class="var">total</span> = <span class="num">0</span>;
+    <span class="kw">for</span> (<span class="kw">var</span> <span class="var">p</span> <span class="kw">in</span> <span class="var">itens</span>) {
+      <span class="fn">print</span>(<span class="str">'${p.nome} — R\$ ${p.preco}'</span>);
+      <span class="fn">print</span>(<span class="str">'  ${p.descricao ?? "Sem descrição"}'</span>);
+      <span class="var">total</span> += <span class="var">p</span>.<span class="var">preco</span>;
+    }
+    <span class="fn">print</span>(<span class="str">'Total: R\$ $total'</span>);
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">inv</span> = <span class="type">Inventario</span>();
+  <span class="var">inv</span>.<span class="fn">carregar</span>();
+  <span class="var">inv</span>.<span class="fn">exibirCatalogo</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(11)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(12)">Próximo módulo →</button>
+  </div>
+</div>

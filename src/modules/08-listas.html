@@ -66,6 +66,30 @@
   </div>
 
   <div class="divider"></div>
+  <div class="section-title">Funções anônimas: o segredo de map e where</div>
+
+  <div class="explanation">
+    Métodos como <code>map()</code> e <code>where()</code> recebem uma <strong>função como argumento</strong> — chamada de função anônima ou <em>arrow function</em>. Em vez de dar um nome à função, você a escreve diretamente dentro dos parênteses:
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="com">// Função nomeada — forma tradicional</span>
+<span class="type">bool</span> <span class="fn">ePar</span>(<span class="type">int</span> <span class="var">n</span>) =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>;
+
+<span class="com">// Função anônima — escrita direto como argumento</span>
+<span class="kw">var</span> <span class="var">pares</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>].<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>).<span class="fn">toList</span>();
+<span class="com">//                          ↑ parâmetro   ↑ corpo da função</span>
+
+<span class="com">// O padrão (n) => expressão é o mesmo de:</span>
+<span class="kw">var</span> <span class="var">pares2</span> = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>].<span class="fn">where</span>(<span class="fn">ePar</span>).<span class="fn">toList</span>(); <span class="com">// mesma coisa</span></pre>
+  </div>
+
+  <div class="info-box yellow">
+    Leia <code>(n) =&gt; n * 2</code> como: <em>"para cada n, retorne n vezes 2"</em>. O <code>=&gt;</code> substitui <code>{ return ...; }</code> quando o corpo tem apenas uma expressão.
+  </div>
+
+  <div class="divider"></div>
   <div class="section-title">Exercícios de fixação</div>
 
   <div class="exercise-card">
@@ -131,9 +155,44 @@
     </div>
   </div>
 
-  <div class="exercise-card desafio">
+  <div class="exercise-card medio">
     <div class="exercise-header">
       <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Transformando nomes</div>
+        <div class="exercise-sub">Usando map sozinho</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada a lista <code>['ana', 'bruno', 'carla', 'diego']</code>, use <code>map()</code> para criar uma nova lista onde cada nome começa com letra maiúscula (use <code>.toUpperCase()</code> apenas na primeira letra e <code>substring(1)</code> para o restante). Exiba a lista original e a lista transformada.</div>
+      <textarea class="exercise-input" id="ex8-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex8-3', 'dp8-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol8-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp8-3"></div>
+      <div class="solution-wrap" id="sol8-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nomes</span> = [<span class="str">'ana'</span>, <span class="str">'bruno'</span>, <span class="str">'carla'</span>, <span class="str">'diego'</span>];
+
+  <span class="kw">var</span> <span class="var">capitalizados</span> = <span class="var">nomes</span>
+      .<span class="fn">map</span>((<span class="var">n</span>) =&gt; <span class="var">n</span>[<span class="num">0</span>].<span class="fn">toUpperCase</span>() + <span class="var">n</span>.<span class="fn">substring</span>(<span class="num">1</span>))
+      .<span class="fn">toList</span>();
+
+  <span class="fn">print</span>(<span class="var">nomes</span>);         <span class="com">// [ana, bruno, carla, diego]</span>
+  <span class="fn">print</span>(<span class="var">capitalizados</span>); <span class="com">// [Ana, Bruno, Carla, Diego]</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">04</div>
       <div style="flex:1">
         <div class="exercise-title">Transformação encadeada</div>
         <div class="exercise-sub">where + map + soma</div>
@@ -142,13 +201,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Dada a lista <code>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code>, em uma única cadeia de operações: filtre apenas os números <strong>pares</strong> com <code>where()</code>, depois dobre cada valor com <code>map()</code>. Exiba a lista resultante. Por fim, percorra com <code>for-in</code> e calcule a soma de todos os valores.</div>
-      <textarea class="exercise-input" id="ex8-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex8-4" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex8-3', 'dp8-3')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol8-3')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex8-4', 'dp8-4')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol8-4')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp8-3"></div>
-      <div class="solution-wrap" id="sol8-3">
+      <div class="dartpad-wrap" id="dp8-4"></div>
+      <div class="solution-wrap" id="sol8-4">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">void</span> <span class="fn">main</span>() {
