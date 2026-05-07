@@ -15,7 +15,7 @@
       <div class="logo-icon">Fl</div>
       <div>
         <div class="logo-text">Aprenda Flutter</div>
-        <div class="logo-sub">18 módulos · do zero</div>
+        <div class="logo-sub">19 módulos · do zero</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-label">
       <span>Progresso</span>
-      <span id="progress-text">0 / 18</span>
+      <span id="progress-text">0 / 19</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
@@ -139,6 +139,12 @@
       <span class="nav-dot"></span>
       <span class="nav-num">18</span>
       <span>ListView</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(19)" id="nav-19">
+      <span class="nav-dot"></span>
+      <span class="nav-num">19</span>
+      <span>Async / Future</span>
     </button>
   </div>
 </aside>
@@ -5233,6 +5239,383 @@
   <div class="lesson-nav">
     <button class="btn btn-nav" onclick="goTo(17)">← Voltar</button>
     <button class="btn btn-primary" onclick="completeAndNext(18)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-19">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 19</div>
+    <div class="lesson-title">Async e <code style="font-size:22px;">Future</code></div>
+    <div class="lesson-subtitle">Operações demoradas — buscar dados de uma API, ler um arquivo — não podem travar a tela. O Dart resolve isso com <code>Future</code>, <code>async</code> e <code>await</code>.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 1 — Future e async/await
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Future, async e await</div>
+
+  <div class="explanation">
+    Um <code>Future&lt;T&gt;</code> representa um valor que estará disponível <strong>no futuro</strong>. Marque a função com <code>async</code> e use <code>await</code> para esperar o resultado sem bloquear o restante do app.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarNome</span>() <span class="kw">async</span> {
+  <span class="com">// simula um atraso de rede</span>
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">2</span>));
+  <span class="kw">return</span> <span class="str">'Tainá'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="fn">print</span>(<span class="str">'Buscando...'</span>);
+  <span class="kw">final</span> <span class="var">nome</span> = <span class="kw">await</span> <span class="fn">buscarNome</span>(); <span class="com">// espera 2 segundos</span>
+  <span class="fn">print</span>(<span class="str">'Nome: $nome'</span>);             <span class="com">// Nome: Tainá</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <code>await</code> só pode ser usado dentro de funções marcadas com <code>async</code>. A função sempre retorna um <code>Future</code> — mesmo que você escreva <code>Future&lt;void&gt;</code>, o Dart garante que o retorno seja assíncrono.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 2 — FutureBuilder
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">FutureBuilder — conectando async à UI</div>
+
+  <div class="explanation">
+    O <code>FutureBuilder</code> é um widget que reconstrói a UI conforme o estado do <code>Future</code>: aguardando, concluído com dados ou concluído com erro. Ele elimina a necessidade de gerenciar manualmente flags de carregamento com <code>setState()</code>.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarMensagem</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">2</span>));
+  <span class="kw">return</span> <span class="str">'Dados carregados!'</span>;
+}
+
+<span class="type">FutureBuilder</span>&lt;<span class="type">String</span>&gt;(
+  future: <span class="fn">buscarMensagem</span>(),
+  builder: (<span class="var">context</span>, <span class="var">snapshot</span>) {
+    <span class="kw">if</span> (<span class="var">snapshot</span>.connectionState == <span class="type">ConnectionState</span>.waiting) {
+      <span class="kw">return</span> <span class="kw">const</span> <span class="type">CircularProgressIndicator</span>();
+    }
+    <span class="kw">if</span> (<span class="var">snapshot</span>.hasError) {
+      <span class="kw">return</span> <span class="type">Text</span>(<span class="str">'Erro: ${snapshot.error}'</span>);
+    }
+    <span class="kw">return</span> <span class="type">Text</span>(<span class="var">snapshot</span>.data!);
+  },
+)</pre>
+  </div>
+
+  <div class="info-box yellow">
+    Declare o <code>Future</code> fora do <code>build()</code> — nunca chame a função diretamente no parâmetro <code>future</code> do <code>FutureBuilder</code> dentro do <code>build()</code>. Isso recriaria o <code>Future</code> a cada reconstrução, reiniciando o carregamento infinitamente.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 3 — Tratamento de erros
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Tratamento de erros com try/catch</div>
+
+  <div class="explanation">
+    Operações assíncronas podem falhar — sem internet, servidor fora do ar, dados inválidos. Use <code>try/catch</code> dentro de funções <code>async</code> para capturar exceções e exibir feedback adequado ao usuário.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarComFalha</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">throw</span> <span class="str">'Servidor indisponível'</span>; <span class="com">// simula falha</span>
+}
+
+<span class="kw">Future</span>&lt;<span class="kw">void</span>&gt; <span class="fn">carregar</span>() <span class="kw">async</span> {
+  <span class="kw">try</span> {
+    <span class="kw">final</span> <span class="var">dados</span> = <span class="kw">await</span> <span class="fn">buscarComFalha</span>();
+    <span class="fn">print</span>(<span class="var">dados</span>);
+  } <span class="kw">catch</span> (<span class="var">e</span>) {
+    <span class="fn">print</span>(<span class="str">'Erro capturado: $e'</span>); <span class="com">// Erro capturado: Servidor indisponível</span>
+  }
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Boas práticas:</strong> sempre trate erros em chamadas assíncronas. Exiba um estado de erro claro na UI — uma mensagem com botão "Tentar novamente" é muito melhor do que uma tela em branco ou travada.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       EXERCÍCIOS
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <!-- Exercício 1 — Básico -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Carregamento simulado</div>
+        <div class="exercise-sub">Future.delayed + FutureBuilder</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>buscarCitacao()</code> que aguarda 3 segundos com <code>Future.delayed</code> e retorna uma frase motivacional. Use <code>FutureBuilder</code> para exibir um <code>CircularProgressIndicator</code> enquanto carrega e a citação centralizada na tela após o carregamento.</div>
+      <textarea class="exercise-input" id="ex19-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex19-1', 'dp19-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol19-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp19-1"></div>
+      <div class="solution-wrap" id="sol19-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">TelaCitacao</span>()));
+
+<span class="kw">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarCitacao</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">3</span>));
+  <span class="kw">return</span> <span class="str">'"O único jeito de fazer um ótimo trabalho\né amar o que você faz." — Steve Jobs'</span>;
+}
+
+<span class="kw">class</span> <span class="type">TelaCitacao</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaCitacao</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Citação do dia'</span>)),
+      body: <span class="type">FutureBuilder</span>&lt;<span class="type">String</span>&gt;(
+        future: <span class="fn">buscarCitacao</span>(),
+        builder: (<span class="var">_</span>, <span class="var">snapshot</span>) {
+          <span class="kw">if</span> (<span class="var">snapshot</span>.connectionState == <span class="type">ConnectionState</span>.waiting) {
+            <span class="kw">return</span> <span class="kw">const</span> <span class="type">Center</span>(child: <span class="type">CircularProgressIndicator</span>());
+          }
+          <span class="kw">return</span> <span class="type">Center</span>(
+            child: <span class="type">Padding</span>(
+              padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">24</span>),
+              child: <span class="type">Text</span>(
+                <span class="var">snapshot</span>.data!,
+                textAlign: <span class="type">TextAlign</span>.center,
+                style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">18</span>),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 2 — Médio -->
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Recarregar sob demanda</div>
+        <div class="exercise-sub">setState + Future + loading manual</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um app que exibe um número aleatório entre 1 e 100 "buscado do servidor". A função <code>buscarNumero()</code> deve aguardar 2 segundos e retornar o número. Use <code>setState()</code> para controlar uma variável <code>_carregando</code> e alternar entre exibir um <code>CircularProgressIndicator</code> ou o número em fonte grande. Um botão <strong>"Novo número"</strong> dispara outra busca.</div>
+      <textarea class="exercise-input" id="ex19-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex19-2', 'dp19-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol19-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp19-2"></div>
+      <div class="solution-wrap" id="sol19-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'dart:math'</span>;
+<span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">TelaNumero</span>()));
+
+<span class="kw">Future</span>&lt;<span class="type">int</span>&gt; <span class="fn">buscarNumero</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">2</span>));
+  <span class="kw">return</span> <span class="type">Random</span>().<span class="fn">nextInt</span>(<span class="num">100</span>) + <span class="num">1</span>;
+}
+
+<span class="kw">class</span> <span class="type">TelaNumero</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaNumero</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">TelaNumero</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_TelaNumeroState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_TelaNumeroState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">TelaNumero</span>&gt; {
+  <span class="type">int</span>? <span class="var">_numero</span>;
+  <span class="type">bool</span> <span class="var">_carregando</span> = <span class="kw">false</span>;
+
+  <span class="kw">Future</span>&lt;<span class="kw">void</span>&gt; <span class="fn">_buscar</span>() <span class="kw">async</span> {
+    <span class="fn">setState</span>(() =&gt; <span class="var">_carregando</span> = <span class="kw">true</span>);
+    <span class="kw">final</span> <span class="var">n</span> = <span class="kw">await</span> <span class="fn">buscarNumero</span>();
+    <span class="fn">setState</span>(() { <span class="var">_numero</span> = <span class="var">n</span>; <span class="var">_carregando</span> = <span class="kw">false</span>; });
+  }
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">initState</span>() { <span class="kw">super</span>.<span class="fn">initState</span>(); <span class="fn">_buscar</span>(); }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Número aleatório'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="var">_carregando</span>
+            ? <span class="kw">const</span> <span class="type">CircularProgressIndicator</span>()
+            : <span class="type">Text</span>(
+                <span class="str">'$_numero'</span>,
+                style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">72</span>, fontWeight: <span class="type">FontWeight</span>.bold),
+              ),
+      ),
+      floatingActionButton: <span class="type">FloatingActionButton</span>.extended(
+        onPressed: <span class="var">_carregando</span> ? <span class="kw">null</span> : <span class="var">_buscar</span>,
+        label: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Novo número'</span>),
+        icon: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.refresh),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 3 — Desafio -->
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Busca com erro recuperável</div>
+        <div class="exercise-sub">try/catch + estados: loading, erro, dados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um app que simula a busca de um perfil de usuário. A função <code>buscarPerfil(String nome)</code> aguarda 2 segundos: se o nome for <strong>"erro"</strong>, lança uma exceção; caso contrário, retorna um <code>Map</code> com <code>nome</code>, <code>email</code> e <code>cargo</code>. A UI deve ter três estados distintos: <strong>carregando</strong> (CircularProgressIndicator), <strong>erro</strong> (mensagem + botão "Tentar novamente") e <strong>dados</strong> (card com as informações do perfil). Um <code>TextField</code> permite digitar o nome antes de buscar.</div>
+      <textarea class="exercise-input" id="ex19-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex19-3', 'dp19-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol19-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp19-3"></div>
+      <div class="solution-wrap" id="sol19-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">TelaPerfil</span>()));
+
+<span class="kw">Future</span>&lt;<span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt;&gt; <span class="fn">buscarPerfil</span>(<span class="type">String</span> <span class="var">nome</span>) <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">2</span>));
+  <span class="kw">if</span> (<span class="var">nome</span>.<span class="fn">toLowerCase</span>() == <span class="str">'erro'</span>) <span class="kw">throw</span> <span class="str">'Usuário não encontrado'</span>;
+  <span class="kw">return</span> {
+    <span class="str">'nome'</span>:  <span class="var">nome</span>,
+    <span class="str">'email'</span>: <span class="str">'${nome.toLowerCase()}@empresa.com'</span>,
+    <span class="str">'cargo'</span>: <span class="str">'Desenvolvedor Flutter'</span>,
+  };
+}
+
+<span class="kw">class</span> <span class="type">TelaPerfil</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaPerfil</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">TelaPerfil</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_TelaPerfilState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_TelaPerfilState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">TelaPerfil</span>&gt; {
+  <span class="kw">final</span> <span class="var">_ctrl</span> = <span class="type">TextEditingController</span>();
+  <span class="type">bool</span> <span class="var">_carregando</span> = <span class="kw">false</span>;
+  <span class="type">String</span>? <span class="var">_erro</span>;
+  <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt;? <span class="var">_perfil</span>;
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() { <span class="var">_ctrl</span>.<span class="fn">dispose</span>(); <span class="kw">super</span>.<span class="fn">dispose</span>(); }
+
+  <span class="kw">Future</span>&lt;<span class="kw">void</span>&gt; <span class="fn">_buscar</span>() <span class="kw">async</span> {
+    <span class="kw">final</span> <span class="var">nome</span> = <span class="var">_ctrl</span>.text.<span class="fn">trim</span>();
+    <span class="kw">if</span> (<span class="var">nome</span>.<span class="fn">isEmpty</span>) <span class="kw">return</span>;
+    <span class="fn">setState</span>(() { <span class="var">_carregando</span> = <span class="kw">true</span>; <span class="var">_erro</span> = <span class="kw">null</span>; <span class="var">_perfil</span> = <span class="kw">null</span>; });
+    <span class="kw">try</span> {
+      <span class="kw">final</span> <span class="var">dados</span> = <span class="kw">await</span> <span class="fn">buscarPerfil</span>(<span class="var">nome</span>);
+      <span class="fn">setState</span>(() { <span class="var">_perfil</span> = <span class="var">dados</span>; <span class="var">_carregando</span> = <span class="kw">false</span>; });
+    } <span class="kw">catch</span> (<span class="var">e</span>) {
+      <span class="fn">setState</span>(() { <span class="var">_erro</span> = <span class="var">e</span>.<span class="fn">toString</span>(); <span class="var">_carregando</span> = <span class="kw">false</span>; });
+    }
+  }
+
+  <span class="type">Widget</span> <span class="fn">_conteudo</span>() {
+    <span class="kw">if</span> (<span class="var">_carregando</span>) <span class="kw">return</span> <span class="kw">const</span> <span class="type">CircularProgressIndicator</span>();
+    <span class="kw">if</span> (<span class="var">_erro</span> != <span class="kw">null</span>) {
+      <span class="kw">return</span> <span class="type">Column</span>(mainAxisSize: <span class="type">MainAxisSize</span>.min, children: [
+        <span class="type">Text</span>(<span class="var">_erro</span>!, style: <span class="kw">const</span> <span class="type">TextStyle</span>(color: <span class="type">Colors</span>.red)),
+        <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">12</span>),
+        <span class="type">ElevatedButton</span>(onPressed: <span class="var">_buscar</span>, child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Tentar novamente'</span>)),
+      ]);
+    }
+    <span class="kw">if</span> (<span class="var">_perfil</span> != <span class="kw">null</span>) {
+      <span class="kw">return</span> <span class="type">Card</span>(
+        child: <span class="type">Padding</span>(
+          padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">24</span>),
+          child: <span class="type">Column</span>(mainAxisSize: <span class="type">MainAxisSize</span>.min, children: [
+            <span class="type">Text</span>(<span class="var">_perfil</span>![<span class="str">'nome'</span>]!, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">22</span>, fontWeight: <span class="type">FontWeight</span>.bold)),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">8</span>),
+            <span class="type">Text</span>(<span class="var">_perfil</span>![<span class="str">'email'</span>]!),
+            <span class="type">Text</span>(<span class="var">_perfil</span>![<span class="str">'cargo'</span>]!),
+          ]),
+        ),
+      );
+    }
+    <span class="kw">return</span> <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Digite um nome para buscar.'</span>);
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Buscar Perfil'</span>)),
+      body: <span class="type">Padding</span>(
+        padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">24</span>),
+        child: <span class="type">Column</span>(children: [
+          <span class="type">Row</span>(children: [
+            <span class="type">Expanded</span>(
+              child: <span class="type">TextField</span>(
+                controller: <span class="var">_ctrl</span>,
+                decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(hintText: <span class="str">'Nome do usuário (tente "erro")'</span>),
+                onSubmitted: (<span class="var">_</span>) =&gt; <span class="fn">_buscar</span>(),
+              ),
+            ),
+            <span class="type">IconButton</span>(icon: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.search), onPressed: <span class="var">_buscar</span>),
+          ]),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">32</span>),
+          <span class="fn">_conteudo</span>(),
+        ]),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(18)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(19)">Próximo módulo →</button>
   </div>
 </div>
 
