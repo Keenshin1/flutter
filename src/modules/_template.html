@@ -1,0 +1,196 @@
+<!-- module: num="NN" nav="Título do Módulo" -->
+<!--
+  TEMPLATE DE MÓDULO — não é incluído no build (arquivos com _ são ignorados pelo build.py)
+
+  ANTES DE COPIAR:
+  1. Renomeie o arquivo para NN-slug.html  (ex: 15-async.html)
+  2. Substitua TODAS as ocorrências de NN pelo número do módulo (ex: 15)
+  3. Substitua PREV pelo número anterior (NN - 1)  (ex: 14)
+  4. Preencha os textos marcados com [TEXTO]
+  5. Se for o ÚLTIMO módulo, troque o botão "Próximo" por:
+       <button class="btn btn-primary" onclick="completeAndNext(NN)">✔ Concluir curso</button>
+  6. Se for o PRIMEIRO módulo, mantenha style="visibility:hidden" no botão Voltar.
+
+  IDs ÚNICOS — padrão obrigatório:
+    textarea / runInDartPad / dartpad-wrap  →  ex{NN}-{N}  /  dp{NN}-{N}
+    solution-wrap                           →  sol{NN}-{N}
+  onde {N} = número do exercício dentro do módulo (1, 2, 3...)
+  Exemplo para módulo 15, exercício 2:  ex15-2, dp15-2, sol15-2
+
+  DIFICULDADES:
+    Básico   → <span class="tag green">Básico</span>    + <div class="exercise-card">
+    Médio    → <span class="tag yellow">Médio</span>    + <div class="exercise-card medio">
+    Desafio  → <span class="tag orange">Desafio</span>  + <div class="exercise-card desafio">
+    Revisão  → <span class="tag blue">Revisão</span>    + <div class="exercise-card">
+
+  INFO-BOX VARIANTES:
+    <div class="info-box">          azul — dica geral
+    <div class="info-box green">    verde — output / resultado esperado
+    <div class="info-box yellow">   amarelo — aviso / atenção
+
+  HIGHLIGHT DE CÓDIGO (spans dentro de <pre>):
+    .kw   → palavras-chave (void, var, if, return, class, ...)
+    .type → tipos (String, int, double, bool, List, Map, ...)
+    .fn   → funções e métodos (main, print, nomeDoMetodo)
+    .var  → variáveis e propriedades
+    .str  → strings literais
+    .num  → números literais
+    .com  → comentários
+    .op   → operadores especiais (@override, =>, ...)
+-->
+
+<div class="lesson" id="lesson-NN">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo NN</div>
+    <div class="lesson-title">[Título do módulo]</div>
+    <div class="lesson-subtitle">[Uma frase descrevendo o que o aluno vai aprender e por que é útil.]</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 1 — conceito principal
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">[Nome da primeira seção]</div>
+
+  <div class="explanation">
+    [Explicação em prosa — 2 a 4 linhas. Use <code>code inline</code> para destacar termos técnicos.]
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// exemplo do conceito principal</span>
+  <span class="fn">print</span>(<span class="str">'Olá!'</span>);
+}</pre>
+  </div>
+
+  <div class="info-box">
+    [Dica ou detalhe importante sobre o código acima.]
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 2 — conceito secundário (duplique ou remova conforme necessário)
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">[Nome da segunda seção]</div>
+
+  <div class="explanation">
+    [Explicação da segunda seção.]
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// exemplo da segunda seção</span>
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    [Aviso ou ponto de atenção opcional.]
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       EXERCÍCIOS
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <!-- Exercício 1 — Básico -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">[Título do exercício]</div>
+        <div class="exercise-sub">[Subtítulo curto — conceito praticado]</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">[Enunciado claro. Use <code>code</code> para termos técnicos e <strong>negrito</strong> para o resultado esperado.]</div>
+      <textarea class="exercise-input" id="exNN-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exNN-1', 'dpNN-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solNN-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpNN-1"></div>
+      <div class="solution-wrap" id="solNN-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// solução do exercício 1</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 2 — Médio -->
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">[Título do exercício]</div>
+        <div class="exercise-sub">[Subtítulo curto]</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">[Enunciado do exercício médio.]</div>
+      <textarea class="exercise-input" id="exNN-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exNN-2', 'dpNN-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solNN-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpNN-2"></div>
+      <div class="solution-wrap" id="solNN-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// solução do exercício 2</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 3 — Desafio -->
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">[Título do exercício]</div>
+        <div class="exercise-sub">[Subtítulo curto]</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">[Enunciado do desafio — pode combinar vários conceitos do módulo e módulos anteriores.]</div>
+      <textarea class="exercise-input" id="exNN-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('exNN-3', 'dpNN-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('solNN-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dpNN-3"></div>
+      <div class="solution-wrap" id="solNN-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="com">// solução do desafio</span>
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegação -->
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(PREV)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(NN)">Próximo módulo →</button>
+  </div>
+</div>
