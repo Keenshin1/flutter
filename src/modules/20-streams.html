@@ -1,0 +1,369 @@
+<!-- module: num="20" nav="Streams" -->
+<div class="lesson" id="lesson-20">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 20</div>
+    <div class="lesson-title">Streams — dados em tempo real</div>
+    <div class="lesson-subtitle">Enquanto um <code>Future</code> entrega um único valor no futuro, um <code>Stream</code> entrega <strong>vários valores ao longo do tempo</strong> — perfeito para notificações, sensores, chats e qualquer dado que muda continuamente.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 1 — Stream vs Future
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Stream vs Future</div>
+
+  <div class="explanation">
+    Um <code>Future&lt;T&gt;</code> resolve <em>uma vez</em> — com sucesso ou erro. Um <code>Stream&lt;T&gt;</code> é um canal que pode emitir <em>zero ou mais valores</em> ao longo do tempo e fecha quando não há mais dados. Você percorre um stream com <code>await for</code>, da mesma forma que usa <code>await</code> com um Future.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="com">// Future — um único valor</span>
+<span class="kw">Future</span>&lt;<span class="type">int</span>&gt; <span class="fn">umValor</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">return</span> <span class="num">42</span>;
+}
+
+<span class="com">// Stream — vários valores ao longo do tempo</span>
+<span class="type">Stream</span>&lt;<span class="type">int</span>&gt; <span class="fn">contagem</span>() <span class="kw">async</span>* {
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">i</span> = <span class="num">1</span>; <span class="var">i</span> &lt;= <span class="num">5</span>; <span class="var">i</span>++) {
+    <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="type">Duration</span>(seconds: <span class="num">1</span>));
+    <span class="kw">yield</span> <span class="var">i</span>;  <span class="com">// emite um valor e continua</span>
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="kw">await for</span> (<span class="kw">final</span> <span class="var">n</span> <span class="kw">in</span> <span class="fn">contagem</span>()) {
+    <span class="fn">print</span>(<span class="str">'Recebido: <span class="var">$n</span>'</span>);
+  }
+  <span class="fn">print</span>(<span class="str">'Stream encerrado!'</span>);
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    Saída: Recebido: 1 → Recebido: 2 → ... → Recebido: 5 → Stream encerrado!
+  </div>
+
+  <div class="info-box">
+    <code>async*</code> e <code>yield</code> andam juntos: <code>async*</code> declara que a função é um <em>gerador assíncrono</em>, e <code>yield</code> emite um valor sem encerrar a função — ela fica "pausada" até emitir o próximo.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 2 — StreamController
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">StreamController — controle total</div>
+
+  <div class="explanation">
+    Quando você precisa emitir eventos de forma imperativa (por exemplo, ao receber dados de um WebSocket ou ao clicar em botões), use o <code>StreamController&lt;T&gt;</code>. Ele expõe um <code>sink</code> para adicionar dados e um <code>stream</code> para ouvir.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">import</span> <span class="str">'dart:async'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="kw">final</span> <span class="var">controller</span> = <span class="type">StreamController</span>&lt;<span class="type">String</span>&gt;();
+
+  <span class="com">// ouvinte: processa cada evento</span>
+  <span class="var">controller</span>.<span class="var">stream</span>.<span class="fn">listen</span>((<span class="var">msg</span>) {
+    <span class="fn">print</span>(<span class="str">'Mensagem: <span class="var">$msg</span>'</span>);
+  });
+
+  <span class="com">// produtores: adicionam dados ao canal</span>
+  <span class="var">controller</span>.<span class="var">sink</span>.<span class="fn">add</span>(<span class="str">'Olá'</span>);
+  <span class="var">controller</span>.<span class="var">sink</span>.<span class="fn">add</span>(<span class="str">'Flutter'</span>);
+  <span class="var">controller</span>.<span class="var">sink</span>.<span class="fn">add</span>(<span class="str">'Streams!'</span>);
+
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="type">Duration</span>(milliseconds: <span class="num">100</span>));
+  <span class="kw">await</span> <span class="var">controller</span>.<span class="fn">close</span>(); <span class="com">// sempre feche quando terminar</span>
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    Fechar o <code>StreamController</code> com <code>close()</code> é obrigatório para evitar vazamentos de memória. Em widgets Flutter, faça isso no <code>dispose()</code>.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 3 — StreamBuilder na UI
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">StreamBuilder — conectando ao widget tree</div>
+
+  <div class="explanation">
+    O <code>StreamBuilder</code> é o equivalente do <code>FutureBuilder</code> para streams. Ele reconstrói a UI a cada novo evento, recebendo um <code>AsyncSnapshot</code> com o estado atual: aguardando, com dado, ou com erro.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="com">// stream que emite o tempo decorrido a cada segundo</span>
+<span class="type">Stream</span>&lt;<span class="type">int</span>&gt; <span class="fn">relogio</span>() <span class="kw">async</span>* {
+  <span class="kw">var</span> <span class="var">seg</span> = <span class="num">0</span>;
+  <span class="kw">while</span> (<span class="kw">true</span>) {
+    <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+    <span class="kw">yield</span> ++<span class="var">seg</span>;
+  }
+}
+
+<span class="kw">class</span> <span class="type">Cronometro</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">Cronometro</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">StreamBuilder</span>&lt;<span class="type">int</span>&gt;(
+      stream: <span class="fn">relogio</span>(),
+      builder: (<span class="var">context</span>, <span class="var">snapshot</span>) {
+        <span class="kw">if</span> (!<span class="var">snapshot</span>.<span class="var">hasData</span>) {
+          <span class="kw">return</span> <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Iniciando...'</span>);
+        }
+        <span class="kw">return</span> <span class="type">Text</span>(
+          <span class="str">'${snapshot.data}s'</span>,
+          style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">48</span>),
+        );
+      },
+    );
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    Note que <code>Cronometro</code> é um <code>StatelessWidget</code> — o <code>StreamBuilder</code> gerencia toda a atualização de estado internamente. Não é necessário chamar <code>setState()</code>.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 4 — listen, map e where
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Transformando streams: map e where</div>
+
+  <div class="explanation">
+    Streams possuem métodos funcionais semelhantes aos de <code>List</code>: <code>map()</code> transforma cada evento, <code>where()</code> filtra eventos que não atendem a um critério, e <code>listen()</code> registra um ouvinte sem usar <code>await for</code>. Você pode encadear esses métodos assim como em coleções.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">import</span> <span class="str">'dart:async'</span>;
+
+<span class="type">Stream</span>&lt;<span class="type">int</span>&gt; <span class="fn">numeros</span>() <span class="kw">async</span>* {
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">i</span> = <span class="num">1</span>; <span class="var">i</span> &lt;= <span class="num">10</span>; <span class="var">i</span>++) {
+    <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="type">Duration</span>(milliseconds: <span class="num">200</span>));
+    <span class="kw">yield</span> <span class="var">i</span>;
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="fn">numeros</span>()
+      .<span class="fn">where</span>((<span class="var">n</span>) => <span class="var">n</span>.<span class="fn">isEven</span>)          <span class="com">// só números pares</span>
+      .<span class="fn">map</span>((<span class="var">n</span>) => <span class="str">'Par: <span class="var">$n</span>'</span>)            <span class="com">// transforma em String</span>
+      .<span class="fn">forEach</span>(<span class="fn">print</span>);                   <span class="com">// Par: 2, Par: 4, ..., Par: 10</span>
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    Saída: Par: 2 → Par: 4 → Par: 6 → Par: 8 → Par: 10
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       EXERCÍCIOS
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <!-- Exercício 1 — Básico -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Contador regressivo</div>
+        <div class="exercise-sub">async* e yield</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">
+        Crie uma função <code>regressivo(int inicio)</code> que retorna um <code>Stream&lt;int&gt;</code> emitindo os números de <code>inicio</code> até <code>1</code> com intervalo de 500 ms entre cada um. No <code>main()</code>, use <code>await for</code> para imprimir cada número e, ao final, imprima <strong>"Lançar!"</strong>.
+      </div>
+      <textarea class="exercise-input" id="ex20-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex20-1', 'dp20-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol20-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp20-1"></div>
+      <div class="solution-wrap" id="sol20-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'dart:async'</span>;
+
+<span class="type">Stream</span>&lt;<span class="type">int</span>&gt; <span class="fn">regressivo</span>(<span class="type">int</span> <span class="var">inicio</span>) <span class="kw">async</span>* {
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">i</span> = <span class="var">inicio</span>; <span class="var">i</span> >= <span class="num">1</span>; <span class="var">i</span>--) {
+    <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(milliseconds: <span class="num">500</span>));
+    <span class="kw">yield</span> <span class="var">i</span>;
+  }
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="kw">await for</span> (<span class="kw">final</span> <span class="var">n</span> <span class="kw">in</span> <span class="fn">regressivo</span>(<span class="num">5</span>)) {
+    <span class="fn">print</span>(<span class="var">n</span>);
+  }
+  <span class="fn">print</span>(<span class="str">'Lançar!'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 2 — Médio -->
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Filtro de temperatura</div>
+        <div class="exercise-sub">StreamController + where + map</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">
+        Crie um <code>StreamController&lt;double&gt;</code> chamado <code>sensor</code>. Adicione ao sink as temperaturas: <code>18.5, 23.0, 37.2, 25.1, 40.8, 22.0</code>. Ouça o stream com <code>listen()</code>, filtrando apenas temperaturas <strong>acima de 35°C</strong> e imprimindo no formato <strong>"ALERTA: 37.2°C"</strong>. Feche o controller ao final.
+      </div>
+      <textarea class="exercise-input" id="ex20-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex20-2', 'dp20-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol20-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp20-2"></div>
+      <div class="solution-wrap" id="sol20-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'dart:async'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="kw">final</span> <span class="var">sensor</span> = <span class="type">StreamController</span>&lt;<span class="type">double</span>&gt;();
+
+  <span class="var">sensor</span>.<span class="var">stream</span>
+      .<span class="fn">where</span>((<span class="var">t</span>) => <span class="var">t</span> > <span class="num">35</span>)
+      .<span class="fn">map</span>((<span class="var">t</span>) => <span class="str">'ALERTA: <span class="var">${t.toStringAsFixed(1)}</span>°C'</span>)
+      .<span class="fn">listen</span>(<span class="fn">print</span>);
+
+  <span class="kw">for</span> (<span class="kw">final</span> <span class="var">temp</span> <span class="kw">in</span> [<span class="num">18.5</span>, <span class="num">23.0</span>, <span class="num">37.2</span>, <span class="num">25.1</span>, <span class="num">40.8</span>, <span class="num">22.0</span>]) {
+    <span class="var">sensor</span>.<span class="var">sink</span>.<span class="fn">add</span>(<span class="var">temp</span>);
+  }
+
+  <span class="kw">await</span> <span class="var">sensor</span>.<span class="fn">close</span>();
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 3 — Desafio -->
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Cronômetro interativo</div>
+        <div class="exercise-sub">StreamBuilder + StatefulWidget + StreamController</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">
+        Crie um app Flutter com um <code>StatefulWidget</code> chamado <code>Cronometro</code>. Ele deve ter um <code>StreamController&lt;int&gt;</code> e dois botões: <strong>Iniciar</strong> e <strong>Resetar</strong>. Ao iniciar, use um <code>Timer.periodic</code> (de <code>dart:async</code>) para emitir um inteiro crescente no sink a cada segundo. O <code>StreamBuilder</code> exibe o tempo no formato <strong>"00:07"</strong> (minutos:segundos). Ao resetar, cancele o timer, zere o contador e emita <code>0</code> no sink. Feche o controller no <code>dispose()</code>.
+      </div>
+      <textarea class="exercise-input" id="ex20-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex20-3', 'dp20-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol20-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp20-3"></div>
+      <div class="solution-wrap" id="sol20-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'dart:async'</span>;
+<span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() => <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">Scaffold</span>(body: <span class="type">Center</span>(child: <span class="type">Cronometro</span>()))));
+
+<span class="kw">class</span> <span class="type">Cronometro</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">Cronometro</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">Cronometro</span>&gt; <span class="fn">createState</span>() => <span class="fn">_CronometroState</span>();
+}
+
+<span class="kw">class</span> <span class="type">_CronometroState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Cronometro</span>&gt; {
+  <span class="kw">final</span> <span class="var">_ctrl</span> = <span class="type">StreamController</span>&lt;<span class="type">int</span>&gt;();
+  <span class="type">Timer</span>? <span class="var">_timer</span>;
+  <span class="kw">var</span> <span class="var">_segundos</span> = <span class="num">0</span>;
+  <span class="kw">var</span> <span class="var">_rodando</span> = <span class="kw">false</span>;
+
+  <span class="kw">void</span> <span class="fn">_iniciar</span>() {
+    <span class="kw">if</span> (<span class="var">_rodando</span>) <span class="kw">return</span>;
+    <span class="fn">setState</span>(() => <span class="var">_rodando</span> = <span class="kw">true</span>);
+    <span class="var">_timer</span> = <span class="type">Timer</span>.<span class="fn">periodic</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>), (_) {
+      <span class="var">_ctrl</span>.<span class="var">sink</span>.<span class="fn">add</span>(++<span class="var">_segundos</span>);
+    });
+  }
+
+  <span class="kw">void</span> <span class="fn">_resetar</span>() {
+    <span class="var">_timer</span>?.<span class="fn">cancel</span>();
+    <span class="fn">setState</span>(() { <span class="var">_rodando</span> = <span class="kw">false</span>; <span class="var">_segundos</span> = <span class="num">0</span>; });
+    <span class="var">_ctrl</span>.<span class="var">sink</span>.<span class="fn">add</span>(<span class="num">0</span>);
+  }
+
+  <span class="type">String</span> <span class="fn">_formatar</span>(<span class="type">int</span> <span class="var">s</span>) {
+    <span class="kw">final</span> <span class="var">m</span> = <span class="var">s</span> ~/ <span class="num">60</span>;
+    <span class="kw">return</span> <span class="str">'${m.toString().padLeft(2,'0')}:${(s % 60).toString().padLeft(2,'0')}'</span>;
+  }
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() {
+    <span class="var">_timer</span>?.<span class="fn">cancel</span>();
+    <span class="var">_ctrl</span>.<span class="fn">close</span>();
+    <span class="kw">super</span>.<span class="fn">dispose</span>();
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Column</span>(mainAxisSize: <span class="type">MainAxisSize</span>.min, children: [
+      <span class="type">StreamBuilder</span>&lt;<span class="type">int</span>&gt;(
+        stream: <span class="var">_ctrl</span>.<span class="var">stream</span>,
+        initialData: <span class="num">0</span>,
+        builder: (<span class="var">_</span>, <span class="var">snap</span>) => <span class="type">Text</span>(
+          <span class="fn">_formatar</span>(<span class="var">snap</span>.<span class="var">data</span>!),
+          style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">64</span>, fontWeight: <span class="type">FontWeight</span>.bold),
+        ),
+      ),
+      <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">24</span>),
+      <span class="type">Row</span>(mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center, children: [
+        <span class="type">ElevatedButton</span>(onPressed: <span class="fn">_iniciar</span>, child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Iniciar'</span>)),
+        <span class="kw">const</span> <span class="type">SizedBox</span>(width: <span class="num">16</span>),
+        <span class="type">OutlinedButton</span>(onPressed: <span class="fn">_resetar</span>, child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Resetar'</span>)),
+      ]),
+    ]);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegação -->
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(19)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(20)">✔ Concluir curso</button>
+  </div>
+</div>
