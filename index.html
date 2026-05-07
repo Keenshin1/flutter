@@ -15,7 +15,7 @@
       <div class="logo-icon">Fl</div>
       <div>
         <div class="logo-text">Aprenda Flutter</div>
-        <div class="logo-sub">14 módulos · do zero</div>
+        <div class="logo-sub">15 módulos · do zero</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-label">
       <span>Progresso</span>
-      <span id="progress-text">0 / 14</span>
+      <span id="progress-text">0 / 15</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
@@ -115,6 +115,12 @@
       <span class="nav-dot"></span>
       <span class="nav-num">14</span>
       <span>Intro Flutter</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(15)" id="nav-15">
+      <span class="nav-dot"></span>
+      <span class="nav-num">15</span>
+      <span>StatefulWidget</span>
     </button>
   </div>
 </aside>
@@ -3556,6 +3562,385 @@
   <div class="lesson-nav">
     <button class="btn btn-nav" onclick="goTo(13)">← Voltar</button>
     <button class="btn btn-primary" onclick="completeAndNext(14)">✔ Concluir curso</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-15">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 15</div>
+    <div class="lesson-title"><code style="font-size:22px;">StatefulWidget</code></div>
+    <div class="lesson-subtitle">Widgets que reagem a interações do usuário e atualizam a tela automaticamente — o coração dos apps Flutter interativos.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 1 — Stateless vs Stateful
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Stateless vs Stateful</div>
+
+  <div class="explanation">
+    No módulo anterior você usou <code>StatelessWidget</code> — widgets que sempre exibem a mesma coisa. Um <code>StatefulWidget</code> possui um <strong>estado interno</strong> que pode mudar: cada vez que o estado muda, o Flutter redesenha automaticamente apenas esse widget.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart — estrutura mínima</div>
+    </div>
+    <pre><span class="kw">class</span> <span class="type">Contador</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">Contador</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">Contador</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_ContadorState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_ContadorState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Contador</span>&gt; {
+  <span class="type">int</span> <span class="var">_valor</span> = <span class="num">0</span>;  <span class="com">// estado interno</span>
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Text</span>(<span class="str">'$_valor'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    Um <code>StatefulWidget</code> sempre tem <strong>dois</strong> objetos: o widget (imutável) e o <code>State</code> (mutável). O Flutter cria o <code>State</code> via <code>createState()</code> e o mantém vivo entre reconstruções.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 2 — setState()
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Atualizando o estado com setState()</div>
+
+  <div class="explanation">
+    Para mudar o estado e redesenhar o widget, envolva a modificação dentro de <code>setState()</code>. O Flutter ignora mudanças feitas fora dele — a tela não é atualizada.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart — contador completo</div>
+    </div>
+    <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">Contador</span>()));
+
+<span class="kw">class</span> <span class="type">Contador</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">Contador</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">Contador</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_ContadorState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_ContadorState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Contador</span>&gt; {
+  <span class="type">int</span> <span class="var">_valor</span> = <span class="num">0</span>;
+
+  <span class="kw">void</span> <span class="fn">_incrementar</span>() {
+    <span class="fn">setState</span>(() {
+      <span class="var">_valor</span>++;  <span class="com">// Flutter redesenha após esta linha</span>
+    });
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Contador'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">Text</span>(
+          <span class="str">'$_valor'</span>,
+          style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">48</span>),
+        ),
+      ),
+      floatingActionButton: <span class="type">FloatingActionButton</span>(
+        onPressed: <span class="var">_incrementar</span>,
+        child: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.add),
+      ),
+    );
+  }
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    <strong>Convenção:</strong> variáveis de estado privadas começam com <code>_</code> (underscore), como <code>_valor</code>. Isso sinaliza que pertencem à classe <code>State</code> e não devem ser acessadas externamente.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 3 — Múltiplas variáveis de estado
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Múltiplas variáveis de estado</div>
+
+  <div class="explanation">
+    Um <code>State</code> pode ter quantas variáveis precisar. Todas podem ser atualizadas dentro de um único <code>setState()</code> — o Flutter faz apenas um redesenho.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">class</span> <span class="fn">_PlacarState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Placar</span>&gt; {
+  <span class="type">int</span> <span class="var">_timeA</span> = <span class="num">0</span>;
+  <span class="type">int</span> <span class="var">_timeB</span> = <span class="num">0</span>;
+
+  <span class="kw">void</span> <span class="fn">_gol</span>(<span class="type">String</span> <span class="var">time</span>) {
+    <span class="fn">setState</span>(() {
+      <span class="kw">if</span> (<span class="var">time</span> == <span class="str">'A'</span>) <span class="var">_timeA</span>++;
+      <span class="kw">else</span> <span class="var">_timeB</span>++;
+    });
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Row</span>(
+      mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+      children: [
+        <span class="type">Text</span>(<span class="str">'$_timeA'</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">40</span>)),
+        <span class="kw">const</span> <span class="type">Text</span>(<span class="str">' × '</span>, style: <span class="type">TextStyle</span>(fontSize: <span class="num">40</span>)),
+        <span class="type">Text</span>(<span class="str">'$_timeB'</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">40</span>)),
+      ],
+    );
+  }
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Regra de ouro:</strong> tudo que a UI precisa exibir de forma dinâmica vira variável de estado. Dados fixos (títulos, cores hardcoded) ficam direto no <code>build()</code>.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       EXERCÍCIOS
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <!-- Exercício 1 — Básico -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Contador com decremento</div>
+        <div class="exercise-sub">setState() com dois botões</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um <code>StatefulWidget</code> com um contador que começa em <strong>0</strong>. Exiba o valor centralizado na tela com fonte 48. Adicione dois <code>FloatingActionButton</code>: um com ícone <code>Icons.add</code> (incrementa) e outro com <code>Icons.remove</code> (decrementa). O valor não deve ficar negativo.</div>
+      <textarea class="exercise-input" id="ex15-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex15-1', 'dp15-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol15-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp15-1"></div>
+      <div class="solution-wrap" id="sol15-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">Contador</span>()));
+
+<span class="kw">class</span> <span class="type">Contador</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">Contador</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">Contador</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_ContadorState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_ContadorState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Contador</span>&gt; {
+  <span class="type">int</span> <span class="var">_valor</span> = <span class="num">0</span>;
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Contador'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">Text</span>(<span class="str">'$_valor'</span>,
+            style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">48</span>)),
+      ),
+      floatingActionButton: <span class="type">Row</span>(
+        mainAxisAlignment: <span class="type">MainAxisAlignment</span>.end,
+        children: [
+          <span class="type">FloatingActionButton</span>(
+            heroTag: <span class="str">'dec'</span>,
+            onPressed: () {
+              <span class="kw">if</span> (<span class="var">_valor</span> &gt; <span class="num">0</span>) <span class="fn">setState</span>(() =&gt; <span class="var">_valor</span>--);
+            },
+            child: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.remove),
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(width: <span class="num">12</span>),
+          <span class="type">FloatingActionButton</span>(
+            heroTag: <span class="str">'inc'</span>,
+            onPressed: () =&gt; <span class="fn">setState</span>(() =&gt; <span class="var">_valor</span>++),
+            child: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.add),
+          ),
+        ],
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 2 — Médio -->
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Interruptor de tema</div>
+        <div class="exercise-sub">Estado booleano + tema dinâmico</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um app com um <code>bool _modoEscuro = false</code>. Use <code>MaterialApp</code> com <code>themeMode</code> controlado por esse estado. Exiba um <code>Switch</code> na <code>AppBar</code> (via <code>actions</code>) que alterna entre modo claro e escuro. O texto central deve dizer <strong>"Modo Escuro"</strong> ou <strong>"Modo Claro"</strong> conforme o estado.</div>
+      <textarea class="exercise-input" id="ex15-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex15-2', 'dp15-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol15-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp15-2"></div>
+      <div class="solution-wrap" id="sol15-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">AppRaiz</span>());
+
+<span class="kw">class</span> <span class="type">AppRaiz</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">AppRaiz</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">AppRaiz</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_AppRaizState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_AppRaizState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">AppRaiz</span>&gt; {
+  <span class="type">bool</span> <span class="var">_modoEscuro</span> = <span class="kw">false</span>;
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">MaterialApp</span>(
+      themeMode: <span class="var">_modoEscuro</span> ? <span class="type">ThemeMode</span>.dark : <span class="type">ThemeMode</span>.light,
+      theme: <span class="type">ThemeData</span>.light(),
+      darkTheme: <span class="type">ThemeData</span>.dark(),
+      home: <span class="type">Scaffold</span>(
+        appBar: <span class="type">AppBar</span>(
+          title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Tema'</span>),
+          actions: [
+            <span class="type">Switch</span>(
+              value: <span class="var">_modoEscuro</span>,
+              onChanged: (<span class="var">v</span>) =&gt; <span class="fn">setState</span>(() =&gt; <span class="var">_modoEscuro</span> = <span class="var">v</span>),
+            ),
+          ],
+        ),
+        body: <span class="type">Center</span>(
+          child: <span class="type">Text</span>(
+            <span class="var">_modoEscuro</span> ? <span class="str">'Modo Escuro'</span> : <span class="str">'Modo Claro'</span>,
+            style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">24</span>),
+          ),
+        ),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 3 — Desafio -->
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Placar de jogo</div>
+        <div class="exercise-sub">Múltiplas variáveis de estado</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um placar para dois times (<strong>Time A</strong> e <strong>Time B</strong>). Cada time tem seu próprio contador de gols (começa em 0). Exiba os placares lado a lado com um <strong>" × "</strong> no centro, em fonte grande. Abaixo dos placares, mostre o <strong>vencedor</strong> atual (ou <strong>"Empate"</strong>). Adicione um botão <strong>"Gol A"</strong>, um botão <strong>"Gol B"</strong> e um botão <strong>"Reiniciar"</strong> que zera ambos os placares.</div>
+      <textarea class="exercise-input" id="ex15-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex15-3', 'dp15-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol15-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp15-3"></div>
+      <div class="solution-wrap" id="sol15-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">Placar</span>()));
+
+<span class="kw">class</span> <span class="type">Placar</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">Placar</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">Placar</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_PlacarState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_PlacarState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Placar</span>&gt; {
+  <span class="type">int</span> <span class="var">_golsA</span> = <span class="num">0</span>;
+  <span class="type">int</span> <span class="var">_golsB</span> = <span class="num">0</span>;
+
+  <span class="type">String</span> <span class="kw">get</span> <span class="var">_vencedor</span> {
+    <span class="kw">if</span> (<span class="var">_golsA</span> &gt; <span class="var">_golsB</span>) <span class="kw">return</span> <span class="str">'Vencedor: Time A'</span>;
+    <span class="kw">if</span> (<span class="var">_golsB</span> &gt; <span class="var">_golsA</span>) <span class="kw">return</span> <span class="str">'Vencedor: Time B'</span>;
+    <span class="kw">return</span> <span class="str">'Empate'</span>;
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">const</span> <span class="var">placarStyle</span> = <span class="type">TextStyle</span>(fontSize: <span class="num">64</span>, fontWeight: <span class="type">FontWeight</span>.bold);
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Placar'</span>)),
+      body: <span class="type">Column</span>(
+        mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+        children: [
+          <span class="type">Row</span>(
+            mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+            children: [
+              <span class="type">Text</span>(<span class="str">'$_golsA'</span>, style: <span class="var">placarStyle</span>),
+              <span class="kw">const</span> <span class="type">Text</span>(<span class="str">' × '</span>, style: <span class="type">TextStyle</span>(fontSize: <span class="num">48</span>)),
+              <span class="type">Text</span>(<span class="str">'$_golsB'</span>, style: <span class="var">placarStyle</span>),
+            ],
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">8</span>),
+          <span class="type">Text</span>(<span class="var">_vencedor</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">20</span>)),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">32</span>),
+          <span class="type">Row</span>(
+            mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+            children: [
+              <span class="type">ElevatedButton</span>(
+                onPressed: () =&gt; <span class="fn">setState</span>(() =&gt; <span class="var">_golsA</span>++),
+                child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Gol A'</span>),
+              ),
+              <span class="kw">const</span> <span class="type">SizedBox</span>(width: <span class="num">16</span>),
+              <span class="type">ElevatedButton</span>(
+                onPressed: () =&gt; <span class="fn">setState</span>(() =&gt; <span class="var">_golsB</span>++),
+                child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Gol B'</span>),
+              ),
+            ],
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">12</span>),
+          <span class="type">TextButton</span>(
+            onPressed: () =&gt; <span class="fn">setState</span>(() { <span class="var">_golsA</span> = <span class="num">0</span>; <span class="var">_golsB</span> = <span class="num">0</span>; }),
+            child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Reiniciar'</span>),
+          ),
+        ],
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(14)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(15)">Próximo módulo →</button>
   </div>
 </div>
 
