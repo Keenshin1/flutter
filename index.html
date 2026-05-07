@@ -15,7 +15,7 @@
       <div class="logo-icon">Fl</div>
       <div>
         <div class="logo-text">Aprenda Flutter</div>
-        <div class="logo-sub">17 módulos · do zero</div>
+        <div class="logo-sub">18 módulos · do zero</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-label">
       <span>Progresso</span>
-      <span id="progress-text">0 / 17</span>
+      <span id="progress-text">0 / 18</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
@@ -133,6 +133,12 @@
       <span class="nav-dot"></span>
       <span class="nav-num">17</span>
       <span>Formulários</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(18)" id="nav-18">
+      <span class="nav-dot"></span>
+      <span class="nav-num">18</span>
+      <span>ListView</span>
     </button>
   </div>
 </aside>
@@ -4810,6 +4816,423 @@
   <div class="lesson-nav">
     <button class="btn btn-nav" onclick="goTo(16)">← Voltar</button>
     <button class="btn btn-primary" onclick="completeAndNext(17)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-18">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 18</div>
+    <div class="lesson-title">Listas com <code style="font-size:22px;">ListView</code></div>
+    <div class="lesson-subtitle">Exibir coleções de dados é uma das tarefas mais comuns em apps. O Flutter oferece o <code>ListView</code> — eficiente, rolável e altamente customizável.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 1 — ListView básico
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">ListView e ListTile</div>
+
+  <div class="explanation">
+    O <code>ListView</code> simples recebe uma lista fixa de filhos em <code>children</code>. Para itens estruturados (ícone + título + subtítulo), use o widget <code>ListTile</code> — ele segue automaticamente as proporções do Material Design.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">MinhaLista</span>()));
+
+<span class="kw">class</span> <span class="type">MinhaLista</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">MinhaLista</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Contatos'</span>)),
+      body: <span class="type">ListView</span>(
+        children: <span class="kw">const</span> [
+          <span class="type">ListTile</span>(
+            leading: <span class="type">Icon</span>(<span class="type">Icons</span>.person),
+            title: <span class="type">Text</span>(<span class="str">'Ana Silva'</span>),
+            subtitle: <span class="type">Text</span>(<span class="str">'ana@email.com'</span>),
+            trailing: <span class="type">Icon</span>(<span class="type">Icons</span>.chevron_right),
+          ),
+          <span class="type">Divider</span>(),
+          <span class="type">ListTile</span>(
+            leading: <span class="type">Icon</span>(<span class="type">Icons</span>.person),
+            title: <span class="type">Text</span>(<span class="str">'Bruno Costa'</span>),
+            subtitle: <span class="type">Text</span>(<span class="str">'bruno@email.com'</span>),
+            trailing: <span class="type">Icon</span>(<span class="type">Icons</span>.chevron_right),
+          ),
+        ],
+      ),
+    );
+  }
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    <code>ListView</code> com <code>children</code> cria <strong>todos</strong> os itens de uma vez — adequado só para listas pequenas e fixas. Para listas longas ou dinâmicas, use <code>ListView.builder</code>.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 2 — ListView.builder
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">ListView.builder — listas eficientes</div>
+
+  <div class="explanation">
+    O <code>ListView.builder</code> constrói cada item <strong>sob demanda</strong>, apenas quando ele entra na área visível. É a escolha certa para qualquer lista de tamanho variável — de 10 a 10.000 itens o desempenho se mantém.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">final</span> <span class="var">frutas</span> = [<span class="str">'Maçã'</span>, <span class="str">'Banana'</span>, <span class="str">'Laranja'</span>, <span class="str">'Manga'</span>, <span class="str">'Uva'</span>];
+
+<span class="type">ListView</span>.<span class="fn">builder</span>(
+  itemCount: <span class="var">frutas</span>.length,
+  itemBuilder: (<span class="var">context</span>, <span class="var">index</span>) {
+    <span class="kw">return</span> <span class="type">ListTile</span>(
+      leading: <span class="type">CircleAvatar</span>(child: <span class="type">Text</span>(<span class="str">'${index + 1}'</span>)),
+      title: <span class="type">Text</span>(<span class="var">frutas</span>[<span class="var">index</span>]),
+      onTap: () =&gt; <span class="fn">print</span>(<span class="str">'Selecionou: ${frutas[index]}'</span>),
+    );
+  },
+)</pre>
+  </div>
+
+  <div class="info-box">
+    <code>itemCount</code> informa quantos itens existem. <code>itemBuilder</code> é chamado com o <code>index</code> atual e deve retornar o widget daquele item. Omitir <code>itemCount</code> cria uma lista infinita.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 3 — Lista dinâmica com setState
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Lista dinâmica — adicionar e remover itens</div>
+
+  <div class="explanation">
+    Combinando <code>ListView.builder</code> com <code>setState()</code>, é possível adicionar e remover itens em tempo real. A lista em memória é modificada dentro do <code>setState()</code> e o Flutter reconstrói apenas os itens necessários.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">class</span> <span class="fn">_ListaState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">MinhaLista</span>&gt; {
+  <span class="kw">final</span> <span class="var">_itens</span> = &lt;<span class="type">String</span>&gt;[<span class="str">'Flutter'</span>, <span class="str">'Dart'</span>, <span class="str">'Firebase'</span>];
+
+  <span class="kw">void</span> <span class="fn">_adicionar</span>(<span class="type">String</span> <span class="var">item</span>) =&gt;
+      <span class="fn">setState</span>(() =&gt; <span class="var">_itens</span>.<span class="fn">add</span>(<span class="var">item</span>));
+
+  <span class="kw">void</span> <span class="fn">_remover</span>(<span class="type">int</span> <span class="var">index</span>) =&gt;
+      <span class="fn">setState</span>(() =&gt; <span class="var">_itens</span>.<span class="fn">removeAt</span>(<span class="var">index</span>));
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      body: <span class="type">ListView</span>.<span class="fn">builder</span>(
+        itemCount: <span class="var">_itens</span>.length,
+        itemBuilder: (<span class="var">_</span>, <span class="var">i</span>) =&gt; <span class="type">ListTile</span>(
+          title: <span class="type">Text</span>(<span class="var">_itens</span>[<span class="var">i</span>]),
+          trailing: <span class="type">IconButton</span>(
+            icon: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.delete),
+            onPressed: () =&gt; <span class="fn">_remover</span>(<span class="var">i</span>),
+          ),
+        ),
+      ),
+      floatingActionButton: <span class="type">FloatingActionButton</span>(
+        onPressed: () =&gt; <span class="fn">_adicionar</span>(<span class="str">'Novo item ${_itens.length + 1}'</span>),
+        child: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.add),
+      ),
+    );
+  }
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Padrão comum:</strong> mantenha os dados em uma <code>List</code> no <code>State</code>, use <code>setState()</code> para modificá-la e deixe o <code>ListView.builder</code> refletir o estado atual automaticamente.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       EXERCÍCIOS
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <!-- Exercício 1 — Básico -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Lista de linguagens</div>
+        <div class="exercise-sub">ListView.builder estático</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma lista com pelo menos 6 linguagens de programação usando <code>ListView.builder</code>. Cada item deve ser um <code>ListTile</code> com um <code>CircleAvatar</code> exibindo o número do item (1, 2, 3…) como <code>leading</code>, o nome da linguagem como <code>title</code> e um <code>Icon(Icons.code)</code> como <code>trailing</code>.</div>
+      <textarea class="exercise-input" id="ex18-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex18-1', 'dp18-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol18-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp18-1"></div>
+      <div class="solution-wrap" id="sol18-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">ListaLinguagens</span>()));
+
+<span class="kw">class</span> <span class="type">ListaLinguagens</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">ListaLinguagens</span>({<span class="kw">super</span>.key});
+
+  <span class="kw">static</span> <span class="kw">const</span> <span class="var">_linguagens</span> = [
+    <span class="str">'Dart'</span>, <span class="str">'Python'</span>, <span class="str">'JavaScript'</span>,
+    <span class="str">'Kotlin'</span>, <span class="str">'Swift'</span>, <span class="str">'Rust'</span>,
+  ];
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Linguagens'</span>)),
+      body: <span class="type">ListView</span>.<span class="fn">builder</span>(
+        itemCount: <span class="var">_linguagens</span>.length,
+        itemBuilder: (<span class="var">_</span>, <span class="var">i</span>) =&gt; <span class="type">ListTile</span>(
+          leading: <span class="type">CircleAvatar</span>(child: <span class="type">Text</span>(<span class="str">'${i + 1}'</span>)),
+          title: <span class="type">Text</span>(<span class="var">_linguagens</span>[<span class="var">i</span>]),
+          trailing: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.code),
+        ),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 2 — Médio -->
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Lista de tarefas</div>
+        <div class="exercise-sub">Adicionar e remover com setState</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um app de lista de tarefas. Um <code>TextField</code> no topo (dentro da <code>AppBar</code> ou abaixo dela) permite digitar uma tarefa. Ao pressionar um botão <strong>"Adicionar"</strong> (ou o <code>FloatingActionButton</code>), a tarefa entra na lista. Cada item da lista tem um <code>IconButton</code> com <code>Icons.delete</code> que remove aquela tarefa. A lista começa vazia.</div>
+      <textarea class="exercise-input" id="ex18-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex18-2', 'dp18-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol18-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp18-2"></div>
+      <div class="solution-wrap" id="sol18-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">ListaTarefas</span>()));
+
+<span class="kw">class</span> <span class="type">ListaTarefas</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">ListaTarefas</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">ListaTarefas</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_ListaTarefasState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_ListaTarefasState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">ListaTarefas</span>&gt; {
+  <span class="kw">final</span> <span class="var">_ctrl</span>    = <span class="type">TextEditingController</span>();
+  <span class="kw">final</span> <span class="var">_tarefas</span> = &lt;<span class="type">String</span>&gt;[];
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() { <span class="var">_ctrl</span>.<span class="fn">dispose</span>(); <span class="kw">super</span>.<span class="fn">dispose</span>(); }
+
+  <span class="kw">void</span> <span class="fn">_adicionar</span>() {
+    <span class="kw">final</span> <span class="var">texto</span> = <span class="var">_ctrl</span>.text.<span class="fn">trim</span>();
+    <span class="kw">if</span> (<span class="var">texto</span>.<span class="fn">isEmpty</span>) <span class="kw">return</span>;
+    <span class="fn">setState</span>(() =&gt; <span class="var">_tarefas</span>.<span class="fn">add</span>(<span class="var">texto</span>));
+    <span class="var">_ctrl</span>.<span class="fn">clear</span>();
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Tarefas'</span>)),
+      body: <span class="type">Column</span>(children: [
+        <span class="type">Padding</span>(
+          padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">12</span>),
+          child: <span class="type">Row</span>(children: [
+            <span class="type">Expanded</span>(
+              child: <span class="type">TextField</span>(
+                controller: <span class="var">_ctrl</span>,
+                decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(hintText: <span class="str">'Nova tarefa…'</span>),
+                onSubmitted: (<span class="var">_</span>) =&gt; <span class="fn">_adicionar</span>(),
+              ),
+            ),
+            <span class="type">IconButton</span>(
+              icon: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.add),
+              onPressed: <span class="var">_adicionar</span>,
+            ),
+          ]),
+        ),
+        <span class="type">Expanded</span>(
+          child: <span class="var">_tarefas</span>.<span class="fn">isEmpty</span>
+              ? <span class="kw">const</span> <span class="type">Center</span>(child: <span class="type">Text</span>(<span class="str">'Nenhuma tarefa ainda.'</span>))
+              : <span class="type">ListView</span>.<span class="fn">builder</span>(
+                  itemCount: <span class="var">_tarefas</span>.length,
+                  itemBuilder: (<span class="var">_</span>, <span class="var">i</span>) =&gt; <span class="type">ListTile</span>(
+                    title: <span class="type">Text</span>(<span class="var">_tarefas</span>[<span class="var">i</span>]),
+                    trailing: <span class="type">IconButton</span>(
+                      icon: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.delete),
+                      onPressed: () =&gt; <span class="fn">setState</span>(() =&gt; <span class="var">_tarefas</span>.<span class="fn">removeAt</span>(<span class="var">i</span>)),
+                    ),
+                  ),
+                ),
+        ),
+      ]),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 3 — Desafio -->
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Lista de compras com total</div>
+        <div class="exercise-sub">Objetos na lista + cálculo em tempo real</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma lista de compras onde cada item tem <strong>nome</strong> e <strong>preço</strong>. Use uma classe <code>Produto</code> para modelar os dados. O app deve ter dois <code>TextField</code> (nome e preço) e um botão para adicionar. A lista exibe cada produto com seu preço. Na parte inferior, mostre o <strong>total</strong> atualizado automaticamente. Um <code>IconButton</code> com <code>Icons.delete</code> remove o item e recalcula o total.</div>
+      <textarea class="exercise-input" id="ex18-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex18-3', 'dp18-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol18-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp18-3"></div>
+      <div class="solution-wrap" id="sol18-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">ListaCompras</span>()));
+
+<span class="kw">class</span> <span class="type">Produto</span> {
+  <span class="kw">final</span> <span class="type">String</span> <span class="var">nome</span>;
+  <span class="kw">final</span> <span class="type">double</span> <span class="var">preco</span>;
+  <span class="fn">Produto</span>(<span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">this</span>.<span class="var">preco</span>);
+}
+
+<span class="kw">class</span> <span class="type">ListaCompras</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">ListaCompras</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">ListaCompras</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_ListaComprasState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_ListaComprasState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">ListaCompras</span>&gt; {
+  <span class="kw">final</span> <span class="var">_nomeCtrl</span>  = <span class="type">TextEditingController</span>();
+  <span class="kw">final</span> <span class="var">_precoCtrl</span> = <span class="type">TextEditingController</span>();
+  <span class="kw">final</span> <span class="var">_produtos</span>  = &lt;<span class="type">Produto</span>&gt;[];
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() {
+    <span class="var">_nomeCtrl</span>.<span class="fn">dispose</span>();
+    <span class="var">_precoCtrl</span>.<span class="fn">dispose</span>();
+    <span class="kw">super</span>.<span class="fn">dispose</span>();
+  }
+
+  <span class="type">double</span> <span class="kw">get</span> <span class="var">_total</span> =&gt;
+      <span class="var">_produtos</span>.<span class="fn">fold</span>(<span class="num">0</span>, (<span class="var">soma</span>, <span class="var">p</span>) =&gt; <span class="var">soma</span> + <span class="var">p</span>.<span class="var">preco</span>);
+
+  <span class="kw">void</span> <span class="fn">_adicionar</span>() {
+    <span class="kw">final</span> <span class="var">nome</span>  = <span class="var">_nomeCtrl</span>.text.<span class="fn">trim</span>();
+    <span class="kw">final</span> <span class="var">preco</span> = <span class="type">double</span>.<span class="fn">tryParse</span>(<span class="var">_precoCtrl</span>.text);
+    <span class="kw">if</span> (<span class="var">nome</span>.<span class="fn">isEmpty</span> || <span class="var">preco</span> == <span class="kw">null</span>) <span class="kw">return</span>;
+    <span class="fn">setState</span>(() =&gt; <span class="var">_produtos</span>.<span class="fn">add</span>(<span class="type">Produto</span>(<span class="var">nome</span>, <span class="var">preco</span>)));
+    <span class="var">_nomeCtrl</span>.<span class="fn">clear</span>();
+    <span class="var">_precoCtrl</span>.<span class="fn">clear</span>();
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Lista de Compras'</span>)),
+      body: <span class="type">Column</span>(children: [
+        <span class="type">Padding</span>(
+          padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">12</span>),
+          child: <span class="type">Row</span>(children: [
+            <span class="type">Expanded</span>(
+              flex: <span class="num">2</span>,
+              child: <span class="type">TextField</span>(
+                controller: <span class="var">_nomeCtrl</span>,
+                decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Produto'</span>),
+              ),
+            ),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(width: <span class="num">8</span>),
+            <span class="type">Expanded</span>(
+              child: <span class="type">TextField</span>(
+                controller: <span class="var">_precoCtrl</span>,
+                keyboardType: <span class="type">TextInputType</span>.number,
+                decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Preço'</span>),
+              ),
+            ),
+            <span class="type">IconButton</span>(
+              icon: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.add),
+              onPressed: <span class="var">_adicionar</span>,
+            ),
+          ]),
+        ),
+        <span class="type">Expanded</span>(
+          child: <span class="type">ListView</span>.<span class="fn">builder</span>(
+            itemCount: <span class="var">_produtos</span>.length,
+            itemBuilder: (<span class="var">_</span>, <span class="var">i</span>) =&gt; <span class="type">ListTile</span>(
+              title: <span class="type">Text</span>(<span class="var">_produtos</span>[<span class="var">i</span>].<span class="var">nome</span>),
+              subtitle: <span class="type">Text</span>(<span class="str">'R\$ ${_produtos[i].preco.toStringAsFixed(2)}'</span>),
+              trailing: <span class="type">IconButton</span>(
+                icon: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.delete),
+                onPressed: () =&gt; <span class="fn">setState</span>(() =&gt; <span class="var">_produtos</span>.<span class="fn">removeAt</span>(<span class="var">i</span>)),
+              ),
+            ),
+          ),
+        ),
+        <span class="type">Container</span>(
+          width: <span class="type">double</span>.infinity,
+          color: <span class="type">Theme</span>.<span class="fn">of</span>(<span class="var">context</span>).colorScheme.surfaceVariant,
+          padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">16</span>),
+          child: <span class="type">Text</span>(
+            <span class="str">'Total: R\$ ${_total.toStringAsFixed(2)}'</span>,
+            style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">18</span>, fontWeight: <span class="type">FontWeight</span>.bold),
+          ),
+        ),
+      ]),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(17)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(18)">Próximo módulo →</button>
   </div>
 </div>
 
