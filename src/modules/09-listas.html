@@ -1,7 +1,7 @@
-<!-- module: num="8" nav="Listas" -->
-<div class="lesson" id="lesson-8">
+<!-- module: num="9" nav="Listas" -->
+<div class="lesson" id="lesson-9">
   <div class="lesson-header">
-    <div class="lesson-badge">Módulo 08</div>
+    <div class="lesson-badge">Módulo 09</div>
     <div class="lesson-title"><code style="font-size:22px;">Listas</code></div>
     <div class="lesson-subtitle">Uma lista é uma coleção ordenada de valores do mesmo tipo. Em Dart é representada por <code>List&lt;T&gt;</code>.</div>
   </div>
@@ -62,7 +62,15 @@
   <span class="com">// where: filtra itens</span>
   <span class="kw">var</span> <span class="var">pares</span> = <span class="var">nums</span>.<span class="fn">where</span>((<span class="var">n</span>) =&gt; <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span>).<span class="fn">toList</span>();
   <span class="fn">print</span>(<span class="var">pares</span>);  <span class="com">// [2, 4]</span>
+
+  <span class="com">// join: une todos os itens numa String</span>
+  <span class="kw">var</span> <span class="var">texto</span> = <span class="var">nums</span>.<span class="fn">join</span>(<span class="str">', '</span>);
+  <span class="fn">print</span>(<span class="var">texto</span>); <span class="com">// 1, 2, 3, 4, 5</span>
 }</pre>
+  </div>
+
+  <div class="info-box">
+    <code>join(separador)</code> converte todos os itens da lista para <code>String</code> e os concatena usando o separador fornecido. Muito útil para exibir listas de forma legível ou montar textos compostos.
   </div>
 
   <div class="divider"></div>
@@ -230,7 +238,7 @@
   </div>
 
   <div class="lesson-nav">
-    <button class="btn btn-nav" onclick="goTo(7)">← Voltar</button>
-    <button class="btn btn-primary" onclick="completeAndNext(8)">Próximo módulo →</button>
+    <button class="btn btn-nav" onclick="goTo(8)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(9)">Próximo módulo →</button>
   </div>
 </div>

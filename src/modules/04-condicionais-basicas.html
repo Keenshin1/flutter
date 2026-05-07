@@ -1,0 +1,203 @@
+<!-- module: num="4" nav="if / else" -->
+<div class="lesson" id="lesson-4">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 04</div>
+    <div class="lesson-title"><code style="font-size:22px;">if / else</code></div>
+    <div class="lesson-subtitle">Condicionais permitem que o programa tome decisões — executando caminhos diferentes dependendo se uma condição é verdadeira ou falsa.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operadores de comparação</div>
+
+  <div class="explanation">
+    Para criar condições precisamos comparar valores. Toda comparação retorna um <code>bool</code> (<code>true</code> ou <code>false</code>).
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="num">5</span> == <span class="num">5</span>);  <span class="com">// true   igual</span>
+  <span class="fn">print</span>(<span class="num">5</span> != <span class="num">3</span>);  <span class="com">// true   diferente</span>
+  <span class="fn">print</span>(<span class="num">5</span> &gt;  <span class="num">3</span>);  <span class="com">// true   maior que</span>
+  <span class="fn">print</span>(<span class="num">5</span> &lt;  <span class="num">3</span>);  <span class="com">// false  menor que</span>
+  <span class="fn">print</span>(<span class="num">5</span> &gt;= <span class="num">5</span>);  <span class="com">// true   maior ou igual</span>
+  <span class="fn">print</span>(<span class="num">5</span> &lt;= <span class="num">4</span>);  <span class="com">// false  menor ou igual</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    Esses operadores serão revisados com mais detalhes no próximo módulo junto com os demais operadores do Dart.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">if / else</div>
+
+  <div class="explanation">
+    O <code>if</code> executa um bloco de código somente se a condição for <code>true</code>. O <code>else</code> é executado quando a condição é <code>false</code>.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">idade</span> = <span class="num">20</span>;
+
+  <span class="kw">if</span> (<span class="var">idade</span> &gt;= <span class="num">18</span>) {
+    <span class="fn">print</span>(<span class="str">'Maior de idade'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Menor de idade'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">else if — múltiplas condições</div>
+
+  <div class="explanation">
+    Quando há mais de dois casos possíveis, encadeie condições com <code>else if</code>. O Dart avalia de cima para baixo e executa apenas o primeiro bloco cuja condição for verdadeira.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">double</span> <span class="var">nota</span> = <span class="num">7.5</span>;
+
+  <span class="kw">if</span> (<span class="var">nota</span> &gt;= <span class="num">9</span>) {
+    <span class="fn">print</span>(<span class="str">'Excelente'</span>);
+  } <span class="kw">else if</span> (<span class="var">nota</span> &gt;= <span class="num">7</span>) {
+    <span class="fn">print</span>(<span class="str">'Aprovado'</span>);
+  } <span class="kw">else if</span> (<span class="var">nota</span> &gt;= <span class="num">5</span>) {
+    <span class="fn">print</span>(<span class="str">'Recuperação'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Reprovado'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    A ordem importa. Sempre verifique as condições do caso mais específico para o mais geral. No exemplo acima, se invertêssemos a ordem (verificar &ge;5 antes de &ge;7), a nota 7.5 seria classificada como "Recuperação" por engano.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Maior ou menor de idade</div>
+        <div class="exercise-sub">if / else simples</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada uma variável <code>int idade = 16</code>, use <code>if/else</code> para exibir <strong>"Pode votar"</strong> se a idade for maior ou igual a 16, ou <strong>"Não pode votar"</strong> caso contrário.</div>
+      <textarea class="exercise-input" id="ex4-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex4-1', 'dp4-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol4-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp4-1"></div>
+      <div class="solution-wrap" id="sol4-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">idade</span> = <span class="num">16</span>;
+
+  <span class="kw">if</span> (<span class="var">idade</span> &gt;= <span class="num">16</span>) {
+    <span class="fn">print</span>(<span class="str">'Pode votar'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Não pode votar'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Classificador de notas</div>
+        <div class="exercise-sub">else if encadeado</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada uma variável <code>double nota = 7.5</code>, use <code>if/else if/else</code> para classificar: &ge;9 → <strong>"A"</strong>, &ge;7 → <strong>"B"</strong>, &ge;5 → <strong>"C"</strong>, abaixo → <strong>"D"</strong>.</div>
+      <textarea class="exercise-input" id="ex4-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex4-2', 'dp4-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol4-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp4-2"></div>
+      <div class="solution-wrap" id="sol4-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">double</span> <span class="var">nota</span> = <span class="num">7.5</span>;
+
+  <span class="kw">if</span> (<span class="var">nota</span> &gt;= <span class="num">9</span>) {
+    <span class="fn">print</span>(<span class="str">'A'</span>);
+  } <span class="kw">else if</span> (<span class="var">nota</span> &gt;= <span class="num">7</span>) {
+    <span class="fn">print</span>(<span class="str">'B'</span>);
+  } <span class="kw">else if</span> (<span class="var">nota</span> &gt;= <span class="num">5</span>) {
+    <span class="fn">print</span>(<span class="str">'C'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'D'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Classificador de velocidade</div>
+        <div class="exercise-sub">Múltiplas condições encadeadas</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dada <code>int velocidade = 95</code>, classifique: abaixo de 40 → <strong>"Devagar"</strong>, entre 40 e 59 → <strong>"Moderado"</strong>, entre 60 e 79 → <strong>"Normal"</strong>, entre 80 e 109 → <strong>"Rápido"</strong>, 110 ou mais → <strong>"Muito rápido"</strong>. Em seguida, use um <code>if/else</code> separado para exibir <strong>"Multa!"</strong> se a velocidade ultrapassar 80.</div>
+      <textarea class="exercise-input" id="ex4-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex4-3', 'dp4-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol4-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp4-3"></div>
+      <div class="solution-wrap" id="sol4-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">velocidade</span> = <span class="num">95</span>;
+
+  <span class="kw">if</span> (<span class="var">velocidade</span> &lt; <span class="num">40</span>) {
+    <span class="fn">print</span>(<span class="str">'Devagar'</span>);
+  } <span class="kw">else if</span> (<span class="var">velocidade</span> &lt; <span class="num">60</span>) {
+    <span class="fn">print</span>(<span class="str">'Moderado'</span>);
+  } <span class="kw">else if</span> (<span class="var">velocidade</span> &lt; <span class="num">80</span>) {
+    <span class="fn">print</span>(<span class="str">'Normal'</span>);
+  } <span class="kw">else if</span> (<span class="var">velocidade</span> &lt; <span class="num">110</span>) {
+    <span class="fn">print</span>(<span class="str">'Rápido'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Muito rápido'</span>);
+  }
+
+  <span class="kw">if</span> (<span class="var">velocidade</span> &gt; <span class="num">80</span>) {
+    <span class="fn">print</span>(<span class="str">'Multa!'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(3)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(4)">Próximo módulo →</button>
+  </div>
+</div>

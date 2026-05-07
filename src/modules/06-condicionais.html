@@ -1,0 +1,172 @@
+<!-- module: num="6" nav="Condicionais" -->
+<div class="lesson" id="lesson-6">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 06</div>
+    <div class="lesson-title"><code style="font-size:22px;">Condicionais</code></div>
+    <div class="lesson-subtitle">Você já conhece o <code>if/else</code>. Agora veja duas formas mais concisas de expressar decisões: o operador ternário e o <code>switch/case</code>.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Operador ternário</div>
+
+  <div class="explanation">
+    Para condições simples, o operador ternário permite escrever um if/else em uma só linha: <code>condição ? valorSeTrue : valorSeFalse</code>
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">x</span> = <span class="num">15</span>;
+  <span class="type">String</span> <span class="var">msg</span> = <span class="var">x</span> % <span class="num">2</span> == <span class="num">0</span> ? <span class="str">'par'</span> : <span class="str">'ímpar'</span>;
+  <span class="fn">print</span>(<span class="str">'$x é $msg'</span>); <span class="com">// 15 é ímpar</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    Use o ternário apenas para condições simples — uma linha. Se precisar de lógica mais complexa, prefira o <code>if/else</code> tradicional para manter a legibilidade.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">switch / case</div>
+
+  <div class="explanation">
+    Use <code>switch</code> quando precisar comparar uma mesma variável com vários valores possíveis. É mais legível do que uma longa cadeia de <code>else if</code> nesses casos.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">dia</span> = <span class="num">3</span>;
+
+  <span class="kw">switch</span> (<span class="var">dia</span>) {
+    <span class="kw">case</span> <span class="num">1</span>:
+      <span class="fn">print</span>(<span class="str">'Segunda'</span>);
+    <span class="kw">case</span> <span class="num">2</span>:
+      <span class="fn">print</span>(<span class="str">'Terça'</span>);
+    <span class="kw">case</span> <span class="num">3</span>:
+      <span class="fn">print</span>(<span class="str">'Quarta'</span>);
+    <span class="kw">default</span>:
+      <span class="fn">print</span>(<span class="str">'Outro dia'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    No Dart moderno (versão 3+) não é necessário <code>break</code> nos cases — cada <code>case</code> termina automaticamente.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Dia da semana</div>
+        <div class="exercise-sub">Usando switch</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Use <code>switch</code> para exibir o nome do dia da semana dado um <code>int dia</code> de 1 a 7. Para valores fora desse intervalo, exiba "Inválido".</div>
+      <textarea class="exercise-input" id="ex6-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex6-1', 'dp6-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol6-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp6-1"></div>
+      <div class="solution-wrap" id="sol6-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">dia</span> = <span class="num">4</span>;
+  <span class="kw">switch</span> (<span class="var">dia</span>) {
+    <span class="kw">case</span> <span class="num">1</span>: <span class="fn">print</span>(<span class="str">'Segunda'</span>);
+    <span class="kw">case</span> <span class="num">2</span>: <span class="fn">print</span>(<span class="str">'Terça'</span>);
+    <span class="kw">case</span> <span class="num">3</span>: <span class="fn">print</span>(<span class="str">'Quarta'</span>);
+    <span class="kw">case</span> <span class="num">4</span>: <span class="fn">print</span>(<span class="str">'Quinta'</span>);
+    <span class="kw">case</span> <span class="num">5</span>: <span class="fn">print</span>(<span class="str">'Sexta'</span>);
+    <span class="kw">case</span> <span class="num">6</span>: <span class="fn">print</span>(<span class="str">'Sábado'</span>);
+    <span class="kw">case</span> <span class="num">7</span>: <span class="fn">print</span>(<span class="str">'Domingo'</span>);
+    <span class="kw">default</span>: <span class="fn">print</span>(<span class="str">'Inválido'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Par ou ímpar com ternário</div>
+        <div class="exercise-sub">Operador ternário</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dado <code>int n = 42</code>, use o <strong>operador ternário</strong> para armazenar em uma variável <code>String resultado</code> o valor <strong>"par"</strong> ou <strong>"ímpar"</strong> e exiba: <strong>"42 é par"</strong>.</div>
+      <textarea class="exercise-input" id="ex6-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex6-2', 'dp6-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol6-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp6-2"></div>
+      <div class="solution-wrap" id="sol6-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span>    <span class="var">n</span>         = <span class="num">42</span>;
+  <span class="type">String</span> <span class="var">resultado</span> = <span class="var">n</span> % <span class="num">2</span> == <span class="num">0</span> ? <span class="str">'par'</span> : <span class="str">'ímpar'</span>;
+  <span class="fn">print</span>(<span class="str">'$n é $resultado'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Classificador de temperatura</div>
+        <div class="exercise-sub">if/else + ternário combinados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Dado <code>int temp = 22</code>, use <code>if/else if/else</code> para classificar: abaixo de 10 → "Frio", entre 10 e 24 → "Agradável", 25 ou mais → "Quente". Em seguida, use o <strong>operador ternário</strong> para exibir se você precisa de agasalho (quando temp &lt; 15).</div>
+      <textarea class="exercise-input" id="ex6-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex6-3', 'dp6-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol6-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp6-3"></div>
+      <div class="solution-wrap" id="sol6-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">int</span> <span class="var">temp</span> = <span class="num">22</span>;
+
+  <span class="kw">if</span> (<span class="var">temp</span> &lt; <span class="num">10</span>) {
+    <span class="fn">print</span>(<span class="str">'Frio'</span>);
+  } <span class="kw">else if</span> (<span class="var">temp</span> &lt;= <span class="num">24</span>) {
+    <span class="fn">print</span>(<span class="str">'Agradável'</span>);
+  } <span class="kw">else</span> {
+    <span class="fn">print</span>(<span class="str">'Quente'</span>);
+  }
+
+  <span class="type">String</span> <span class="var">agasalho</span> = <span class="var">temp</span> &lt; <span class="num">15</span> ? <span class="str">'Leve agasalho!'</span> : <span class="str">'Sem agasalho.'</span>;
+  <span class="fn">print</span>(<span class="var">agasalho</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(5)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(6)">Próximo módulo →</button>
+  </div>
+</div>
