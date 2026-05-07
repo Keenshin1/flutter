@@ -1,7 +1,7 @@
-<!-- module: num="12" nav="Herança" -->
-<div class="lesson" id="lesson-12">
+<!-- module: num="13" nav="Herança" -->
+<div class="lesson" id="lesson-13">
   <div class="lesson-header">
-    <div class="lesson-badge">Módulo 12</div>
+    <div class="lesson-badge">Módulo 13</div>
     <div class="lesson-title"><code style="font-size:22px;">Herança</code></div>
     <div class="lesson-subtitle">Herança permite que uma classe herde propriedades e métodos de outra, evitando repetição e criando hierarquias de tipos — base do Flutter.</div>
   </div>
@@ -99,13 +99,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma classe base <code>Veiculo</code> com <code>String marca</code> e método <code>mover()</code>. Crie as subclasses <code>Carro</code> e <code>Moto</code>, cada uma sobreescrevendo <code>mover()</code> com uma mensagem diferente.</div>
-      <textarea class="exercise-input" id="ex12-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex13-1" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex12-1', 'dp12-1')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol12-1')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex13-1', 'dp13-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol13-1')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp12-1"></div>
-      <div class="solution-wrap" id="sol12-1">
+      <div class="dartpad-wrap" id="dp13-1"></div>
+      <div class="solution-wrap" id="sol13-1">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">class</span> <span class="type">Veiculo</span> {
@@ -146,13 +146,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie uma classe <code>abstract Forma</code> com os métodos abstratos <code>double area()</code> e <code>String nome()</code>. Implemente <code>Circulo(double raio)</code> (área = 3.14159 × raio²) e <code>Retangulo(double largura, double altura)</code>. Crie uma <code>List&lt;Forma&gt;</code> com 3 formas mistas e exiba o nome e área de cada uma.</div>
-      <textarea class="exercise-input" id="ex12-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex13-2" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex12-2', 'dp12-2')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol12-2')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex13-2', 'dp13-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol13-2')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp12-2"></div>
-      <div class="solution-wrap" id="sol12-2">
+      <div class="dartpad-wrap" id="dp13-2"></div>
+      <div class="solution-wrap" id="sol13-2">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">abstract class</span> <span class="type">Forma</span> {
@@ -200,13 +200,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie a classe <code>Produto</code> com <code>String nome</code> e <code>double preco</code>. Crie a classe <code>Carrinho</code> que possui uma <code>List&lt;Produto&gt;</code> internamente com os métodos: <code>adicionar(Produto p)</code>, <code>double total()</code> (soma dos preços) e <code>exibir()</code> (mostra cada produto e o total). Instancie um carrinho, adicione 3 produtos e chame <code>exibir()</code>.</div>
-      <textarea class="exercise-input" id="ex12-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex13-3" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex12-3', 'dp12-3')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol12-3')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex13-3', 'dp13-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol13-3')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp12-3"></div>
-      <div class="solution-wrap" id="sol12-3">
+      <div class="dartpad-wrap" id="dp13-3"></div>
+      <div class="solution-wrap" id="sol13-3">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">class</span> <span class="type">Produto</span> {
@@ -257,13 +257,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Simule a arquitetura do Flutter: crie <code>abstract class Widget</code> com o método abstrato <code>String build()</code>. Implemente <code>Text(String texto)</code> e <code>Button(String rotulo, String acao)</code>. Crie uma classe <code>Column</code> que recebe <code>List&lt;Widget&gt; filhos</code> e implementa <code>build()</code> chamando <code>build()</code> de cada filho, separados por quebra de linha. Demonstre criando uma tela com título e dois botões.</div>
-      <textarea class="exercise-input" id="ex12-4" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex13-4" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex12-4', 'dp12-4')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol12-4')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex13-4', 'dp13-4')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol13-4')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp12-4"></div>
-      <div class="solution-wrap" id="sol12-4">
+      <div class="dartpad-wrap" id="dp13-4"></div>
+      <div class="solution-wrap" id="sol13-4">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">abstract class</span> <span class="type">Widget</span> {
@@ -371,7 +371,7 @@
   </div>
 
   <div class="lesson-nav">
-    <button class="btn btn-nav" onclick="goTo(11)">← Voltar</button>
-    <button class="btn btn-primary" onclick="completeAndNext(12)">Próximo módulo →</button>
+    <button class="btn btn-nav" onclick="goTo(12)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(13)">Próximo módulo →</button>
   </div>
 </div>

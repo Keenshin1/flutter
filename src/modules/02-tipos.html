@@ -82,6 +82,37 @@
   </div>
 
   <div class="divider"></div>
+  <div class="section-title">Lidando com erros de conversão: try / catch</div>
+
+  <div class="explanation">
+    O que acontece se você tentar converter <code>"banana"</code> para <code>int</code>? O programa lança um erro e trava. O bloco <code>try/catch</code> captura esse erro e permite que o programa continue funcionando normalmente.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">try</span> {
+    <span class="type">int</span> <span class="var">n</span> = <span class="type">int</span>.<span class="fn">parse</span>(<span class="str">'banana'</span>);  <span class="com">// lança erro!</span>
+    <span class="fn">print</span>(<span class="var">n</span>);
+  } <span class="kw">catch</span> (<span class="var">e</span>) {
+    <span class="fn">print</span>(<span class="str">'Não foi possível converter: $e'</span>);
+  }
+
+  <span class="fn">print</span>(<span class="str">'O programa continua normalmente.'</span>);
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Saída:</strong><br>
+    Não foi possível converter: FormatException: Invalid radix-10 number (at character 1)<br>
+    O programa continua normalmente.
+  </div>
+
+  <div class="info-box">
+    O bloco <code>try</code> tenta executar o código. Se ocorrer qualquer erro, o Dart pula para o bloco <code>catch</code> — onde <code>e</code> contém informações sobre o erro. O código após o <code>try/catch</code> continua executando normalmente. Você usará isso bastante quando lidar com dados externos (formulários, APIs, arquivos).
+  </div>
+
+  <div class="divider"></div>
   <div class="section-title">Exercícios de fixação</div>
 
   <div class="exercise-card">

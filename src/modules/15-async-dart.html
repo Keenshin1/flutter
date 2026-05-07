@@ -1,0 +1,275 @@
+<!-- module: num="15" nav="async / await" -->
+<div class="lesson" id="lesson-15">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 15</div>
+    <div class="lesson-title"><code style="font-size:22px;">async / await</code></div>
+    <div class="lesson-subtitle">Operações que levam tempo — buscar dados, ler arquivos, esperar uma resposta — são representadas por <code>Future</code>. O Dart resolve isso de forma elegante com <code>async</code> e <code>await</code>.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">O problema: operações demoradas</div>
+
+  <div class="explanation">
+    Imagine um programa que busca a temperatura atual na internet. Esse processo pode levar 1, 2 ou 3 segundos. Se o programa simplesmente <em>travasse</em> esperando, a interface congelaria. O Dart usa <strong>Futures</strong> para representar valores que ainda não chegaram.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="com">// Future&lt;String&gt; = "uma String que virá no futuro"</span>
+<span class="type">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarNome</span>() {
+  <span class="kw">return</span> <span class="type">Future</span>.<span class="fn">delayed</span>(
+    <span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">2</span>),
+    () =&gt; <span class="str">'Ana'</span>,   <span class="com">// valor entregue após 2 segundos</span>
+  );
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">buscarNome</span>().<span class="fn">then</span>((<span class="var">nome</span>) {
+    <span class="fn">print</span>(<span class="str">'Nome: $nome'</span>);
+  });
+  <span class="fn">print</span>(<span class="str">'Aguardando...'</span>); <span class="com">// imprime ANTES de "Nome: Ana"</span>
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Saída:</strong><br>
+    Aguardando...<br>
+    Nome: Ana
+  </div>
+
+  <div class="info-box">
+    O método <code>.then()</code> recebe uma função que será chamada quando o <code>Future</code> completar. O código continua executando enquanto espera — por isso "Aguardando..." aparece primeiro.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">async / await — código assíncrono parece síncrono</div>
+
+  <div class="explanation">
+    Usar <code>.then()</code> funciona, mas fica complicado quando há várias operações encadeadas. A sintaxe <code>async/await</code> permite escrever código assíncrono como se fosse linear — muito mais fácil de ler.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarNome</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">2</span>));
+  <span class="kw">return</span> <span class="str">'Ana'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="fn">print</span>(<span class="str">'Buscando nome...'</span>);
+  <span class="type">String</span> <span class="var">nome</span> = <span class="kw">await</span> <span class="fn">buscarNome</span>();  <span class="com">// pausa aqui e espera</span>
+  <span class="fn">print</span>(<span class="str">'Nome: $nome'</span>);
+  <span class="fn">print</span>(<span class="str">'Concluído!'</span>);
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Saída:</strong><br>
+    Buscando nome...<br>
+    Nome: Ana<br>
+    Concluído!
+  </div>
+
+  <div class="info-box yellow">
+    <strong>Regras essenciais:</strong><br>
+    · Toda função que usa <code>await</code> deve ser marcada com <code>async</code><br>
+    · Uma função <code>async</code> sempre retorna um <code>Future</code> (mesmo que você escreva <code>void</code>)<br>
+    · <code>await</code> só pode ser usado <em>dentro</em> de funções <code>async</code>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Tratamento de erros com try / catch</div>
+
+  <div class="explanation">
+    Operações assíncronas podem falhar: a rede pode estar fora, o arquivo pode não existir. O <code>try/catch</code> captura esses erros sem travar o programa.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">Future</span>&lt;<span class="type">int</span>&gt; <span class="fn">buscarIdade</span>(<span class="type">String</span> <span class="var">texto</span>) <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">return</span> <span class="type">int</span>.<span class="fn">parse</span>(<span class="var">texto</span>);  <span class="com">// lança erro se texto não for número</span>
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="kw">try</span> {
+    <span class="type">int</span> <span class="var">idade</span> = <span class="kw">await</span> <span class="fn">buscarIdade</span>(<span class="str">'abc'</span>);
+    <span class="fn">print</span>(<span class="str">'Idade: $idade'</span>);
+  } <span class="kw">catch</span> (<span class="var">e</span>) {
+    <span class="fn">print</span>(<span class="str">'Erro: $e'</span>);  <span class="com">// captura o erro de parse</span>
+  }
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Saída:</strong> Erro: FormatException: Invalid radix-10 number (at character 1)
+  </div>
+
+  <div class="info-box">
+    O bloco <code>try</code> contém o código que pode falhar. O bloco <code>catch</code> captura qualquer exceção e recebe o objeto de erro em <code>e</code>. Use <code>finally</code> para código que deve rodar <em>sempre</em>, com ou sem erro.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Múltiplos awaits em sequência</div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="type">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarUsuario</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">return</span> <span class="str">'Ana'</span>;
+}
+
+<span class="type">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarCidade</span>(<span class="type">String</span> <span class="var">usuario</span>) <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">return</span> <span class="str">'Curitiba'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="type">String</span> <span class="var">usuario</span> = <span class="kw">await</span> <span class="fn">buscarUsuario</span>();
+  <span class="type">String</span> <span class="var">cidade</span>  = <span class="kw">await</span> <span class="fn">buscarCidade</span>(<span class="var">usuario</span>);
+  <span class="fn">print</span>(<span class="str">'$usuario mora em $cidade'</span>);
+}</pre>
+  </div>
+
+  <div class="info-box">
+    O <code>await</code> em cada linha faz o programa esperar o resultado antes de continuar — como se fossem operações síncronas normais. Isso é o grande poder do <code>async/await</code>: código limpo e legível mesmo para operações complexas.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Saudação assíncrona</div>
+        <div class="exercise-sub">Future.delayed + await</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>Future&lt;String&gt; saudar(String nome)</code> que aguarda 1 segundo (<code>Future.delayed</code>) e retorna <strong>"Olá, [nome]!"</strong>. No <code>main()</code> — que deve ser <code>async</code> — use <code>await</code> para chamar <code>saudar('Dart')</code> e exiba o resultado.</div>
+      <textarea class="exercise-input" id="ex15-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex15-1', 'dp15-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol15-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp15-1"></div>
+      <div class="solution-wrap" id="sol15-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">saudar</span>(<span class="type">String</span> <span class="var">nome</span>) <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">return</span> <span class="str">'Olá, $nome!'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="type">String</span> <span class="var">msg</span> = <span class="kw">await</span> <span class="fn">saudar</span>(<span class="str">'Dart'</span>);
+  <span class="fn">print</span>(<span class="var">msg</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Parser seguro</div>
+        <div class="exercise-sub">try / catch com int.parse</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma função <code>Future&lt;int&gt; parsear(String s)</code> que aguarda 500ms e então tenta converter <code>s</code> para <code>int</code> com <code>int.parse()</code>. No <code>main()</code>, chame a função duas vezes: uma com <strong>"42"</strong> e outra com <strong>"abc"</strong>. Use <code>try/catch</code> em cada chamada e exiba o valor ou a mensagem de erro.</div>
+      <textarea class="exercise-input" id="ex15-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex15-2', 'dp15-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol15-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp15-2"></div>
+      <div class="solution-wrap" id="sol15-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">Future</span>&lt;<span class="type">int</span>&gt; <span class="fn">parsear</span>(<span class="type">String</span> <span class="var">s</span>) <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(milliseconds: <span class="num">500</span>));
+  <span class="kw">return</span> <span class="type">int</span>.<span class="fn">parse</span>(<span class="var">s</span>);
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="kw">try</span> {
+    <span class="type">int</span> <span class="var">v</span> = <span class="kw">await</span> <span class="fn">parsear</span>(<span class="str">'42'</span>);
+    <span class="fn">print</span>(<span class="str">'Valor: $v'</span>);
+  } <span class="kw">catch</span> (<span class="var">e</span>) {
+    <span class="fn">print</span>(<span class="str">'Erro: $e'</span>);
+  }
+
+  <span class="kw">try</span> {
+    <span class="type">int</span> <span class="var">v</span> = <span class="kw">await</span> <span class="fn">parsear</span>(<span class="str">'abc'</span>);
+    <span class="fn">print</span>(<span class="str">'Valor: $v'</span>);
+  } <span class="kw">catch</span> (<span class="var">e</span>) {
+    <span class="fn">print</span>(<span class="str">'Não é número!'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Pipeline de dados</div>
+        <div class="exercise-sub">múltiplos awaits encadeados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie três funções assíncronas encadeadas: <code>buscarId()</code> retorna um <code>int</code> após 1s; <code>buscarNome(int id)</code> retorna uma <code>String</code> após 1s; <code>buscarEmail(String nome)</code> retorna uma <code>String</code> após 1s. No <code>main()</code>, encadeie as três com <code>await</code> e exiba o email final. Envolva tudo em <code>try/catch</code>.</div>
+      <textarea class="exercise-input" id="ex15-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex15-3', 'dp15-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol15-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp15-3"></div>
+      <div class="solution-wrap" id="sol15-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="type">Future</span>&lt;<span class="type">int</span>&gt; <span class="fn">buscarId</span>() <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">return</span> <span class="num">42</span>;
+}
+
+<span class="type">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarNome</span>(<span class="type">int</span> <span class="var">id</span>) <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">return</span> <span class="str">'usuario_$id'</span>;
+}
+
+<span class="type">Future</span>&lt;<span class="type">String</span>&gt; <span class="fn">buscarEmail</span>(<span class="type">String</span> <span class="var">nome</span>) <span class="kw">async</span> {
+  <span class="kw">await</span> <span class="type">Future</span>.<span class="fn">delayed</span>(<span class="kw">const</span> <span class="type">Duration</span>(seconds: <span class="num">1</span>));
+  <span class="kw">return</span> <span class="str">'$nome@dart.dev'</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() <span class="kw">async</span> {
+  <span class="kw">try</span> {
+    <span class="fn">print</span>(<span class="str">'Iniciando pipeline...'</span>);
+    <span class="type">int</span>    <span class="var">id</span>    = <span class="kw">await</span> <span class="fn">buscarId</span>();
+    <span class="type">String</span> <span class="var">nome</span>  = <span class="kw">await</span> <span class="fn">buscarNome</span>(<span class="var">id</span>);
+    <span class="type">String</span> <span class="var">email</span> = <span class="kw">await</span> <span class="fn">buscarEmail</span>(<span class="var">nome</span>);
+    <span class="fn">print</span>(<span class="str">'Email: $email'</span>);
+  } <span class="kw">catch</span> (<span class="var">e</span>) {
+    <span class="fn">print</span>(<span class="str">'Falha no pipeline: $e'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(14)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(15)">Próximo módulo →</button>
+  </div>
+</div>

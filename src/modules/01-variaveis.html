@@ -99,6 +99,28 @@
   </div>
 
   <div class="divider"></div>
+  <div class="section-title">Prévia: combinando variáveis em uma frase</div>
+
+  <div class="explanation">
+    Para incluir o valor de uma variável dentro de uma <code>String</code>, o Dart usa o símbolo <code>$</code> antes do nome da variável. Você aprenderá tudo sobre strings no Módulo 03 — mas vale conhecer desde já:
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">var</span> <span class="var">nome</span>  = <span class="str">'Ana'</span>;
+  <span class="kw">var</span> <span class="var">idade</span> = <span class="num">25</span>;
+
+  <span class="fn">print</span>(<span class="str">'Olá, $nome! Você tem $idade anos.'</span>);
+  <span class="com">// Saída: Olá, Ana! Você tem 25 anos.</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    Use <code>$variavel</code> para valores simples. Use <code>${expressao}</code> quando quiser fazer um cálculo ou adicionar texto grudado ao valor: <code>'altura: ${altura}m'</code>.
+  </div>
+
+  <div class="divider"></div>
   <div class="section-title">Exercícios de fixação</div>
 
   <div class="exercise-card">
@@ -193,17 +215,17 @@
     </div>
   </div>
 
-  <div class="exercise-card desafio">
+  <div class="exercise-card medio">
     <div class="exercise-header">
       <div class="exercise-icon">04</div>
       <div style="flex:1">
         <div class="exercise-title">Perfil completo</div>
         <div class="exercise-sub">var, const e interpolação</div>
       </div>
-      <span class="tag orange">Desafio</span>
+      <span class="tag yellow">Médio</span>
     </div>
     <div class="exercise-body">
-      <div class="exercise-desc">Declare variáveis com <code>var</code> para nome, cidade, ano de nascimento e altura. Use <code>const</code> para o ano atual (2025). Calcule a idade e exiba uma frase no formato: <strong>"[nome], [cidade], [idade] anos, [altura]m"</strong>.</div>
+      <div class="exercise-desc">Declare com <code>var</code>: nome, cidade, ano de nascimento e altura. Use <code>const anoAtual = 2025</code>. Calcule a idade com <code>anoAtual - anoNasc</code>. Exiba no formato: <strong>"[nome], [cidade], [idade] anos, [altura]m"</strong> usando interpolação.</div>
       <textarea class="exercise-input" id="ex1-4" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
         <button class="btn btn-primary" onclick="runInDartPad('ex1-4', 'dp1-4')">▶ Executar</button>
@@ -220,7 +242,7 @@
   <span class="kw">var</span> <span class="var">altura</span>  = <span class="num">1.68</span>;
   <span class="kw">const</span> <span class="var">anoAtual</span> = <span class="num">2025</span>;
 
-  <span class="type">int</span> <span class="var">idade</span> = <span class="var">anoAtual</span> - <span class="var">anoNasc</span>;
+  <span class="kw">var</span> <span class="var">idade</span> = <span class="var">anoAtual</span> - <span class="var">anoNasc</span>;
   <span class="fn">print</span>(<span class="str">'$nome, $cidade, $idade anos, ${altura}m'</span>);
 }</pre>
         </div>
