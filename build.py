@@ -27,7 +27,8 @@ def parse_module(filepath):
 
 def build():
     filenames = sorted(
-        f for f in os.listdir(MODULES_DIR) if f.endswith('.html')
+        f for f in os.listdir(MODULES_DIR)
+        if f.endswith('.html') and not f.startswith('_')
     )
 
     modules = []
