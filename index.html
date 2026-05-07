@@ -15,7 +15,7 @@
       <div class="logo-icon">Fl</div>
       <div>
         <div class="logo-text">Aprenda Flutter</div>
-        <div class="logo-sub">15 módulos · do zero</div>
+        <div class="logo-sub">16 módulos · do zero</div>
       </div>
     </div>
   </div>
@@ -23,7 +23,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-label">
       <span>Progresso</span>
-      <span id="progress-text">0 / 15</span>
+      <span id="progress-text">0 / 16</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
@@ -121,6 +121,12 @@
       <span class="nav-dot"></span>
       <span class="nav-num">15</span>
       <span>StatefulWidget</span>
+    </button>
+
+    <button class="nav-item" onclick="goTo(16)" id="nav-16">
+      <span class="nav-dot"></span>
+      <span class="nav-num">16</span>
+      <span>Navegação</span>
     </button>
   </div>
 </aside>
@@ -3941,6 +3947,434 @@
   <div class="lesson-nav">
     <button class="btn btn-nav" onclick="goTo(14)">← Voltar</button>
     <button class="btn btn-primary" onclick="completeAndNext(15)">Próximo módulo →</button>
+  </div>
+</div>
+
+<div class="lesson" id="lesson-16">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 16</div>
+    <div class="lesson-title">Navegação entre telas</div>
+    <div class="lesson-subtitle">Todo app real tem mais de uma tela. O Flutter usa uma pilha de rotas — você empurra uma nova tela por cima e volta removendo ela da pilha.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 1 — Navigator.push / pop
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Navigator.push e Navigator.pop</div>
+
+  <div class="explanation">
+    O <code>Navigator</code> gerencia uma <strong>pilha de telas</strong>. <code>push()</code> coloca uma nova tela no topo; <code>pop()</code> remove a tela atual e volta para a anterior. O botão de voltar da <code>AppBar</code> chama <code>pop()</code> automaticamente.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">TelaInicial</span>()));
+
+<span class="kw">class</span> <span class="type">TelaInicial</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaInicial</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Tela Inicial'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">ElevatedButton</span>(
+          onPressed: () {
+            <span class="type">Navigator</span>.<span class="fn">push</span>(
+              <span class="var">context</span>,
+              <span class="type">MaterialPageRoute</span>(builder: (<span class="var">_</span>) =&gt; <span class="kw">const</span> <span class="type">TelaDetalhe</span>()),
+            );
+          },
+          child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Ir para Detalhe'</span>),
+        ),
+      ),
+    );
+  }
+}
+
+<span class="kw">class</span> <span class="type">TelaDetalhe</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaDetalhe</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Detalhe'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">ElevatedButton</span>(
+          onPressed: () =&gt; <span class="type">Navigator</span>.<span class="fn">pop</span>(<span class="var">context</span>),
+          child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Voltar'</span>),
+        ),
+      ),
+    );
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <code>MaterialPageRoute</code> define a animação de transição entre telas. O parâmetro <code>builder</code> recebe o contexto e retorna o widget da nova tela.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 2 — Passando dados entre telas
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Passando dados para outra tela</div>
+
+  <div class="explanation">
+    Para enviar dados a uma tela, basta passar argumentos pelo construtor do widget de destino — exatamente como em qualquer classe Dart.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">class</span> <span class="type">TelaProduto</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">final</span> <span class="type">String</span> <span class="var">nome</span>;
+  <span class="kw">final</span> <span class="type">double</span> <span class="var">preco</span>;
+
+  <span class="kw">const</span> <span class="fn">TelaProduto</span>({<span class="kw">super</span>.key, <span class="kw">required</span> <span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">required</span> <span class="kw">this</span>.<span class="var">preco</span>});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="type">Text</span>(<span class="var">nome</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">Text</span>(<span class="str">'R\$ $preco'</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">32</span>)),
+      ),
+    );
+  }
+}
+
+<span class="com">// Na tela que navega:</span>
+<span class="type">Navigator</span>.<span class="fn">push</span>(
+  <span class="var">context</span>,
+  <span class="type">MaterialPageRoute</span>(
+    builder: (<span class="var">_</span>) =&gt; <span class="kw">const</span> <span class="type">TelaProduto</span>(nome: <span class="str">'Café'</span>, preco: <span class="num">12.50</span>),
+  ),
+);</pre>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 3 — Retornando dados com pop
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Retornando dados com pop()</div>
+
+  <div class="explanation">
+    <code>pop()</code> pode devolver um valor para a tela anterior. Quem fez o <code>push()</code> recebe esse valor com <code>await</code>, pois a navegação é assíncrona.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="com">// Tela que retorna um valor:</span>
+<span class="type">Navigator</span>.<span class="fn">pop</span>(<span class="var">context</span>, <span class="str">'opcao_escolhida'</span>);
+
+<span class="com">// Tela que aguarda o retorno:</span>
+<span class="kw">final</span> <span class="var">resultado</span> = <span class="kw">await</span> <span class="type">Navigator</span>.<span class="fn">push</span>&lt;<span class="type">String</span>&gt;(
+  <span class="var">context</span>,
+  <span class="type">MaterialPageRoute</span>(builder: (<span class="var">_</span>) =&gt; <span class="kw">const</span> <span class="type">TelaEscolha</span>()),
+);
+
+<span class="kw">if</span> (<span class="var">resultado</span> != <span class="kw">null</span>) {
+  <span class="fn">print</span>(<span class="str">'Usuário escolheu: $resultado'</span>);
+}</pre>
+  </div>
+
+  <div class="info-box yellow">
+    O retorno de <code>push()</code> é <code>Future&lt;T?&gt;</code> — pode ser <code>null</code> se o usuário pressionar o botão de voltar sem chamar <code>pop()</code> explicitamente. Sempre verifique antes de usar.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       EXERCÍCIOS
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <!-- Exercício 1 — Básico -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Duas telas</div>
+        <div class="exercise-sub">push e pop básicos</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um app com duas telas: <code>TelaHome</code> e <code>TelaSobre</code>. A <code>TelaHome</code> tem um botão <strong>"Sobre o app"</strong> que navega para <code>TelaSobre</code>. A <code>TelaSobre</code> exibe um texto qualquer e tem um botão <strong>"Voltar"</strong> que chama <code>Navigator.pop()</code>.</div>
+      <textarea class="exercise-input" id="ex16-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex16-1', 'dp16-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol16-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp16-1"></div>
+      <div class="solution-wrap" id="sol16-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">TelaHome</span>()));
+
+<span class="kw">class</span> <span class="type">TelaHome</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaHome</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Home'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">ElevatedButton</span>(
+          onPressed: () =&gt; <span class="type">Navigator</span>.<span class="fn">push</span>(
+            <span class="var">context</span>,
+            <span class="type">MaterialPageRoute</span>(builder: (<span class="var">_</span>) =&gt; <span class="kw">const</span> <span class="type">TelaSobre</span>()),
+          ),
+          child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Sobre o app'</span>),
+        ),
+      ),
+    );
+  }
+}
+
+<span class="kw">class</span> <span class="type">TelaSobre</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaSobre</span>({<span class="kw">super</span>.key});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Sobre'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">Column</span>(
+          mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+          children: [
+            <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'App de exemplo — v1.0'</span>),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">16</span>),
+            <span class="type">ElevatedButton</span>(
+              onPressed: () =&gt; <span class="type">Navigator</span>.<span class="fn">pop</span>(<span class="var">context</span>),
+              child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Voltar'</span>),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 2 — Médio -->
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Lista de produtos</div>
+        <div class="exercise-sub">Passando dados pelo construtor</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie uma <code>TelaLista</code> com uma <code>ListView</code> de 4 produtos (nome + preço). Ao tocar em um item, navegue para <code>TelaDetalhe</code> passando o nome e o preço pelo construtor. A <code>TelaDetalhe</code> exibe essas informações de forma destacada e tem o botão de voltar da <code>AppBar</code> (automático).</div>
+      <textarea class="exercise-input" id="ex16-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex16-2', 'dp16-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol16-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp16-2"></div>
+      <div class="solution-wrap" id="sol16-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">TelaLista</span>()));
+
+<span class="kw">class</span> <span class="type">TelaLista</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaLista</span>({<span class="kw">super</span>.key});
+
+  <span class="kw">static</span> <span class="kw">const</span> <span class="var">_produtos</span> = [
+    {<span class="str">'nome'</span>: <span class="str">'Café'</span>,     <span class="str">'preco'</span>: <span class="num">12.50</span>},
+    {<span class="str">'nome'</span>: <span class="str">'Leite'</span>,    <span class="str">'preco'</span>: <span class="num">5.90</span>},
+    {<span class="str">'nome'</span>: <span class="str">'Pão'</span>,      <span class="str">'preco'</span>: <span class="num">8.00</span>},
+    {<span class="str">'nome'</span>: <span class="str">'Manteiga'</span>, <span class="str">'preco'</span>: <span class="num">18.00</span>},
+  ];
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Produtos'</span>)),
+      body: <span class="type">ListView</span>.<span class="fn">builder</span>(
+        itemCount: <span class="var">_produtos</span>.length,
+        itemBuilder: (<span class="var">context</span>, <span class="var">i</span>) {
+          <span class="kw">final</span> <span class="var">p</span> = <span class="var">_produtos</span>[<span class="var">i</span>];
+          <span class="kw">return</span> <span class="type">ListTile</span>(
+            title: <span class="type">Text</span>(<span class="var">p</span>[<span class="str">'nome'</span>]! <span class="kw">as</span> <span class="type">String</span>),
+            subtitle: <span class="type">Text</span>(<span class="str">'R\$ ${p['preco']}'</span>),
+            trailing: <span class="kw">const</span> <span class="type">Icon</span>(<span class="type">Icons</span>.chevron_right),
+            onTap: () =&gt; <span class="type">Navigator</span>.<span class="fn">push</span>(
+              <span class="var">context</span>,
+              <span class="type">MaterialPageRoute</span>(
+                builder: (<span class="var">_</span>) =&gt; <span class="type">TelaDetalhe</span>(
+                  nome: <span class="var">p</span>[<span class="str">'nome'</span>]! <span class="kw">as</span> <span class="type">String</span>,
+                  preco: <span class="var">p</span>[<span class="str">'preco'</span>]! <span class="kw">as</span> <span class="type">double</span>,
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+<span class="kw">class</span> <span class="type">TelaDetalhe</span> <span class="kw">extends</span> <span class="type">StatelessWidget</span> {
+  <span class="kw">final</span> <span class="type">String</span> <span class="var">nome</span>;
+  <span class="kw">final</span> <span class="type">double</span> <span class="var">preco</span>;
+
+  <span class="kw">const</span> <span class="fn">TelaDetalhe</span>({<span class="kw">super</span>.key, <span class="kw">required</span> <span class="kw">this</span>.<span class="var">nome</span>, <span class="kw">required</span> <span class="kw">this</span>.<span class="var">preco</span>});
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="type">Text</span>(<span class="var">nome</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">Column</span>(
+          mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+          children: [
+            <span class="type">Text</span>(<span class="var">nome</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">28</span>, fontWeight: <span class="type">FontWeight</span>.bold)),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">8</span>),
+            <span class="type">Text</span>(<span class="str">'R\$ $preco'</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">22</span>)),
+          ],
+        ),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 3 — Desafio -->
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Formulário com retorno</div>
+        <div class="exercise-sub">pop() retornando dados</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um app com duas telas. A <code>TelaHome</code> exibe um nome (inicialmente <strong>"Nenhum"</strong>) e um botão <strong>"Editar nome"</strong>. A <code>TelaFormulario</code> tem um <code>TextField</code> e um botão <strong>"Salvar"</strong> que chama <code>Navigator.pop(context, nomeDigitado)</code>. De volta na <code>TelaHome</code>, use <code>await Navigator.push()</code> para receber o valor e atualizar o nome exibido com <code>setState()</code>.</div>
+      <textarea class="exercise-input" id="ex16-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex16-3', 'dp16-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol16-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp16-3"></div>
+      <div class="solution-wrap" id="sol16-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">TelaHome</span>()));
+
+<span class="kw">class</span> <span class="type">TelaHome</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaHome</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">TelaHome</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_TelaHomeState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_TelaHomeState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">TelaHome</span>&gt; {
+  <span class="type">String</span> <span class="var">_nome</span> = <span class="str">'Nenhum'</span>;
+
+  <span class="kw">Future</span>&lt;<span class="kw">void</span>&gt; <span class="fn">_editarNome</span>() <span class="kw">async</span> {
+    <span class="kw">final</span> <span class="var">resultado</span> = <span class="kw">await</span> <span class="type">Navigator</span>.<span class="fn">push</span>&lt;<span class="type">String</span>&gt;(
+      <span class="var">context</span>,
+      <span class="type">MaterialPageRoute</span>(builder: (<span class="var">_</span>) =&gt; <span class="kw">const</span> <span class="type">TelaFormulario</span>()),
+    );
+    <span class="kw">if</span> (<span class="var">resultado</span> != <span class="kw">null</span> &amp;&amp; <span class="var">resultado</span>.<span class="fn">isNotEmpty</span>) {
+      <span class="fn">setState</span>(() =&gt; <span class="var">_nome</span> = <span class="var">resultado</span>);
+    }
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Perfil'</span>)),
+      body: <span class="type">Center</span>(
+        child: <span class="type">Column</span>(
+          mainAxisAlignment: <span class="type">MainAxisAlignment</span>.center,
+          children: [
+            <span class="type">Text</span>(<span class="str">'Nome: $_nome'</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">24</span>)),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">16</span>),
+            <span class="type">ElevatedButton</span>(
+              onPressed: <span class="var">_editarNome</span>,
+              child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Editar nome'</span>),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+<span class="kw">class</span> <span class="type">TelaFormulario</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaFormulario</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">TelaFormulario</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_TelaFormularioState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_TelaFormularioState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">TelaFormulario</span>&gt; {
+  <span class="kw">final</span> <span class="var">_controller</span> = <span class="type">TextEditingController</span>();
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() {
+    <span class="var">_controller</span>.<span class="fn">dispose</span>();
+    <span class="kw">super</span>.<span class="fn">dispose</span>();
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Editar nome'</span>)),
+      body: <span class="type">Padding</span>(
+        padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">24</span>),
+        child: <span class="type">Column</span>(
+          children: [
+            <span class="type">TextField</span>(
+              controller: <span class="var">_controller</span>,
+              decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Novo nome'</span>),
+            ),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">24</span>),
+            <span class="type">ElevatedButton</span>(
+              onPressed: () =&gt; <span class="type">Navigator</span>.<span class="fn">pop</span>(<span class="var">context</span>, <span class="var">_controller</span>.text),
+              child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Salvar'</span>),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(15)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(16)">Próximo módulo →</button>
   </div>
 </div>
 
