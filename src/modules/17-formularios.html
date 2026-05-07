@@ -1,0 +1,429 @@
+<!-- module: num="17" nav="Formulários" -->
+<div class="lesson" id="lesson-17">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 17</div>
+    <div class="lesson-title">Formulários e entrada de dados</div>
+    <div class="lesson-subtitle">Coletar informações do usuário é essencial em qualquer app. O Flutter oferece <code>TextField</code>, <code>Form</code> e validação integrada para tornar isso seguro e organizado.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 1 — TextField e TextEditingController
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">TextField e TextEditingController</div>
+
+  <div class="explanation">
+    O <code>TextField</code> é o widget de entrada de texto do Flutter. Para ler o valor digitado, use um <code>TextEditingController</code> — ele fica vinculado ao campo e expõe o texto via <code>.text</code>. Sempre descarte o controller no <code>dispose()</code> para liberar memória.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">class</span> <span class="fn">_FormState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">MeuForm</span>&gt; {
+  <span class="kw">final</span> <span class="var">_controller</span> = <span class="type">TextEditingController</span>();
+  <span class="type">String</span> <span class="var">_resultado</span> = <span class="str">''</span>;
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() {
+    <span class="var">_controller</span>.<span class="fn">dispose</span>(); <span class="com">// libera o controller ao destruir o widget</span>
+    <span class="kw">super</span>.<span class="fn">dispose</span>();
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Column</span>(children: [
+      <span class="type">TextField</span>(
+        controller: <span class="var">_controller</span>,
+        decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Seu nome'</span>),
+      ),
+      <span class="type">ElevatedButton</span>(
+        onPressed: () =&gt; <span class="fn">setState</span>(() =&gt; <span class="var">_resultado</span> = <span class="var">_controller</span>.text),
+        child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Confirmar'</span>),
+      ),
+      <span class="type">Text</span>(<span class="str">'Olá, $_resultado!'</span>),
+    ]);
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <code>InputDecoration</code> controla a aparência do campo: <code>labelText</code> (rótulo flutuante), <code>hintText</code> (placeholder), <code>prefixIcon</code>, <code>suffixIcon</code> e muito mais.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 2 — Tipos de teclado e obscureText
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Tipos de teclado e campos especiais</div>
+
+  <div class="explanation">
+    O parâmetro <code>keyboardType</code> abre o teclado adequado para cada dado. Use <code>obscureText: true</code> para campos de senha — o Flutter oculta os caracteres automaticamente.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="type">TextField</span>(
+  keyboardType: <span class="type">TextInputType</span>.emailAddress, <span class="com">// abre teclado com @</span>
+  decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'E-mail'</span>),
+),
+
+<span class="type">TextField</span>(
+  keyboardType: <span class="type">TextInputType</span>.number,       <span class="com">// teclado numérico</span>
+  decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Idade'</span>),
+),
+
+<span class="type">TextField</span>(
+  obscureText: <span class="kw">true</span>,                         <span class="com">// oculta os caracteres</span>
+  decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Senha'</span>),
+),</pre>
+  </div>
+
+  <div class="info-box yellow">
+    Outros valores úteis de <code>TextInputType</code>: <code>.phone</code>, <code>.url</code>, <code>.multiline</code>. Para <code>multiline</code>, combine com <code>maxLines: null</code> para campo de altura livre.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SEÇÃO 3 — Form e validação
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Form e validação com GlobalKey</div>
+
+  <div class="explanation">
+    Para validar múltiplos campos de uma vez, envolva-os em um widget <code>Form</code> e troque <code>TextField</code> por <code>TextFormField</code>. O parâmetro <code>validator</code> recebe o texto e retorna uma mensagem de erro (ou <code>null</code> se válido). Um <code>GlobalKey&lt;FormState&gt;</code> dá acesso ao método <code>validate()</code>.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header">
+      <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+      <div class="code-lang">Dart</div>
+    </div>
+    <pre><span class="kw">class</span> <span class="fn">_CadastroState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Cadastro</span>&gt; {
+  <span class="kw">final</span> <span class="var">_formKey</span> = <span class="type">GlobalKey</span>&lt;<span class="type">FormState</span>&gt;();
+  <span class="kw">final</span> <span class="var">_nomeCtrl</span>  = <span class="type">TextEditingController</span>();
+  <span class="kw">final</span> <span class="var">_emailCtrl</span> = <span class="type">TextEditingController</span>();
+
+  <span class="kw">void</span> <span class="fn">_enviar</span>() {
+    <span class="kw">if</span> (<span class="var">_formKey</span>.currentState!.<span class="fn">validate</span>()) {
+      <span class="fn">print</span>(<span class="str">'Enviado: ${_nomeCtrl.text} / ${_emailCtrl.text}'</span>);
+    }
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Form</span>(
+      key: <span class="var">_formKey</span>,
+      child: <span class="type">Column</span>(children: [
+        <span class="type">TextFormField</span>(
+          controller: <span class="var">_nomeCtrl</span>,
+          decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Nome'</span>),
+          validator: (<span class="var">v</span>) =&gt; (v == <span class="kw">null</span> || v.<span class="fn">isEmpty</span>) ? <span class="str">'Campo obrigatório'</span> : <span class="kw">null</span>,
+        ),
+        <span class="type">TextFormField</span>(
+          controller: <span class="var">_emailCtrl</span>,
+          keyboardType: <span class="type">TextInputType</span>.emailAddress,
+          decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'E-mail'</span>),
+          validator: (<span class="var">v</span>) =&gt; (v != <span class="kw">null</span> &amp;&amp; v.<span class="fn">contains</span>(<span class="str">'@'</span>)) ? <span class="kw">null</span> : <span class="str">'E-mail inválido'</span>,
+        ),
+        <span class="type">ElevatedButton</span>(onPressed: <span class="var">_enviar</span>, child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Enviar'</span>)),
+      ]),
+    );
+  }
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Fluxo de validação:</strong> <code>validate()</code> chama todos os <code>validator</code> do form de uma vez → exibe as mensagens de erro abaixo de cada campo → retorna <code>true</code> só se todos passarem.
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       EXERCÍCIOS
+  ════════════════════════════════════════════ -->
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <!-- Exercício 1 — Básico -->
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Saudação personalizada</div>
+        <div class="exercise-sub">TextField + TextEditingController</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um app com um <code>TextField</code> para o usuário digitar o nome e um botão <strong>"Saudar"</strong>. Ao pressionar o botão, exiba abaixo a mensagem <strong>"Olá, [nome]! Bem-vindo ao Flutter."</strong> usando <code>setState()</code>. Se o campo estiver vazio, exiba <strong>"Digite seu nome primeiro."</strong></div>
+      <textarea class="exercise-input" id="ex17-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex17-1', 'dp17-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol17-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp17-1"></div>
+      <div class="solution-wrap" id="sol17-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">Saudacao</span>()));
+
+<span class="kw">class</span> <span class="type">Saudacao</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">Saudacao</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">Saudacao</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_SaudacaoState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_SaudacaoState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">Saudacao</span>&gt; {
+  <span class="kw">final</span> <span class="var">_ctrl</span> = <span class="type">TextEditingController</span>();
+  <span class="type">String</span> <span class="var">_mensagem</span> = <span class="str">''</span>;
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() { <span class="var">_ctrl</span>.<span class="fn">dispose</span>(); <span class="kw">super</span>.<span class="fn">dispose</span>(); }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Saudação'</span>)),
+      body: <span class="type">Padding</span>(
+        padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">24</span>),
+        child: <span class="type">Column</span>(children: [
+          <span class="type">TextField</span>(
+            controller: <span class="var">_ctrl</span>,
+            decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Seu nome'</span>),
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">16</span>),
+          <span class="type">ElevatedButton</span>(
+            onPressed: () =&gt; <span class="fn">setState</span>(() {
+              <span class="kw">final</span> <span class="var">nome</span> = <span class="var">_ctrl</span>.text.<span class="fn">trim</span>();
+              <span class="var">_mensagem</span> = <span class="var">nome</span>.<span class="fn">isEmpty</span>
+                  ? <span class="str">'Digite seu nome primeiro.'</span>
+                  : <span class="str">'Olá, $nome! Bem-vindo ao Flutter.'</span>;
+            }),
+            child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Saudar'</span>),
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">16</span>),
+          <span class="type">Text</span>(<span class="var">_mensagem</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">18</span>)),
+        ]),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 2 — Médio -->
+  <div class="exercise-card medio">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Calculadora de IMC</div>
+        <div class="exercise-sub">Múltiplos campos numéricos</div>
+      </div>
+      <span class="tag yellow">Médio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um app com dois <code>TextField</code> (peso em kg e altura em m) usando <code>keyboardType: TextInputType.number</code>. Ao pressionar <strong>"Calcular"</strong>, exiba o IMC com duas casas decimais e a classificação: <strong>Abaixo do peso</strong> (&lt; 18.5), <strong>Normal</strong> (18.5–24.9), <strong>Sobrepeso</strong> (25–29.9) ou <strong>Obesidade</strong> (≥ 30). Trate o caso de campos vazios ou altura zero.</div>
+      <textarea class="exercise-input" id="ex17-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex17-2', 'dp17-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol17-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp17-2"></div>
+      <div class="solution-wrap" id="sol17-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">CalculadoraIMC</span>()));
+
+<span class="kw">class</span> <span class="type">CalculadoraIMC</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">CalculadoraIMC</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">CalculadoraIMC</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_IMCState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_IMCState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">CalculadoraIMC</span>&gt; {
+  <span class="kw">final</span> <span class="var">_pesoCtrl</span>   = <span class="type">TextEditingController</span>();
+  <span class="kw">final</span> <span class="var">_alturaCtrl</span> = <span class="type">TextEditingController</span>();
+  <span class="type">String</span> <span class="var">_resultado</span> = <span class="str">''</span>;
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() {
+    <span class="var">_pesoCtrl</span>.<span class="fn">dispose</span>();
+    <span class="var">_alturaCtrl</span>.<span class="fn">dispose</span>();
+    <span class="kw">super</span>.<span class="fn">dispose</span>();
+  }
+
+  <span class="kw">void</span> <span class="fn">_calcular</span>() {
+    <span class="kw">final</span> <span class="var">peso</span>   = <span class="type">double</span>.<span class="fn">tryParse</span>(<span class="var">_pesoCtrl</span>.text);
+    <span class="kw">final</span> <span class="var">altura</span> = <span class="type">double</span>.<span class="fn">tryParse</span>(<span class="var">_alturaCtrl</span>.text);
+
+    <span class="kw">if</span> (<span class="var">peso</span> == <span class="kw">null</span> || <span class="var">altura</span> == <span class="kw">null</span> || <span class="var">altura</span> == <span class="num">0</span>) {
+      <span class="fn">setState</span>(() =&gt; <span class="var">_resultado</span> = <span class="str">'Preencha os campos corretamente.'</span>);
+      <span class="kw">return</span>;
+    }
+
+    <span class="kw">final</span> <span class="var">imc</span> = <span class="var">peso</span> / (<span class="var">altura</span> * <span class="var">altura</span>);
+    <span class="kw">final</span> <span class="var">classe</span> = <span class="var">imc</span> &lt; <span class="num">18.5</span>
+        ? <span class="str">'Abaixo do peso'</span>
+        : <span class="var">imc</span> &lt; <span class="num">25</span>
+            ? <span class="str">'Normal'</span>
+            : <span class="var">imc</span> &lt; <span class="num">30</span>
+                ? <span class="str">'Sobrepeso'</span>
+                : <span class="str">'Obesidade'</span>;
+
+    <span class="fn">setState</span>(() =&gt; <span class="var">_resultado</span> = <span class="str">'IMC: ${imc.toStringAsFixed(2)} — $classe'</span>);
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Calculadora de IMC'</span>)),
+      body: <span class="type">Padding</span>(
+        padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">24</span>),
+        child: <span class="type">Column</span>(children: [
+          <span class="type">TextField</span>(
+            controller: <span class="var">_pesoCtrl</span>,
+            keyboardType: <span class="type">TextInputType</span>.number,
+            decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Peso (kg)'</span>),
+          ),
+          <span class="type">TextField</span>(
+            controller: <span class="var">_alturaCtrl</span>,
+            keyboardType: <span class="type">TextInputType</span>.number,
+            decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Altura (m)'</span>),
+          ),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">16</span>),
+          <span class="type">ElevatedButton</span>(onPressed: <span class="var">_calcular</span>, child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Calcular'</span>)),
+          <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">16</span>),
+          <span class="type">Text</span>(<span class="var">_resultado</span>, style: <span class="kw">const</span> <span class="type">TextStyle</span>(fontSize: <span class="num">18</span>)),
+        ]),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exercício 3 — Desafio -->
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Cadastro com validação</div>
+        <div class="exercise-sub">Form, TextFormField e GlobalKey</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um formulário de cadastro usando <code>Form</code> + <code>GlobalKey&lt;FormState&gt;</code> com três campos <code>TextFormField</code>: <strong>Nome</strong> (obrigatório, mínimo 3 caracteres), <strong>E-mail</strong> (obrigatório, deve conter <code>@</code>) e <strong>Senha</strong> (obrigatória, mínimo 6 caracteres, com <code>obscureText: true</code>). O botão <strong>"Cadastrar"</strong> só avança (exibe um <code>SnackBar</code> de sucesso) se todos os campos passarem na validação.</div>
+      <textarea class="exercise-input" id="ex17-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex17-3', 'dp17-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol17-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp17-3"></div>
+      <div class="solution-wrap" id="sol17-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">import</span> <span class="str">'package:flutter/material.dart'</span>;
+
+<span class="kw">void</span> <span class="fn">main</span>() =&gt; <span class="fn">runApp</span>(<span class="kw">const</span> <span class="type">MaterialApp</span>(home: <span class="type">TelaCadastro</span>()));
+
+<span class="kw">class</span> <span class="type">TelaCadastro</span> <span class="kw">extends</span> <span class="type">StatefulWidget</span> {
+  <span class="kw">const</span> <span class="fn">TelaCadastro</span>({<span class="kw">super</span>.key});
+  <span class="op">@override</span>
+  <span class="type">State</span>&lt;<span class="type">TelaCadastro</span>&gt; <span class="fn">createState</span>() =&gt; <span class="fn">_CadastroState</span>();
+}
+
+<span class="kw">class</span> <span class="fn">_CadastroState</span> <span class="kw">extends</span> <span class="type">State</span>&lt;<span class="type">TelaCadastro</span>&gt; {
+  <span class="kw">final</span> <span class="var">_formKey</span>   = <span class="type">GlobalKey</span>&lt;<span class="type">FormState</span>&gt;();
+  <span class="kw">final</span> <span class="var">_nomeCtrl</span>  = <span class="type">TextEditingController</span>();
+  <span class="kw">final</span> <span class="var">_emailCtrl</span> = <span class="type">TextEditingController</span>();
+  <span class="kw">final</span> <span class="var">_senhaCtrl</span> = <span class="type">TextEditingController</span>();
+
+  <span class="op">@override</span>
+  <span class="kw">void</span> <span class="fn">dispose</span>() {
+    <span class="var">_nomeCtrl</span>.<span class="fn">dispose</span>();
+    <span class="var">_emailCtrl</span>.<span class="fn">dispose</span>();
+    <span class="var">_senhaCtrl</span>.<span class="fn">dispose</span>();
+    <span class="kw">super</span>.<span class="fn">dispose</span>();
+  }
+
+  <span class="kw">void</span> <span class="fn">_cadastrar</span>() {
+    <span class="kw">if</span> (<span class="var">_formKey</span>.currentState!.<span class="fn">validate</span>()) {
+      <span class="type">ScaffoldMessenger</span>.<span class="fn">of</span>(<span class="var">context</span>).<span class="fn">showSnackBar</span>(
+        <span class="type">SnackBar</span>(content: <span class="type">Text</span>(<span class="str">'Bem-vindo, ${_nomeCtrl.text}!'</span>)),
+      );
+    }
+  }
+
+  <span class="op">@override</span>
+  <span class="type">Widget</span> <span class="fn">build</span>(<span class="type">BuildContext</span> <span class="var">context</span>) {
+    <span class="kw">return</span> <span class="type">Scaffold</span>(
+      appBar: <span class="type">AppBar</span>(title: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Cadastro'</span>)),
+      body: <span class="type">Padding</span>(
+        padding: <span class="kw">const</span> <span class="type">EdgeInsets</span>.<span class="fn">all</span>(<span class="num">24</span>),
+        child: <span class="type">Form</span>(
+          key: <span class="var">_formKey</span>,
+          child: <span class="type">Column</span>(children: [
+            <span class="type">TextFormField</span>(
+              controller: <span class="var">_nomeCtrl</span>,
+              decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Nome'</span>),
+              validator: (<span class="var">v</span>) {
+                <span class="kw">if</span> (<span class="var">v</span> == <span class="kw">null</span> || <span class="var">v</span>.<span class="fn">trim</span>().<span class="fn">isEmpty</span>) <span class="kw">return</span> <span class="str">'Campo obrigatório'</span>;
+                <span class="kw">if</span> (<span class="var">v</span>.<span class="fn">trim</span>().length &lt; <span class="num">3</span>) <span class="kw">return</span> <span class="str">'Mínimo 3 caracteres'</span>;
+                <span class="kw">return</span> <span class="kw">null</span>;
+              },
+            ),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">12</span>),
+            <span class="type">TextFormField</span>(
+              controller: <span class="var">_emailCtrl</span>,
+              keyboardType: <span class="type">TextInputType</span>.emailAddress,
+              decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'E-mail'</span>),
+              validator: (<span class="var">v</span>) =&gt; (v != <span class="kw">null</span> &amp;&amp; v.<span class="fn">contains</span>(<span class="str">'@'</span>))
+                  ? <span class="kw">null</span>
+                  : <span class="str">'E-mail inválido'</span>,
+            ),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">12</span>),
+            <span class="type">TextFormField</span>(
+              controller: <span class="var">_senhaCtrl</span>,
+              obscureText: <span class="kw">true</span>,
+              decoration: <span class="kw">const</span> <span class="type">InputDecoration</span>(labelText: <span class="str">'Senha'</span>),
+              validator: (<span class="var">v</span>) {
+                <span class="kw">if</span> (<span class="var">v</span> == <span class="kw">null</span> || <span class="var">v</span>.<span class="fn">isEmpty</span>) <span class="kw">return</span> <span class="str">'Campo obrigatório'</span>;
+                <span class="kw">if</span> (<span class="var">v</span>.length &lt; <span class="num">6</span>) <span class="kw">return</span> <span class="str">'Mínimo 6 caracteres'</span>;
+                <span class="kw">return</span> <span class="kw">null</span>;
+              },
+            ),
+            <span class="kw">const</span> <span class="type">SizedBox</span>(height: <span class="num">24</span>),
+            <span class="type">SizedBox</span>(
+              width: <span class="type">double</span>.infinity,
+              child: <span class="type">ElevatedButton</span>(
+                onPressed: <span class="var">_cadastrar</span>,
+                child: <span class="kw">const</span> <span class="type">Text</span>(<span class="str">'Cadastrar'</span>),
+              ),
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(16)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(17)">Próximo módulo →</button>
+  </div>
+</div>
