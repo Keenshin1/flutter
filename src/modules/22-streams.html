@@ -1,7 +1,7 @@
-<!-- module: num="20" nav="Streams" -->
-<div class="lesson" id="lesson-20">
+<!-- module: num="22" nav="Streams" -->
+<div class="lesson" id="lesson-22">
   <div class="lesson-header">
-    <div class="lesson-badge">Módulo 20</div>
+    <div class="lesson-badge">Módulo 22</div>
     <div class="lesson-title">Streams — dados em tempo real</div>
     <div class="lesson-subtitle">Enquanto um <code>Future</code> entrega um único valor no futuro, um <code>Stream</code> entrega <strong>vários valores ao longo do tempo</strong> — perfeito para notificações, sensores, chats e qualquer dado que muda continuamente.</div>
   </div>
@@ -197,13 +197,13 @@
       <div class="exercise-desc">
         Crie uma função <code>regressivo(int inicio)</code> que retorna um <code>Stream&lt;int&gt;</code> emitindo os números de <code>inicio</code> até <code>1</code> com intervalo de 500 ms entre cada um. No <code>main()</code>, use <code>await for</code> para imprimir cada número e, ao final, imprima <strong>"Lançar!"</strong>.
       </div>
-      <textarea class="exercise-input" id="ex20-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex22-1" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex20-1', 'dp20-1')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol20-1')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex22-1', 'dp22-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol22-1')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp20-1"></div>
-      <div class="solution-wrap" id="sol20-1">
+      <div class="dartpad-wrap" id="dp22-1"></div>
+      <div class="solution-wrap" id="sol22-1">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">import</span> <span class="str">'dart:async'</span>;
@@ -240,13 +240,13 @@
       <div class="exercise-desc">
         Crie um <code>StreamController&lt;double&gt;</code> chamado <code>sensor</code>. Adicione ao sink as temperaturas: <code>18.5, 23.0, 37.2, 25.1, 40.8, 22.0</code>. Ouça o stream com <code>listen()</code>, filtrando apenas temperaturas <strong>acima de 35°C</strong> e imprimindo no formato <strong>"ALERTA: 37.2°C"</strong>. Feche o controller ao final.
       </div>
-      <textarea class="exercise-input" id="ex20-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex22-2" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex20-2', 'dp20-2')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol20-2')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex22-2', 'dp22-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol22-2')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp20-2"></div>
-      <div class="solution-wrap" id="sol20-2">
+      <div class="dartpad-wrap" id="dp22-2"></div>
+      <div class="solution-wrap" id="sol22-2">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">import</span> <span class="str">'dart:async'</span>;
@@ -284,13 +284,13 @@
       <div class="exercise-desc">
         Crie um app Flutter com um <code>StatefulWidget</code> chamado <code>Cronometro</code>. Ele deve ter um <code>StreamController&lt;int&gt;</code> e dois botões: <strong>Iniciar</strong> e <strong>Resetar</strong>. Ao iniciar, use um <code>Timer.periodic</code> (de <code>dart:async</code>) para emitir um inteiro crescente no sink a cada segundo. O <code>StreamBuilder</code> exibe o tempo no formato <strong>"00:07"</strong> (minutos:segundos). Ao resetar, cancele o timer, zere o contador e emita <code>0</code> no sink. Feche o controller no <code>dispose()</code>.
       </div>
-      <textarea class="exercise-input" id="ex20-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex22-3" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex20-3', 'dp20-3')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol20-3')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex22-3', 'dp22-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol22-3')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp20-3"></div>
-      <div class="solution-wrap" id="sol20-3">
+      <div class="dartpad-wrap" id="dp22-3"></div>
+      <div class="solution-wrap" id="sol22-3">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">import</span> <span class="str">'dart:async'</span>;
@@ -363,7 +363,7 @@
 
   <!-- Navegação -->
   <div class="lesson-nav">
-    <button class="btn btn-nav" onclick="goTo(19)">← Voltar</button>
-    <button class="btn btn-primary" onclick="completeAndNext(20)">✔ Concluir curso</button>
+    <button class="btn btn-nav" onclick="goTo(21)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(22)">✔ Concluir curso</button>
   </div>
 </div>

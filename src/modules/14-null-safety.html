@@ -1,7 +1,7 @@
-<!-- module: num="13" nav="Null Safety" -->
-<div class="lesson" id="lesson-13">
+<!-- module: num="14" nav="Null Safety" -->
+<div class="lesson" id="lesson-14">
   <div class="lesson-header">
-    <div class="lesson-badge">Módulo 13</div>
+    <div class="lesson-badge">Módulo 14</div>
     <div class="lesson-title"><code style="font-size:22px;">Null Safety</code></div>
     <div class="lesson-subtitle">Null safety é o sistema do Dart que impede que variáveis recebam <code>null</code> por acidente — eliminando uma das causas mais comuns de erros em aplicativos.</div>
   </div>
@@ -132,13 +132,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie as variáveis <code>String nome = 'Lucas'</code>, <code>String? bio</code> (sem valor) e <code>int? idade</code> (sem valor). Use <code>??</code> para exibir <em>"Sem bio"</em> caso <code>bio</code> seja null e <em>0</em> caso <code>idade</code> seja null.</div>
-      <textarea class="exercise-input" id="ex13-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex14-1" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex13-1', 'dp13-1')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol13-1')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex14-1', 'dp14-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol14-1')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp13-1"></div>
-      <div class="solution-wrap" id="sol13-1">
+      <div class="dartpad-wrap" id="dp14-1"></div>
+      <div class="solution-wrap" id="sol14-1">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">void</span> <span class="fn">main</span>() {
@@ -166,13 +166,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie a classe <code>Usuario</code> com <code>String nome</code> e <code>String? email</code>. Escreva a função <code>exibirInfo(Usuario? u)</code> que: (1) se <code>u</code> for null, imprime <em>"Usuário não encontrado"</em>; (2) caso contrário, exibe o nome e o email (usando <code>?.</code> e <code>??</code> para tratar email null). Teste com um usuário completo, um sem email e passando <code>null</code>.</div>
-      <textarea class="exercise-input" id="ex13-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex14-2" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex13-2', 'dp13-2')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol13-2')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex14-2', 'dp14-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol14-2')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp13-2"></div>
-      <div class="solution-wrap" id="sol13-2">
+      <div class="dartpad-wrap" id="dp14-2"></div>
+      <div class="solution-wrap" id="sol14-2">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">class</span> <span class="type">Usuario</span> {
@@ -213,13 +213,13 @@
     </div>
     <div class="exercise-body">
       <div class="exercise-desc">Crie a classe <code>Produto</code> com <code>String nome</code>, <code>double preco</code> e <code>String? descricao</code>. Crie a classe <code>Inventario</code> com uma propriedade <code>late List&lt;Produto&gt; itens</code> e o método <code>carregar()</code> que atribui uma lista de 4 produtos (alguns sem descrição) a <code>itens</code>. Implemente <code>exibirCatalogo()</code> que percorre os itens e exibe o nome, preço e descrição (ou <em>"Sem descrição"</em> se null). Calcule e exiba o total do inventário.</div>
-      <textarea class="exercise-input" id="ex13-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <textarea class="exercise-input" id="ex14-3" placeholder="Digite seu código Dart aqui..."></textarea>
       <div class="exercise-actions">
-        <button class="btn btn-primary" onclick="runInDartPad('ex13-3', 'dp13-3')">▶ Executar</button>
-        <button class="btn btn-ghost" onclick="showSolution('sol13-3')">Ver solução</button>
+        <button class="btn btn-primary" onclick="runInDartPad('ex14-3', 'dp14-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol14-3')">Ver solução</button>
       </div>
-      <div class="dartpad-wrap" id="dp13-3"></div>
-      <div class="solution-wrap" id="sol13-3">
+      <div class="dartpad-wrap" id="dp14-3"></div>
+      <div class="solution-wrap" id="sol14-3">
         <div class="code-block" style="margin-top:0">
           <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
           <pre><span class="kw">class</span> <span class="type">Produto</span> {
@@ -263,7 +263,7 @@
   </div>
 
   <div class="lesson-nav">
-    <button class="btn btn-nav" onclick="goTo(12)">← Voltar</button>
-    <button class="btn btn-primary" onclick="completeAndNext(13)">Próximo módulo →</button>
+    <button class="btn btn-nav" onclick="goTo(13)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(14)">Próximo módulo →</button>
   </div>
 </div>

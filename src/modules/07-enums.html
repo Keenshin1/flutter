@@ -1,0 +1,246 @@
+<!-- module: num="7" nav="Enums" -->
+<div class="lesson" id="lesson-7">
+  <div class="lesson-header">
+    <div class="lesson-badge">Módulo 07</div>
+    <div class="lesson-title"><code style="font-size:22px;">enum</code></div>
+    <div class="lesson-subtitle">Enums criam um conjunto fixo de valores nomeados — perfeitos para representar estados, categorias e opções predefinidas.</div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">O que é um enum?</div>
+
+  <div class="explanation">
+    Imagine que você quer guardar o dia da semana. Poderia usar um número (1 a 7) ou uma String ("segunda"), mas ambos permitem valores inválidos como 9 ou "banana". Um <code>enum</code> restringe as opções exatamente ao que faz sentido.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">enum</span> <span class="type">DiaDaSemana</span> {
+  segunda,
+  terca,
+  quarta,
+  quinta,
+  sexta,
+  sabado,
+  domingo,
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">DiaDaSemana</span> <span class="var">hoje</span> = <span class="type">DiaDaSemana</span>.sexta;
+  <span class="fn">print</span>(<span class="var">hoje</span>);           <span class="com">// DiaDaSemana.sexta</span>
+  <span class="fn">print</span>(<span class="var">hoje</span>.<span class="var">name</span>);      <span class="com">// sexta</span>
+}</pre>
+  </div>
+
+  <div class="info-box">
+    Por convenção, o nome do enum usa <strong>PascalCase</strong> (<code>DiaDaSemana</code>) e os valores usam <strong>camelCase</strong> (<code>segunda</code>, <code>terca</code>). A propriedade <code>.name</code> retorna o nome do valor como <code>String</code>.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Enum com switch</div>
+
+  <div class="explanation">
+    Enums e <code>switch</code> funcionam muito bem juntos. Você verá isso constantemente no Flutter — por exemplo, ao verificar o estado de uma conexão ou o tipo de um botão.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">enum</span> <span class="type">Estacao</span> { primavera, verao, outono, inverno }
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">Estacao</span> <span class="var">atual</span> = <span class="type">Estacao</span>.inverno;
+
+  <span class="kw">switch</span> (<span class="var">atual</span>) {
+    <span class="kw">case</span> <span class="type">Estacao</span>.primavera:
+      <span class="fn">print</span>(<span class="str">'Flores brotando!'</span>);
+    <span class="kw">case</span> <span class="type">Estacao</span>.verao:
+      <span class="fn">print</span>(<span class="str">'Calor intenso.'</span>);
+    <span class="kw">case</span> <span class="type">Estacao</span>.outono:
+      <span class="fn">print</span>(<span class="str">'Folhas caindo.'</span>);
+    <span class="kw">case</span> <span class="type">Estacao</span>.inverno:
+      <span class="fn">print</span>(<span class="str">'Frio e casaco!'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="info-box green">
+    <strong>Saída:</strong> Frio e casaco!
+  </div>
+
+  <div class="info-box yellow">
+    No Dart 3+ o <code>switch</code> é <strong>exaustivo</strong> para enums: o compilador avisa se você esquecer de cobrir algum valor. Isso evita bugs silenciosos — uma das grandes vantagens de usar enums em vez de strings.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Enum com propriedades (enhanced enum)</div>
+
+  <div class="explanation">
+    Desde o Dart 2.17, enums podem ter propriedades e métodos. Isso é poderoso: ao invés de só nomear valores, você pode associar dados a cada um.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Dart</div></div>
+    <pre><span class="kw">enum</span> <span class="type">Planeta</span> {
+  mercurio(<span class="num">0.39</span>),
+  venus(<span class="num">0.72</span>),
+  terra(<span class="num">1.00</span>),
+  marte(<span class="num">1.52</span>);
+
+  <span class="kw">const</span> <span class="type">Planeta</span>(<span class="kw">this</span>.<span class="var">distanciaUA</span>);
+  <span class="kw">final</span> <span class="type">double</span> <span class="var">distanciaUA</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="fn">print</span>(<span class="type">Planeta</span>.marte.<span class="var">name</span>);          <span class="com">// marte</span>
+  <span class="fn">print</span>(<span class="type">Planeta</span>.marte.<span class="var">distanciaUA</span>);   <span class="com">// 1.52</span>
+
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">p</span> <span class="kw">in</span> <span class="type">Planeta</span>.values) {
+    <span class="fn">print</span>(<span class="str">'${p.name}: ${p.distanciaUA} UA'</span>);
+  }
+}</pre>
+  </div>
+
+  <div class="info-box">
+    <code>Planeta.values</code> retorna uma lista com todos os valores do enum — útil para percorrer opções sem escrever cada uma manualmente.
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Enums no Flutter</div>
+
+  <div class="explanation">
+    Você já usará enums sem perceber no Flutter. Sempre que ver <code>MainAxisAlignment.center</code>, <code>TextAlign.right</code> ou <code>CrossAxisAlignment.start</code>, está usando um enum. Saber como eles funcionam facilita muito a leitura do código Flutter.
+  </div>
+
+  <div class="code-block">
+    <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Flutter (prévia)</div></div>
+    <pre><span class="com">// Todos esses são enums do próprio Flutter:</span>
+<span class="type">MainAxisAlignment</span>.center    <span class="com">// alinhamento horizontal</span>
+<span class="type">CrossAxisAlignment</span>.start    <span class="com">// alinhamento vertical</span>
+<span class="type">TextAlign</span>.right             <span class="com">// alinhamento de texto</span>
+<span class="type">Icons</span>.home                  <span class="com">// ícones (também enum)</span>
+<span class="type">ThemeMode</span>.dark              <span class="com">// tema escuro/claro</span></pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="section-title">Exercícios de fixação</div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">01</div>
+      <div style="flex:1">
+        <div class="exercise-title">Semáforo</div>
+        <div class="exercise-sub">enum + switch básico</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um <code>enum Semaforo</code> com os valores <code>vermelho</code>, <code>amarelo</code> e <code>verde</code>. Declare uma variável <code>Semaforo sinal = Semaforo.amarelo</code> e use <code>switch</code> para exibir: vermelho → <strong>"Pare!"</strong>, amarelo → <strong>"Atenção!"</strong>, verde → <strong>"Siga!"</strong>.</div>
+      <textarea class="exercise-input" id="ex7-1" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-1', 'dp7-1')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-1')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp7-1"></div>
+      <div class="solution-wrap" id="sol7-1">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">enum</span> <span class="type">Semaforo</span> { vermelho, amarelo, verde }
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">Semaforo</span> <span class="var">sinal</span> = <span class="type">Semaforo</span>.amarelo;
+
+  <span class="kw">switch</span> (<span class="var">sinal</span>) {
+    <span class="kw">case</span> <span class="type">Semaforo</span>.vermelho:
+      <span class="fn">print</span>(<span class="str">'Pare!'</span>);
+    <span class="kw">case</span> <span class="type">Semaforo</span>.amarelo:
+      <span class="fn">print</span>(<span class="str">'Atenção!'</span>);
+    <span class="kw">case</span> <span class="type">Semaforo</span>.verde:
+      <span class="fn">print</span>(<span class="str">'Siga!'</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card">
+    <div class="exercise-header">
+      <div class="exercise-icon">02</div>
+      <div style="flex:1">
+        <div class="exercise-title">Todos os valores</div>
+        <div class="exercise-sub">enum.values + for-in</div>
+      </div>
+      <span class="tag green">Básico</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um <code>enum Nivel</code> com os valores <code>iniciante</code>, <code>intermediario</code> e <code>avancado</code>. Use <code>Nivel.values</code> e um laço <code>for-in</code> para exibir o <code>.name</code> de cada valor.</div>
+      <textarea class="exercise-input" id="ex7-2" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-2', 'dp7-2')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-2')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp7-2"></div>
+      <div class="solution-wrap" id="sol7-2">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">enum</span> <span class="type">Nivel</span> { iniciante, intermediario, avancado }
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">n</span> <span class="kw">in</span> <span class="type">Nivel</span>.values) {
+    <span class="fn">print</span>(<span class="var">n</span>.<span class="var">name</span>);
+  }
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="exercise-card desafio">
+    <div class="exercise-header">
+      <div class="exercise-icon">03</div>
+      <div style="flex:1">
+        <div class="exercise-title">Moeda com valor</div>
+        <div class="exercise-sub">enhanced enum com propriedade</div>
+      </div>
+      <span class="tag orange">Desafio</span>
+    </div>
+    <div class="exercise-body">
+      <div class="exercise-desc">Crie um <code>enum Moeda</code> com os valores <code>centavo</code> (0.01), <code>real</code> (1.0) e <code>nota10</code> (10.0), cada um com uma propriedade <code>final double valor</code>. No <code>main()</code>, percorra <code>Moeda.values</code> e exiba o nome e o valor de cada moeda. Depois calcule e exiba o total de todas as moedas somadas.</div>
+      <textarea class="exercise-input" id="ex7-3" placeholder="Digite seu código Dart aqui..."></textarea>
+      <div class="exercise-actions">
+        <button class="btn btn-primary" onclick="runInDartPad('ex7-3', 'dp7-3')">▶ Executar</button>
+        <button class="btn btn-ghost" onclick="showSolution('sol7-3')">Ver solução</button>
+      </div>
+      <div class="dartpad-wrap" id="dp7-3"></div>
+      <div class="solution-wrap" id="sol7-3">
+        <div class="code-block" style="margin-top:0">
+          <div class="code-header"><div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div><div class="code-lang">Solução</div></div>
+          <pre><span class="kw">enum</span> <span class="type">Moeda</span> {
+  centavo(<span class="num">0.01</span>),
+  real(<span class="num">1.0</span>),
+  nota10(<span class="num">10.0</span>);
+
+  <span class="kw">const</span> <span class="type">Moeda</span>(<span class="kw">this</span>.<span class="var">valor</span>);
+  <span class="kw">final</span> <span class="type">double</span> <span class="var">valor</span>;
+}
+
+<span class="kw">void</span> <span class="fn">main</span>() {
+  <span class="type">double</span> <span class="var">total</span> = <span class="num">0</span>;
+
+  <span class="kw">for</span> (<span class="kw">var</span> <span class="var">m</span> <span class="kw">in</span> <span class="type">Moeda</span>.values) {
+    <span class="fn">print</span>(<span class="str">'${m.name}: R\$ ${m.valor}'</span>);
+    <span class="var">total</span> += <span class="var">m</span>.<span class="var">valor</span>;
+  }
+
+  <span class="fn">print</span>(<span class="str">'Total: R\$ $total'</span>);
+}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-nav" onclick="goTo(6)">← Voltar</button>
+    <button class="btn btn-primary" onclick="completeAndNext(7)">Próximo módulo →</button>
+  </div>
+</div>
